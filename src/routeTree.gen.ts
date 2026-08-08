@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiebeleidRouteImport } from './routes/cookiebeleid'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as OverZadiassureRouteImport } from './routes/over-zadiassure'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PrivacybeleidRouteImport } from './routes/privacybeleid'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as VoorWieRouteImport } from './routes/voor-wie'
+import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
+import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
+import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
+import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
+  id: '/algemene-voorwaarden',
+  path: '/algemene-voorwaarden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiebeleidRoute = CookiebeleidRouteImport.update({
+  id: '/cookiebeleid',
+  path: '/cookiebeleid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OverZadiassureRoute = OverZadiassureRouteImport.update({
+  id: '/over-zadiassure',
+  path: '/over-zadiassure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacybeleidRoute = PrivacybeleidRouteImport.update({
+  id: '/privacybeleid',
+  path: '/privacybeleid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoorWieRoute = VoorWieRouteImport.update({
+  id: '/voor-wie',
+  path: '/voor-wie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BegeleidingIndexRoute = BegeleidingIndexRouteImport.update({
+  id: '/begeleiding/',
+  path: '/begeleiding/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BegeleidingSlugRoute = BegeleidingSlugRouteImport.update({
+  id: '/begeleiding/$slug',
+  path: '/begeleiding/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KenniscentrumIndexRoute = KenniscentrumIndexRouteImport.update({
+  id: '/kenniscentrum/',
+  path: '/kenniscentrum/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KenniscentrumSlugRoute = KenniscentrumSlugRouteImport.update({
+  id: '/kenniscentrum/$slug',
+  path: '/kenniscentrum/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/cookiebeleid': typeof CookiebeleidRoute
+  '/faq': typeof FaqRoute
+  '/over-zadiassure': typeof OverZadiassureRoute
+  '/partners': typeof PartnersRoute
+  '/privacybeleid': typeof PrivacybeleidRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/voor-wie': typeof VoorWieRoute
+  '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/begeleiding/': typeof BegeleidingIndexRoute
+  '/kenniscentrum/': typeof KenniscentrumIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/cookiebeleid': typeof CookiebeleidRoute
+  '/faq': typeof FaqRoute
+  '/over-zadiassure': typeof OverZadiassureRoute
+  '/partners': typeof PartnersRoute
+  '/privacybeleid': typeof PrivacybeleidRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/voor-wie': typeof VoorWieRoute
+  '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/begeleiding': typeof BegeleidingIndexRoute
+  '/kenniscentrum': typeof KenniscentrumIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/cookiebeleid': typeof CookiebeleidRoute
+  '/faq': typeof FaqRoute
+  '/over-zadiassure': typeof OverZadiassureRoute
+  '/partners': typeof PartnersRoute
+  '/privacybeleid': typeof PrivacybeleidRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/voor-wie': typeof VoorWieRoute
+  '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/begeleiding/': typeof BegeleidingIndexRoute
+  '/kenniscentrum/': typeof KenniscentrumIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/cookiebeleid'
+    | '/faq'
+    | '/over-zadiassure'
+    | '/partners'
+    | '/privacybeleid'
+    | '/sitemap.xml'
+    | '/voor-wie'
+    | '/begeleiding/$slug'
+    | '/kenniscentrum/$slug'
+    | '/begeleiding/'
+    | '/kenniscentrum/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/cookiebeleid'
+    | '/faq'
+    | '/over-zadiassure'
+    | '/partners'
+    | '/privacybeleid'
+    | '/sitemap.xml'
+    | '/voor-wie'
+    | '/begeleiding/$slug'
+    | '/kenniscentrum/$slug'
+    | '/begeleiding'
+    | '/kenniscentrum'
+  id:
+    | '__root__'
+    | '/'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/cookiebeleid'
+    | '/faq'
+    | '/over-zadiassure'
+    | '/partners'
+    | '/privacybeleid'
+    | '/sitemap.xml'
+    | '/voor-wie'
+    | '/begeleiding/$slug'
+    | '/kenniscentrum/$slug'
+    | '/begeleiding/'
+    | '/kenniscentrum/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
+  ContactRoute: typeof ContactRoute
+  CookiebeleidRoute: typeof CookiebeleidRoute
+  FaqRoute: typeof FaqRoute
+  OverZadiassureRoute: typeof OverZadiassureRoute
+  PartnersRoute: typeof PartnersRoute
+  PrivacybeleidRoute: typeof PrivacybeleidRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VoorWieRoute: typeof VoorWieRoute
+  BegeleidingSlugRoute: typeof BegeleidingSlugRoute
+  KenniscentrumSlugRoute: typeof KenniscentrumSlugRoute
+  BegeleidingIndexRoute: typeof BegeleidingIndexRoute
+  KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/algemene-voorwaarden': {
+      id: '/algemene-voorwaarden'
+      path: '/algemene-voorwaarden'
+      fullPath: '/algemene-voorwaarden'
+      preLoaderRoute: typeof AlgemeneVoorwaardenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookiebeleid': {
+      id: '/cookiebeleid'
+      path: '/cookiebeleid'
+      fullPath: '/cookiebeleid'
+      preLoaderRoute: typeof CookiebeleidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/over-zadiassure': {
+      id: '/over-zadiassure'
+      path: '/over-zadiassure'
+      fullPath: '/over-zadiassure'
+      preLoaderRoute: typeof OverZadiassureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacybeleid': {
+      id: '/privacybeleid'
+      path: '/privacybeleid'
+      fullPath: '/privacybeleid'
+      preLoaderRoute: typeof PrivacybeleidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voor-wie': {
+      id: '/voor-wie'
+      path: '/voor-wie'
+      fullPath: '/voor-wie'
+      preLoaderRoute: typeof VoorWieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/begeleiding/': {
+      id: '/begeleiding/'
+      path: '/begeleiding'
+      fullPath: '/begeleiding/'
+      preLoaderRoute: typeof BegeleidingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/begeleiding/$slug': {
+      id: '/begeleiding/$slug'
+      path: '/begeleiding/$slug'
+      fullPath: '/begeleiding/$slug'
+      preLoaderRoute: typeof BegeleidingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kenniscentrum/': {
+      id: '/kenniscentrum/'
+      path: '/kenniscentrum'
+      fullPath: '/kenniscentrum/'
+      preLoaderRoute: typeof KenniscentrumIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kenniscentrum/$slug': {
+      id: '/kenniscentrum/$slug'
+      path: '/kenniscentrum/$slug'
+      fullPath: '/kenniscentrum/$slug'
+      preLoaderRoute: typeof KenniscentrumSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
+  ContactRoute: ContactRoute,
+  CookiebeleidRoute: CookiebeleidRoute,
+  FaqRoute: FaqRoute,
+  OverZadiassureRoute: OverZadiassureRoute,
+  PartnersRoute: PartnersRoute,
+  PrivacybeleidRoute: PrivacybeleidRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VoorWieRoute: VoorWieRoute,
+  BegeleidingSlugRoute: BegeleidingSlugRoute,
+  KenniscentrumSlugRoute: KenniscentrumSlugRoute,
+  BegeleidingIndexRoute: BegeleidingIndexRoute,
+  KenniscentrumIndexRoute: KenniscentrumIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

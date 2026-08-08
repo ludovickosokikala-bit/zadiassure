@@ -1,24 +1,72 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Hero,
+  Positioning,
+  ProblemSolution,
+  AudienceCards,
+  ServiceCards,
+  ProcessSteps,
+  WhyGrid,
+  PromiseBand,
+  Testimonials,
+  CtaBand,
+} from "@/components/site/sections";
+import { PartnersBlock } from "@/components/site/PartnersBlock";
+import { InsightsPreview } from "@/components/site/InsightsPreview";
+import { FaqList } from "@/components/site/FaqList";
+import { dictionaries } from "@/i18n";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const meta = dictionaries.nl.meta.home;
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: meta.title },
+      { name: "description", content: meta.description },
+      { name: "keywords", content: "administratieve begeleiding België, administratieve hulp België, budgetbegeleiding, immigration support Belgium, administratieve ondersteuning zelfstandigen" },
+      { property: "og:title", content: meta.title },
+      { property: "og:description", content: meta.description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "ZADIASSURE",
+          description: meta.description,
+          areaServed: "BE",
+          availableLanguage: ["nl", "fr", "en"],
+          telephone: "+32 471 98 67 64",
+          email: "info@zadiassure.be",
+          slogan: "Simplifier aujourd'hui. Sécuriser demain.",
+        }),
+      },
+    ],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <Positioning />
+      <ProblemSolution />
+      <AudienceCards />
+      <ServiceCards />
+      <ProcessSteps />
+      <WhyGrid />
+      <PromiseBand />
+      <Testimonials />
+      <PartnersBlock compact />
+      <InsightsPreview />
+      <FaqList limit={6} />
+      <CtaBand />
+    </>
   );
 }
