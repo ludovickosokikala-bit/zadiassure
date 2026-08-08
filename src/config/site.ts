@@ -9,6 +9,9 @@ export const site = {
   phoneHref: "tel:+32471986764",
   email: "info@zadiassure.be",
   emailHref: "mailto:info@zadiassure.be",
+  /** International format without + or spaces, used for wa.me links. */
+  whatsapp: "32471986764",
+
   social: {
     facebook: "https://www.facebook.com/Zadiassure",
     instagram: "https://www.instagram.com/zadiassure/",

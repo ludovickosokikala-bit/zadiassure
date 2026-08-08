@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { LanguageProvider } from "@/i18n";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -140,7 +142,9 @@ function RootComponent() {
             <Outlet />
           </main>
           <Footer />
+          <WhatsAppButton />
         </div>
+
       </LanguageProvider>
     </QueryClientProvider>
   );
