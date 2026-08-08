@@ -5,6 +5,13 @@ import { Cta } from "@/components/ui/cta";
 import { audienceIcons, serviceIcons } from "@/components/site/icons";
 import { routes } from "@/config/site";
 import { useT } from "@/i18n";
+import heroPeople from "@/assets/people-hero.jpg";
+import person1 from "@/assets/person-1.jpg";
+import person2 from "@/assets/person-2.jpg";
+import person3 from "@/assets/person-3.jpg";
+
+const portraits = [person1, person2, person3];
+
 
 /* ---------------------------------- Hero ---------------------------------- */
 
