@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { Cta } from "@/components/ui/cta";
 import { routes, site } from "@/config/site";
 import { useT } from "@/i18n";
+import { useLib } from "@/i18n/useLibrary";
 import { cn } from "@/lib/utils";
 
 export function Header() {
