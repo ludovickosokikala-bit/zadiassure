@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import pageImage from "@/assets/page-contact.jpg";
+import { PageHero } from "@/components/site/PageHero";
 import { Clock, Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -37,9 +39,13 @@ function ContactPage() {
   const t = useT();
   return (
     <>
-      <Section tone="sand">
-        <SectionHeader eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} as="h1" />
-      </Section>
+      <PageHero
+        eyebrow={t.contact.eyebrow}
+        title={t.contact.title}
+        text={t.contact.text}
+        image={pageImage}
+        imageAlt="Onthaal bij ZADIASSURE"
+      />
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">

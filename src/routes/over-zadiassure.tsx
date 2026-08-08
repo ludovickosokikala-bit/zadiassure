@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import founderPhoto from "@/assets/founder.png.asset.json";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { CtaBand, PromiseBand } from "@/components/site/sections";
 import { dictionaries, useT } from "@/i18n";
@@ -38,17 +39,24 @@ function AboutPage() {
               ))}
             </div>
           </div>
-          <figure className="rounded-3xl border border-border bg-card p-7 shadow-soft">
-            <blockquote className="font-display text-lg font-semibold leading-snug text-primary">
-              “{t.about.founderQuote}”
-            </blockquote>
-            <figcaption className="mt-5 text-sm">
-              <span className="block font-semibold text-primary">{t.about.founderName}</span>
-              <span className="text-muted-foreground">{t.about.founderRole}</span>
-            </figcaption>
-            <p className="mt-6 text-xs text-muted-foreground">
-              [PLACEHOLDER] Portretfoto van de oprichter kan hier toegevoegd worden.
-            </p>
+          <figure className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+            <img
+              src={founderPhoto.url}
+              alt={`${t.about.founderName} — ${t.about.founderRole} bij ZADIASSURE`}
+              width={640}
+              height={640}
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover"
+            />
+            <div className="p-7">
+              <blockquote className="font-display text-lg font-semibold leading-snug text-primary">
+                “{t.about.founderQuote}”
+              </blockquote>
+              <figcaption className="mt-5 text-sm">
+                <span className="block font-semibold text-primary">{t.about.founderName}</span>
+                <span className="text-muted-foreground">{t.about.founderRole} — ZADIASSURE</span>
+              </figcaption>
+            </div>
           </figure>
         </div>
       </Section>

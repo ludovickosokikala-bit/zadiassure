@@ -5,6 +5,8 @@ import { Cta } from "@/components/ui/cta";
 import { audienceIcons, serviceIcons } from "@/components/site/icons";
 import { routes } from "@/config/site";
 import { useT } from "@/i18n";
+import founderPhoto from "@/assets/founder.png.asset.json";
+import { LogoMark } from "@/components/brand/Logo";
 import heroPeople from "@/assets/people-hero.jpg";
 import worryPeople from "@/assets/people-worry.jpg";
 import person1 from "@/assets/person-1.jpg";
@@ -415,5 +417,44 @@ export function CtaBand() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* -------------------------------- Founder --------------------------------- */
+
+export function FounderBlock() {
+  const t = useT();
+  return (
+    <Section>
+      <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="relative">
+          <img
+            src={founderPhoto.url}
+            alt={`${t.about.founderName} — ${t.about.founderRole} bij ZADIASSURE`}
+            width={640}
+            height={640}
+            loading="lazy"
+            className="aspect-square w-full rounded-3xl border border-border object-cover shadow-lift"
+          />
+          <span className="absolute -bottom-5 -right-4 grid size-16 place-items-center rounded-2xl border border-border bg-card shadow-soft">
+            <LogoMark className="size-11" />
+          </span>
+        </div>
+        <div>
+          <p className="eyebrow">{t.about.eyebrow}</p>
+          <blockquote className="mt-5 font-display text-xl font-bold leading-snug text-primary sm:text-2xl">
+            “{t.about.founderQuote}”
+          </blockquote>
+          <p className="mt-6 font-display text-lg font-bold text-primary">{t.about.founderName}</p>
+          <p className="text-sm text-muted-foreground">{t.about.founderRole} — ZADIASSURE</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Cta to={routes.about} variant="outline">
+              {t.cta.secondary}
+            </Cta>
+            <Cta to={routes.contact}>{t.cta.discuss}</Cta>
+          </div>
+        </div>
+      </div>
+    </Section>
   );
 }

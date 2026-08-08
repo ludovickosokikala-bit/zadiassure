@@ -30,13 +30,11 @@ export function Footer() {
       <div className="container-page py-14 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div className="min-w-0">
-            <div className="flex items-center gap-3">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-navy-foreground">
-                <LogoMark className="size-9" />
-              </span>
+            <div className="inline-flex items-center gap-4 rounded-2xl bg-navy-foreground px-5 py-4">
+              <LogoMark className="size-14" />
               <div className="min-w-0">
-                <p className="font-display text-lg font-bold tracking-tight">ZADIASSURE</p>
-                <p className="truncate text-xs text-navy-foreground/60">{t.brand.tagline}</p>
+                <p className="font-display text-xl font-bold tracking-tight text-primary">ZADIASSURE</p>
+                <p className="truncate text-xs text-primary/60">{t.brand.tagline}</p>
               </div>
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-navy-foreground/70">

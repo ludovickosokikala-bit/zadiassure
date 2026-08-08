@@ -9,6 +9,7 @@ import {
   WhyGrid,
   PromiseBand,
   Testimonials,
+  FounderBlock,
   CtaBand,
 } from "@/components/site/sections";
 import { PartnersBlock } from "@/components/site/PartnersBlock";
@@ -61,6 +62,7 @@ function HomePage() {
       <ServiceCards />
       <ProcessSteps />
       <WhyGrid />
+      <FounderBlock />
       <PromiseBand />
       <Testimonials />
       <PartnersBlock compact />

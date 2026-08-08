@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import pageImage from "@/assets/page-services.jpg";
+import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { ServiceCards, ProcessSteps, CtaBand, WhyGrid } from "@/components/site/sections";
 import { dictionaries, useT } from "@/i18n";
@@ -24,14 +26,13 @@ function ServicesPage() {
   const t = useT();
   return (
     <>
-      <Section tone="sand">
-        <SectionHeader
-          eyebrow={t.servicesSection.eyebrow}
-          title={t.servicesSection.title}
-          text={t.servicesSection.text}
-          as="h1"
-        />
-      </Section>
+      <PageHero
+        eyebrow={t.servicesSection.eyebrow}
+        title={t.servicesSection.title}
+        text={t.servicesSection.text}
+        image={pageImage}
+        imageAlt="Adviseur van ZADIASSURE bespreekt documenten met een klant"
+      />
       <ServiceCards withHeader={false} />
       <ProcessSteps />
       <WhyGrid />
