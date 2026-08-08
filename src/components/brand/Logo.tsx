@@ -10,9 +10,9 @@ export function LogoFull({ className }: { className?: string }) {
       <img
         src={logo.url}
         alt="ZADIASSURE — Service d'aide en administration"
-        className="h-14 w-auto mix-blend-multiply sm:h-16"
-        width={220}
-        height={64}
+        className="h-16 w-auto mix-blend-multiply sm:h-20"
+        width={260}
+        height={80}
       />
     </Link>
   );
