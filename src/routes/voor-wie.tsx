@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import pageImage from "@/assets/page-audiences.jpg";
+import { PageHero } from "@/components/site/PageHero";
 import { Check } from "lucide-react";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/sections";
@@ -28,14 +30,13 @@ function AudiencesPage() {
   const t = useT();
   return (
     <>
-      <Section tone="sand">
-        <SectionHeader
-          eyebrow={t.audiencesSection.eyebrow}
-          title={t.audiencesSection.title}
-          text={t.audiencesSection.text}
-          as="h1"
-        />
-      </Section>
+      <PageHero
+        eyebrow={t.audiencesSection.eyebrow}
+        title={t.audiencesSection.title}
+        text={t.audiencesSection.text}
+        image={pageImage}
+        imageAlt="Divers publiek van ZADIASSURE in een licht kantoor"
+      />
 
       {t.audiencesSection.items.map((a, index) => {
         const Icon = audienceIcons[a.slug]!;

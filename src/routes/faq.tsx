@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import pageImage from "@/assets/page-insights.jpg";
+import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { FaqList } from "@/components/site/FaqList";
 import { CtaBand } from "@/components/site/sections";
@@ -39,9 +41,13 @@ function FaqPage() {
   const t = useT();
   return (
     <>
-      <Section tone="sand">
-        <SectionHeader eyebrow={t.faqSection.eyebrow} title={t.faqSection.title} text={t.faqSection.text} as="h1" />
-      </Section>
+      <PageHero
+        eyebrow={t.faqSection.eyebrow}
+        title={t.faqSection.title}
+        text={t.faqSection.text}
+        image={pageImage}
+        imageAlt="Vrouw leest een officiële brief aan haar bureau"
+      />
       <FaqList withHeader={false} />
       <CtaBand />
     </>

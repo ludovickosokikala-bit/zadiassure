@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import pageImage from "@/assets/page-partners.jpg";
+import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { PartnersBlock } from "@/components/site/PartnersBlock";
 import { CtaBand } from "@/components/site/sections";
@@ -25,14 +27,13 @@ function PartnersPage() {
   const t = useT();
   return (
     <>
-      <Section tone="sand">
-        <SectionHeader
-          eyebrow={t.partnersSection.eyebrow}
-          title={t.partnersSection.title}
-          text={t.partnersSection.text}
-          as="h1"
-        />
-      </Section>
+      <PageHero
+        eyebrow={t.partnersSection.eyebrow}
+        title={t.partnersSection.title}
+        text={t.partnersSection.text}
+        image={pageImage}
+        imageAlt="Partners van ZADIASSURE in overleg"
+      />
       <PartnersBlock />
       <CtaBand />
     </>
