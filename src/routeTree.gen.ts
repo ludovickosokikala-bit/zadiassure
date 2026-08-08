@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiebeleidRouteImport } from './routes/cookiebeleid'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -21,8 +22,12 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VoorWieRouteImport } from './routes/voor-wie'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
+import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
+import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
 import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
 import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$slug'
+import { Route as WetgevingIndexRouteImport } from './routes/wetgeving.index'
+import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +37,11 @@ const IndexRoute = IndexRouteImport.update({
 const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
   id: '/algemene-voorwaarden',
   path: '/algemene-voorwaarden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -84,6 +94,16 @@ const BegeleidingSlugRoute = BegeleidingSlugRouteImport.update({
   path: '/begeleiding/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentenIndexRoute = DocumentenIndexRouteImport.update({
+  id: '/documenten/',
+  path: '/documenten/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentenSlugRoute = DocumentenSlugRouteImport.update({
+  id: '/documenten/$slug',
+  path: '/documenten/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KenniscentrumIndexRoute = KenniscentrumIndexRouteImport.update({
   id: '/kenniscentrum/',
   path: '/kenniscentrum/',
@@ -94,10 +114,21 @@ const KenniscentrumSlugRoute = KenniscentrumSlugRouteImport.update({
   path: '/kenniscentrum/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WetgevingIndexRoute = WetgevingIndexRouteImport.update({
+  id: '/wetgeving/',
+  path: '/wetgeving/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WetgevingSlugRoute = WetgevingSlugRouteImport.update({
+  id: '/wetgeving/$slug',
+  path: '/wetgeving/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/cookiebeleid': typeof CookiebeleidRoute
   '/faq': typeof FaqRoute
@@ -107,13 +138,18 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
+  '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
+  '/wetgeving/': typeof WetgevingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/cookiebeleid': typeof CookiebeleidRoute
   '/faq': typeof FaqRoute
@@ -123,14 +159,19 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding': typeof BegeleidingIndexRoute
+  '/documenten': typeof DocumentenIndexRoute
   '/kenniscentrum': typeof KenniscentrumIndexRoute
+  '/wetgeving': typeof WetgevingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/cookiebeleid': typeof CookiebeleidRoute
   '/faq': typeof FaqRoute
@@ -140,15 +181,20 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
+  '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
+  '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
+  '/wetgeving/': typeof WetgevingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/algemene-voorwaarden'
+    | '/auth'
     | '/contact'
     | '/cookiebeleid'
     | '/faq'
@@ -158,13 +204,18 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/begeleiding/$slug'
+    | '/documenten/$slug'
     | '/kenniscentrum/$slug'
+    | '/wetgeving/$slug'
     | '/begeleiding/'
+    | '/documenten/'
     | '/kenniscentrum/'
+    | '/wetgeving/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/algemene-voorwaarden'
+    | '/auth'
     | '/contact'
     | '/cookiebeleid'
     | '/faq'
@@ -174,13 +225,18 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/begeleiding/$slug'
+    | '/documenten/$slug'
     | '/kenniscentrum/$slug'
+    | '/wetgeving/$slug'
     | '/begeleiding'
+    | '/documenten'
     | '/kenniscentrum'
+    | '/wetgeving'
   id:
     | '__root__'
     | '/'
     | '/algemene-voorwaarden'
+    | '/auth'
     | '/contact'
     | '/cookiebeleid'
     | '/faq'
@@ -190,14 +246,19 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/begeleiding/$slug'
+    | '/documenten/$slug'
     | '/kenniscentrum/$slug'
+    | '/wetgeving/$slug'
     | '/begeleiding/'
+    | '/documenten/'
     | '/kenniscentrum/'
+    | '/wetgeving/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CookiebeleidRoute: typeof CookiebeleidRoute
   FaqRoute: typeof FaqRoute
@@ -207,9 +268,13 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VoorWieRoute: typeof VoorWieRoute
   BegeleidingSlugRoute: typeof BegeleidingSlugRoute
+  DocumentenSlugRoute: typeof DocumentenSlugRoute
   KenniscentrumSlugRoute: typeof KenniscentrumSlugRoute
+  WetgevingSlugRoute: typeof WetgevingSlugRoute
   BegeleidingIndexRoute: typeof BegeleidingIndexRoute
+  DocumentenIndexRoute: typeof DocumentenIndexRoute
   KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
+  WetgevingIndexRoute: typeof WetgevingIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -226,6 +291,13 @@ declare module '@tanstack/react-router' {
       path: '/algemene-voorwaarden'
       fullPath: '/algemene-voorwaarden'
       preLoaderRoute: typeof AlgemeneVoorwaardenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -298,6 +370,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BegeleidingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documenten/': {
+      id: '/documenten/'
+      path: '/documenten'
+      fullPath: '/documenten/'
+      preLoaderRoute: typeof DocumentenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documenten/$slug': {
+      id: '/documenten/$slug'
+      path: '/documenten/$slug'
+      fullPath: '/documenten/$slug'
+      preLoaderRoute: typeof DocumentenSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kenniscentrum/': {
       id: '/kenniscentrum/'
       path: '/kenniscentrum'
@@ -312,12 +398,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KenniscentrumSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wetgeving/': {
+      id: '/wetgeving/'
+      path: '/wetgeving'
+      fullPath: '/wetgeving/'
+      preLoaderRoute: typeof WetgevingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wetgeving/$slug': {
+      id: '/wetgeving/$slug'
+      path: '/wetgeving/$slug'
+      fullPath: '/wetgeving/$slug'
+      preLoaderRoute: typeof WetgevingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CookiebeleidRoute: CookiebeleidRoute,
   FaqRoute: FaqRoute,
@@ -327,9 +428,13 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   VoorWieRoute: VoorWieRoute,
   BegeleidingSlugRoute: BegeleidingSlugRoute,
+  DocumentenSlugRoute: DocumentenSlugRoute,
   KenniscentrumSlugRoute: KenniscentrumSlugRoute,
+  WetgevingSlugRoute: WetgevingSlugRoute,
   BegeleidingIndexRoute: BegeleidingIndexRoute,
+  DocumentenIndexRoute: DocumentenIndexRoute,
   KenniscentrumIndexRoute: KenniscentrumIndexRoute,
+  WetgevingIndexRoute: WetgevingIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
