@@ -135,16 +135,27 @@ export function ProblemSolution() {
         text={t.problem.text}
         invert
       />
-      <ul className="mt-10 flex flex-wrap gap-2.5">
-        {t.problem.items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-navy-foreground/15 bg-navy-foreground/5 px-4 py-2 text-sm text-navy-foreground/75"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <img
+          src={worryPeople}
+          width={1280}
+          height={960}
+          loading="lazy"
+          alt="Persoon met een stapel onbeantwoorde brieven en rekeningen aan de keukentafel"
+          className="aspect-[4/3] w-full rounded-[2rem] border border-navy-foreground/15 object-cover shadow-lift"
+        />
+        <ul className="flex flex-wrap gap-2.5">
+          {t.problem.items.map((item) => (
+            <li
+              key={item}
+              className="rounded-full border border-navy-foreground/15 bg-navy-foreground/5 px-4 py-2 text-sm text-navy-foreground/75"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
 
       <div className="mt-14 rounded-3xl border border-navy-foreground/15 bg-navy-foreground/[0.04] p-6 sm:p-10">
         <h3 className="font-display text-2xl font-bold text-navy-foreground sm:text-3xl">
