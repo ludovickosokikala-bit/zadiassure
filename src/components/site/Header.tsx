@@ -45,7 +45,7 @@ export function Header() {
       )}
     >
       <div className="container-page">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 lg:gap-6">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 xl:flex xl:justify-between xl:gap-6">
           <div className="flex min-w-0 items-center">
             <LogoFull className="shrink-0" />
           </div>

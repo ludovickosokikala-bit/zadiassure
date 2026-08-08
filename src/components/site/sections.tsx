@@ -19,7 +19,7 @@ export function Hero() {
           </p>
           <h1 className="rise mt-7 text-4xl font-bold leading-[1.05] text-primary sm:text-5xl lg:text-6xl">
             {t.hero.title}{" "}
-            <span className="block bg-gradient-to-r from-accent to-sky bg-clip-text text-transparent">
+            <span className="block text-accent">
               {t.hero.titleAccent}
             </span>
           </h1>
