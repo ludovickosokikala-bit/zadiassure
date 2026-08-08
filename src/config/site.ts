@@ -23,7 +23,10 @@ export const routes = {
   about: "/over-zadiassure",
   partners: "/partners",
   insights: "/kenniscentrum",
+  legislation: "/wetgeving",
+  documents: "/documenten",
   contact: "/contact",
+
   faq: "/faq",
   privacy: "/privacybeleid",
   terms: "/algemene-voorwaarden",

@@ -6,10 +6,12 @@ import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { Cta } from "@/components/ui/cta";
 import { routes, site } from "@/config/site";
 import { useT } from "@/i18n";
+import { useLib } from "@/i18n/useLibrary";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const t = useT();
+  const lib = useLib();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,6 +35,8 @@ export function Header() {
     { to: routes.services, label: t.nav.services },
     { to: routes.about, label: t.nav.about },
     { to: routes.partners, label: t.nav.partners },
+    { to: routes.legislation, label: lib.legislation.nav },
+    { to: routes.documents, label: lib.forms.nav },
     { to: routes.insights, label: t.nav.insights },
     { to: routes.contact, label: t.nav.contact },
   ];
