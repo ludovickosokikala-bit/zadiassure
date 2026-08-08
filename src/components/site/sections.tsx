@@ -5,6 +5,14 @@ import { Cta } from "@/components/ui/cta";
 import { audienceIcons, serviceIcons } from "@/components/site/icons";
 import { routes } from "@/config/site";
 import { useT } from "@/i18n";
+import heroPeople from "@/assets/people-hero.jpg";
+import worryPeople from "@/assets/people-worry.jpg";
+import person1 from "@/assets/person-1.jpg";
+import person2 from "@/assets/person-2.jpg";
+import person3 from "@/assets/person-3.jpg";
+
+const portraits = [person1, person2, person3];
+
 
 /* ---------------------------------- Hero ---------------------------------- */
 
@@ -12,39 +20,67 @@ export function Hero() {
   const t = useT();
   return (
     <section className="hero-mesh relative overflow-hidden">
-      <div className="container-page relative py-16 sm:py-20 lg:py-28">
-        <div className="max-w-3xl">
-          <p className="rise eyebrow inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-[0.7rem] text-primary">
-            {t.hero.badge}
-          </p>
-          <h1 className="rise mt-7 text-4xl font-bold leading-[1.05] text-primary sm:text-5xl lg:text-6xl">
-            {t.hero.title}{" "}
-            <span className="block text-accent">
-              {t.hero.titleAccent}
-            </span>
-          </h1>
-          <p className="rise mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {t.hero.subtitle}
-          </p>
-          <div className="rise mt-9 flex flex-wrap gap-3">
-            <Cta to={routes.contact} size="lg">
-              {t.cta.primary}
-            </Cta>
-            <Cta to={routes.services} size="lg" variant="outline">
-              {t.cta.secondary}
-            </Cta>
+      <div className="container-page relative py-16 sm:py-20 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-2xl">
+            <p className="rise eyebrow inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-[0.7rem] text-primary">
+              {t.hero.badge}
+            </p>
+            <h1 className="rise mt-7 text-4xl font-bold leading-[1.05] text-primary sm:text-5xl lg:text-6xl">
+              {t.hero.title}{" "}
+              <span className="block text-accent">
+                {t.hero.titleAccent}
+              </span>
+            </h1>
+            <p className="rise mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {t.hero.subtitle}
+            </p>
+            <div className="rise mt-9 flex flex-wrap gap-3">
+              <Cta to={routes.contact} size="lg">
+                {t.cta.primary}
+              </Cta>
+              <Cta to={routes.services} size="lg" variant="outline">
+                {t.cta.secondary}
+              </Cta>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
+                {t.hero.segIndividual}
+              </Cta>
+              <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
+                {t.hero.segBusiness}
+              </Cta>
+            </div>
           </div>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
-              {t.hero.segIndividual}
-            </Cta>
-            <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
-              {t.hero.segBusiness}
-            </Cta>
+
+          <div className="relative">
+            <img
+              src={heroPeople}
+              width={1280}
+              height={960}
+              alt="Adviseur van ZADIASSURE bespreekt administratieve documenten met een klant"
+              className="aspect-[4/3] w-full rounded-[2rem] border border-border object-cover shadow-lift"
+            />
+            <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-soft backdrop-blur">
+              <div className="flex -space-x-2">
+                {portraits.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    width={816}
+                    height={816}
+                    loading="lazy"
+                    alt=""
+                    className="size-8 rounded-full border-2 border-card object-cover"
+                  />
+                ))}
+              </div>
+              <span className="text-xs font-semibold text-primary">NL · FR · EN</span>
+            </div>
           </div>
         </div>
 
-        <dl className="mt-14 grid gap-4 sm:grid-cols-3">
+        <dl className="mt-20 grid gap-4 sm:grid-cols-3">
           {t.hero.stats.map((s) => (
             <div key={s.title} className="rounded-2xl border border-border bg-card/80 p-5 shadow-soft backdrop-blur">
               <dt className="font-display text-lg font-bold text-primary">{s.title}</dt>
@@ -54,6 +90,7 @@ export function Hero() {
         </dl>
       </div>
     </section>
+
   );
 }
 
@@ -99,16 +136,27 @@ export function ProblemSolution() {
         text={t.problem.text}
         invert
       />
-      <ul className="mt-10 flex flex-wrap gap-2.5">
-        {t.problem.items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-navy-foreground/15 bg-navy-foreground/5 px-4 py-2 text-sm text-navy-foreground/75"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <img
+          src={worryPeople}
+          width={1280}
+          height={960}
+          loading="lazy"
+          alt="Persoon met een stapel onbeantwoorde brieven en rekeningen aan de keukentafel"
+          className="aspect-[4/3] w-full rounded-[2rem] border border-navy-foreground/15 object-cover shadow-lift"
+        />
+        <ul className="flex flex-wrap gap-2.5">
+          {t.problem.items.map((item) => (
+            <li
+              key={item}
+              className="rounded-full border border-navy-foreground/15 bg-navy-foreground/5 px-4 py-2 text-sm text-navy-foreground/75"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
 
       <div className="mt-14 rounded-3xl border border-navy-foreground/15 bg-navy-foreground/[0.04] p-6 sm:p-10">
         <h3 className="font-display text-2xl font-bold text-navy-foreground sm:text-3xl">
@@ -310,19 +358,27 @@ export function Testimonials() {
         align="center"
       />
       <div className="mt-12 grid gap-5 md:grid-cols-3">
-        {[0, 1, 2].map((i) => (
+        {portraits.map((src, i) => (
           <div
             key={i}
             className="flex min-h-48 flex-col justify-between rounded-3xl border border-dashed border-border bg-card/60 p-6"
           >
             <p className="text-sm leading-relaxed text-muted-foreground">{t.testimonials.placeholder}</p>
             <div className="mt-6 flex items-center gap-3">
-              <span className="size-10 shrink-0 rounded-full bg-secondary" />
+              <img
+                src={src}
+                width={816}
+                height={816}
+                loading="lazy"
+                alt=""
+                className="size-10 shrink-0 rounded-full object-cover"
+              />
               <span className="h-3 w-24 rounded-full bg-secondary" />
             </div>
           </div>
         ))}
       </div>
+
     </Section>
   );
 }
