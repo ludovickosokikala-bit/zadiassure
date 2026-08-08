@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function Header() {
   const t = useT();
+  const lib = useLib();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
