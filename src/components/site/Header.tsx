@@ -33,6 +33,8 @@ export function Header() {
     { to: routes.services, label: t.nav.services },
     { to: routes.about, label: t.nav.about },
     { to: routes.partners, label: t.nav.partners },
+    { to: routes.legislation, label: t.nav.legislation ?? "Wetgeving" },
+    { to: routes.documents, label: t.nav.documents ?? "Documenten" },
     { to: routes.insights, label: t.nav.insights },
     { to: routes.contact, label: t.nav.contact },
   ];
