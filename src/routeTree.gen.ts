@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -20,6 +21,7 @@ import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacybeleidRouteImport } from './routes/privacybeleid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VoorWieRouteImport } from './routes/voor-wie'
+import { Route as AuthenticatedBeheerRouteImport } from './routes/_authenticated/beheer'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
@@ -32,6 +34,10 @@ import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
@@ -83,6 +89,11 @@ const VoorWieRoute = VoorWieRouteImport.update({
   id: '/voor-wie',
   path: '/voor-wie',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedBeheerRoute = AuthenticatedBeheerRouteImport.update({
+  id: '/beheer',
+  path: '/beheer',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const BegeleidingIndexRoute = BegeleidingIndexRouteImport.update({
   id: '/begeleiding/',
@@ -137,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
+  '/beheer': typeof AuthenticatedBeheerRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -158,6 +170,7 @@ export interface FileRoutesByTo {
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
+  '/beheer': typeof AuthenticatedBeheerRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -170,6 +183,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
@@ -180,6 +194,7 @@ export interface FileRoutesById {
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
+  '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -203,6 +218,7 @@ export interface FileRouteTypes {
     | '/privacybeleid'
     | '/sitemap.xml'
     | '/voor-wie'
+    | '/beheer'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -224,6 +240,7 @@ export interface FileRouteTypes {
     | '/privacybeleid'
     | '/sitemap.xml'
     | '/voor-wie'
+    | '/beheer'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -235,6 +252,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/algemene-voorwaarden'
     | '/auth'
     | '/contact'
@@ -245,6 +263,7 @@ export interface FileRouteTypes {
     | '/privacybeleid'
     | '/sitemap.xml'
     | '/voor-wie'
+    | '/_authenticated/beheer'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -257,6 +276,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
@@ -284,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/algemene-voorwaarden': {
@@ -356,6 +383,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VoorWieRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/beheer': {
+      id: '/_authenticated/beheer'
+      path: '/beheer'
+      fullPath: '/beheer'
+      preLoaderRoute: typeof AuthenticatedBeheerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/begeleiding/': {
       id: '/begeleiding/'
       path: '/begeleiding'
@@ -415,8 +449,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBeheerRoute: typeof AuthenticatedBeheerRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBeheerRoute: AuthenticatedBeheerRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
@@ -439,13 +485,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
