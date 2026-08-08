@@ -6,6 +6,7 @@ import { audienceIcons, serviceIcons } from "@/components/site/icons";
 import { routes } from "@/config/site";
 import { useT } from "@/i18n";
 import heroPeople from "@/assets/people-hero.jpg";
+import worryPeople from "@/assets/people-worry.jpg";
 import person1 from "@/assets/person-1.jpg";
 import person2 from "@/assets/person-2.jpg";
 import person3 from "@/assets/person-3.jpg";
