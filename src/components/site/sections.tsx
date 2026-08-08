@@ -358,19 +358,27 @@ export function Testimonials() {
         align="center"
       />
       <div className="mt-12 grid gap-5 md:grid-cols-3">
-        {[0, 1, 2].map((i) => (
+        {portraits.map((src, i) => (
           <div
             key={i}
             className="flex min-h-48 flex-col justify-between rounded-3xl border border-dashed border-border bg-card/60 p-6"
           >
             <p className="text-sm leading-relaxed text-muted-foreground">{t.testimonials.placeholder}</p>
             <div className="mt-6 flex items-center gap-3">
-              <span className="size-10 shrink-0 rounded-full bg-secondary" />
+              <img
+                src={src}
+                width={816}
+                height={816}
+                loading="lazy"
+                alt=""
+                className="size-10 shrink-0 rounded-full object-cover"
+              />
               <span className="h-3 w-24 rounded-full bg-secondary" />
             </div>
           </div>
         ))}
       </div>
+
     </Section>
   );
 }
