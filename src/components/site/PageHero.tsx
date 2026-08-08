@@ -13,9 +13,9 @@ export function PageHero({
   imageAlt,
   children,
 }: {
-  eyebrow?: string;
+  eyebrow: string;
   title: string;
-  text?: string;
+  text: string;
   image: string;
   imageAlt: string;
   children?: React.ReactNode;
