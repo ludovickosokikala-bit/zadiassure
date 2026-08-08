@@ -82,9 +82,12 @@ export const submitRequest = createServerFn({ method: "POST" })
       .eq("slug", data.templateSlug)
       .maybeSingle();
 
+    if (!template?.id) return { ok: false as const };
+
     const { error } = await client.from("form_submissions").insert({
-      template_id: template?.id ?? null,
+      template_id: template.id,
       template_slug: data.templateSlug,
+      status: "new",
       full_name: data.fullName,
       email: data.email,
       phone: data.phone,
