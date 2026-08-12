@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Lock, Mail, Phone } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { routes, site } from "@/config/site";
-import { useT } from "@/i18n";
+import { useLanguage, useT } from "@/i18n";
 
 export function Footer() {
   const t = useT();
+  const { language } = useLanguage();
+  const staffLabel =
+    language === "fr" ? "Espace collaborateurs" : language === "en" ? "Staff area" : "Medewerkers";
   const year = new Date().getFullYear();
 
   const nav = [

@@ -42,7 +42,7 @@ function AuthPage() {
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (session && (event === "SIGNED_IN" || event === "INITIAL_SESSION")) {
-        void navigate({ to: "/beheer", replace: true });
+        void navigate({ to: "/crm", replace: true });
       }
     });
     return () => data.subscription.unsubscribe();
@@ -58,7 +58,7 @@ function AuthPage() {
         const { error: signUpError } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: `${window.location.origin}/beheer` },
+          options: { emailRedirectTo: `${window.location.origin}/crm` },
         });
         if (signUpError) throw signUpError;
         setMessage(a.checkEmail);
