@@ -100,26 +100,32 @@ export function Hero() {
 
 export function Positioning() {
   const t = useT();
+  const { locale } = useLanguage();
+  const approach = approachDictionaries[locale];
   return (
     <Section>
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <SectionHeader eyebrow={t.positioning.eyebrow} title={t.positioning.title} text={t.positioning.text} />
         <div className="flex flex-col gap-3">
-          {t.positioning.chain.map((step, i) => (
-            <div
-              key={step}
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft"
-              style={{ marginInlineStart: `${i * 1.5}rem` }}
-            >
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-secondary font-display text-sm font-bold text-primary">
-                {i + 1}
-              </span>
-              <span className="font-display text-lg font-semibold text-primary">{step}</span>
-              {i < t.positioning.chain.length - 1 && (
-                <ArrowRight className="ml-auto size-4 shrink-0 text-accent" />
-              )}
-            </div>
-          ))}
+          <p className="text-sm font-semibold text-accent">{approach.chainHint}</p>
+          {t.positioning.chain.map((step, i) => {
+            const slug = approachSlugs[i] ?? approachSlugs[0]!;
+            return (
+              <Link
+                key={step}
+                to="/aanpak/$slug"
+                params={{ slug }}
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-accent hover:shadow-lift"
+                style={{ marginInlineStart: `${i * 1.5}rem` }}
+              >
+                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-secondary font-display text-sm font-bold text-primary transition group-hover:bg-accent group-hover:text-accent-foreground">
+                  {i + 1}
+                </span>
+                <span className="font-display text-lg font-semibold text-primary group-hover:text-accent">{step}</span>
+                <ArrowRight className="ml-auto size-4 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </Section>
