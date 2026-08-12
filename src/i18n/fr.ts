@@ -453,7 +453,7 @@ export const fr: Dict = {
     ],
     founderQuote:
       "Personne ne devrait être freiné dans sa vie à cause de difficultés administratives, financières ou linguistiques.",
-    founderName: "Lionel Makolo Zadi",
+    founderName: "Lionel Zadi",
     founderRole: "Fondateur & Gérant",
     missionTitle: "Notre mission",
     missionText:
