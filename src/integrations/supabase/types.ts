@@ -387,7 +387,7 @@ export type Database = {
         Row: {
           assigned_to: string | null
           branch_id: string | null
-          case_number: number
+          case_number: number | null
           case_type_id: string | null
           client_id: string
           closed_at: string | null
@@ -411,7 +411,7 @@ export type Database = {
         Insert: {
           assigned_to?: string | null
           branch_id?: string | null
-          case_number: number
+          case_number?: number | null
           case_type_id?: string | null
           client_id: string
           closed_at?: string | null
@@ -435,7 +435,7 @@ export type Database = {
         Update: {
           assigned_to?: string | null
           branch_id?: string | null
-          case_number?: number
+          case_number?: number | null
           case_type_id?: string | null
           client_id?: string
           closed_at?: string | null
@@ -993,7 +993,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      crm_next_case_number: { Args: { _org: string }; Returns: number }
+      [_ in never]: never
     }
     Enums: {
       app_role: "admin" | "editor" | "user"
