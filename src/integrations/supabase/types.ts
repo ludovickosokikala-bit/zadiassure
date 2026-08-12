@@ -14,6 +14,94 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          all_day: boolean
+          assigned_to: string | null
+          attendee_emails: string[]
+          case_id: string | null
+          client_id: string | null
+          created_at: string
+          created_by: string | null
+          deleted_at: string | null
+          description: string
+          ends_at: string
+          external_event_id: string | null
+          id: string
+          location: string
+          meeting_kind: string
+          organization_id: string
+          starts_at: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          all_day?: boolean
+          assigned_to?: string | null
+          attendee_emails?: string[]
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          description?: string
+          ends_at: string
+          external_event_id?: string | null
+          id?: string
+          location?: string
+          meeting_kind?: string
+          organization_id: string
+          starts_at: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          all_day?: boolean
+          assigned_to?: string | null
+          attendee_emails?: string[]
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          description?: string
+          ends_at?: string
+          external_event_id?: string | null
+          id?: string
+          location?: string
+          meeting_kind?: string
+          organization_id?: string
+          starts_at?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       branches: {
         Row: {
           address: string
@@ -48,6 +136,38 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "branches_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      calendar_feeds: {
+        Row: {
+          created_at: string
+          id: string
+          organization_id: string
+          token: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          organization_id: string
+          token: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          organization_id?: string
+          token?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "calendar_feeds_organization_id_fkey"
             columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organizations"
