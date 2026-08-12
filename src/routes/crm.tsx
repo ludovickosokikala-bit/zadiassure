@@ -24,7 +24,13 @@ export const Route = createFileRoute("/crm")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "theme-color", content: "#0b1b33" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-title", content: "ZADIASSURE CRM" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
     ],
+    links: [{ rel: "manifest", href: "/crm.webmanifest" }],
   }),
   component: () => (
     <CrmShell>
