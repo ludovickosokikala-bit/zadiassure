@@ -162,6 +162,9 @@ function CaseDetail() {
               ))}
             </ol>
           </Panel>
+          <div className="lg:col-span-3">
+            <CaseAssistant caseId={data.case.id} />
+          </div>
         </div>
       )}
 
