@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n";
 import { addNote, getCase } from "@/lib/crm.functions";
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
+import { CaseAssistant } from "@/components/crm/ai";
 import {
   clientName,
   docTone,
