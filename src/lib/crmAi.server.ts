@@ -87,7 +87,7 @@ export async function buildBriefingContext(supabase: Db, organizationId: string,
       .select("title, due_date, status, priority")
       .eq("organization_id", organizationId)
       .eq("assigned_to", userId)
-      .neq("status", "done")
+      .neq("status", "completed")
       .is("deleted_at", null)
       .lte("due_date", weekAhead)
       .order("due_date")
