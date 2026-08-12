@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Loader2, Send, Sparkles } from "lucide-react";
+import { Coins, Loader2, Send, Sparkles } from "lucide-react";
 import { Panel } from "@/components/crm/ui";
 import { useLanguage } from "@/i18n";
 import type { Locale } from "@/i18n/types";
@@ -42,6 +42,11 @@ const COPY = {
     rate: "Te veel aanvragen. Probeer het straks opnieuw.",
     credits: "AI-credits zijn opgebruikt.",
     error: "Er ging iets mis met de AI.",
+    costLabel: "kost",
+    costPerRun: "per verzoek",
+    costTip:
+      "Schatting in Lovable-credits voor dit verzoek. Je betaalt alleen wanneer je op de knop klikt; langere tekst kost iets meer.",
+
   },
   fr: {
     assistant: "Assistant dossier",
@@ -69,6 +74,11 @@ const COPY = {
     rate: "Trop de demandes. Réessayez plus tard.",
     credits: "Les crédits IA sont épuisés.",
     error: "Une erreur est survenue avec l'IA.",
+    costLabel: "coût",
+    costPerRun: "par requête",
+    costTip:
+      "Estimation en crédits Lovable pour cette requête. Facturé uniquement quand vous cliquez ; un texte plus long coûte un peu plus.",
+
   },
   en: {
     assistant: "Case assistant",
@@ -96,6 +106,11 @@ const COPY = {
     rate: "Too many requests. Try again later.",
     credits: "AI credits are exhausted.",
     error: "Something went wrong with the AI.",
+    costLabel: "cost",
+    costPerRun: "per run",
+    costTip:
+      "Estimate in Lovable credits for this request. Only charged when you press the button; longer text costs slightly more.",
+
   },
 } satisfies Record<Locale, Record<string, unknown>>;
 
@@ -147,29 +162,66 @@ function Disclaimer({ text }: { text: string }) {
   return <p className="mt-3 text-[11px] font-medium text-muted-foreground">{text}</p>;
 }
 
+/**
+ * Rough credit estimate for one AI call: a small base cost plus a share
+ * that grows with the amount of text sent along (chars ≈ tokens / 4).
+ */
+export function estimateCredits(inputChars = 0) {
+  const credits = 0.012 + (inputChars / 4) * 0.0000012 + 0.0035;
+  return Math.max(0.01, Math.round(credits * 100) / 100);
+}
+
+function formatCredits(value: number, locale: Locale) {
+  return value.toLocaleString(locale === "en" ? "en-US" : locale === "fr" ? "fr-BE" : "nl-BE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
+export function CostBadge({ inputChars = 0 }: { inputChars?: number }) {
+  const { t, locale } = useAiCopy();
+  const credits = estimateCredits(inputChars);
+  return (
+    <span
+      title={t.costTip}
+      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1 text-[11px] font-semibold text-muted-foreground"
+    >
+      <Coins className="h-3.5 w-3.5 text-accent" />
+      {t.costLabel} ≈ {formatCredits(credits, locale)} credits
+      <span className="hidden font-medium opacity-70 sm:inline">/ {t.costPerRun}</span>
+    </span>
+  );
+}
+
 function AiButton({
   onClick,
   loading,
   children,
   disabled,
+  inputChars,
 }: {
   onClick: () => void;
   loading?: boolean;
   children: React.ReactNode;
   disabled?: boolean;
+  inputChars?: number;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={loading || disabled}
-      className="inline-flex items-center gap-2 rounded-xl bg-accent px-3 py-2 text-sm font-bold text-accent-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
-    >
-      {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-      {children}
-    </button>
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <CostBadge inputChars={inputChars ?? 0} />
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={loading || disabled}
+        className="inline-flex items-center gap-2 rounded-xl bg-accent px-3 py-2 text-sm font-bold text-accent-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+      >
+        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+        {children}
+      </button>
+    </span>
   );
 }
+
 
 /* ----------------------------- case assistant ----------------------------- */
 
@@ -267,6 +319,9 @@ export function CaseAssistant({ caseId }: { caseId: string }) {
           <Send className="h-4 w-4" /> <span className="hidden sm:inline">{t.send}</span>
         </button>
       </form>
+      <div className="mt-2">
+        <CostBadge inputChars={input.trim().length + turns.reduce((n, x) => n + x.content.length, 0)} />
+      </div>
       <Disclaimer text={t.disclaimer} />
     </Panel>
   );
@@ -370,6 +425,7 @@ export function LetterHelper() {
           onClick={() => mutation.mutate()}
           loading={mutation.isPending}
           disabled={text.trim().length < 20}
+          inputChars={text.trim().length}
         >
           {t.explain}
         </AiButton>
