@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Loader2, Send, Sparkles } from "lucide-react";
+import { Coins, Loader2, Send, Sparkles } from "lucide-react";
 import { Panel } from "@/components/crm/ui";
 import { useLanguage } from "@/i18n";
 import type { Locale } from "@/i18n/types";
