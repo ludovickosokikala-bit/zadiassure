@@ -319,6 +319,9 @@ export function CaseAssistant({ caseId }: { caseId: string }) {
           <Send className="h-4 w-4" /> <span className="hidden sm:inline">{t.send}</span>
         </button>
       </form>
+      <div className="mt-2">
+        <CostBadge inputChars={input.trim().length + turns.reduce((n, x) => n + x.content.length, 0)} />
+      </div>
       <Disclaimer text={t.disclaimer} />
     </Panel>
   );
