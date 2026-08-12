@@ -208,7 +208,7 @@ function AiButton({
 }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-2">
-      <CostBadge inputChars={inputChars} />
+      <CostBadge inputChars={inputChars ?? 0} />
       <button
         type="button"
         onClick={onClick}
