@@ -42,6 +42,11 @@ const COPY = {
     rate: "Te veel aanvragen. Probeer het straks opnieuw.",
     credits: "AI-credits zijn opgebruikt.",
     error: "Er ging iets mis met de AI.",
+    costLabel: "kost",
+    costPerRun: "per verzoek",
+    costTip:
+      "Schatting in Lovable-credits voor dit verzoek. Je betaalt alleen wanneer je op de knop klikt; langere tekst kost iets meer.",
+
   },
   fr: {
     assistant: "Assistant dossier",
