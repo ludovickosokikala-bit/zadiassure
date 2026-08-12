@@ -165,7 +165,11 @@ export function CrmShell({ children }: { children: ReactNode }) {
   }
 
   const label = (key: (typeof NAV)[number]["key"]) =>
-    key === "inbox" ? a.nav.inbox : c.nav[key as keyof typeof c.nav];
+    key === "inbox"
+      ? a.nav.inbox
+      : key === "ai"
+        ? "AI"
+        : c.nav[key as keyof typeof c.nav];
 
   const nav = (
     <nav className="flex flex-col gap-1">
