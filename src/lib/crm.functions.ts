@@ -532,3 +532,29 @@ export const softDelete = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true as const };
   });
+
+export const listDocuments = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z
+      .object({ status: z.string().trim().max(40).default(""), search: z.string().trim().max(120).default("") })
+      .parse(input ?? {}),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff, DOCUMENT_COLUMNS } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    let query = context.supabase
+      .from("case_documents")
+      .select(
+        `${DOCUMENT_COLUMNS}, cases ( id, case_number, title ), clients ( first_name, last_name, company_name )`,
+      )
+      .eq("organization_id", member.organization_id)
+      .is("deleted_at", null)
+      .order("created_at", { ascending: false })
+      .limit(300);
+    if (data.status) query = query.eq("status", data.status as never);
+    if (data.search) query = query.ilike("name", `%${data.search}%`);
+    const { data: items, error } = await query;
+    if (error) throw new Error(error.message);
+    return { items: items ?? [] };
+  });
