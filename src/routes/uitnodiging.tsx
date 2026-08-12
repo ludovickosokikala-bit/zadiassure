@@ -17,7 +17,11 @@ export const Route = createFileRoute("/uitnodiging")({
   beforeLoad: async ({ search }) => {
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) {
-      throw redirect({ to: "/auth", search: { invite: search.token } as never });
+      // Keep the token so the visitor can return after signing in.
+      if (typeof window !== "undefined" && search.token) {
+        window.sessionStorage.setItem("zadiassure.invite", search.token);
+      }
+      throw redirect({ to: "/auth" });
     }
   },
   head: () => ({
