@@ -190,6 +190,9 @@ function InboxPage() {
                           {a.inbox.attachments}: {attachments.length}
                         </p>
                       )}
+                      <div className="mt-4">
+                        <InboxTriage submissionId={item.id} />
+                      </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <button
                           type="button"
