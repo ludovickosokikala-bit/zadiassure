@@ -29,11 +29,21 @@ import { cn } from "@/lib/utils";
 import { useCrmApp, useCrmBadges, useCrmDict, useWorkspace } from "./useCrm";
 import { CaseDialog, ClientDialog, TaskDialog } from "./dialogs";
 
-type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | null;
+type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | "mandates" | null;
 
 const NAV: {
   to: string;
-  key: "dashboard" | "inbox" | "clients" | "cases" | "tasks" | "documents" | "ai" | "settings";
+  key:
+    | "dashboard"
+    | "inbox"
+    | "clients"
+    | "cases"
+    | "tasks"
+    | "documents"
+    | "mandates"
+    | "ai"
+    | "team"
+    | "settings";
   icon: typeof Users;
   exact?: boolean;
   badge?: BadgeKey;
@@ -45,9 +55,12 @@ const NAV: {
   { to: "/crm/cases", key: "cases", icon: Briefcase, badge: "cases", primary: true },
   { to: "/crm/tasks", key: "tasks", icon: ListChecks, badge: "tasks", primary: true },
   { to: "/crm/documents", key: "documents", icon: FileText, badge: "documents" },
+  { to: "/crm/mandates", key: "mandates", icon: ShieldCheck, badge: "mandates" },
   { to: "/crm/ai", key: "ai", icon: Sparkles },
+  { to: "/crm/team", key: "team", icon: UserPlus },
   { to: "/crm/settings", key: "settings", icon: Settings },
 ];
+
 
 
 function Badge({ count }: { count: number }) {

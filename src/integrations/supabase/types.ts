@@ -789,6 +789,191 @@ export type Database = {
         }
         Relationships: []
       }
+      mandates: {
+        Row: {
+          applicant_address: string
+          applicant_birth_date: string | null
+          applicant_email: string
+          applicant_name: string
+          applicant_phone: string
+          case_id: string | null
+          client_id: string | null
+          consent: boolean
+          created_at: string
+          created_by: string | null
+          deleted_at: string | null
+          document_id: string | null
+          ends_on: string | null
+          holder_name: string
+          holder_user_id: string | null
+          id: string
+          language: Database["public"]["Enums"]["crm_lang"]
+          notes: string
+          organization_id: string
+          purpose: string
+          scope: string[]
+          signature_image: string | null
+          signed_at: string | null
+          signed_full_name: string
+          source: string
+          starts_on: string | null
+          status: Database["public"]["Enums"]["crm_mandate_status"]
+          updated_at: string
+        }
+        Insert: {
+          applicant_address?: string
+          applicant_birth_date?: string | null
+          applicant_email?: string
+          applicant_name?: string
+          applicant_phone?: string
+          case_id?: string | null
+          client_id?: string | null
+          consent?: boolean
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          document_id?: string | null
+          ends_on?: string | null
+          holder_name?: string
+          holder_user_id?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["crm_lang"]
+          notes?: string
+          organization_id: string
+          purpose?: string
+          scope?: string[]
+          signature_image?: string | null
+          signed_at?: string | null
+          signed_full_name?: string
+          source?: string
+          starts_on?: string | null
+          status?: Database["public"]["Enums"]["crm_mandate_status"]
+          updated_at?: string
+        }
+        Update: {
+          applicant_address?: string
+          applicant_birth_date?: string | null
+          applicant_email?: string
+          applicant_name?: string
+          applicant_phone?: string
+          case_id?: string | null
+          client_id?: string | null
+          consent?: boolean
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          document_id?: string | null
+          ends_on?: string | null
+          holder_name?: string
+          holder_user_id?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["crm_lang"]
+          notes?: string
+          organization_id?: string
+          purpose?: string
+          scope?: string[]
+          signature_image?: string | null
+          signed_at?: string | null
+          signed_full_name?: string
+          source?: string
+          starts_on?: string | null
+          status?: Database["public"]["Enums"]["crm_mandate_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mandates_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mandates_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mandates_document_id_fkey"
+            columns: ["document_id"]
+            isOneToOne: false
+            referencedRelation: "case_documents"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mandates_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      org_invites: {
+        Row: {
+          accepted_at: string | null
+          branch_id: string | null
+          created_at: string
+          email: string
+          expires_at: string
+          full_name: string
+          id: string
+          invited_by: string | null
+          organization_id: string
+          role: Database["public"]["Enums"]["crm_role"]
+          status: string
+          token: string
+          updated_at: string
+        }
+        Insert: {
+          accepted_at?: string | null
+          branch_id?: string | null
+          created_at?: string
+          email: string
+          expires_at?: string
+          full_name?: string
+          id?: string
+          invited_by?: string | null
+          organization_id: string
+          role?: Database["public"]["Enums"]["crm_role"]
+          status?: string
+          token?: string
+          updated_at?: string
+        }
+        Update: {
+          accepted_at?: string | null
+          branch_id?: string | null
+          created_at?: string
+          email?: string
+          expires_at?: string
+          full_name?: string
+          id?: string
+          invited_by?: string | null
+          organization_id?: string
+          role?: Database["public"]["Enums"]["crm_role"]
+          status?: string
+          token?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "org_invites_branch_id_fkey"
+            columns: ["branch_id"]
+            isOneToOne: false
+            referencedRelation: "branches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "org_invites_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       org_members: {
         Row: {
           active: boolean
@@ -1013,6 +1198,12 @@ export type Database = {
         | "rejected"
         | "expired"
       crm_lang: "nl" | "fr" | "en"
+      crm_mandate_status:
+        | "pending_signature"
+        | "signed"
+        | "active"
+        | "revoked"
+        | "expired"
       crm_priority: "low" | "normal" | "high" | "urgent"
       crm_role:
         | "super_admin"
@@ -1175,6 +1366,13 @@ export const Constants = {
         "expired",
       ],
       crm_lang: ["nl", "fr", "en"],
+      crm_mandate_status: [
+        "pending_signature",
+        "signed",
+        "active",
+        "revoked",
+        "expired",
+      ],
       crm_priority: ["low", "normal", "high", "urgent"],
       crm_role: [
         "super_admin",

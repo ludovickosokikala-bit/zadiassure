@@ -573,7 +573,7 @@ export const getCrmBadges = createServerFn({ method: "GET" })
     const today = new Date().toISOString().slice(0, 10);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    const [inbox, mails, newCases, tasks, docs] = await Promise.all([
+    const [inbox, mails, newCases, tasks, docs, mandates] = await Promise.all([
       supabaseAdmin
         .from("form_submissions")
         .select("id", { count: "exact", head: true })
@@ -604,6 +604,12 @@ export const getCrmBadges = createServerFn({ method: "GET" })
         .eq("organization_id", org)
         .is("deleted_at", null)
         .in("status", ["requested", "under_review"]),
+      context.supabase
+        .from("mandates")
+        .select("id", { count: "exact", head: true })
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .in("status", ["signed", "pending_signature"]),
     ]);
 
     const myTasks = tasks.data ?? [];
@@ -614,7 +620,9 @@ export const getCrmBadges = createServerFn({ method: "GET" })
       myTasksToday: myTasks.filter((t) => t.due_date === today).length,
       myTasksOverdue: myTasks.filter((t) => t.due_date && t.due_date < today).length,
       documents: docs.count ?? 0,
+      mandates: mandates.count ?? 0,
     };
+
   });
 
 /** Website submissions: contact mails and document requests. */
