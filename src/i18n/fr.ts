@@ -61,7 +61,7 @@ export const fr: Dict = {
     menu: "Menu",
   },
   cta: {
-    primary: "Demander un entretien",
+    primary: "Demandez votre entretien gratuit",
     secondary: "Découvrir notre accompagnement",
     contact: "Nous contacter",
     discover: "Découvrir les possibilités",

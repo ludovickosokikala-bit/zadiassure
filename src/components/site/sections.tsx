@@ -39,7 +39,7 @@ export function Hero() {
               {t.hero.subtitle}
             </p>
             <div className="rise mt-9 flex flex-wrap gap-3">
-              <Cta to={routes.contact} size="lg">
+              <Cta to={routes.contact} size="lg" variant="accent" className="ring-2 ring-accent/30">
                 {t.cta.primary}
               </Cta>
               <Cta to={routes.services} size="lg" variant="outline">
@@ -407,7 +407,7 @@ export function CtaBand() {
             {t.ctaSection.text}
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Cta to={routes.contact} size="lg" variant="accent">
+            <Cta to={routes.contact} size="lg" variant="accent" className="ring-2 ring-accent/40 ring-offset-2 ring-offset-primary">
               {t.cta.primary}
             </Cta>
             <Cta to={routes.contact} size="lg" variant="onNavy" withArrow={false}>

@@ -61,7 +61,7 @@ export const en: Dict = {
     menu: "Menu",
   },
   cta: {
-    primary: "Request a meeting",
+    primary: "Book your free consultation",
     secondary: "Explore our guidance",
     contact: "Get in touch",
     discover: "See what's possible",
