@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ctaVariants } from "@/components/ui/cta";
 import { routes } from "@/config/site";
+import { submitContact } from "@/lib/library.functions";
+
 import { useLanguage, LOCALES } from "@/i18n";
 import { cn } from "@/lib/utils";
 
