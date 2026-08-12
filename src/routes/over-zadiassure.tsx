@@ -84,18 +84,6 @@ function AboutPage() {
         </div>
       </Section>
 
-      <Section>
-        <SectionHeader title={t.about.roadmapTitle} text={t.about.roadmapText} />
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {t.about.roadmap.map((r) => (
-            <li key={r.year} className="rounded-3xl border border-border bg-card p-6 shadow-soft">
-              <span className="font-display text-sm font-bold tracking-widest text-accent">{r.year}</span>
-              <h3 className="mt-2 font-display text-lg font-bold text-primary">{r.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.text}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
 
       <PromiseBand />
       <CtaBand />

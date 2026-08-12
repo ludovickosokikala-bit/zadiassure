@@ -61,7 +61,7 @@ export const nl: Dict = {
     menu: "Menu",
   },
   cta: {
-    primary: "Een gesprek aanvragen",
+    primary: "Vraag nu uw gratis gesprek aan",
     secondary: "Ontdek onze begeleiding",
     contact: "Neem contact op",
     discover: "Ontdek de mogelijkheden",
