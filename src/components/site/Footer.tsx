@@ -105,9 +105,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} ZADIASSURE — {t.footer.rights}</p>
           <p className="italic">{t.brand.statement}</p>
+          <Link
+            to="/crm"
+            className="inline-flex items-center gap-1.5 text-navy-foreground/45 transition-colors hover:text-accent"
+          >
+            <Lock className="size-3" />
+            {staffLabel}
+          </Link>
         </div>
       </div>
     </footer>
