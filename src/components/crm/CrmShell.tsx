@@ -261,6 +261,14 @@ export function CrmShell({ children }: { children: ReactNode }) {
         <div className="min-w-0 flex-1">
           {/* App bar */}
           <header className="sticky top-0 z-30 flex items-center gap-2 border-b border-border bg-card/95 px-3 py-2.5 backdrop-blur sm:px-4">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label={c.brand}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-foreground transition hover:border-primary/40 lg:hidden"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
             <Link to="/crm" className="flex items-center gap-2 lg:hidden">
               <LogoMark className="h-7 w-auto" />
             </Link>
