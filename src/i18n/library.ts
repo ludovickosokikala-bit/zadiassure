@@ -64,6 +64,14 @@ export interface LibraryDict {
       failed: string;
       checklistLegend: string;
       haveIt: string;
+      uploadLegend: string;
+      uploadHint: string;
+      uploadPick: string;
+      uploadCamera: string;
+      uploadRemove: string;
+      uploadTooBig: string;
+      uploadTooMany: string;
+      uploadBadType: string;
     };
     audienceOptions: { value: string; label: string }[];
   };
@@ -196,6 +204,14 @@ const nl: LibraryDict = {
       failed: "Het versturen is niet gelukt. Probeer opnieuw of mail ons.",
       checklistLegend: "Welke documenten hebt u al?",
       haveIt: "Ik heb dit document",
+      uploadLegend: "Identiteitsdocument of bijlage toevoegen",
+      uploadHint: "Voeg uw identiteitskaart, verblijfstitel of ander document toe (foto of PDF, max. 8 MB per bestand, max. 5 bestanden).",
+      uploadPick: "Bestand kiezen",
+      uploadCamera: "Foto maken",
+      uploadRemove: "Verwijderen",
+      uploadTooBig: "Dit bestand is groter dan 8 MB.",
+      uploadTooMany: "U kunt maximaal 5 bestanden toevoegen.",
+      uploadBadType: "Enkel foto's (JPG, PNG, WEBP, HEIC) of PDF zijn toegelaten.",
     },
     audienceOptions: [
       { value: "particulier", label: "Particulier" },
@@ -334,6 +350,14 @@ const fr: LibraryDict = {
       failed: "L'envoi a échoué. Réessayez ou écrivez-nous.",
       checklistLegend: "Quels documents avez-vous déjà ?",
       haveIt: "J'ai ce document",
+      uploadLegend: "Ajouter une pièce d'identité ou un document",
+      uploadHint: "Ajoutez votre carte d'identité, titre de séjour ou autre document (photo ou PDF, max. 8 Mo par fichier, 5 fichiers max.).",
+      uploadPick: "Choisir un fichier",
+      uploadCamera: "Prendre une photo",
+      uploadRemove: "Supprimer",
+      uploadTooBig: "Ce fichier dépasse 8 Mo.",
+      uploadTooMany: "Vous pouvez ajouter 5 fichiers au maximum.",
+      uploadBadType: "Seules les photos (JPG, PNG, WEBP, HEIC) ou les PDF sont acceptés.",
     },
     audienceOptions: [
       { value: "particulier", label: "Particulier" },
@@ -472,6 +496,14 @@ const en: LibraryDict = {
       failed: "Sending failed. Please try again or e-mail us.",
       checklistLegend: "Which documents do you already have?",
       haveIt: "I have this document",
+      uploadLegend: "Add an identity document or attachment",
+      uploadHint: "Add your ID card, residence permit or another document (photo or PDF, max. 8 MB per file, 5 files max.).",
+      uploadPick: "Choose file",
+      uploadCamera: "Take a photo",
+      uploadRemove: "Remove",
+      uploadTooBig: "This file is larger than 8 MB.",
+      uploadTooMany: "You can add up to 5 files.",
+      uploadBadType: "Only photos (JPG, PNG, WEBP, HEIC) or PDF are allowed.",
     },
     audienceOptions: [
       { value: "particulier", label: "Individual" },
