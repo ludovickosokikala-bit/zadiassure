@@ -181,6 +181,37 @@ function TeamPage() {
                   <p className="break-all rounded-lg bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
                     {inviteLink(i.token)}
                   </p>
+
+                  <div className="rounded-xl border border-border bg-background p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="text-sm font-medium text-foreground">{m.team.mailTitle}</p>
+                        <p className="text-xs text-muted-foreground">{m.team.mailHint}</p>
+                      </div>
+                      <Button size="sm" variant="secondary" className="gap-1.5" onClick={() => copyMail(i)}>
+                        {copied === `mail-${i.token}` ? (
+                          <>
+                            <Check className="h-3.5 w-3.5" /> {m.team.copied}
+                          </>
+                        ) : (
+                          <>
+                            <Mail className="h-3.5 w-3.5" /> {m.team.copyMail}
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <p className="mt-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {m.team.mailSubjectLabel}
+                    </p>
+                    <p className="text-sm text-foreground">{m.team.mailSubject}</p>
+                    <p className="mt-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {m.team.mailBodyLabel}
+                    </p>
+                    <pre className="whitespace-pre-wrap break-words font-body text-sm text-muted-foreground">
+                      {mailBody(i)}
+                    </pre>
+                  </div>
+
                 </li>
               ))}
             </ul>
