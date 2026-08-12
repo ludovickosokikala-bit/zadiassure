@@ -29,6 +29,7 @@ import { LOCALES, useLanguage } from "@/i18n";
 import { crmSearch, listClients } from "@/lib/crm.functions";
 import { cn } from "@/lib/utils";
 import { useCrmApp, useCrmBadges, useCrmDict, useWorkspace } from "./useCrm";
+import { useMandateDict } from "./useMandate";
 import { CaseDialog, ClientDialog, TaskDialog } from "./dialogs";
 
 type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | "mandates" | null;
@@ -77,6 +78,7 @@ function Badge({ count }: { count: number }) {
 export function CrmShell({ children }: { children: ReactNode }) {
   const c = useCrmDict();
   const a = useCrmApp();
+  const m = useMandateDict();
   const { locale, setLocale } = useLanguage();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
