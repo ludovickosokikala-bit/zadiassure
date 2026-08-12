@@ -6,7 +6,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("flex items-center gap-0.5 rounded-full border border-border bg-card p-0.5", className)}
+      className={cn("flex shrink-0 items-center gap-0.5 rounded-full border border-border bg-card p-0.5", className)}
       role="group"
       aria-label="Taal / Langue / Language"
     >
@@ -17,7 +17,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           onClick={() => setLocale(code)}
           aria-pressed={locale === code}
           className={cn(
-            "rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition-colors",
+            "rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide transition-colors sm:px-2.5 sm:py-1 sm:text-xs",
             locale === code
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-primary",
