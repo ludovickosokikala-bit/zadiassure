@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Lock, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { routes, site } from "@/config/site";
 import { useLanguage, useT } from "@/i18n";
@@ -9,6 +9,8 @@ export function Footer() {
   const { locale } = useLanguage();
   const staffLabel =
     locale === "fr" ? "Espace collaborateurs" : locale === "en" ? "Staff area" : "Medewerkers";
+  const mandateLabel =
+    locale === "fr" ? "Donner mandat" : locale === "en" ? "Give a mandate" : "Volmacht geven";
   const year = new Date().getFullYear();
 
   const nav = [
