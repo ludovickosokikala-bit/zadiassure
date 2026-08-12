@@ -33,11 +33,11 @@ export function Header() {
     { to: routes.home, label: t.nav.home },
     { to: routes.audiences, label: t.nav.audiences },
     { to: routes.services, label: t.nav.services },
-    { to: routes.about, label: t.nav.about },
     { to: routes.partners, label: t.nav.partners },
     { to: routes.legislation, label: lib.legislation.nav },
     { to: routes.documents, label: lib.forms.nav },
     { to: routes.insights, label: t.nav.insights },
+    { to: routes.about, label: t.nav.about },
     { to: routes.contact, label: t.nav.contact },
   ];
 

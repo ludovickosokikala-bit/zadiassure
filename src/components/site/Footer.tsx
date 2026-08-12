@@ -12,10 +12,10 @@ export function Footer() {
     { to: routes.home, label: t.nav.home },
     { to: routes.audiences, label: t.nav.audiences },
     { to: routes.services, label: t.nav.services },
-    { to: routes.about, label: t.nav.about },
     { to: routes.partners, label: t.nav.partners },
     { to: routes.insights, label: t.nav.insights },
     { to: routes.faq, label: t.nav.faq },
+    { to: routes.about, label: t.nav.about },
     { to: routes.contact, label: t.nav.contact },
   ];
 
