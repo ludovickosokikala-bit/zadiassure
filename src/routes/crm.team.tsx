@@ -56,11 +56,35 @@ function TeamPage() {
     return `${origin}/uitnodiging?token=${token}`;
   }
 
+  function loginUrl() {
+    const origin = typeof window === "undefined" ? "" : window.location.origin;
+    return `${origin}/auth`;
+  }
+
+  type Invite = { token: string; email: string; full_name: string | null; role: string; expires_at: string };
+
+  function mailBody(i: Invite) {
+    return m.team.mailBody
+      .replaceAll("{name}", i.full_name || i.email)
+      .replaceAll("{role}", i.role)
+      .replaceAll("{link}", inviteLink(i.token))
+      .replaceAll("{email}", i.email)
+      .replaceAll("{loginUrl}", loginUrl())
+      .replaceAll("{expires}", formatDate(i.expires_at));
+  }
+
   async function copy(token: string) {
     await navigator.clipboard.writeText(inviteLink(token));
     setCopied(token);
     window.setTimeout(() => setCopied(null), 2000);
   }
+
+  async function copyMail(i: Invite) {
+    await navigator.clipboard.writeText(`${m.team.mailSubject}\n\n${mailBody(i)}`);
+    setCopied(`mail-${i.token}`);
+    window.setTimeout(() => setCopied(null), 2000);
+  }
+
 
   if (isLoading) return <p className="text-sm text-muted-foreground">{c.common.loading}</p>;
   if (!data?.isAdmin) {
