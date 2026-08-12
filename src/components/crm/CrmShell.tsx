@@ -16,7 +16,9 @@ import {
   Plus,
   Search,
   Settings,
+  ShieldCheck,
   Sparkles,
+  UserPlus,
   Users,
   X,
   Menu,
@@ -95,6 +97,7 @@ export function CrmShell({ children }: { children: ReactNode }) {
     cases: b?.newCases ?? 0,
     tasks: (b?.myTasksToday ?? 0) + (b?.myTasksOverdue ?? 0),
     documents: b?.documents ?? 0,
+    mandates: b?.mandates ?? 0,
   };
   const totalAlerts = counts.inbox + counts.cases + (b?.myTasksOverdue ?? 0);
 
