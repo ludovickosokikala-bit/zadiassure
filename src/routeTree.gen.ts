@@ -22,6 +22,7 @@ import { Route as PrivacybeleidRouteImport } from './routes/privacybeleid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VoorWieRouteImport } from './routes/voor-wie'
 import { Route as AuthenticatedBeheerRouteImport } from './routes/_authenticated/beheer'
+import { Route as AanpakSlugRouteImport } from './routes/aanpak.$slug'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
@@ -95,6 +96,11 @@ const AuthenticatedBeheerRoute = AuthenticatedBeheerRouteImport.update({
   path: '/beheer',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AanpakSlugRoute = AanpakSlugRouteImport.update({
+  id: '/aanpak/$slug',
+  path: '/aanpak/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BegeleidingIndexRoute = BegeleidingIndexRouteImport.update({
   id: '/begeleiding/',
   path: '/begeleiding/',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
+  '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
+  '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/voor-wie': typeof VoorWieRoute
   '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
+  '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/beheer'
+    | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/beheer'
+    | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -264,6 +275,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/voor-wie'
     | '/_authenticated/beheer'
+    | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -287,6 +299,7 @@ export interface RootRouteChildren {
   PrivacybeleidRoute: typeof PrivacybeleidRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VoorWieRoute: typeof VoorWieRoute
+  AanpakSlugRoute: typeof AanpakSlugRoute
   BegeleidingSlugRoute: typeof BegeleidingSlugRoute
   DocumentenSlugRoute: typeof DocumentenSlugRoute
   KenniscentrumSlugRoute: typeof KenniscentrumSlugRoute
@@ -390,6 +403,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBeheerRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/aanpak/$slug': {
+      id: '/aanpak/$slug'
+      path: '/aanpak/$slug'
+      fullPath: '/aanpak/$slug'
+      preLoaderRoute: typeof AanpakSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/begeleiding/': {
       id: '/begeleiding/'
       path: '/begeleiding'
@@ -473,6 +493,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacybeleidRoute: PrivacybeleidRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   VoorWieRoute: VoorWieRoute,
+  AanpakSlugRoute: AanpakSlugRoute,
   BegeleidingSlugRoute: BegeleidingSlugRoute,
   DocumentenSlugRoute: DocumentenSlugRoute,
   KenniscentrumSlugRoute: KenniscentrumSlugRoute,
