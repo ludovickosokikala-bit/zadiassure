@@ -18,6 +18,7 @@ import {
   Settings,
   Users,
   X,
+  Menu,
 } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { supabase } from "@/integrations/supabase/client";
