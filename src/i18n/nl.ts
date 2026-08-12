@@ -486,7 +486,7 @@ export const nl: Dict = {
     ],
     founderQuote:
       "Niemand zou in zijn leven mogen worden afgeremd door administratieve, financiële of taalgerelateerde moeilijkheden.",
-    founderName: "Lionel Makolo Zadi",
+    founderName: "Lionel Zadi",
     founderRole: "Oprichter & zaakvoerder",
     missionTitle: "Onze missie",
     missionText:
