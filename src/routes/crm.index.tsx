@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { AlertTriangle, CalendarClock } from "lucide-react";
 import { getDashboard } from "@/lib/crm.functions";
 import { Empty, Panel, PageHead, Pill, StatCard } from "@/components/crm/ui";
+import { DailyBriefing } from "@/components/crm/ai";
 import {
   clientName,
   formatDate,
