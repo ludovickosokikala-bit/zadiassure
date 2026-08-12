@@ -21,6 +21,7 @@ import { Route as OverZadiassureRouteImport } from './routes/over-zadiassure'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacybeleidRouteImport } from './routes/privacybeleid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as UitnodigingRouteImport } from './routes/uitnodiging'
 import { Route as VolmachtRouteImport } from './routes/volmacht'
 import { Route as VoorWieRouteImport } from './routes/voor-wie'
 import { Route as AuthenticatedBeheerRouteImport } from './routes/_authenticated/beheer'
@@ -103,6 +104,11 @@ const PrivacybeleidRoute = PrivacybeleidRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UitnodigingRoute = UitnodigingRouteImport.update({
+  id: '/uitnodiging',
+  path: '/uitnodiging',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VolmachtRoute = VolmachtRouteImport.update({
@@ -238,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
   '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
@@ -274,6 +281,7 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
   '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
@@ -313,6 +321,7 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
   '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
@@ -352,6 +361,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
     | '/volmacht'
     | '/voor-wie'
     | '/beheer'
@@ -388,6 +398,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
     | '/volmacht'
     | '/voor-wie'
     | '/beheer'
@@ -426,6 +437,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
     | '/volmacht'
     | '/voor-wie'
     | '/_authenticated/beheer'
@@ -465,6 +477,7 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PrivacybeleidRoute: typeof PrivacybeleidRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UitnodigingRoute: typeof UitnodigingRoute
   VolmachtRoute: typeof VolmachtRoute
   VoorWieRoute: typeof VoorWieRoute
   AanpakSlugRoute: typeof AanpakSlugRoute
@@ -562,6 +575,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uitnodiging': {
+      id: '/uitnodiging'
+      path: '/uitnodiging'
+      fullPath: '/uitnodiging'
+      preLoaderRoute: typeof UitnodigingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/volmacht': {
@@ -791,6 +811,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PrivacybeleidRoute: PrivacybeleidRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UitnodigingRoute: UitnodigingRoute,
   VolmachtRoute: VolmachtRoute,
   VoorWieRoute: VoorWieRoute,
   AanpakSlugRoute: AanpakSlugRoute,
