@@ -162,29 +162,66 @@ function Disclaimer({ text }: { text: string }) {
   return <p className="mt-3 text-[11px] font-medium text-muted-foreground">{text}</p>;
 }
 
+/**
+ * Rough credit estimate for one AI call: a small base cost plus a share
+ * that grows with the amount of text sent along (chars ≈ tokens / 4).
+ */
+export function estimateCredits(inputChars = 0) {
+  const credits = 0.012 + (inputChars / 4) * 0.0000012 + 0.0035;
+  return Math.max(0.01, Math.round(credits * 100) / 100);
+}
+
+function formatCredits(value: number, locale: Locale) {
+  return value.toLocaleString(locale === "en" ? "en-US" : locale === "fr" ? "fr-BE" : "nl-BE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
+export function CostBadge({ inputChars = 0 }: { inputChars?: number }) {
+  const { t, locale } = useAiCopy();
+  const credits = estimateCredits(inputChars);
+  return (
+    <span
+      title={t.costTip}
+      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1 text-[11px] font-semibold text-muted-foreground"
+    >
+      <Coins className="h-3.5 w-3.5 text-accent" />
+      {t.costLabel} ≈ {formatCredits(credits, locale)} credits
+      <span className="hidden font-medium opacity-70 sm:inline">/ {t.costPerRun}</span>
+    </span>
+  );
+}
+
 function AiButton({
   onClick,
   loading,
   children,
   disabled,
+  inputChars,
 }: {
   onClick: () => void;
   loading?: boolean;
   children: React.ReactNode;
   disabled?: boolean;
+  inputChars?: number;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={loading || disabled}
-      className="inline-flex items-center gap-2 rounded-xl bg-accent px-3 py-2 text-sm font-bold text-accent-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
-    >
-      {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-      {children}
-    </button>
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <CostBadge inputChars={inputChars} />
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={loading || disabled}
+        className="inline-flex items-center gap-2 rounded-xl bg-accent px-3 py-2 text-sm font-bold text-accent-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+      >
+        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+        {children}
+      </button>
+    </span>
   );
 }
+
 
 /* ----------------------------- case assistant ----------------------------- */
 
