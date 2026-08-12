@@ -14,6 +14,572 @@ export type Database = {
   }
   public: {
     Tables: {
+      branches: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          deleted_at: string | null
+          id: string
+          name: string
+          organization_id: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string
+          city?: string
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          name: string
+          organization_id: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          name?: string
+          organization_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "branches_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_activities: {
+        Row: {
+          actor_id: string | null
+          actor_label: string
+          case_id: string | null
+          client_id: string | null
+          created_at: string
+          detail: Json
+          id: string
+          is_internal: boolean
+          kind: string
+          organization_id: string
+          summary: string
+        }
+        Insert: {
+          actor_id?: string | null
+          actor_label?: string
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          detail?: Json
+          id?: string
+          is_internal?: boolean
+          kind: string
+          organization_id: string
+          summary: string
+        }
+        Update: {
+          actor_id?: string | null
+          actor_label?: string
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          detail?: Json
+          id?: string
+          is_internal?: boolean
+          kind?: string
+          organization_id?: string
+          summary?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_activities_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_activities_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_activities_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_documents: {
+        Row: {
+          case_id: string | null
+          client_id: string
+          created_at: string
+          deleted_at: string | null
+          document_type: string
+          expires_on: string | null
+          id: string
+          mime_type: string
+          name: string
+          notes: string
+          organization_id: string
+          requested_from_client: boolean
+          reviewed_at: string | null
+          reviewed_by: string | null
+          size_bytes: number | null
+          status: Database["public"]["Enums"]["crm_document_status"]
+          storage_path: string | null
+          updated_at: string
+          uploaded_at: string | null
+          uploaded_by: string | null
+        }
+        Insert: {
+          case_id?: string | null
+          client_id: string
+          created_at?: string
+          deleted_at?: string | null
+          document_type?: string
+          expires_on?: string | null
+          id?: string
+          mime_type?: string
+          name: string
+          notes?: string
+          organization_id: string
+          requested_from_client?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          size_bytes?: number | null
+          status?: Database["public"]["Enums"]["crm_document_status"]
+          storage_path?: string | null
+          updated_at?: string
+          uploaded_at?: string | null
+          uploaded_by?: string | null
+        }
+        Update: {
+          case_id?: string | null
+          client_id?: string
+          created_at?: string
+          deleted_at?: string | null
+          document_type?: string
+          expires_on?: string | null
+          id?: string
+          mime_type?: string
+          name?: string
+          notes?: string
+          organization_id?: string
+          requested_from_client?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          size_bytes?: number | null
+          status?: Database["public"]["Enums"]["crm_document_status"]
+          storage_path?: string | null
+          updated_at?: string
+          uploaded_at?: string | null
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_documents_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_documents_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_documents_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_notes: {
+        Row: {
+          author_id: string | null
+          body: string
+          case_id: string | null
+          client_id: string | null
+          created_at: string
+          deleted_at: string | null
+          id: string
+          is_internal: boolean
+          organization_id: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          body: string
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          is_internal?: boolean
+          organization_id: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          body?: string
+          case_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          is_internal?: boolean
+          organization_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_notes_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_notes_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "case_notes_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_statuses: {
+        Row: {
+          created_at: string
+          id: string
+          is_open: boolean
+          key: string
+          label_en: string
+          label_fr: string
+          label_nl: string
+          organization_id: string
+          sort_order: number
+          tone: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_open?: boolean
+          key: string
+          label_en: string
+          label_fr: string
+          label_nl: string
+          organization_id: string
+          sort_order?: number
+          tone?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_open?: boolean
+          key?: string
+          label_en?: string
+          label_fr?: string
+          label_nl?: string
+          organization_id?: string
+          sort_order?: number
+          tone?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_statuses_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_types: {
+        Row: {
+          active: boolean
+          created_at: string
+          default_duration_days: number | null
+          default_tasks: Json
+          description: string
+          id: string
+          key: string
+          name_en: string
+          name_fr: string
+          name_nl: string
+          organization_id: string
+          required_documents: Json
+          sort_order: number
+          updated_at: string
+          workflow_stages: Json
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          default_duration_days?: number | null
+          default_tasks?: Json
+          description?: string
+          id?: string
+          key: string
+          name_en: string
+          name_fr: string
+          name_nl: string
+          organization_id: string
+          required_documents?: Json
+          sort_order?: number
+          updated_at?: string
+          workflow_stages?: Json
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          default_duration_days?: number | null
+          default_tasks?: Json
+          description?: string
+          id?: string
+          key?: string
+          name_en?: string
+          name_fr?: string
+          name_nl?: string
+          organization_id?: string
+          required_documents?: Json
+          sort_order?: number
+          updated_at?: string
+          workflow_stages?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_types_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cases: {
+        Row: {
+          assigned_to: string | null
+          branch_id: string | null
+          case_number: number | null
+          case_type_id: string | null
+          client_id: string
+          closed_at: string | null
+          created_at: string
+          created_by: string | null
+          deadline: string | null
+          deleted_at: string | null
+          description: string
+          id: string
+          organization_id: string
+          priority: Database["public"]["Enums"]["crm_priority"]
+          progress: number
+          stage: string
+          start_date: string | null
+          status_key: string
+          tags: string[]
+          target_date: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          branch_id?: string | null
+          case_number?: number | null
+          case_type_id?: string | null
+          client_id: string
+          closed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          deleted_at?: string | null
+          description?: string
+          id?: string
+          organization_id: string
+          priority?: Database["public"]["Enums"]["crm_priority"]
+          progress?: number
+          stage?: string
+          start_date?: string | null
+          status_key?: string
+          tags?: string[]
+          target_date?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          branch_id?: string | null
+          case_number?: number | null
+          case_type_id?: string | null
+          client_id?: string
+          closed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          deleted_at?: string | null
+          description?: string
+          id?: string
+          organization_id?: string
+          priority?: Database["public"]["Enums"]["crm_priority"]
+          progress?: number
+          stage?: string
+          start_date?: string | null
+          status_key?: string
+          tags?: string[]
+          target_date?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cases_branch_id_fkey"
+            columns: ["branch_id"]
+            isOneToOne: false
+            referencedRelation: "branches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cases_case_type_id_fkey"
+            columns: ["case_type_id"]
+            isOneToOne: false
+            referencedRelation: "case_types"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cases_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cases_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clients: {
+        Row: {
+          address: string
+          assigned_to: string | null
+          branch_id: string | null
+          city: string
+          client_type: Database["public"]["Enums"]["crm_client_type"]
+          company_name: string
+          contact_preference: Database["public"]["Enums"]["crm_contact_pref"]
+          country: string
+          created_at: string
+          date_of_birth: string | null
+          deleted_at: string | null
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          notes: string
+          organization_id: string
+          phone: string
+          portal_user_id: string | null
+          postal_code: string
+          preferred_language: Database["public"]["Enums"]["crm_lang"]
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string
+          assigned_to?: string | null
+          branch_id?: string | null
+          city?: string
+          client_type?: Database["public"]["Enums"]["crm_client_type"]
+          company_name?: string
+          contact_preference?: Database["public"]["Enums"]["crm_contact_pref"]
+          country?: string
+          created_at?: string
+          date_of_birth?: string | null
+          deleted_at?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string
+          organization_id: string
+          phone?: string
+          portal_user_id?: string | null
+          postal_code?: string
+          preferred_language?: Database["public"]["Enums"]["crm_lang"]
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          assigned_to?: string | null
+          branch_id?: string | null
+          city?: string
+          client_type?: Database["public"]["Enums"]["crm_client_type"]
+          company_name?: string
+          contact_preference?: Database["public"]["Enums"]["crm_contact_pref"]
+          country?: string
+          created_at?: string
+          date_of_birth?: string | null
+          deleted_at?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string
+          organization_id?: string
+          phone?: string
+          portal_user_id?: string | null
+          postal_code?: string
+          preferred_language?: Database["public"]["Enums"]["crm_lang"]
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clients_branch_id_fkey"
+            columns: ["branch_id"]
+            isOneToOne: false
+            referencedRelation: "branches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clients_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       form_submissions: {
         Row: {
           answers: Json
@@ -223,6 +789,184 @@ export type Database = {
         }
         Relationships: []
       }
+      org_members: {
+        Row: {
+          active: boolean
+          branch_id: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          organization_id: string
+          role: Database["public"]["Enums"]["crm_role"]
+          ui_language: Database["public"]["Enums"]["crm_lang"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          branch_id?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          organization_id: string
+          role?: Database["public"]["Enums"]["crm_role"]
+          ui_language?: Database["public"]["Enums"]["crm_lang"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          branch_id?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          organization_id?: string
+          role?: Database["public"]["Enums"]["crm_role"]
+          ui_language?: Database["public"]["Enums"]["crm_lang"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "org_members_branch_id_fkey"
+            columns: ["branch_id"]
+            isOneToOne: false
+            referencedRelation: "branches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "org_members_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      organizations: {
+        Row: {
+          address: string
+          case_number_prefix: string
+          case_number_seq: number
+          created_at: string
+          default_language: Database["public"]["Enums"]["crm_lang"]
+          deleted_at: string | null
+          email: string
+          id: string
+          name: string
+          phone: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string
+          case_number_prefix?: string
+          case_number_seq?: number
+          created_at?: string
+          default_language?: Database["public"]["Enums"]["crm_lang"]
+          deleted_at?: string | null
+          email?: string
+          id?: string
+          name: string
+          phone?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          case_number_prefix?: string
+          case_number_seq?: number
+          created_at?: string
+          default_language?: Database["public"]["Enums"]["crm_lang"]
+          deleted_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          phone?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          assigned_to: string | null
+          case_id: string | null
+          client_id: string | null
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          deleted_at: string | null
+          description: string
+          due_date: string | null
+          id: string
+          organization_id: string
+          priority: Database["public"]["Enums"]["crm_priority"]
+          status: Database["public"]["Enums"]["crm_task_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          case_id?: string | null
+          client_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          description?: string
+          due_date?: string | null
+          id?: string
+          organization_id: string
+          priority?: Database["public"]["Enums"]["crm_priority"]
+          status?: Database["public"]["Enums"]["crm_task_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          case_id?: string | null
+          client_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          description?: string
+          due_date?: string | null
+          id?: string
+          organization_id?: string
+          priority?: Database["public"]["Enums"]["crm_priority"]
+          status?: Database["public"]["Enums"]["crm_task_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tasks_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tasks_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -254,6 +998,37 @@ export type Database = {
     Enums: {
       app_role: "admin" | "editor" | "user"
       content_theme: "immigration" | "budget" | "business" | "social"
+      crm_client_type:
+        | "individual"
+        | "family"
+        | "self_employed"
+        | "organization"
+        | "other"
+      crm_contact_pref: "email" | "phone" | "whatsapp" | "post" | "portal"
+      crm_document_status:
+        | "requested"
+        | "received"
+        | "under_review"
+        | "approved"
+        | "rejected"
+        | "expired"
+      crm_lang: "nl" | "fr" | "en"
+      crm_priority: "low" | "normal" | "high" | "urgent"
+      crm_role:
+        | "super_admin"
+        | "owner"
+        | "admin"
+        | "manager"
+        | "case_manager"
+        | "employee"
+        | "partner"
+        | "client"
+      crm_task_status:
+        | "todo"
+        | "in_progress"
+        | "waiting"
+        | "completed"
+        | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -383,6 +1158,41 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "editor", "user"],
       content_theme: ["immigration", "budget", "business", "social"],
+      crm_client_type: [
+        "individual",
+        "family",
+        "self_employed",
+        "organization",
+        "other",
+      ],
+      crm_contact_pref: ["email", "phone", "whatsapp", "post", "portal"],
+      crm_document_status: [
+        "requested",
+        "received",
+        "under_review",
+        "approved",
+        "rejected",
+        "expired",
+      ],
+      crm_lang: ["nl", "fr", "en"],
+      crm_priority: ["low", "normal", "high", "urgent"],
+      crm_role: [
+        "super_admin",
+        "owner",
+        "admin",
+        "manager",
+        "case_manager",
+        "employee",
+        "partner",
+        "client",
+      ],
+      crm_task_status: [
+        "todo",
+        "in_progress",
+        "waiting",
+        "completed",
+        "cancelled",
+      ],
     },
   },
 } as const
