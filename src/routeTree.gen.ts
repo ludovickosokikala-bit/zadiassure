@@ -15,6 +15,7 @@ import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorw
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiebeleidRouteImport } from './routes/cookiebeleid'
+import { Route as CrmRouteImport } from './routes/crm'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as OverZadiassureRouteImport } from './routes/over-zadiassure'
 import { Route as PartnersRouteImport } from './routes/partners'
@@ -25,12 +26,14 @@ import { Route as AuthenticatedBeheerRouteImport } from './routes/_authenticated
 import { Route as AanpakSlugRouteImport } from './routes/aanpak.$slug'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
+import { Route as CrmIndexRouteImport } from './routes/crm.index'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
 import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
 import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
 import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$slug'
 import { Route as WetgevingIndexRouteImport } from './routes/wetgeving.index'
 import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
+import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -59,6 +62,11 @@ const ContactRoute = ContactRouteImport.update({
 const CookiebeleidRoute = CookiebeleidRouteImport.update({
   id: '/cookiebeleid',
   path: '/cookiebeleid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmRoute = CrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -111,6 +119,11 @@ const BegeleidingSlugRoute = BegeleidingSlugRouteImport.update({
   path: '/begeleiding/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CrmIndexRoute = CrmIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CrmRoute,
+} as any)
 const DocumentenIndexRoute = DocumentenIndexRouteImport.update({
   id: '/documenten/',
   path: '/documenten/',
@@ -141,6 +154,11 @@ const WetgevingSlugRoute = WetgevingSlugRouteImport.update({
   path: '/wetgeving/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CrmClientsIndexRoute = CrmClientsIndexRouteImport.update({
+  id: '/clients/',
+  path: '/clients/',
+  getParentRoute: () => CrmRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -148,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/cookiebeleid': typeof CookiebeleidRoute
+  '/crm': typeof CrmRouteWithChildren
   '/faq': typeof FaqRoute
   '/over-zadiassure': typeof OverZadiassureRoute
   '/partners': typeof PartnersRoute
@@ -161,9 +180,11 @@ export interface FileRoutesByFullPath {
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
+  '/crm/': typeof CrmIndexRoute
   '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
   '/wetgeving/': typeof WetgevingIndexRoute
+  '/crm/clients/': typeof CrmClientsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -184,9 +205,11 @@ export interface FileRoutesByTo {
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding': typeof BegeleidingIndexRoute
+  '/crm': typeof CrmIndexRoute
   '/documenten': typeof DocumentenIndexRoute
   '/kenniscentrum': typeof KenniscentrumIndexRoute
   '/wetgeving': typeof WetgevingIndexRoute
+  '/crm/clients': typeof CrmClientsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -196,6 +219,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/cookiebeleid': typeof CookiebeleidRoute
+  '/crm': typeof CrmRouteWithChildren
   '/faq': typeof FaqRoute
   '/over-zadiassure': typeof OverZadiassureRoute
   '/partners': typeof PartnersRoute
@@ -209,9 +233,11 @@ export interface FileRoutesById {
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
+  '/crm/': typeof CrmIndexRoute
   '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
   '/wetgeving/': typeof WetgevingIndexRoute
+  '/crm/clients/': typeof CrmClientsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -221,6 +247,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/cookiebeleid'
+    | '/crm'
     | '/faq'
     | '/over-zadiassure'
     | '/partners'
@@ -234,9 +261,11 @@ export interface FileRouteTypes {
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding/'
+    | '/crm/'
     | '/documenten/'
     | '/kenniscentrum/'
     | '/wetgeving/'
+    | '/crm/clients/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -257,9 +286,11 @@ export interface FileRouteTypes {
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding'
+    | '/crm'
     | '/documenten'
     | '/kenniscentrum'
     | '/wetgeving'
+    | '/crm/clients'
   id:
     | '__root__'
     | '/'
@@ -268,6 +299,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/cookiebeleid'
+    | '/crm'
     | '/faq'
     | '/over-zadiassure'
     | '/partners'
@@ -281,9 +313,11 @@ export interface FileRouteTypes {
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding/'
+    | '/crm/'
     | '/documenten/'
     | '/kenniscentrum/'
     | '/wetgeving/'
+    | '/crm/clients/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -293,6 +327,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CookiebeleidRoute: typeof CookiebeleidRoute
+  CrmRoute: typeof CrmRouteWithChildren
   FaqRoute: typeof FaqRoute
   OverZadiassureRoute: typeof OverZadiassureRoute
   PartnersRoute: typeof PartnersRoute
@@ -352,6 +387,13 @@ declare module '@tanstack/react-router' {
       path: '/cookiebeleid'
       fullPath: '/cookiebeleid'
       preLoaderRoute: typeof CookiebeleidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm': {
+      id: '/crm'
+      path: '/crm'
+      fullPath: '/crm'
+      preLoaderRoute: typeof CrmRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -424,6 +466,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BegeleidingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crm/': {
+      id: '/crm/'
+      path: '/'
+      fullPath: '/crm/'
+      preLoaderRoute: typeof CrmIndexRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/documenten/': {
       id: '/documenten/'
       path: '/documenten'
@@ -466,6 +515,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WetgevingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crm/clients/': {
+      id: '/crm/clients/'
+      path: '/clients'
+      fullPath: '/crm/clients/'
+      preLoaderRoute: typeof CrmClientsIndexRouteImport
+      parentRoute: typeof CrmRoute
+    }
   }
 }
 
@@ -480,6 +536,18 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface CrmRouteChildren {
+  CrmIndexRoute: typeof CrmIndexRoute
+  CrmClientsIndexRoute: typeof CrmClientsIndexRoute
+}
+
+const CrmRouteChildren: CrmRouteChildren = {
+  CrmIndexRoute: CrmIndexRoute,
+  CrmClientsIndexRoute: CrmClientsIndexRoute,
+}
+
+const CrmRouteWithChildren = CrmRoute._addFileChildren(CrmRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -487,6 +555,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CookiebeleidRoute: CookiebeleidRoute,
+  CrmRoute: CrmRouteWithChildren,
   FaqRoute: FaqRoute,
   OverZadiassureRoute: OverZadiassureRoute,
   PartnersRoute: PartnersRoute,
