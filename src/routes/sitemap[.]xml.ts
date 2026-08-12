@@ -18,6 +18,9 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/voor-wie", changefreq: "monthly", priority: "0.9" },
+          { path: "/aanpak/complexiteit", changefreq: "monthly", priority: "0.7" },
+          { path: "/aanpak/oplossing", changefreq: "monthly", priority: "0.7" },
+          { path: "/aanpak/autonomie", changefreq: "monthly", priority: "0.7" },
           { path: "/begeleiding", changefreq: "monthly", priority: "0.9" },
           ...dictionaries.nl.servicesSection.items.map((s) => ({
             path: `/begeleiding/${s.slug}`,
