@@ -69,6 +69,11 @@ const COPY = {
     rate: "Trop de demandes. Réessayez plus tard.",
     credits: "Les crédits IA sont épuisés.",
     error: "Une erreur est survenue avec l'IA.",
+    costLabel: "coût",
+    costPerRun: "par requête",
+    costTip:
+      "Estimation en crédits Lovable pour cette requête. Facturé uniquement quand vous cliquez ; un texte plus long coûte un peu plus.",
+
   },
   en: {
     assistant: "Case assistant",
