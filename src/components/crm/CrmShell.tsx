@@ -30,6 +30,7 @@ import { crmSearch, listClients } from "@/lib/crm.functions";
 import { cn } from "@/lib/utils";
 import { useCrmApp, useCrmBadges, useCrmDict, useWorkspace } from "./useCrm";
 import { useMandateDict } from "./useMandate";
+import { useAgendaDict } from "./useAgenda";
 import { CaseDialog, ClientDialog, TaskDialog } from "./dialogs";
 
 type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | "mandates" | null;
@@ -42,6 +43,7 @@ const NAV: {
     | "clients"
     | "cases"
     | "tasks"
+    | "agenda"
     | "documents"
     | "mandates"
     | "ai"
@@ -57,6 +59,7 @@ const NAV: {
   { to: "/crm/clients", key: "clients", icon: Users, primary: true },
   { to: "/crm/cases", key: "cases", icon: Briefcase, badge: "cases", primary: true },
   { to: "/crm/tasks", key: "tasks", icon: ListChecks, badge: "tasks", primary: true },
+  { to: "/crm/agenda", key: "agenda", icon: CalendarClock, primary: true },
   { to: "/crm/documents", key: "documents", icon: FileText, badge: "documents" },
   { to: "/crm/mandates", key: "mandates", icon: ShieldCheck, badge: "mandates" },
   { to: "/crm/ai", key: "ai", icon: Sparkles },
@@ -78,6 +81,7 @@ function Badge({ count }: { count: number }) {
 export function CrmShell({ children }: { children: ReactNode }) {
   const c = useCrmDict();
   const a = useCrmApp();
+  const ag = useAgendaDict();
   const m = useMandateDict();
   const { locale, setLocale } = useLanguage();
   const navigate = useNavigate();
@@ -183,7 +187,9 @@ export function CrmShell({ children }: { children: ReactNode }) {
   }
 
   const label = (key: (typeof NAV)[number]["key"]) =>
-    key === "inbox"
+    key === "agenda"
+      ? ag.nav
+      : key === "inbox"
       ? a.nav.inbox
       : key === "ai"
         ? "AI"
