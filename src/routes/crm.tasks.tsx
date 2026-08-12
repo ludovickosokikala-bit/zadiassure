@@ -111,6 +111,7 @@ function TasksPage() {
                     )}
                   >
                     {formatDate(t.due_date)}
+                    {t.due_time ? ` · ${String(t.due_time).slice(0, 5)}` : ""}
                   </span>
                   <Pill className={priorityTone[t.priority] ?? ""}>
                     {c.priority[t.priority as keyof typeof c.priority]}
