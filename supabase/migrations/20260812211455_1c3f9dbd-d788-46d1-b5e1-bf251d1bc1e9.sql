@@ -1,0 +1,23 @@
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.organizations TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.branches TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.org_members TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.clients TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.case_types TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.case_statuses TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.cases TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.tasks TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.case_notes TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.case_documents TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.case_activities TO authenticated;
+
+GRANT ALL ON public.organizations TO service_role;
+GRANT ALL ON public.branches TO service_role;
+GRANT ALL ON public.org_members TO service_role;
+GRANT ALL ON public.clients TO service_role;
+GRANT ALL ON public.case_types TO service_role;
+GRANT ALL ON public.case_statuses TO service_role;
+GRANT ALL ON public.cases TO service_role;
+GRANT ALL ON public.tasks TO service_role;
+GRANT ALL ON public.case_notes TO service_role;
+GRANT ALL ON public.case_documents TO service_role;
+GRANT ALL ON public.case_activities TO service_role;
