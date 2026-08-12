@@ -64,19 +64,23 @@ export const statusTone: Record<string, string> = {
   danger: "bg-destructive/15 text-destructive",
 };
 
-export function taskTone(status: string) {
-  if (status === "completed") return statusTone["success"];
-  if (status === "cancelled") return statusTone["neutral"];
-  if (status === "waiting") return statusTone["warning"];
-  if (status === "in_progress") return statusTone["info"];
-  return statusTone["neutral"];
+function tone(key: string) {
+  return statusTone[key] ?? "";
 }
 
-export function docTone(status: string) {
-  if (status === "approved") return statusTone["success"];
-  if (status === "rejected" || status === "expired") return statusTone["danger"];
-  if (status === "requested") return statusTone["warning"];
-  return statusTone["info"];
+export function taskTone(status: string): string {
+  if (status === "completed") return tone("success");
+  if (status === "cancelled") return tone("neutral");
+  if (status === "waiting") return tone("warning");
+  if (status === "in_progress") return tone("info");
+  return tone("neutral");
+}
+
+export function docTone(status: string): string {
+  if (status === "approved") return tone("success");
+  if (status === "rejected" || status === "expired") return tone("danger");
+  if (status === "requested") return tone("warning");
+  return tone("info");
 }
 
 export function formatDate(value: string | null | undefined, locale = "nl-BE") {
