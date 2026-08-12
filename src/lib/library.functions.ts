@@ -99,6 +99,22 @@ export const submitRequest = createServerFn({ method: "POST" })
     // Anonymous clients have no write access to form_submissions; the insert
     // happens server-side only, after validation above.
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    // Upload identity / supporting files to the private bucket first.
+    const folder = `${data.templateSlug}/${Date.now()}-${crypto.randomUUID()}`;
+    const stored: { path: string; name: string; mimeType: string; size: number }[] = [];
+    for (const file of data.attachments) {
+      const bytes = Uint8Array.from(atob(file.data), (c) => c.charCodeAt(0));
+      if (bytes.byteLength > 8 * 1024 * 1024) return { ok: false as const };
+      const ext = file.name.split(".").pop()?.toLowerCase().replace(/[^a-z0-9]/g, "") ?? "bin";
+      const path = `${folder}/${stored.length + 1}.${ext}`;
+      const { error: upErr } = await supabaseAdmin.storage
+        .from("request-uploads")
+        .upload(path, bytes, { contentType: file.mimeType, upsert: false });
+      if (upErr) return { ok: false as const };
+      stored.push({ path, name: file.name, mimeType: file.mimeType, size: bytes.byteLength });
+    }
+
     const { error } = await supabaseAdmin.from("form_submissions").insert({
       template_id: template.id,
       template_slug: data.templateSlug,
@@ -110,7 +126,9 @@ export const submitRequest = createServerFn({ method: "POST" })
       audience: data.audience,
       message: data.message,
       answers: data.answers,
+      attachments: stored,
     });
+
     if (error) return { ok: false as const };
     return { ok: true as const };
   });
