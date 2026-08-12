@@ -34,6 +34,7 @@ import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
 import { Route as CrmMandatesRouteImport } from './routes/crm.mandates'
 import { Route as CrmSettingsRouteImport } from './routes/crm.settings'
 import { Route as CrmTasksRouteImport } from './routes/crm.tasks'
+import { Route as CrmTeamRouteImport } from './routes/crm.team'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
 import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
 import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
@@ -169,6 +170,11 @@ const CrmTasksRoute = CrmTasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmTeamRoute = CrmTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => CrmRoute,
+} as any)
 const DocumentenIndexRoute = DocumentenIndexRouteImport.update({
   id: '/documenten/',
   path: '/documenten/',
@@ -243,6 +249,7 @@ export interface FileRoutesByFullPath {
   '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -278,6 +285,7 @@ export interface FileRoutesByTo {
   '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -316,6 +324,7 @@ export interface FileRoutesById {
   '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -354,6 +363,7 @@ export interface FileRouteTypes {
     | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -389,6 +399,7 @@ export interface FileRouteTypes {
     | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -426,6 +437,7 @@ export interface FileRouteTypes {
     | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -643,6 +655,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmTasksRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/team': {
+      id: '/crm/team'
+      path: '/team'
+      fullPath: '/crm/team'
+      preLoaderRoute: typeof CrmTeamRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/documenten/': {
       id: '/documenten/'
       path: '/documenten'
@@ -734,6 +753,7 @@ interface CrmRouteChildren {
   CrmMandatesRoute: typeof CrmMandatesRoute
   CrmSettingsRoute: typeof CrmSettingsRoute
   CrmTasksRoute: typeof CrmTasksRoute
+  CrmTeamRoute: typeof CrmTeamRoute
   CrmIndexRoute: typeof CrmIndexRoute
   CrmCasesIdRoute: typeof CrmCasesIdRoute
   CrmClientsIdRoute: typeof CrmClientsIdRoute
@@ -748,6 +768,7 @@ const CrmRouteChildren: CrmRouteChildren = {
   CrmMandatesRoute: CrmMandatesRoute,
   CrmSettingsRoute: CrmSettingsRoute,
   CrmTasksRoute: CrmTasksRoute,
+  CrmTeamRoute: CrmTeamRoute,
   CrmIndexRoute: CrmIndexRoute,
   CrmCasesIdRoute: CrmCasesIdRoute,
   CrmClientsIdRoute: CrmClientsIdRoute,
