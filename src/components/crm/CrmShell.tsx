@@ -16,6 +16,7 @@ import {
   Plus,
   Search,
   Settings,
+  Sparkles,
   Users,
   X,
   Menu,
