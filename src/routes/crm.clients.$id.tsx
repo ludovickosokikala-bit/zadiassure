@@ -6,6 +6,7 @@ import { ArrowLeft, Pencil, Plus } from "lucide-react";
 import { ctaVariants } from "@/components/ui/cta";
 import { cn } from "@/lib/utils";
 import { getClient } from "@/lib/crm.functions";
+import { ContactActions } from "@/components/crm/ContactActions";
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
 import {
   clientName,
@@ -81,6 +82,7 @@ function ClientDetail() {
               </div>
             ))}
           </dl>
+          <ContactActions phone={client.phone} email={client.email} className="mt-4" />
           {client.notes && (
             <p className="mt-4 whitespace-pre-line rounded-lg bg-muted/50 p-3 text-sm text-muted-foreground">
               {client.notes}
