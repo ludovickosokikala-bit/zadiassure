@@ -259,6 +259,68 @@ export function CrmShell({ children }: { children: ReactNode }) {
           </footer>
         </aside>
 
+        {open && (
+          <div className="fixed inset-0 z-50 lg:hidden">
+            <div
+              className="absolute inset-0 bg-foreground/40 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+            />
+            <div className="absolute left-0 top-0 flex h-full w-72 max-w-[85%] flex-col border-r border-border bg-card px-4 py-5 shadow-lg">
+              <div className="flex items-center justify-between">
+                <Link to="/crm" onClick={() => setOpen(false)} className="flex items-center gap-2">
+                  <LogoMark className="h-8 w-auto" />
+                  <span className="font-heading text-sm font-bold text-foreground">{c.brand}</span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="mt-5 flex-1 overflow-y-auto">{nav}</div>
+              <footer className="space-y-3 border-t border-border pt-4">
+                <div className="flex gap-1 px-1">
+                  {LOCALES.map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      onClick={() => setLocale(l)}
+                      className={cn(
+                        "rounded-md px-2 py-1 text-xs font-semibold uppercase",
+                        l === locale
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:bg-secondary",
+                      )}
+                    >
+                      {l}
+                    </button>
+                  ))}
+                </div>
+                <Link
+                  to="/"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 px-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+                >
+                  {c.nav.website}
+                </Link>
+                <button
+                  type="button"
+                  onClick={signOut}
+                  className="flex items-center gap-2 px-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+                >
+                  <LogOut className="h-3.5 w-3.5" /> {c.nav.signOut}
+                </button>
+              </footer>
+            </div>
+          </div>
+        )}
+
+        <div className="min-w-0 flex-1">
+
+
         <div className="min-w-0 flex-1">
           {/* App bar */}
           <header className="sticky top-0 z-30 flex items-center gap-2 border-b border-border bg-card/95 px-3 py-2.5 backdrop-blur sm:px-4">
