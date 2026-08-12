@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ctaVariants } from "@/components/ui/cta";
 import { routes } from "@/config/site";
+import { submitContact } from "@/lib/library.functions";
+
 import { useLanguage, LOCALES } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +44,8 @@ export function ContactForm() {
   const f = t.contact.form;
   const [values, setValues] = useState<Values>(() => initial(locale));
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
-  const [state, setState] = useState<"idle" | "submitting" | "success">("idle");
+  const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
 
   const schema = z.object({
     lastName: z.string().trim().min(1, f.errorRequired).max(100),
@@ -75,10 +78,25 @@ export function ContactForm() {
       return;
     }
     setState("submitting");
-    // PLACEHOLDER: connect to a backend (e-mail delivery / CRM) once available.
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setState("success");
+    try {
+      const res = await submitContact({
+        data: {
+          fullName: `${values.firstName} ${values.lastName}`.trim(),
+          email: values.email,
+          phone: values.phone,
+          city: values.city,
+          audience: values.profile,
+          topic: values.topic,
+          message: values.message,
+          language: (values.language as "nl" | "fr" | "en") ?? "nl",
+        },
+      });
+      setState(res.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   };
+
 
   if (state === "success") {
     return (
@@ -225,6 +243,18 @@ export function ContactForm() {
         {state === "submitting" && <Loader2 className="size-4 animate-spin" />}
         {state === "submitting" ? f.submitting : f.submit}
       </button>
+
+      {state === "error" && (
+        <p className="mt-4 text-sm font-medium text-destructive" role="alert">
+          {locale === "fr"
+
+            ? "L'envoi a échoué. Réessayez ou contactez-nous par téléphone."
+            : locale === "en"
+              ? "Sending failed. Please try again or contact us by phone."
+              : "Verzenden is mislukt. Probeer opnieuw of bel ons."}
+        </p>
+      )}
+
     </form>
   );
 }
