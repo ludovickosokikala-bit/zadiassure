@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Lock, Mail, Phone } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { routes, site } from "@/config/site";
-import { useT } from "@/i18n";
+import { useLanguage, useT } from "@/i18n";
 
 export function Footer() {
   const t = useT();
+  const { locale } = useLanguage();
+  const staffLabel =
+    locale === "fr" ? "Espace collaborateurs" : locale === "en" ? "Staff area" : "Medewerkers";
   const year = new Date().getFullYear();
 
   const nav = [
@@ -105,9 +108,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} ZADIASSURE — {t.footer.rights}</p>
           <p className="italic">{t.brand.statement}</p>
+          <Link
+            to="/crm"
+            className="inline-flex items-center gap-1.5 text-navy-foreground/45 transition-colors hover:text-accent"
+          >
+            <Lock className="size-3" />
+            {staffLabel}
+          </Link>
         </div>
       </div>
     </footer>
