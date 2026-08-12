@@ -96,6 +96,11 @@ const COPY = {
     rate: "Too many requests. Try again later.",
     credits: "AI credits are exhausted.",
     error: "Something went wrong with the AI.",
+    costLabel: "cost",
+    costPerRun: "per run",
+    costTip:
+      "Estimate in Lovable credits for this request. Only charged when you press the button; longer text costs slightly more.",
+
   },
 } satisfies Record<Locale, Record<string, unknown>>;
 
