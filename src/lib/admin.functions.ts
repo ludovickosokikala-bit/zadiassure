@@ -64,11 +64,14 @@ const formInput = z.object({
 export const getMyAdminStatus = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
-    return { isAdmin: data === true, userId: context.userId };
+    // Role is read through RLS as the signed-in user (own roles only).
+    const { data } = await context.supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    return { isAdmin: data?.role === "admin", userId: context.userId };
   });
 
 export const adminListLegislation = createServerFn({ method: "GET" })
