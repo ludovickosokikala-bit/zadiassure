@@ -558,3 +558,252 @@ export const listDocuments = createServerFn({ method: "GET" })
     if (error) throw new Error(error.message);
     return { items: items ?? [] };
   });
+
+/* ---------------------------------------------------------------------------
+ * App layer: live badges, inbox (website requests & contact mails), search
+ * ------------------------------------------------------------------------- */
+
+/** Live counters for the sidebar/bell badges. Polled by the client. */
+export const getCrmBadges = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { requireStaff } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    const org = member.organization_id;
+    const today = new Date().toISOString().slice(0, 10);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const [inbox, mails, newCases, tasks, docs] = await Promise.all([
+      supabaseAdmin
+        .from("form_submissions")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "new")
+        .neq("template_slug", "contact"),
+      supabaseAdmin
+        .from("form_submissions")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "new")
+        .eq("template_slug", "contact"),
+      context.supabase
+        .from("cases")
+        .select("id", { count: "exact", head: true })
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .eq("status_key", "new"),
+      context.supabase
+        .from("tasks")
+        .select("id, due_date, status")
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .eq("assigned_to", context.userId)
+        .not("status", "in", "(completed,cancelled)")
+        .limit(500),
+      context.supabase
+        .from("case_documents")
+        .select("id", { count: "exact", head: true })
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .in("status", ["requested", "under_review"]),
+    ]);
+
+    const myTasks = tasks.data ?? [];
+    return {
+      requests: inbox.count ?? 0,
+      mails: mails.count ?? 0,
+      newCases: newCases.count ?? 0,
+      myTasksToday: myTasks.filter((t) => t.due_date === today).length,
+      myTasksOverdue: myTasks.filter((t) => t.due_date && t.due_date < today).length,
+      documents: docs.count ?? 0,
+    };
+  });
+
+/** Website submissions: contact mails and document requests. */
+export const listInbox = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z
+      .object({
+        kind: z.enum(["all", "contact", "request"]).default("all"),
+        status: z.enum(["all", "new", "in_progress", "done", "archived"]).default("new"),
+        search: z.string().trim().max(120).default(""),
+      })
+      .parse(input ?? {}),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./crm.server");
+    await requireStaff(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    let query = supabaseAdmin
+      .from("form_submissions")
+      .select(
+        "id, template_slug, full_name, email, phone, language, audience, message, answers, attachments, status, created_at",
+      )
+      .order("created_at", { ascending: false })
+      .limit(200);
+    if (data.kind === "contact") query = query.eq("template_slug", "contact");
+    if (data.kind === "request") query = query.neq("template_slug", "contact");
+    if (data.status !== "all") query = query.eq("status", data.status);
+    if (data.search) {
+      const s = `%${data.search}%`;
+      query = query.or(`full_name.ilike.${s},email.ilike.${s},message.ilike.${s}`);
+    }
+    const { data: items, error } = await query;
+    if (error) throw new Error(error.message);
+    return { items: items ?? [] };
+  });
+
+export const setInboxStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z
+      .object({
+        id: z.string().uuid(),
+        status: z.enum(["new", "in_progress", "done", "archived"]),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./crm.server");
+    await requireStaff(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("form_submissions")
+      .update({ status: data.status })
+      .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true as const };
+  });
+
+/** One-click: turn a website submission into a client (+ optional case). */
+export const convertInbox = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z.object({ id: z.string().uuid(), withCase: z.boolean().default(true) }).parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff, logActivity } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const { data: sub, error: subError } = await supabaseAdmin
+      .from("form_submissions")
+      .select("id, template_slug, full_name, email, phone, language, audience, message, answers")
+      .eq("id", data.id)
+      .maybeSingle();
+    if (subError) throw new Error(subError.message);
+    if (!sub) throw new Error("NOT_FOUND");
+
+    const parts = (sub.full_name || "").trim().split(/\s+/);
+    const firstName = parts[0] ?? "";
+    const lastName = parts.slice(1).join(" ");
+    const answers = (sub.answers ?? {}) as Record<string, unknown>;
+    const lang = (["nl", "fr", "en"] as const).includes(sub.language as "nl")
+      ? (sub.language as "nl" | "fr" | "en")
+      : "nl";
+
+    const { data: existing } = await context.supabase
+      .from("clients")
+      .select("id")
+      .eq("organization_id", member.organization_id)
+      .eq("email", sub.email)
+      .is("deleted_at", null)
+      .limit(1)
+      .maybeSingle();
+
+    let clientId = existing?.id ?? null;
+    if (!clientId) {
+      const { data: created, error } = await context.supabase
+        .from("clients")
+        .insert({
+          organization_id: member.organization_id,
+          first_name: firstName,
+          last_name: lastName,
+          email: sub.email,
+          phone: sub.phone ?? "",
+          city: typeof answers["city"] === "string" ? (answers["city"] as string) : "",
+          preferred_language: lang,
+          notes: sub.message ?? "",
+          status: "prospect",
+          assigned_to: context.userId,
+        })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+      clientId = created.id;
+      await logActivity(context.supabase, member, context.userId, {
+        client_id: clientId,
+        kind: "client_created",
+        summary: `Klant aangemaakt uit website-aanvraag: ${sub.full_name}`,
+      });
+    }
+
+    let caseId: string | null = null;
+    if (data.withCase) {
+      const topic = typeof answers["topic"] === "string" ? (answers["topic"] as string) : "";
+      const { data: createdCase, error } = await context.supabase
+        .from("cases")
+        .insert({
+          organization_id: member.organization_id,
+          client_id: clientId,
+          title: topic || sub.template_slug.replace(/-/g, " ") || "Nieuwe aanvraag",
+          description: sub.message ?? "",
+          status_key: "new",
+          priority: "normal",
+          assigned_to: context.userId,
+          created_by: context.userId,
+        })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+      caseId = createdCase.id;
+      await logActivity(context.supabase, member, context.userId, {
+        case_id: caseId,
+        client_id: clientId,
+        kind: "case_created",
+        summary: `Dossier aangemaakt uit website-aanvraag (${sub.template_slug})`,
+      });
+    }
+
+    await supabaseAdmin.from("form_submissions").update({ status: "in_progress" }).eq("id", sub.id);
+    return { clientId, caseId };
+  });
+
+/** Global command-palette search across clients, cases and tasks. */
+export const crmSearch = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z.object({ q: z.string().trim().max(120).default("") }).parse(input ?? {}),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    if (data.q.length < 2) return { clients: [], cases: [], tasks: [] };
+    const org = member.organization_id;
+    const s = `%${data.q}%`;
+    const [clients, cases, tasks] = await Promise.all([
+      context.supabase
+        .from("clients")
+        .select("id, first_name, last_name, company_name, email")
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .or(
+          `first_name.ilike.${s},last_name.ilike.${s},company_name.ilike.${s},email.ilike.${s}`,
+        )
+        .limit(6),
+      context.supabase
+        .from("cases")
+        .select("id, case_number, title, status_key")
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .ilike("title", s)
+        .limit(6),
+      context.supabase
+        .from("tasks")
+        .select("id, title, case_id, due_date")
+        .eq("organization_id", org)
+        .is("deleted_at", null)
+        .ilike("title", s)
+        .limit(6),
+    ]);
+    return { clients: clients.data ?? [], cases: cases.data ?? [], tasks: tasks.data ?? [] };
+  });
