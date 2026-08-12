@@ -112,12 +112,20 @@ export function Footer() {
           <p>© {year} ZADIASSURE — {t.footer.rights}</p>
           <p className="italic">{t.brand.statement}</p>
           <Link
+            to="/volmacht"
+            className="inline-flex items-center gap-1.5 text-navy-foreground/60 transition-colors hover:text-accent"
+          >
+            <ShieldCheck className="size-3.5" />
+            {mandateLabel}
+          </Link>
+          <Link
             to="/crm"
             className="inline-flex items-center gap-1.5 text-navy-foreground/45 transition-colors hover:text-accent"
           >
             <Lock className="size-3" />
             {staffLabel}
           </Link>
+
         </div>
       </div>
     </footer>
