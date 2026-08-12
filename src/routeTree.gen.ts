@@ -29,6 +29,7 @@ import { Route as AanpakSlugRouteImport } from './routes/aanpak.$slug'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
 import { Route as CrmIndexRouteImport } from './routes/crm.index'
+import { Route as CrmAgendaRouteImport } from './routes/crm.agenda'
 import { Route as CrmAiRouteImport } from './routes/crm.ai'
 import { Route as CrmDocumentsRouteImport } from './routes/crm.documents'
 import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
@@ -148,6 +149,11 @@ const BegeleidingSlugRoute = BegeleidingSlugRouteImport.update({
 const CrmIndexRoute = CrmIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => CrmRoute,
+} as any)
+const CrmAgendaRoute = CrmAgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
   getParentRoute: () => CrmRoute,
 } as any)
 const CrmAiRoute = CrmAiRouteImport.update({
@@ -276,6 +282,7 @@ export interface FileRoutesByFullPath {
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -317,6 +324,7 @@ export interface FileRoutesByTo {
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -361,6 +369,7 @@ export interface FileRoutesById {
   '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -405,6 +414,7 @@ export interface FileRouteTypes {
     | '/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -446,6 +456,7 @@ export interface FileRouteTypes {
     | '/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -489,6 +500,7 @@ export interface FileRouteTypes {
     | '/_authenticated/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -687,6 +699,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmIndexRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/agenda': {
+      id: '/crm/agenda'
+      path: '/agenda'
+      fullPath: '/crm/agenda'
+      preLoaderRoute: typeof CrmAgendaRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/crm/ai': {
       id: '/crm/ai'
       path: '/ai'
@@ -849,6 +868,7 @@ const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface CrmRouteChildren {
+  CrmAgendaRoute: typeof CrmAgendaRoute
   CrmAiRoute: typeof CrmAiRoute
   CrmDocumentsRoute: typeof CrmDocumentsRoute
   CrmInboxRoute: typeof CrmInboxRoute
@@ -864,6 +884,7 @@ interface CrmRouteChildren {
 }
 
 const CrmRouteChildren: CrmRouteChildren = {
+  CrmAgendaRoute: CrmAgendaRoute,
   CrmAiRoute: CrmAiRoute,
   CrmDocumentsRoute: CrmDocumentsRoute,
   CrmInboxRoute: CrmInboxRoute,
