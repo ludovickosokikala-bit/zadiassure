@@ -24,9 +24,10 @@ const optionalDate = z
   .string()
   .trim()
   .regex(/^\d{4}-\d{2}-\d{2}$/)
+  .or(z.literal(""))
   .nullable()
-  .optional()
-  .or(z.literal("").transform(() => null));
+  .default(null)
+  .transform((v) => (v ? v : null));
 
 export const clientSchema = z.object({
   id: z.string().uuid().optional(),
