@@ -42,8 +42,16 @@ function AuthPage() {
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (session && (event === "SIGNED_IN" || event === "INITIAL_SESSION")) {
+        // A pending team invitation takes priority over the dashboard.
+        const invite = window.sessionStorage.getItem("zadiassure.invite");
+        if (invite) {
+          window.sessionStorage.removeItem("zadiassure.invite");
+          void navigate({ to: "/uitnodiging", search: { token: invite }, replace: true });
+          return;
+        }
         void navigate({ to: "/crm", replace: true });
       }
+
     });
     return () => data.subscription.unsubscribe();
   }, [navigate]);

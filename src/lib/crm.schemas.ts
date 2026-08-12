@@ -113,3 +113,70 @@ export const caseFilterSchema = z.object({
 export const taskViewSchema = z.object({
   view: z.enum(["mine", "team", "today", "overdue", "upcoming"]).default("mine"),
 });
+
+export const MANDATE_SCOPE_KEYS = [
+  "administration",
+  "mail",
+  "authorities",
+  "budget",
+  "banking",
+  "insurance",
+  "housing",
+  "other",
+] as const;
+
+export const MANDATE_STATUS_KEYS = [
+  "pending_signature",
+  "signed",
+  "active",
+  "revoked",
+  "expired",
+] as const;
+
+export const CRM_ROLE_KEYS = [
+  "owner",
+  "admin",
+  "manager",
+  "case_manager",
+  "employee",
+  "partner",
+] as const;
+
+export const mandateSchema = z.object({
+  id: z.string().uuid().optional(),
+  client_id: z.string().uuid().nullable().default(null),
+  case_id: z.string().uuid().nullable().default(null),
+  holder_user_id: z.string().uuid().nullable().default(null),
+  holder_name: z.string().trim().max(160).default(""),
+  scope: z.array(z.enum(MANDATE_SCOPE_KEYS)).max(8).default([]),
+  purpose: z.string().trim().max(2000).default(""),
+  starts_on: optionalDate,
+  ends_on: optionalDate,
+  status: z.enum(MANDATE_STATUS_KEYS),
+  notes: z.string().trim().max(2000).default(""),
+});
+export type MandateInput = z.infer<typeof mandateSchema>;
+
+/** Public volmacht form submitted from the website. */
+export const publicMandateSchema = z.object({
+  applicant_name: z.string().trim().min(2).max(160),
+  applicant_email: z.string().trim().email().max(255),
+  applicant_phone: z.string().trim().max(40).default(""),
+  applicant_address: z.string().trim().max(240).default(""),
+  applicant_birth_date: optionalDate,
+  scope: z.array(z.enum(MANDATE_SCOPE_KEYS)).min(1).max(8),
+  purpose: z.string().trim().max(2000).default(""),
+  starts_on: optionalDate,
+  ends_on: optionalDate,
+  signed_full_name: z.string().trim().min(2).max(160),
+  /** PNG data URL of the drawn signature. */
+  signature_image: z.string().trim().min(32).max(400_000),
+  consent: z.literal(true),
+  language: z.enum(LANGS),
+});
+
+export const inviteSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(255),
+  full_name: z.string().trim().max(160).default(""),
+  role: z.enum(CRM_ROLE_KEYS),
+});

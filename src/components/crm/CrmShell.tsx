@@ -16,7 +16,9 @@ import {
   Plus,
   Search,
   Settings,
+  ShieldCheck,
   Sparkles,
+  UserPlus,
   Users,
   X,
   Menu,
@@ -27,13 +29,24 @@ import { LOCALES, useLanguage } from "@/i18n";
 import { crmSearch, listClients } from "@/lib/crm.functions";
 import { cn } from "@/lib/utils";
 import { useCrmApp, useCrmBadges, useCrmDict, useWorkspace } from "./useCrm";
+import { useMandateDict } from "./useMandate";
 import { CaseDialog, ClientDialog, TaskDialog } from "./dialogs";
 
-type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | null;
+type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | "mandates" | null;
 
 const NAV: {
   to: string;
-  key: "dashboard" | "inbox" | "clients" | "cases" | "tasks" | "documents" | "ai" | "settings";
+  key:
+    | "dashboard"
+    | "inbox"
+    | "clients"
+    | "cases"
+    | "tasks"
+    | "documents"
+    | "mandates"
+    | "ai"
+    | "team"
+    | "settings";
   icon: typeof Users;
   exact?: boolean;
   badge?: BadgeKey;
@@ -45,9 +58,12 @@ const NAV: {
   { to: "/crm/cases", key: "cases", icon: Briefcase, badge: "cases", primary: true },
   { to: "/crm/tasks", key: "tasks", icon: ListChecks, badge: "tasks", primary: true },
   { to: "/crm/documents", key: "documents", icon: FileText, badge: "documents" },
+  { to: "/crm/mandates", key: "mandates", icon: ShieldCheck, badge: "mandates" },
   { to: "/crm/ai", key: "ai", icon: Sparkles },
+  { to: "/crm/team", key: "team", icon: UserPlus },
   { to: "/crm/settings", key: "settings", icon: Settings },
 ];
+
 
 
 function Badge({ count }: { count: number }) {
@@ -62,6 +78,7 @@ function Badge({ count }: { count: number }) {
 export function CrmShell({ children }: { children: ReactNode }) {
   const c = useCrmDict();
   const a = useCrmApp();
+  const m = useMandateDict();
   const { locale, setLocale } = useLanguage();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -82,6 +99,7 @@ export function CrmShell({ children }: { children: ReactNode }) {
     cases: b?.newCases ?? 0,
     tasks: (b?.myTasksToday ?? 0) + (b?.myTasksOverdue ?? 0),
     documents: b?.documents ?? 0,
+    mandates: b?.mandates ?? 0,
   };
   const totalAlerts = counts.inbox + counts.cases + (b?.myTasksOverdue ?? 0);
 
@@ -169,7 +187,12 @@ export function CrmShell({ children }: { children: ReactNode }) {
       ? a.nav.inbox
       : key === "ai"
         ? "AI"
-        : c.nav[key as keyof typeof c.nav];
+        : key === "mandates"
+          ? m.crm.title
+          : key === "team"
+            ? m.team.title
+            : c.nav[key as keyof typeof c.nav];
+
 
   const nav = (
     <nav className="flex flex-col gap-1">

@@ -41,6 +41,12 @@ export function isManager(role: Membership["role"]) {
   return ["super_admin", "owner", "admin", "manager"].includes(role);
 }
 
+/** Roles allowed to manage team members, roles and invitations. */
+export function isAdminRole(role: Membership["role"]) {
+  return ["super_admin", "owner", "admin"].includes(role);
+}
+
+
 export async function logActivity(
   supabase: Db,
   member: Membership,

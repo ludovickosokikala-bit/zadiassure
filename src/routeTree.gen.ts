@@ -21,6 +21,8 @@ import { Route as OverZadiassureRouteImport } from './routes/over-zadiassure'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacybeleidRouteImport } from './routes/privacybeleid'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as UitnodigingRouteImport } from './routes/uitnodiging'
+import { Route as VolmachtRouteImport } from './routes/volmacht'
 import { Route as VoorWieRouteImport } from './routes/voor-wie'
 import { Route as AuthenticatedBeheerRouteImport } from './routes/_authenticated/beheer'
 import { Route as AanpakSlugRouteImport } from './routes/aanpak.$slug'
@@ -30,8 +32,10 @@ import { Route as CrmIndexRouteImport } from './routes/crm.index'
 import { Route as CrmAiRouteImport } from './routes/crm.ai'
 import { Route as CrmDocumentsRouteImport } from './routes/crm.documents'
 import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
+import { Route as CrmMandatesRouteImport } from './routes/crm.mandates'
 import { Route as CrmSettingsRouteImport } from './routes/crm.settings'
 import { Route as CrmTasksRouteImport } from './routes/crm.tasks'
+import { Route as CrmTeamRouteImport } from './routes/crm.team'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
 import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
 import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
@@ -102,6 +106,16 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UitnodigingRoute = UitnodigingRouteImport.update({
+  id: '/uitnodiging',
+  path: '/uitnodiging',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VolmachtRoute = VolmachtRouteImport.update({
+  id: '/volmacht',
+  path: '/volmacht',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VoorWieRoute = VoorWieRouteImport.update({
   id: '/voor-wie',
   path: '/voor-wie',
@@ -147,6 +161,11 @@ const CrmInboxRoute = CrmInboxRouteImport.update({
   path: '/inbox',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmMandatesRoute = CrmMandatesRouteImport.update({
+  id: '/mandates',
+  path: '/mandates',
+  getParentRoute: () => CrmRoute,
+} as any)
 const CrmSettingsRoute = CrmSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -155,6 +174,11 @@ const CrmSettingsRoute = CrmSettingsRouteImport.update({
 const CrmTasksRoute = CrmTasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
+  getParentRoute: () => CrmRoute,
+} as any)
+const CrmTeamRoute = CrmTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => CrmRoute,
 } as any)
 const DocumentenIndexRoute = DocumentenIndexRouteImport.update({
@@ -220,6 +244,8 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
+  '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
@@ -227,8 +253,10 @@ export interface FileRoutesByFullPath {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -253,6 +281,8 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
+  '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
@@ -260,8 +290,10 @@ export interface FileRoutesByTo {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -289,6 +321,8 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/privacybeleid': typeof PrivacybeleidRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uitnodiging': typeof UitnodigingRoute
+  '/volmacht': typeof VolmachtRoute
   '/voor-wie': typeof VoorWieRoute
   '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
@@ -296,8 +330,10 @@ export interface FileRoutesById {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
+  '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
@@ -325,6 +361,8 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
+    | '/volmacht'
     | '/voor-wie'
     | '/beheer'
     | '/aanpak/$slug'
@@ -332,8 +370,10 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -358,6 +398,8 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
+    | '/volmacht'
     | '/voor-wie'
     | '/beheer'
     | '/aanpak/$slug'
@@ -365,8 +407,10 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -393,6 +437,8 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacybeleid'
     | '/sitemap.xml'
+    | '/uitnodiging'
+    | '/volmacht'
     | '/voor-wie'
     | '/_authenticated/beheer'
     | '/aanpak/$slug'
@@ -400,8 +446,10 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
+    | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
@@ -429,6 +477,8 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PrivacybeleidRoute: typeof PrivacybeleidRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UitnodigingRoute: typeof UitnodigingRoute
+  VolmachtRoute: typeof VolmachtRoute
   VoorWieRoute: typeof VoorWieRoute
   AanpakSlugRoute: typeof AanpakSlugRoute
   BegeleidingSlugRoute: typeof BegeleidingSlugRoute
@@ -527,6 +577,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uitnodiging': {
+      id: '/uitnodiging'
+      path: '/uitnodiging'
+      fullPath: '/uitnodiging'
+      preLoaderRoute: typeof UitnodigingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/volmacht': {
+      id: '/volmacht'
+      path: '/volmacht'
+      fullPath: '/volmacht'
+      preLoaderRoute: typeof VolmachtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/voor-wie': {
       id: '/voor-wie'
       path: '/voor-wie'
@@ -590,6 +654,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmInboxRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/mandates': {
+      id: '/crm/mandates'
+      path: '/mandates'
+      fullPath: '/crm/mandates'
+      preLoaderRoute: typeof CrmMandatesRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/crm/settings': {
       id: '/crm/settings'
       path: '/settings'
@@ -602,6 +673,13 @@ declare module '@tanstack/react-router' {
       path: '/tasks'
       fullPath: '/crm/tasks'
       preLoaderRoute: typeof CrmTasksRouteImport
+      parentRoute: typeof CrmRoute
+    }
+    '/crm/team': {
+      id: '/crm/team'
+      path: '/team'
+      fullPath: '/crm/team'
+      preLoaderRoute: typeof CrmTeamRouteImport
       parentRoute: typeof CrmRoute
     }
     '/documenten/': {
@@ -692,8 +770,10 @@ interface CrmRouteChildren {
   CrmAiRoute: typeof CrmAiRoute
   CrmDocumentsRoute: typeof CrmDocumentsRoute
   CrmInboxRoute: typeof CrmInboxRoute
+  CrmMandatesRoute: typeof CrmMandatesRoute
   CrmSettingsRoute: typeof CrmSettingsRoute
   CrmTasksRoute: typeof CrmTasksRoute
+  CrmTeamRoute: typeof CrmTeamRoute
   CrmIndexRoute: typeof CrmIndexRoute
   CrmCasesIdRoute: typeof CrmCasesIdRoute
   CrmClientsIdRoute: typeof CrmClientsIdRoute
@@ -705,8 +785,10 @@ const CrmRouteChildren: CrmRouteChildren = {
   CrmAiRoute: CrmAiRoute,
   CrmDocumentsRoute: CrmDocumentsRoute,
   CrmInboxRoute: CrmInboxRoute,
+  CrmMandatesRoute: CrmMandatesRoute,
   CrmSettingsRoute: CrmSettingsRoute,
   CrmTasksRoute: CrmTasksRoute,
+  CrmTeamRoute: CrmTeamRoute,
   CrmIndexRoute: CrmIndexRoute,
   CrmCasesIdRoute: CrmCasesIdRoute,
   CrmClientsIdRoute: CrmClientsIdRoute,
@@ -729,6 +811,8 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PrivacybeleidRoute: PrivacybeleidRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UitnodigingRoute: UitnodigingRoute,
+  VolmachtRoute: VolmachtRoute,
   VoorWieRoute: VoorWieRoute,
   AanpakSlugRoute: AanpakSlugRoute,
   BegeleidingSlugRoute: BegeleidingSlugRoute,
