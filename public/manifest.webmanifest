@@ -1,0 +1,22 @@
+{
+  "name": "ZADIASSURE — Administratieve & budgettaire begeleiding",
+  "short_name": "ZADIASSURE",
+  "description": "ZADIASSURE begeleidt particulieren, gezinnen, zelfstandigen en ondernemingen bij administratie, immigratie en budget in België.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "nl",
+  "background_color": "#0b1b33",
+  "theme_color": "#0b1b33",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Contact", "url": "/contact" },
+    { "name": "Documenten", "url": "/documenten" },
+    { "name": "Dossierbeheer", "url": "/crm" }
+  ]
+}
