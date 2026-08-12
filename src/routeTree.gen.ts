@@ -46,6 +46,7 @@ import { Route as CrmCasesIndexRouteImport } from './routes/crm.cases.index'
 import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
+import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -234,6 +235,12 @@ const CrmClientsIdRoute = CrmClientsIdRouteImport.update({
   path: '/clients/$id',
   getParentRoute: () => CrmRoute,
 } as any)
+const ApiPublicAgendaTokenDoticsRoute =
+  ApiPublicAgendaTokenDoticsRouteImport.update({
+    id: '/api/public/agenda/$token.ics',
+    path: '/api/public/agenda/$token.ics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   id: '/lovable/email/auth/preview',
   path: '/lovable/email/auth/preview',
@@ -288,6 +295,7 @@ export interface FileRoutesByFullPath {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -328,6 +336,7 @@ export interface FileRoutesByTo {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases': typeof CrmCasesIndexRoute
   '/crm/clients': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -371,6 +380,7 @@ export interface FileRoutesById {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -414,6 +424,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -454,6 +465,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases'
     | '/crm/clients'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -496,6 +508,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -526,6 +539,7 @@ export interface RootRouteChildren {
   DocumentenIndexRoute: typeof DocumentenIndexRoute
   KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
   WetgevingIndexRoute: typeof WetgevingIndexRoute
+  ApiPublicAgendaTokenDoticsRoute: typeof ApiPublicAgendaTokenDoticsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -792,6 +806,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmClientsIdRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/api/public/agenda/$token.ics': {
+      id: '/api/public/agenda/$token.ics'
+      path: '/api/public/agenda/$token.ics'
+      fullPath: '/api/public/agenda/$token.ics'
+      preLoaderRoute: typeof ApiPublicAgendaTokenDoticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/auth/preview': {
       id: '/lovable/email/auth/preview'
       path: '/lovable/email/auth/preview'
@@ -884,6 +905,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentenIndexRoute: DocumentenIndexRoute,
   KenniscentrumIndexRoute: KenniscentrumIndexRoute,
   WetgevingIndexRoute: WetgevingIndexRoute,
+  ApiPublicAgendaTokenDoticsRoute: ApiPublicAgendaTokenDoticsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
