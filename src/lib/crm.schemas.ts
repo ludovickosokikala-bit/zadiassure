@@ -78,6 +78,14 @@ export const taskSchema = z.object({
   status: z.enum(TASK_STATUSES),
   priority: z.enum(PRIORITIES),
   due_date: optionalDate,
+  due_time: z
+    .string()
+    .trim()
+    .regex(/^\d{2}:\d{2}(:\d{2})?$/)
+    .or(z.literal(""))
+    .nullable()
+    .default(null)
+    .transform((v) => (v ? v.slice(0, 5) : null)),
 });
 export type TaskInput = z.infer<typeof taskSchema>;
 

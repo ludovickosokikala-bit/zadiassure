@@ -58,6 +58,9 @@ export interface CrmDict {
     dateOfBirth: string;
     email: string;
     phone: string;
+    call: string;
+    whatsapp: string;
+    sendEmail: string;
     address: string;
     city: string;
     postalCode: string;
@@ -109,6 +112,7 @@ export interface CrmDict {
     taskTitle: string;
     description: string;
     dueDate: string;
+    dueTime: string;
     status: string;
     priority: string;
     assignedTo: string;
@@ -214,6 +218,9 @@ const nl: CrmDict = {
     dateOfBirth: "Geboortedatum",
     email: "E-mail",
     phone: "Telefoon",
+    call: "Bellen",
+    whatsapp: "WhatsApp",
+    sendEmail: "E-mail sturen",
     address: "Adres",
     city: "Gemeente",
     postalCode: "Postcode",
@@ -265,6 +272,7 @@ const nl: CrmDict = {
     taskTitle: "Titel",
     description: "Omschrijving",
     dueDate: "Vervaldatum",
+    dueTime: "Uur",
     status: "Status",
     priority: "Prioriteit",
     assignedTo: "Toegewezen aan",
@@ -393,6 +401,9 @@ const fr: CrmDict = {
     dateOfBirth: "Date de naissance",
     email: "E-mail",
     phone: "Téléphone",
+    call: "Appeler",
+    whatsapp: "WhatsApp",
+    sendEmail: "Envoyer un e-mail",
     address: "Adresse",
     city: "Commune",
     postalCode: "Code postal",
@@ -444,6 +455,7 @@ const fr: CrmDict = {
     taskTitle: "Titre",
     description: "Description",
     dueDate: "Échéance",
+    dueTime: "Heure",
     status: "Statut",
     priority: "Priorité",
     assignedTo: "Attribué à",
@@ -572,6 +584,9 @@ const en: CrmDict = {
     dateOfBirth: "Date of birth",
     email: "Email",
     phone: "Phone",
+    call: "Call",
+    whatsapp: "WhatsApp",
+    sendEmail: "Send email",
     address: "Address",
     city: "City",
     postalCode: "Postal code",
@@ -623,6 +638,7 @@ const en: CrmDict = {
     taskTitle: "Title",
     description: "Description",
     dueDate: "Due date",
+    dueTime: "Time",
     status: "Status",
     priority: "Priority",
     assignedTo: "Assigned to",
