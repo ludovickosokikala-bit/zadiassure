@@ -74,8 +74,7 @@ export const submitRequest = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     const { publicClient } = await import("./library.server");
-    const client = publicClient();
-    const { data: template } = await client
+    const { data: template } = await publicClient()
       .from("form_templates")
       .select("id")
       .eq("published", true)
@@ -84,7 +83,10 @@ export const submitRequest = createServerFn({ method: "POST" })
 
     if (!template?.id) return { ok: false as const };
 
-    const { error } = await client.from("form_submissions").insert({
+    // Anonymous clients have no write access to form_submissions; the insert
+    // happens server-side only, after validation above.
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.from("form_submissions").insert({
       template_id: template.id,
       template_slug: data.templateSlug,
       status: "new",
