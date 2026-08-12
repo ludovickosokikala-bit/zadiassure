@@ -5,6 +5,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Mail, Paperclip, Phone, UserPlus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
+import { InboxTriage } from "@/components/crm/ai";
 import { formatDate, useCrmApp, useCrmDict } from "@/components/crm/useCrm";
 import { convertInbox, listInbox, setInboxStatus } from "@/lib/crm.functions";
 import { cn } from "@/lib/utils";
