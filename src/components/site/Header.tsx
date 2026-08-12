@@ -37,6 +37,7 @@ export function Header() {
     { to: routes.legislation, label: lib.legislation.nav },
     { to: routes.documents, label: lib.forms.nav },
     { to: routes.insights, label: t.nav.insights },
+    { to: routes.faq, label: t.nav.faq },
     { to: routes.about, label: t.nav.about },
     { to: routes.contact, label: t.nav.contact },
   ];
