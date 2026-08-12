@@ -17,6 +17,7 @@ export type Database = {
       form_submissions: {
         Row: {
           answers: Json
+          attachments: Json
           audience: string
           created_at: string
           email: string
@@ -32,6 +33,7 @@ export type Database = {
         }
         Insert: {
           answers?: Json
+          attachments?: Json
           audience?: string
           created_at?: string
           email: string
@@ -47,6 +49,7 @@ export type Database = {
         }
         Update: {
           answers?: Json
+          attachments?: Json
           audience?: string
           created_at?: string
           email?: string
