@@ -552,7 +552,7 @@ export const listDocuments = createServerFn({ method: "GET" })
       .is("deleted_at", null)
       .order("created_at", { ascending: false })
       .limit(300);
-    if (data.status) query = query.eq("status", data.status);
+    if (data.status) query = query.eq("status", data.status as never);
     if (data.search) query = query.ilike("name", `%${data.search}%`);
     const { data: items, error } = await query;
     if (error) throw new Error(error.message);
