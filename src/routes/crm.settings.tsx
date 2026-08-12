@@ -13,7 +13,10 @@ function SettingsPage() {
   if (ws.isLoading || !ws.data)
     return <p className="text-sm text-muted-foreground">{c.common.loading}</p>;
 
-  const { organization, team, caseTypes, caseStatuses, member } = ws.data;
+  const { organization, member } = ws.data;
+  const team = ws.data.team ?? [];
+  const caseTypes = ws.data.caseTypes ?? [];
+  const caseStatuses = ws.data.caseStatuses ?? [];
 
   return (
     <>
