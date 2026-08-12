@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { useRef, useState } from "react";
+import { CheckCircle2, Camera, Loader2, Paperclip, Upload, X } from "lucide-react";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,6 +10,19 @@ import { submitRequest } from "@/lib/library.functions";
 import { useLanguage } from "@/i18n";
 import { useLib } from "@/i18n/useLibrary";
 import { cn } from "@/lib/utils";
+
+
+const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/heic", "application/pdf"] as const;
+const MAX_BYTES = 8 * 1024 * 1024;
+
+async function toBase64(file: File) {
+  const buffer = new Uint8Array(await file.arrayBuffer());
+  let binary = "";
+  for (let i = 0; i < buffer.length; i += 8192) {
+    binary += String.fromCharCode(...buffer.subarray(i, i + 8192));
+  }
+  return btoa(binary);
+}
 
 /**
  * Intake / preparation form for one request type.
@@ -29,6 +42,10 @@ export function RequestForm({ slug, checklist }: { slug: string; checklist: stri
     consent: false,
   });
   const [have, setHave] = useState<Record<string, boolean>>({});
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState("");
+  const pickRef = useRef<HTMLInputElement>(null);
+  const cameraRef = useRef<HTMLInputElement>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -46,6 +63,28 @@ export function RequestForm({ slug, checklist }: { slug: string; checklist: stri
     setErrors((e) => ({ ...e, [key]: "" }));
   };
 
+  const addFiles = (list: FileList | null) => {
+    if (!list?.length) return;
+    const next = [...files];
+    setFileError("");
+    for (const file of Array.from(list)) {
+      if (next.length >= 5) {
+        setFileError(f.uploadTooMany);
+        break;
+      }
+      if (!ALLOWED.includes(file.type as (typeof ALLOWED)[number])) {
+        setFileError(f.uploadBadType);
+        continue;
+      }
+      if (file.size > MAX_BYTES) {
+        setFileError(f.uploadTooBig);
+        continue;
+      }
+      next.push(file);
+    }
+    setFiles(next);
+  };
+
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const parsed = schema.safeParse(values);
@@ -60,6 +99,13 @@ export function RequestForm({ slug, checklist }: { slug: string; checklist: stri
     }
     setState("submitting");
     try {
+      const attachments = await Promise.all(
+        files.map(async (file) => ({
+          name: file.name,
+          mimeType: (file.type || "application/pdf") as (typeof ALLOWED)[number],
+          data: await toBase64(file),
+        })),
+      );
       const result = await submitRequest({
         data: {
           templateSlug: slug,
@@ -70,6 +116,7 @@ export function RequestForm({ slug, checklist }: { slug: string; checklist: stri
           audience: values.audience,
           message: values.message,
           answers: Object.fromEntries(checklist.map((item) => [item, Boolean(have[item])])),
+          attachments,
         },
       });
       setState(result.ok ? "success" : "error");
@@ -170,6 +217,74 @@ export function RequestForm({ slug, checklist }: { slug: string; checklist: stri
           </ul>
         </fieldset>
       )}
+
+      <fieldset className="mt-6 rounded-2xl border border-border bg-secondary/50 p-5">
+        <legend className="px-2 text-sm font-semibold text-primary">{f.uploadLegend}</legend>
+        <p className="text-sm leading-relaxed text-muted-foreground">{f.uploadHint}</p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={() => pickRef.current?.click()}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary hover:border-accent"
+          >
+            <Upload className="size-4" aria-hidden /> {f.uploadPick}
+          </button>
+          <button
+            type="button"
+            onClick={() => cameraRef.current?.click()}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary hover:border-accent"
+          >
+            <Camera className="size-4" aria-hidden /> {f.uploadCamera}
+          </button>
+        </div>
+        <input
+          ref={pickRef}
+          type="file"
+          multiple
+          accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
+          className="sr-only"
+          onChange={(e) => {
+            addFiles(e.target.files);
+            e.target.value = "";
+          }}
+        />
+        <input
+          ref={cameraRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          className="sr-only"
+          onChange={(e) => {
+            addFiles(e.target.files);
+            e.target.value = "";
+          }}
+        />
+        {files.length > 0 && (
+          <ul className="mt-4 grid gap-2">
+            {files.map((file, index) => (
+              <li
+                key={`${file.name}-${index}`}
+                className="flex items-center gap-3 rounded-xl border border-border bg-card px-3 py-2 text-sm"
+              >
+                <Paperclip className="size-4 shrink-0 text-accent" aria-hidden />
+                <span className="min-w-0 flex-1 truncate text-primary">{file.name}</span>
+                <span className="shrink-0 text-xs text-muted-foreground">
+                  {Math.max(1, Math.round(file.size / 1024))} kB
+                </span>
+                <button
+                  type="button"
+                  aria-label={f.uploadRemove}
+                  onClick={() => setFiles((list) => list.filter((_, i) => i !== index))}
+                  className="shrink-0 rounded-full p-1 text-muted-foreground hover:text-destructive"
+                >
+                  <X className="size-4" aria-hidden />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {fileError && <p className="mt-3 text-sm text-destructive">{fileError}</p>}
+      </fieldset>
 
       <div className="mt-6 flex items-start gap-3">
         <Checkbox
