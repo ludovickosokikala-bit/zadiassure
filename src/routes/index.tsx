@@ -5,16 +5,9 @@ import {
   ProblemSolution,
   AudienceCards,
   ServiceCards,
-  ProcessSteps,
-  WhyGrid,
-  PromiseBand,
-  Testimonials,
   FounderBlock,
   CtaBand,
 } from "@/components/site/sections";
-import { PartnersBlock } from "@/components/site/PartnersBlock";
-import { InsightsPreview } from "@/components/site/InsightsPreview";
-import { FaqList } from "@/components/site/FaqList";
 import { dictionaries } from "@/i18n";
 
 const meta = dictionaries.nl.meta.home;
@@ -60,14 +53,7 @@ function HomePage() {
       <ProblemSolution />
       <AudienceCards />
       <ServiceCards />
-      <ProcessSteps />
-      <WhyGrid />
       <FounderBlock />
-      <PromiseBand />
-      <Testimonials />
-      <PartnersBlock compact />
-      <InsightsPreview />
-      <FaqList limit={6} />
       <CtaBand />
     </>
   );
