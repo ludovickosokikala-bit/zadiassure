@@ -29,6 +29,7 @@ import { Route as AanpakSlugRouteImport } from './routes/aanpak.$slug'
 import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index'
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
 import { Route as CrmIndexRouteImport } from './routes/crm.index'
+import { Route as CrmAgendaRouteImport } from './routes/crm.agenda'
 import { Route as CrmAiRouteImport } from './routes/crm.ai'
 import { Route as CrmDocumentsRouteImport } from './routes/crm.documents'
 import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
@@ -46,6 +47,7 @@ import { Route as CrmCasesIndexRouteImport } from './routes/crm.cases.index'
 import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
+import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -149,6 +151,11 @@ const CrmIndexRoute = CrmIndexRouteImport.update({
   path: '/',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmAgendaRoute = CrmAgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => CrmRoute,
+} as any)
 const CrmAiRoute = CrmAiRouteImport.update({
   id: '/ai',
   path: '/ai',
@@ -234,6 +241,12 @@ const CrmClientsIdRoute = CrmClientsIdRouteImport.update({
   path: '/clients/$id',
   getParentRoute: () => CrmRoute,
 } as any)
+const ApiPublicAgendaTokenDoticsRoute =
+  ApiPublicAgendaTokenDoticsRouteImport.update({
+    id: '/api/public/agenda/$token.ics',
+    path: '/api/public/agenda/$token.ics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   id: '/lovable/email/auth/preview',
   path: '/lovable/email/auth/preview',
@@ -269,6 +282,7 @@ export interface FileRoutesByFullPath {
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -288,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -309,6 +324,7 @@ export interface FileRoutesByTo {
   '/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -328,6 +344,7 @@ export interface FileRoutesByTo {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases': typeof CrmCasesIndexRoute
   '/crm/clients': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -352,6 +369,7 @@ export interface FileRoutesById {
   '/_authenticated/beheer': typeof AuthenticatedBeheerRoute
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
+  '/crm/agenda': typeof CrmAgendaRoute
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
@@ -371,6 +389,7 @@ export interface FileRoutesById {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -395,6 +414,7 @@ export interface FileRouteTypes {
     | '/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -414,6 +434,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -435,6 +456,7 @@ export interface FileRouteTypes {
     | '/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -454,6 +476,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases'
     | '/crm/clients'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -477,6 +500,7 @@ export interface FileRouteTypes {
     | '/_authenticated/beheer'
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
+    | '/crm/agenda'
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
@@ -496,6 +520,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
+    | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -526,6 +551,7 @@ export interface RootRouteChildren {
   DocumentenIndexRoute: typeof DocumentenIndexRoute
   KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
   WetgevingIndexRoute: typeof WetgevingIndexRoute
+  ApiPublicAgendaTokenDoticsRoute: typeof ApiPublicAgendaTokenDoticsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -673,6 +699,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmIndexRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/agenda': {
+      id: '/crm/agenda'
+      path: '/agenda'
+      fullPath: '/crm/agenda'
+      preLoaderRoute: typeof CrmAgendaRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/crm/ai': {
       id: '/crm/ai'
       path: '/ai'
@@ -792,6 +825,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmClientsIdRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/api/public/agenda/$token.ics': {
+      id: '/api/public/agenda/$token.ics'
+      path: '/api/public/agenda/$token.ics'
+      fullPath: '/api/public/agenda/$token.ics'
+      preLoaderRoute: typeof ApiPublicAgendaTokenDoticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/auth/preview': {
       id: '/lovable/email/auth/preview'
       path: '/lovable/email/auth/preview'
@@ -828,6 +868,7 @@ const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface CrmRouteChildren {
+  CrmAgendaRoute: typeof CrmAgendaRoute
   CrmAiRoute: typeof CrmAiRoute
   CrmDocumentsRoute: typeof CrmDocumentsRoute
   CrmInboxRoute: typeof CrmInboxRoute
@@ -843,6 +884,7 @@ interface CrmRouteChildren {
 }
 
 const CrmRouteChildren: CrmRouteChildren = {
+  CrmAgendaRoute: CrmAgendaRoute,
   CrmAiRoute: CrmAiRoute,
   CrmDocumentsRoute: CrmDocumentsRoute,
   CrmInboxRoute: CrmInboxRoute,
@@ -884,6 +926,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentenIndexRoute: DocumentenIndexRoute,
   KenniscentrumIndexRoute: KenniscentrumIndexRoute,
   WetgevingIndexRoute: WetgevingIndexRoute,
+  ApiPublicAgendaTokenDoticsRoute: ApiPublicAgendaTokenDoticsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
