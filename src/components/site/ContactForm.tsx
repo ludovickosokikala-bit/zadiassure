@@ -42,7 +42,8 @@ export function ContactForm() {
   const f = t.contact.form;
   const [values, setValues] = useState<Values>(() => initial(locale));
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
-  const [state, setState] = useState<"idle" | "submitting" | "success">("idle");
+  const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
 
   const schema = z.object({
     lastName: z.string().trim().min(1, f.errorRequired).max(100),
