@@ -180,3 +180,29 @@ export const inviteSchema = z.object({
   full_name: z.string().trim().max(160).default(""),
   role: z.enum(CRM_ROLE_KEYS),
 });
+
+export const MEETING_KINDS = ["office", "video", "phone", "home_visit", "external"] as const;
+export const APPOINTMENT_STATUSES = ["scheduled", "confirmed", "cancelled", "completed"] as const;
+
+export const appointmentSchema = z.object({
+  id: z.string().uuid().optional(),
+  client_id: z.string().uuid().nullable().default(null),
+  case_id: z.string().uuid().nullable().default(null),
+  title: z.string().trim().min(2).max(200),
+  description: z.string().trim().max(2000).default(""),
+  location: z.string().trim().max(200).default(""),
+  meeting_kind: z.enum(MEETING_KINDS),
+  starts_at: z.string().trim().min(10).max(40),
+  ends_at: z.string().trim().min(10).max(40),
+  all_day: z.boolean().default(false),
+  status: z.enum(APPOINTMENT_STATUSES),
+  attendee_emails: z.array(z.string().trim().email().max(255)).max(20).default([]),
+  assigned_to: z.string().uuid().nullable().default(null),
+});
+export type AppointmentInput = z.infer<typeof appointmentSchema>;
+
+export const agendaRangeSchema = z.object({
+  from: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/),
+  to: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/),
+  mine: z.boolean().default(false),
+});
