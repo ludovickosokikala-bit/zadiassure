@@ -16,6 +16,7 @@ import {
   Plus,
   Search,
   Settings,
+  Sparkles,
   Users,
   X,
   Menu,
@@ -32,7 +33,7 @@ type BadgeKey = "inbox" | "cases" | "tasks" | "documents" | null;
 
 const NAV: {
   to: string;
-  key: "dashboard" | "inbox" | "clients" | "cases" | "tasks" | "documents" | "settings";
+  key: "dashboard" | "inbox" | "clients" | "cases" | "tasks" | "documents" | "ai" | "settings";
   icon: typeof Users;
   exact?: boolean;
   badge?: BadgeKey;
@@ -44,8 +45,10 @@ const NAV: {
   { to: "/crm/cases", key: "cases", icon: Briefcase, badge: "cases", primary: true },
   { to: "/crm/tasks", key: "tasks", icon: ListChecks, badge: "tasks", primary: true },
   { to: "/crm/documents", key: "documents", icon: FileText, badge: "documents" },
+  { to: "/crm/ai", key: "ai", icon: Sparkles },
   { to: "/crm/settings", key: "settings", icon: Settings },
 ];
+
 
 function Badge({ count }: { count: number }) {
   if (!count) return null;
@@ -162,7 +165,11 @@ export function CrmShell({ children }: { children: ReactNode }) {
   }
 
   const label = (key: (typeof NAV)[number]["key"]) =>
-    key === "inbox" ? a.nav.inbox : c.nav[key as keyof typeof c.nav];
+    key === "inbox"
+      ? a.nav.inbox
+      : key === "ai"
+        ? "AI"
+        : c.nav[key as keyof typeof c.nav];
 
   const nav = (
     <nav className="flex flex-col gap-1">

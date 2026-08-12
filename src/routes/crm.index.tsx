@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { AlertTriangle, CalendarClock } from "lucide-react";
 import { getDashboard } from "@/lib/crm.functions";
 import { Empty, Panel, PageHead, Pill, StatCard } from "@/components/crm/ui";
+import { DailyBriefing } from "@/components/crm/ai";
 import {
   clientName,
   formatDate,
@@ -38,6 +39,10 @@ function Dashboard() {
           tone={data.kpis.overdue > 0 ? "text-destructive" : ""}
         />
         <StatCard label={c.dashboard.deadlinesWeek} value={data.kpis.deadlinesThisWeek} />
+      </div>
+
+      <div className="mt-6">
+        <DailyBriefing />
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
