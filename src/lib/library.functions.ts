@@ -132,3 +132,38 @@ export const submitRequest = createServerFn({ method: "POST" })
     if (error) return { ok: false as const };
     return { ok: true as const };
   });
+
+/** Contact page form → stored as a submission (visible in /beheer). */
+export const submitContact = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    z
+      .object({
+        fullName: z.string().trim().min(2).max(160),
+        email: z.string().trim().email().max(255),
+        phone: z.string().trim().max(40).default(""),
+        city: z.string().trim().max(120).default(""),
+        audience: z.string().trim().max(60).default(""),
+        topic: z.string().trim().max(120).default(""),
+        message: z.string().trim().min(1).max(3000),
+        language: z.enum(["nl", "fr", "en"]),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.from("form_submissions").insert({
+      template_id: null,
+      template_slug: "contact",
+      status: "new",
+      full_name: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      language: data.language,
+      audience: data.audience,
+      message: data.message,
+      answers: { city: data.city, topic: data.topic },
+      attachments: [],
+    });
+    if (error) return { ok: false as const };
+    return { ok: true as const };
+  });
