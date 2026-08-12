@@ -69,6 +69,19 @@ export const submitRequest = createServerFn({ method: "POST" })
         audience: z.string().trim().max(60).default(""),
         message: z.string().trim().max(3000).default(""),
         answers: z.record(z.string(), z.union([z.string().max(1000), z.boolean()])).default({}),
+        /** Identity / supporting files: photo (camera) or PDF, base64 encoded. */
+        attachments: z
+          .array(
+            z.object({
+              name: z.string().trim().min(1).max(160),
+              mimeType: z.enum(["image/jpeg", "image/png", "image/webp", "image/heic", "application/pdf"]),
+              /** Raw base64 (no data: prefix). ~8 MB per file. */
+              data: z.string().min(16).max(11_000_000),
+            }),
+          )
+          .max(5)
+          .default([]),
+
       })
       .parse(input),
   )
