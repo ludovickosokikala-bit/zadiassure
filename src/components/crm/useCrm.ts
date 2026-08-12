@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useLanguage } from "@/i18n";
 import { crmDictionaries, type CrmDict } from "@/i18n/crm";
-import { getWorkspace } from "@/lib/crm.functions";
+import { crmAppDictionaries, type CrmAppDict } from "@/i18n/crmApp";
+import { getCrmBadges, getWorkspace } from "@/lib/crm.functions";
 
 export type Workspace = Awaited<ReturnType<typeof getWorkspace>>;
 
@@ -93,4 +94,24 @@ export function formatDate(value: string | null | undefined, locale = "nl-BE") {
 export function isOverdue(due: string | null | undefined, status?: string) {
   if (!due || status === "completed" || status === "cancelled") return false;
   return due < new Date().toISOString().slice(0, 10);
+}
+
+/* --- app layer hooks --------------------------------------------------- */
+
+/** Live badge counters, refreshed automatically so the CRM feels like an app. */
+export function useCrmBadges() {
+  const fetchBadges = useServerFn(getCrmBadges);
+  return useQuery({
+    queryKey: ["crm", "badges"],
+    queryFn: () => fetchBadges({}),
+    refetchInterval: 30_000,
+    refetchOnWindowFocus: true,
+    staleTime: 10_000,
+  });
+}
+
+/** Extra dictionary for inbox, notifications and the command palette. */
+export function useCrmApp(): CrmAppDict {
+  const { locale } = useLanguage();
+  return crmAppDictionaries[locale];
 }
