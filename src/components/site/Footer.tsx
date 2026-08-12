@@ -6,9 +6,9 @@ import { useLanguage, useT } from "@/i18n";
 
 export function Footer() {
   const t = useT();
-  const { language } = useLanguage();
+  const { locale } = useLanguage();
   const staffLabel =
-    language === "fr" ? "Espace collaborateurs" : language === "en" ? "Staff area" : "Medewerkers";
+    locale === "fr" ? "Espace collaborateurs" : locale === "en" ? "Staff area" : "Medewerkers";
   const year = new Date().getFullYear();
 
   const nav = [
