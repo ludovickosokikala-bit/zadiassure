@@ -76,10 +76,25 @@ export function ContactForm() {
       return;
     }
     setState("submitting");
-    // PLACEHOLDER: connect to a backend (e-mail delivery / CRM) once available.
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setState("success");
+    try {
+      const res = await submitContact({
+        data: {
+          fullName: `${values.firstName} ${values.lastName}`.trim(),
+          email: values.email,
+          phone: values.phone,
+          city: values.city,
+          audience: values.profile,
+          topic: values.topic,
+          message: values.message,
+          language: (values.language as "nl" | "fr" | "en") ?? "nl",
+        },
+      });
+      setState(res.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   };
+
 
   if (state === "success") {
     return (
