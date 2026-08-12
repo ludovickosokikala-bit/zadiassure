@@ -6,7 +6,7 @@ import imgAutonomy from "@/assets/page-audiences.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeader } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/sections";
-import { Cta } from "@/components/ui/cta";
+import { ctaVariants } from "@/components/ui/cta";
 import { useLanguage } from "@/i18n";
 import { approachDictionaries, approachSlugs, type ApproachSlug } from "@/i18n/approach";
 
@@ -49,7 +49,7 @@ function ApproachPage() {
   const dict = approachDictionaries[useLanguage().locale];
   const step = dict.steps[slug];
   const index = approachSlugs.indexOf(slug);
-  const next = approachSlugs[(index + 1) % approachSlugs.length];
+  const next = approachSlugs[(index + 1) % approachSlugs.length] ?? approachSlugs[0]!;
   const nextStep = dict.steps[next];
 
   return (
@@ -104,10 +104,16 @@ function ApproachPage() {
               ))}
             </ul>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Cta to="/aanpak/$slug" params={{ slug: next }} variant="primary">
-                {dict.nextLabel}: {nextStep.label}
-                <ArrowRight className="size-4" />
-              </Cta>
+              <Link
+                to="/aanpak/$slug"
+                params={{ slug: next }}
+                className={ctaVariants({ variant: "primary" })}
+              >
+                <span>
+                  {dict.nextLabel}: {nextStep.label}
+                </span>
+                <ArrowRight className="size-4 shrink-0" />
+              </Link>
               <Link to="/" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent">
                 <ArrowLeft className="size-4" />
                 {dict.back}
