@@ -31,6 +31,7 @@ import { Route as CrmIndexRouteImport } from './routes/crm.index'
 import { Route as CrmAiRouteImport } from './routes/crm.ai'
 import { Route as CrmDocumentsRouteImport } from './routes/crm.documents'
 import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
+import { Route as CrmMandatesRouteImport } from './routes/crm.mandates'
 import { Route as CrmSettingsRouteImport } from './routes/crm.settings'
 import { Route as CrmTasksRouteImport } from './routes/crm.tasks'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
@@ -153,6 +154,11 @@ const CrmInboxRoute = CrmInboxRouteImport.update({
   path: '/inbox',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmMandatesRoute = CrmMandatesRouteImport.update({
+  id: '/mandates',
+  path: '/mandates',
+  getParentRoute: () => CrmRoute,
+} as any)
 const CrmSettingsRoute = CrmSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -234,6 +240,7 @@ export interface FileRoutesByFullPath {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
@@ -268,6 +275,7 @@ export interface FileRoutesByTo {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
@@ -305,6 +313,7 @@ export interface FileRoutesById {
   '/crm/ai': typeof CrmAiRoute
   '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
+  '/crm/mandates': typeof CrmMandatesRoute
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/tasks': typeof CrmTasksRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
@@ -342,6 +351,7 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
     | '/documenten/$slug'
@@ -376,6 +386,7 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
     | '/documenten/$slug'
@@ -412,6 +423,7 @@ export interface FileRouteTypes {
     | '/crm/ai'
     | '/crm/documents'
     | '/crm/inbox'
+    | '/crm/mandates'
     | '/crm/settings'
     | '/crm/tasks'
     | '/documenten/$slug'
@@ -610,6 +622,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmInboxRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/mandates': {
+      id: '/crm/mandates'
+      path: '/mandates'
+      fullPath: '/crm/mandates'
+      preLoaderRoute: typeof CrmMandatesRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/crm/settings': {
       id: '/crm/settings'
       path: '/settings'
@@ -712,6 +731,7 @@ interface CrmRouteChildren {
   CrmAiRoute: typeof CrmAiRoute
   CrmDocumentsRoute: typeof CrmDocumentsRoute
   CrmInboxRoute: typeof CrmInboxRoute
+  CrmMandatesRoute: typeof CrmMandatesRoute
   CrmSettingsRoute: typeof CrmSettingsRoute
   CrmTasksRoute: typeof CrmTasksRoute
   CrmIndexRoute: typeof CrmIndexRoute
@@ -725,6 +745,7 @@ const CrmRouteChildren: CrmRouteChildren = {
   CrmAiRoute: CrmAiRoute,
   CrmDocumentsRoute: CrmDocumentsRoute,
   CrmInboxRoute: CrmInboxRoute,
+  CrmMandatesRoute: CrmMandatesRoute,
   CrmSettingsRoute: CrmSettingsRoute,
   CrmTasksRoute: CrmTasksRoute,
   CrmIndexRoute: CrmIndexRoute,
