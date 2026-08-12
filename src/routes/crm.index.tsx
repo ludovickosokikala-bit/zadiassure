@@ -40,6 +40,10 @@ function Dashboard() {
         <StatCard label={c.dashboard.deadlinesWeek} value={data.kpis.deadlinesThisWeek} />
       </div>
 
+      <div className="mt-6">
+        <DailyBriefing />
+      </div>
+
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Panel title={c.dashboard.attention}>
           {data.attention.length === 0 ? (
