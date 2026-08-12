@@ -34,6 +34,7 @@ import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$s
 import { Route as WetgevingIndexRouteImport } from './routes/wetgeving.index'
 import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
 import { Route as CrmCasesIndexRouteImport } from './routes/crm.cases.index'
+import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
 
@@ -161,6 +162,11 @@ const CrmCasesIndexRoute = CrmCasesIndexRouteImport.update({
   path: '/cases/',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmCasesIdRoute = CrmCasesIdRouteImport.update({
+  id: '/cases/$id',
+  path: '/cases/$id',
+  getParentRoute: () => CrmRoute,
+} as any)
 const CrmClientsIndexRoute = CrmClientsIndexRouteImport.update({
   id: '/clients/',
   path: '/clients/',
@@ -196,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
   '/wetgeving/': typeof WetgevingIndexRoute
+  '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
@@ -223,6 +230,7 @@ export interface FileRoutesByTo {
   '/documenten': typeof DocumentenIndexRoute
   '/kenniscentrum': typeof KenniscentrumIndexRoute
   '/wetgeving': typeof WetgevingIndexRoute
+  '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases': typeof CrmCasesIndexRoute
   '/crm/clients': typeof CrmClientsIndexRoute
@@ -253,6 +261,7 @@ export interface FileRoutesById {
   '/documenten/': typeof DocumentenIndexRoute
   '/kenniscentrum/': typeof KenniscentrumIndexRoute
   '/wetgeving/': typeof WetgevingIndexRoute
+  '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
@@ -283,6 +292,7 @@ export interface FileRouteTypes {
     | '/documenten/'
     | '/kenniscentrum/'
     | '/wetgeving/'
+    | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/documenten'
     | '/kenniscentrum'
     | '/wetgeving'
+    | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/crm/cases'
     | '/crm/clients'
@@ -339,6 +350,7 @@ export interface FileRouteTypes {
     | '/documenten/'
     | '/kenniscentrum/'
     | '/wetgeving/'
+    | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/crm/cases/'
     | '/crm/clients/'
@@ -546,6 +558,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmCasesIndexRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/cases/$id': {
+      id: '/crm/cases/$id'
+      path: '/cases/$id'
+      fullPath: '/crm/cases/$id'
+      preLoaderRoute: typeof CrmCasesIdRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/crm/clients/': {
       id: '/crm/clients/'
       path: '/clients'
@@ -576,6 +595,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface CrmRouteChildren {
   CrmIndexRoute: typeof CrmIndexRoute
+  CrmCasesIdRoute: typeof CrmCasesIdRoute
   CrmClientsIdRoute: typeof CrmClientsIdRoute
   CrmCasesIndexRoute: typeof CrmCasesIndexRoute
   CrmClientsIndexRoute: typeof CrmClientsIndexRoute
@@ -583,6 +603,7 @@ interface CrmRouteChildren {
 
 const CrmRouteChildren: CrmRouteChildren = {
   CrmIndexRoute: CrmIndexRoute,
+  CrmCasesIdRoute: CrmCasesIdRoute,
   CrmClientsIdRoute: CrmClientsIdRoute,
   CrmCasesIndexRoute: CrmCasesIndexRoute,
   CrmClientsIndexRoute: CrmClientsIndexRoute,

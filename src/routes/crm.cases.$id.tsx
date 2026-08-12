@@ -55,21 +55,7 @@ function CaseDetail() {
   });
 
   if (isLoading || !data) return <p className="text-sm text-muted-foreground">{c.common.loading}</p>;
-  const row = data.case as Record<string, never> & {
-    id: string;
-    title: string;
-    case_number: string;
-    status_key: string;
-    priority: string;
-    progress: number | null;
-    stage: string | null;
-    description: string | null;
-    deadline: string | null;
-    start_date: string | null;
-    target_date: string | null;
-    client_id: string;
-    clients: { first_name?: string | null; last_name?: string | null; company_name?: string | null } | null;
-  };
+  const row = data.case;
   const statuses = ws.data?.caseStatuses ?? [];
   const statusLabel =
     localized(statuses.find((s) => s.key === row.status_key) as never, "label", locale) ||
