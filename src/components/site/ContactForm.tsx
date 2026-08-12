@@ -246,8 +246,8 @@ export function ContactForm() {
 
       {state === "error" && (
         <p className="mt-4 text-sm font-medium text-destructive" role="alert">
-          {f.errorRequired === "" ? "" : null}
           {locale === "fr"
+
             ? "L'envoi a échoué. Réessayez ou contactez-nous par téléphone."
             : locale === "en"
               ? "Sending failed. Please try again or contact us by phone."
