@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Check, Copy, UserPlus } from "lucide-react";
+import { Check, Copy, Mail, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -56,11 +56,35 @@ function TeamPage() {
     return `${origin}/uitnodiging?token=${token}`;
   }
 
+  function loginUrl() {
+    const origin = typeof window === "undefined" ? "" : window.location.origin;
+    return `${origin}/auth`;
+  }
+
+  type Invite = { token: string; email: string; full_name: string | null; role: string; expires_at: string };
+
+  function mailBody(i: Invite) {
+    return m.team.mailBody
+      .replaceAll("{name}", i.full_name || i.email)
+      .replaceAll("{role}", i.role)
+      .replaceAll("{link}", inviteLink(i.token))
+      .replaceAll("{email}", i.email)
+      .replaceAll("{loginUrl}", loginUrl())
+      .replaceAll("{expires}", formatDate(i.expires_at));
+  }
+
   async function copy(token: string) {
     await navigator.clipboard.writeText(inviteLink(token));
     setCopied(token);
     window.setTimeout(() => setCopied(null), 2000);
   }
+
+  async function copyMail(i: Invite) {
+    await navigator.clipboard.writeText(`${m.team.mailSubject}\n\n${mailBody(i)}`);
+    setCopied(`mail-${i.token}`);
+    window.setTimeout(() => setCopied(null), 2000);
+  }
+
 
   if (isLoading) return <p className="text-sm text-muted-foreground">{c.common.loading}</p>;
   if (!data?.isAdmin) {
@@ -157,6 +181,37 @@ function TeamPage() {
                   <p className="break-all rounded-lg bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
                     {inviteLink(i.token)}
                   </p>
+
+                  <div className="rounded-xl border border-border bg-background p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="text-sm font-medium text-foreground">{m.team.mailTitle}</p>
+                        <p className="text-xs text-muted-foreground">{m.team.mailHint}</p>
+                      </div>
+                      <Button size="sm" variant="secondary" className="gap-1.5" onClick={() => copyMail(i)}>
+                        {copied === `mail-${i.token}` ? (
+                          <>
+                            <Check className="h-3.5 w-3.5" /> {m.team.copied}
+                          </>
+                        ) : (
+                          <>
+                            <Mail className="h-3.5 w-3.5" /> {m.team.copyMail}
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <p className="mt-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {m.team.mailSubjectLabel}
+                    </p>
+                    <p className="text-sm text-foreground">{m.team.mailSubject}</p>
+                    <p className="mt-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {m.team.mailBodyLabel}
+                    </p>
+                    <pre className="whitespace-pre-wrap break-words font-body text-sm text-muted-foreground">
+                      {mailBody(i)}
+                    </pre>
+                  </div>
+
                 </li>
               ))}
             </ul>

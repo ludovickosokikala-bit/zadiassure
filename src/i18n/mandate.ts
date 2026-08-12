@@ -82,6 +82,13 @@ export interface MandateDict {
     accepted: string;
     acceptFailed: string;
     wrongEmail: string;
+    mailTitle: string;
+    mailHint: string;
+    mailSubjectLabel: string;
+    mailBodyLabel: string;
+    copyMail: string;
+    mailSubject: string;
+    mailBody: string;
   };
   page: {
     eyebrow: string;
@@ -193,6 +200,27 @@ const nl: MandateDict = {
     accepted: "Je hebt nu toegang. Welkom!",
     acceptFailed: "Deze uitnodiging is niet meer geldig.",
     wrongEmail: "Deze uitnodiging is voor een ander e-mailadres. Meld je aan met dat adres.",
+    mailTitle: "Uitnodigingsmail",
+    mailHint: "Kopieer deze mail en stuur ze naar je medewerker.",
+    mailSubjectLabel: "Onderwerp",
+    mailBodyLabel: "Bericht",
+    copyMail: "Mail kopiëren",
+    mailSubject: "Je toegang tot het ZADIASSURE dossierbeheer",
+    mailBody: `Beste {name},
+
+Je bent uitgenodigd om als medewerker ({role}) toegang te krijgen tot het dossierbeheer van ZADIASSURE.
+
+Zo krijg je toegang:
+1. Open deze link: {link}
+2. Meld je aan (of maak een account) met exact dit e-mailadres: {email}
+3. Klik daarna op "Uitnodiging aanvaarden".
+
+Je komt dan automatisch in het dashboard terecht. Later log je gewoon in via {loginUrl}.
+
+Belangrijk: deze uitnodiging is geldig tot {expires}. Deel de link met niemand anders.
+
+Met vriendelijke groeten,
+ZADIASSURE`,
   },
   page: {
     eyebrow: "Volmacht",
@@ -307,6 +335,27 @@ const fr: MandateDict = {
     accepted: "Vous avez désormais accès. Bienvenue !",
     acceptFailed: "Cette invitation n'est plus valable.",
     wrongEmail: "Cette invitation concerne une autre adresse e-mail. Connectez-vous avec celle-ci.",
+    mailTitle: "E-mail d'invitation",
+    mailHint: "Copiez cet e-mail et envoyez-le à votre collaborateur.",
+    mailSubjectLabel: "Objet",
+    mailBodyLabel: "Message",
+    copyMail: "Copier l'e-mail",
+    mailSubject: "Votre accès à la gestion de dossiers ZADIASSURE",
+    mailBody: `Bonjour {name},
+
+Vous êtes invité(e) à accéder à la gestion de dossiers de ZADIASSURE en tant que collaborateur ({role}).
+
+Comment accéder :
+1. Ouvrez ce lien : {link}
+2. Connectez-vous (ou créez un compte) avec exactement cette adresse e-mail : {email}
+3. Cliquez ensuite sur « Accepter l'invitation ».
+
+Vous arriverez directement dans le tableau de bord. Par la suite, connectez-vous simplement via {loginUrl}.
+
+Important : cette invitation est valable jusqu'au {expires}. Ne partagez ce lien avec personne.
+
+Cordialement,
+ZADIASSURE`,
   },
   page: {
     eyebrow: "Mandat",
@@ -421,6 +470,27 @@ const en: MandateDict = {
     accepted: "You now have access. Welcome!",
     acceptFailed: "This invitation is no longer valid.",
     wrongEmail: "This invitation is for another email address. Sign in with that address.",
+    mailTitle: "Invitation email",
+    mailHint: "Copy this email and send it to your team member.",
+    mailSubjectLabel: "Subject",
+    mailBodyLabel: "Message",
+    copyMail: "Copy email",
+    mailSubject: "Your access to the ZADIASSURE case management",
+    mailBody: `Hello {name},
+
+You have been invited to access the ZADIASSURE case management as a team member ({role}).
+
+How to get access:
+1. Open this link: {link}
+2. Sign in (or create an account) with exactly this email address: {email}
+3. Then click "Accept invitation".
+
+You will land straight in the dashboard. Afterwards you simply sign in via {loginUrl}.
+
+Important: this invitation is valid until {expires}. Do not share the link with anyone else.
+
+Kind regards,
+ZADIASSURE`,
   },
   page: {
     eyebrow: "Mandate",
