@@ -422,6 +422,7 @@ export function LetterHelper() {
           onClick={() => mutation.mutate()}
           loading={mutation.isPending}
           disabled={text.trim().length < 20}
+          inputChars={text.trim().length}
         >
           {t.explain}
         </AiButton>
