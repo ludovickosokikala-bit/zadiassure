@@ -57,7 +57,7 @@ export const Route = createFileRoute("/api/public/agenda/$token.ics")({
             .limit(1000),
           supabaseAdmin
             .from("tasks")
-            .select("id, title, description, due_date, status, updated_at")
+            .select("id, title, description, due_date, due_time, status, updated_at")
             .eq("organization_id", feed.organization_id)
             .eq("assigned_to", feed.user_id)
             .is("deleted_at", null)
@@ -75,6 +75,23 @@ export const Route = createFileRoute("/api/public/agenda/$token.ics")({
           "METHOD:PUBLISH",
           "X-WR-CALNAME:ZADIASSURE",
           "X-WR-TIMEZONE:Europe/Brussels",
+          "BEGIN:VTIMEZONE",
+          "TZID:Europe/Brussels",
+          "BEGIN:STANDARD",
+          "DTSTART:19701025T030000",
+          "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+          "TZOFFSETFROM:+0200",
+          "TZOFFSETTO:+0100",
+          "TZNAME:CET",
+          "END:STANDARD",
+          "BEGIN:DAYLIGHT",
+          "DTSTART:19700329T020000",
+          "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+          "TZOFFSETFROM:+0100",
+          "TZOFFSETTO:+0200",
+          "TZNAME:CEST",
+          "END:DAYLIGHT",
+          "END:VTIMEZONE",
         ];
 
         for (const a of appointments.data ?? []) {
@@ -105,8 +122,18 @@ export const Route = createFileRoute("/api/public/agenda/$token.ics")({
           lines.push("BEGIN:VEVENT");
           lines.push(`UID:task-${t.id}@zadiassure`);
           lines.push(`DTSTAMP:${now}`);
-          lines.push(`DTSTART;VALUE=DATE:${dateOnly(t.due_date)}`);
-          lines.push(`DTEND;VALUE=DATE:${dateOnly(end)}`);
+          if (t.due_time) {
+            const hhmm = String(t.due_time).slice(0, 5).replace(":", "");
+            const day = dateOnly(t.due_date);
+            const endHour = String(Number(hhmm.slice(0, 2)) + 1).padStart(2, "0");
+            lines.push(`DTSTART;TZID=Europe/Brussels:${day}T${hhmm}00`);
+            lines.push(
+              `DTEND;TZID=Europe/Brussels:${day}T${Number(endHour) > 23 ? "23" : endHour}${hhmm.slice(2)}00`,
+            );
+          } else {
+            lines.push(`DTSTART;VALUE=DATE:${dateOnly(t.due_date)}`);
+            lines.push(`DTEND;VALUE=DATE:${dateOnly(end)}`);
+          }
           lines.push(fold(`SUMMARY:${esc(`[Taak] ${t.title}`)}`));
           if (t.description) lines.push(fold(`DESCRIPTION:${esc(t.description)}`));
           lines.push("END:VEVENT");

@@ -85,7 +85,7 @@ export const CASE_COLUMNS =
   "id, case_number, title, description, status_key, stage, priority, progress, assigned_to, client_id, case_type_id, start_date, target_date, deadline, tags, created_at, updated_at";
 
 export const TASK_COLUMNS =
-  "id, title, description, status, priority, due_date, assigned_to, case_id, client_id, completed_at, created_at";
+  "id, title, description, status, priority, due_date, due_time, assigned_to, case_id, client_id, completed_at, created_at";
 
 export const DOCUMENT_COLUMNS =
   "id, name, document_type, status, case_id, client_id, requested_from_client, notes, expires_on, uploaded_at, created_at";

@@ -120,7 +120,7 @@ function AgendaPage() {
         id: t.id,
         kind: "task",
         when: t.due_date,
-        time: g.task,
+        time: t.due_time ? String(t.due_time).slice(0, 5) : g.task,
         title: t.title,
         sub: c.priority[t.priority as keyof typeof c.priority] ?? "",
         status: c.taskStatus[t.status as keyof typeof c.taskStatus] ?? t.status,

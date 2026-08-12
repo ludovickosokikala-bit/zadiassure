@@ -1207,6 +1207,7 @@ export type Database = {
           deleted_at: string | null
           description: string
           due_date: string | null
+          due_time: string | null
           id: string
           organization_id: string
           priority: Database["public"]["Enums"]["crm_priority"]
@@ -1224,6 +1225,7 @@ export type Database = {
           deleted_at?: string | null
           description?: string
           due_date?: string | null
+          due_time?: string | null
           id?: string
           organization_id: string
           priority?: Database["public"]["Enums"]["crm_priority"]
@@ -1241,6 +1243,7 @@ export type Database = {
           deleted_at?: string | null
           description?: string
           due_date?: string | null
+          due_time?: string | null
           id?: string
           organization_id?: string
           priority?: Database["public"]["Enums"]["crm_priority"]

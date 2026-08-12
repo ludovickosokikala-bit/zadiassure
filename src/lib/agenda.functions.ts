@@ -31,7 +31,7 @@ export const listAgenda = createServerFn({ method: "GET" })
 
     let tasks = context.supabase
       .from("tasks")
-      .select("id, title, status, priority, due_date, assigned_to, case_id, client_id")
+      .select("id, title, status, priority, due_date, due_time, assigned_to, case_id, client_id")
       .eq("organization_id", member.organization_id)
       .is("deleted_at", null)
       .not("due_date", "is", null)

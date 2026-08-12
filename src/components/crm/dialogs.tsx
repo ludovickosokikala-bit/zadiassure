@@ -504,6 +504,7 @@ export function TaskDialog({
             status: "todo",
             priority: "normal",
             due_date: null,
+            due_time: null,
           },
     );
   }, [open, row, caseId, clientId, ws.data]);
@@ -554,6 +555,13 @@ export function TaskDialog({
             type="date"
             value={str("due_date")}
             onChange={(e) => set("due_date", e.target.value || null)}
+          />
+        </Field>
+        <Field label={c.tasks.dueTime}>
+          <Input
+            type="time"
+            value={str("due_time").slice(0, 5)}
+            onChange={(e) => set("due_time", e.target.value || null)}
           />
         </Field>
         <Field label={c.tasks.assignedTo}>
