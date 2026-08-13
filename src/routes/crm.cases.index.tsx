@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Plus } from "lucide-react";
+import { Columns3, List, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ctaVariants } from "@/components/ui/cta";
 import { cn } from "@/lib/utils";
@@ -18,9 +18,16 @@ import {
   useCrmDict,
   useWorkspace,
 } from "@/components/crm/useCrm";
+import { CaseBoard } from "@/components/crm/CaseBoard";
 import { CaseDialog } from "@/components/crm/dialogs";
 
 export const Route = createFileRoute("/crm/cases/")({ component: CasesPage });
+
+const VIEW_COPY = {
+  nl: { list: "Lijst", board: "Bord" },
+  fr: { list: "Liste", board: "Tableau" },
+  en: { list: "List", board: "Board" },
+} as const;
 
 function CasesPage() {
   const c = useCrmDict();
@@ -31,6 +38,9 @@ function CasesPage() {
   const [statusKey, setStatusKey] = useState("");
   const [priority, setPriority] = useState("");
   const [open, setOpen] = useState(false);
+  const [view, setView] = useState<"list" | "board">("list");
+  const viewCopy = VIEW_COPY[locale as keyof typeof VIEW_COPY] ?? VIEW_COPY.nl;
+
 
   const fetchCases = useServerFn(listCases);
   const fetchClients = useServerFn(listClients);
@@ -99,13 +109,38 @@ function CasesPage() {
               </option>
             ))}
           </select>
+          <div className="ml-auto inline-flex rounded-xl border border-border bg-secondary/50 p-1">
+            {(["list", "board"] as const).map((mode) => (
+              <button
+                key={mode}
+                type="button"
+                onClick={() => setView(mode)}
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors",
+                  view === mode
+                    ? "bg-card text-foreground shadow-soft"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {mode === "list" ? <List className="h-3.5 w-3.5" /> : <Columns3 className="h-3.5 w-3.5" />}
+                {mode === "list" ? viewCopy.list : viewCopy.board}
+              </button>
+            ))}
+          </div>
         </div>
 
         {cases.isLoading ? (
           <Empty text={c.common.loading} />
         ) : !cases.data || cases.data.items.length === 0 ? (
           <Empty text={c.cases.noCases} />
+        ) : view === "board" ? (
+          <CaseBoard
+            cases={cases.data.items as never}
+            statuses={statuses.filter((s) => s.is_open) as never}
+            onChanged={() => void cases.refetch()}
+          />
         ) : (
+
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

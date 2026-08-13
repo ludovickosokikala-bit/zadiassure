@@ -815,3 +815,49 @@ export const crmSearch = createServerFn({ method: "GET" })
     ]);
     return { clients: clients.data ?? [], cases: cases.data ?? [], tasks: tasks.data ?? [] };
   });
+
+/** Move a case to another status column from the kanban board. */
+export const setCaseStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z.object({ id: z.string().uuid(), status_key: z.string().min(1).max(60) }).parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff, logActivity } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    const { data: before } = await context.supabase
+      .from("cases")
+      .select("status_key, client_id")
+      .eq("id", data.id)
+      .eq("organization_id", member.organization_id)
+      .maybeSingle();
+    if (!before) throw new Error("NOT_FOUND");
+    if (before.status_key === data.status_key) return { id: data.id };
+    const { error } = await context.supabase
+      .from("cases")
+      .update({ status_key: data.status_key })
+      .eq("id", data.id)
+      .eq("organization_id", member.organization_id);
+    if (error) throw new Error(error.message);
+    await logActivity(context.supabase, member, context.userId, {
+      case_id: data.id,
+      client_id: before.client_id,
+      kind: "case_status_changed",
+      summary: `Status gewijzigd naar "${data.status_key}"`,
+      is_internal: false,
+    });
+    return { id: data.id };
+  });
+
+/** Aggregated reporting numbers for the CRM reports page. */
+export const getReports = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z.object({ days: z.coerce.number().int().min(7).max(365).default(90) }).parse(input ?? {}),
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./crm.server");
+    const { buildReport } = await import("./reports.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    return buildReport(context.supabase, member.organization_id, data.days);
+  });
