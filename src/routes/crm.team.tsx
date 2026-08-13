@@ -80,6 +80,7 @@ function TeamPage() {
     const body = a.mailBody
       .replaceAll("{name}", fullName || mail)
       .replaceAll("{loginUrl}", `${origin}/auth`)
+      .replaceAll("{origin}", origin)
       .replaceAll("{email}", mail)
       .replaceAll("{password}", password);
     await navigator.clipboard.writeText(`${a.mailSubject}\n\n${body}`);
