@@ -13,6 +13,7 @@ import {
   ListChecks,
   LogOut,
   Mail,
+  BarChart3,
   Plus,
   Search,
   Settings,
@@ -46,6 +47,7 @@ const NAV: {
     | "agenda"
     | "documents"
     | "mandates"
+    | "reports"
     | "ai"
     | "team"
     | "settings";
@@ -62,6 +64,7 @@ const NAV: {
   { to: "/crm/agenda", key: "agenda", icon: CalendarClock, primary: true },
   { to: "/crm/documents", key: "documents", icon: FileText, badge: "documents" },
   { to: "/crm/mandates", key: "mandates", icon: ShieldCheck, badge: "mandates" },
+  { to: "/crm/reports", key: "reports", icon: BarChart3 },
   { to: "/crm/ai", key: "ai", icon: Sparkles },
   { to: "/crm/team", key: "team", icon: UserPlus },
   { to: "/crm/settings", key: "settings", icon: Settings },
@@ -191,6 +194,8 @@ export function CrmShell({ children }: { children: ReactNode }) {
       ? ag.nav
       : key === "inbox"
       ? a.nav.inbox
+      : key === "reports"
+        ? { nl: "Rapporten", fr: "Rapports", en: "Reports" }[locale as "nl"] ?? "Rapporten"
       : key === "ai"
         ? "AI"
         : key === "mandates"
