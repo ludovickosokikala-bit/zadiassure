@@ -2,15 +2,23 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Check, Copy, Mail, UserPlus } from "lucide-react";
+import { Check, Copy, KeyRound, Mail, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { CRM_ROLE_KEYS } from "@/lib/crm.schemas";
-import { inviteMember, listTeam, revokeInvite, updateMember } from "@/lib/team.functions";
+import {
+  createMemberAccount,
+  inviteMember,
+  listTeam,
+  revokeInvite,
+  updateMember,
+} from "@/lib/team.functions";
 import { Empty, Field, PageHead, Panel, Pill, selectClass } from "@/components/crm/ui";
 import { formatDate, useCrmDict } from "@/components/crm/useCrm";
 import { useMandateDict } from "@/components/crm/useMandate";
+import { useAccountDict } from "@/components/crm/PasswordPanel";
+
 
 export const Route = createFileRoute("/crm/team")({ component: TeamPage });
 
@@ -33,6 +41,12 @@ function TeamPage() {
   const [fullName, setFullName] = useState("");
   const [role, setRole] = useState<Role>("employee");
   const [copied, setCopied] = useState<string | null>(null);
+  const [account, setAccount] = useState<{
+    email: string;
+    password: string | null;
+    existed: boolean;
+  } | null>(null);
+
 
   const inviteMutation = useMutation({
     mutationFn: () => invite({ data: { email, full_name: fullName, role } }),
@@ -50,6 +64,26 @@ function TeamPage() {
     mutationFn: (v: { id: string; role?: Role; active?: boolean }) => update({ data: v }),
     onSuccess: invalidate,
   });
+  const accountMutation = useMutation({
+    mutationFn: () => createAccount({ data: { email, full_name: fullName, role } }),
+    onSuccess: (res) => {
+      setAccount(res);
+      void invalidate();
+    },
+  });
+
+  async function copyCredentials(mail: string, password: string) {
+    const origin = typeof window === "undefined" ? "" : window.location.origin;
+    const body = a.mailBody
+      .replaceAll("{name}", fullName || mail)
+      .replaceAll("{loginUrl}", `${origin}/auth`)
+      .replaceAll("{email}", mail)
+      .replaceAll("{password}", password);
+    await navigator.clipboard.writeText(`${a.mailSubject}\n\n${body}`);
+    setCopied("account");
+    window.setTimeout(() => setCopied(null), 2000);
+  }
+
 
   function inviteLink(token: string) {
     const origin = typeof window === "undefined" ? "" : window.location.origin;
@@ -135,10 +169,59 @@ function TeamPage() {
                 ))}
               </select>
             </Field>
-            <Button type="submit" className="gap-2" disabled={inviteMutation.isPending}>
-              <UserPlus className="h-4 w-4" /> {m.team.send}
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button type="submit" className="gap-2" disabled={inviteMutation.isPending}>
+                <UserPlus className="h-4 w-4" /> {m.team.send}
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                className="gap-2"
+                disabled={accountMutation.isPending || !email}
+                onClick={() => accountMutation.mutate()}
+              >
+                <KeyRound className="h-4 w-4" />
+                {accountMutation.isPending ? a.creating : a.create}
+              </Button>
+            </div>
             <p className="text-xs text-muted-foreground">{m.team.inviteHint}</p>
+            <p className="text-xs text-muted-foreground">{a.createIntro}</p>
+
+            {account && (
+              <div className="space-y-2 rounded-xl border border-primary/30 bg-primary/5 p-3 text-sm">
+                <p className="font-medium text-foreground">
+                  {account.existed ? a.existed : a.created}
+                </p>
+                <p className="text-muted-foreground">{account.email}</p>
+                {account.password && (
+                  <p className="text-muted-foreground">
+                    {a.defaultPassword}:{" "}
+                    <span className="font-semibold text-foreground">{account.password}</span>
+                  </p>
+                )}
+                <p className="text-xs text-muted-foreground">{a.loginHint}</p>
+                {account.password && (
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="secondary"
+                    className="gap-1.5"
+                    onClick={() => copyCredentials(account.email, account.password as string)}
+                  >
+                    {copied === "account" ? (
+                      <>
+                        <Check className="h-3.5 w-3.5" /> {a.copied}
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3.5 w-3.5" /> {a.copyCredentials}
+                      </>
+                    )}
+                  </Button>
+                )}
+              </div>
+            )}
+
           </form>
         </Panel>
 
