@@ -101,9 +101,9 @@ const en: AccountDict = {
   passwordMismatch: "The passwords do not match.",
   passwordTooShort: "At least 8 characters.",
   failed: "Something went wrong.",
-  mailSubject: "Your ZADIASSURE CRM account",
+  mailSubject: "Your ZADIASSURE CRM account — getting started",
   mailBody:
-    "Hello {name},\n\nYour ZADIASSURE CRM account is ready.\n\nSign in: {loginUrl}\nEmail: {email}\nTemporary password: {password}\n\nPlease change your password after the first sign-in under CRM › Settings › Password.\n\nKind regards,\nZADIASSURE",
+    "Hello {name},\n\nYour ZADIASSURE CRM account is ready. Below you will find everything you need to get started.\n\n1. SIGN IN\n   URL: {loginUrl}\n   Email: {email}\n   Temporary password: {password}\n\n2. CHANGE YOUR PASSWORD\n   After signing in for the first time, go to CRM › Settings › Password and choose your own secure password.\n\n3. CONNECT YOUR WORK MAILBOX (Gmail)\n   Go to CRM › Settings › Work mailbox and click \"Connect Gmail\".\n   Incoming and outgoing emails will then be logged against client cases.\n   Important: use your ZADIASSURE work email address for this.\n\n4. CALENDAR & TASKS\n   In CRM › Agenda you see appointments and tasks. You will find a personal ICS link there to sync your own Google or Outlook calendar.\n   Tasks that you give both a date and a time automatically appear as a time block in that calendar.\n\n5. WORKING WITH CASES\n   - Dashboard: overview of what needs attention today.\n   - Clients: manage contact details and call or WhatsApp directly from a client record.\n   - Cases: track status, tasks, documents and notes per client.\n   - Documents: request and receive ID documents, mandates and forms.\n\n6. MOBILE APP\n   Open {origin} on your phone and choose \"Add to Home Screen\" (iOS/Android). The CRM website then works like an app, including notifications.\n\n7. STAFF ACCESS\n   On the public website there is a subtle \"Staff\" link at the bottom to quickly reach the sign-in screen.\n\nQuestions? Email info@zadiassure.be.\n\nWelcome aboard,\nZADIASSURE",
 };
 
 export const accountDictionaries: Record<Locale, AccountDict> = { nl, fr, en };
