@@ -88,7 +88,7 @@ const en: AccountDict = {
   created: "Account created with the default password.",
   existed: "This person already had an account — their current password stays valid.",
   defaultPassword: "Default password",
-  copyCredentials: "Copy credentials",
+  copyCredentials: "Copy instruction email",
   copied: "Copied",
   loginHint: "Sign in at /auth with this email address and password.",
   passwordTitle: "Password",
