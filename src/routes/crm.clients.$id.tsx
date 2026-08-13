@@ -7,6 +7,8 @@ import { ctaVariants } from "@/components/ui/cta";
 import { cn } from "@/lib/utils";
 import { getClient } from "@/lib/crm.functions";
 import { ContactActions } from "@/components/crm/ContactActions";
+import { MailPanel } from "@/components/crm/MailPanel";
+
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
 import {
   clientName,
@@ -172,7 +174,14 @@ function ClientDetail() {
           )}
         </Panel>
 
+        <MailPanel
+          email={client.email}
+          clientId={client.id}
+          className="lg:col-span-2"
+        />
+
         <Panel title={c.clients.activity}>
+
           {data.activities.length === 0 ? (
             <Empty text={c.common.empty} />
           ) : (
