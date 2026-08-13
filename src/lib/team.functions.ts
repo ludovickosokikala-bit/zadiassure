@@ -191,3 +191,71 @@ export const acceptInvite = createServerFn({ method: "POST" })
       .eq("id", invite.id);
     return { ok: true as const };
   });
+
+/** Default password for freshly created staff accounts. */
+export const DEFAULT_STAFF_PASSWORD = "Zadiassure123";
+
+/**
+ * Creates a ready-to-use CRM account with the default password and an active
+ * membership, so the member can sign in immediately and change the password
+ * afterwards under Instellingen.
+ */
+export const createMemberAccount = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => inviteSchema.parse(input))
+  .handler(async ({ data, context }) => {
+    const { requireStaff, isAdminRole } = await import("./crm.server");
+    const member = await requireStaff(context.supabase, context.userId);
+    if (!isAdminRole(member.role)) throw new Error("FORBIDDEN");
+
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const created = await supabaseAdmin.auth.admin.createUser({
+      email: data.email,
+      password: DEFAULT_STAFF_PASSWORD,
+      email_confirm: true,
+      user_metadata: { full_name: data.full_name },
+    });
+
+    let userId = created.data.user?.id ?? null;
+    let existed = false;
+    if (!userId) {
+      const message = created.error?.message ?? "";
+      if (!/already/i.test(message)) throw new Error(message || "CREATE_FAILED");
+      existed = true;
+      const { data: list } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+      userId =
+        list?.users.find((u) => (u.email ?? "").toLowerCase() === data.email)?.id ?? null;
+      if (!userId) throw new Error("USER_LOOKUP_FAILED");
+    }
+
+    const { data: existing } = await supabaseAdmin
+      .from("org_members")
+      .select("id")
+      .eq("organization_id", member.organization_id)
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (existing) {
+      await supabaseAdmin
+        .from("org_members")
+        .update({ role: data.role, active: true, full_name: data.full_name || data.email })
+        .eq("id", existing.id);
+    } else {
+      const { error } = await supabaseAdmin.from("org_members").insert({
+        organization_id: member.organization_id,
+        user_id: userId,
+        role: data.role,
+        full_name: data.full_name || data.email,
+        email: data.email,
+        active: true,
+      });
+      if (error) throw new Error(error.message);
+    }
+
+    return {
+      ok: true as const,
+      email: data.email,
+      password: existed ? null : DEFAULT_STAFF_PASSWORD,
+      existed,
+    };
+  });
