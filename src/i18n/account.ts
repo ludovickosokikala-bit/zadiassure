@@ -34,7 +34,7 @@ const nl: AccountDict = {
   created: "Account aangemaakt met standaardwachtwoord.",
   existed: "Deze persoon had al een account — het bestaande wachtwoord blijft geldig.",
   defaultPassword: "Standaardwachtwoord",
-  copyCredentials: "Logingegevens kopiëren",
+  copyCredentials: "Instructiemail kopiëren",
   copied: "Gekopieerd",
   loginHint: "Aanmelden via /auth met dit e-mailadres en wachtwoord.",
   passwordTitle: "Wachtwoord",
