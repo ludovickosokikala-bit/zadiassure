@@ -47,9 +47,9 @@ const nl: AccountDict = {
   passwordMismatch: "De wachtwoorden zijn niet gelijk.",
   passwordTooShort: "Minstens 8 tekens.",
   failed: "Er ging iets mis.",
-  mailSubject: "Je ZADIASSURE CRM-account",
+  mailSubject: "Je ZADIASSURE CRM-account — startinstructies",
   mailBody:
-    "Beste {name},\n\nJe account voor het ZADIASSURE CRM staat klaar.\n\nAanmelden: {loginUrl}\nE-mail: {email}\nTijdelijk wachtwoord: {password}\n\nWijzig je wachtwoord na de eerste aanmelding via CRM › Instellingen › Wachtwoord.\n\nMet vriendelijke groeten,\nZADIASSURE",
+    "Beste {name},\n\nJe account voor het ZADIASSURE CRM staat klaar. Hieronder vind je alles om direct van start te gaan.\n\n1. AANMELDEN\n   URL: {loginUrl}\n   E-mail: {email}\n   Tijdelijk wachtwoord: {password}\n\n2. WACHTWOORD WIJZIGEN\n   Na je eerste aanmelding ga je naar CRM › Instellingen › Wachtwoord en kies je een eigen, veilig wachtwoord.\n\n3. WERKMAILBOX KOPPELEN (Gmail)\n   Ga naar CRM › Instellingen › Werkmailbox en klik op "Gmail koppelen".\n   Zo worden inkomende en uitgaande mails bij klantdossiers gelogd.\n   Belangrijk: gebruik hiervoor je ZADIASSURE-werkmailadres.\n\n4. AGENDA & TAKEN\n   In CRM › Agenda zie je afspraken en taken. Je krijgt er een persoonlijke ICS-link om je eigen Google- of Outlook-agenda te synchroniseren.\n   Taken waar je een datum én uur aan geeft, verschijnen automatisch als tijdsblok in die agenda.\n\n5. WERKEN MET DOSSIERS\n   - Dashboard: overzicht van wat vandaag aandacht vraagt.\n   - Klanten: beheer contactgegevens en bel/of WhatsApp direct vanuit een klantenfiche.\n   - Dossiers: volg status, taken, documenten en notities per cliënt.\n   - Documenten: vraag en ontvang identiteitsdocumenten, volmachten en formulieren.\n\n6. MOBIELE APP\n   Open {origin} op je telefoon en kies "Toevoegen aan startscherm" (iOS/Android). De CRM-website werkt dan als app, inclusief meldingen.\n\n7. TOEGANG VOOR MEDEWERKERS\n   Op de publieke website staat onderaan een subtiele "Medewerkers"-link om snel naar het aanmeldscherm te gaan.\n\nVragen? Mail naar info@zadiassure.be.\n\nWelkom aan boord,\nZADIASSURE",
 };
 
 const fr: AccountDict = {
