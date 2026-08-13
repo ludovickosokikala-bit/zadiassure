@@ -61,7 +61,7 @@ const fr: AccountDict = {
   created: "Compte créé avec le mot de passe par défaut.",
   existed: "Cette personne avait déjà un compte — son mot de passe actuel reste valable.",
   defaultPassword: "Mot de passe par défaut",
-  copyCredentials: "Copier les identifiants",
+  copyCredentials: "Copier l'e-mail d'instructions",
   copied: "Copié",
   loginHint: "Connexion via /auth avec cette adresse e-mail et ce mot de passe.",
   passwordTitle: "Mot de passe",
