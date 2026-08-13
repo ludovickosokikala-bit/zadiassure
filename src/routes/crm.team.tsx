@@ -27,6 +27,7 @@ type Role = (typeof CRM_ROLE_KEYS)[number];
 function TeamPage() {
   const c = useCrmDict();
   const m = useMandateDict();
+  const a = useAccountDict();
   const queryClient = useQueryClient();
 
   const fetchTeam = useServerFn(listTeam);
@@ -35,6 +36,8 @@ function TeamPage() {
   const invite = useServerFn(inviteMember);
   const revoke = useServerFn(revokeInvite);
   const update = useServerFn(updateMember);
+  const createAccount = useServerFn(createMemberAccount);
+
   const invalidate = () => queryClient.invalidateQueries({ queryKey: ["crm", "team"] });
 
   const [email, setEmail] = useState("");

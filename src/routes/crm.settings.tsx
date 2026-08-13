@@ -3,6 +3,8 @@ import { useLanguage } from "@/i18n";
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
 import { localized, useCrmDict, useWorkspace } from "@/components/crm/useCrm";
 import { GmailConnectButton, useMailDict } from "@/components/crm/GmailConnect";
+import { PasswordPanel } from "@/components/crm/PasswordPanel";
+
 
 
 export const Route = createFileRoute("/crm/settings")({ component: SettingsPage });
@@ -39,10 +41,13 @@ function SettingsPage() {
           </dl>
         </Panel>
 
+        <PasswordPanel />
+
         <Panel title={m.gmailSettings}>
           <p className="mb-3 text-sm text-muted-foreground">{m.gmailSettingsIntro}</p>
           <GmailConnectButton />
         </Panel>
+
 
 
         <Panel title={c.settings.team}>
