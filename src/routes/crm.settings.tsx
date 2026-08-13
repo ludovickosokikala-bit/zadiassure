@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n";
 import { Empty, PageHead, Panel, Pill } from "@/components/crm/ui";
 import { localized, useCrmDict, useWorkspace } from "@/components/crm/useCrm";
+import { GmailConnectButton, useMailDict } from "@/components/crm/GmailConnect";
+
 
 export const Route = createFileRoute("/crm/settings")({ component: SettingsPage });
 
@@ -34,6 +36,12 @@ function SettingsPage() {
             </div>
           </dl>
         </Panel>
+
+        <Panel title={m.gmailSettings}>
+          <p className="mb-3 text-sm text-muted-foreground">{m.gmailSettingsIntro}</p>
+          <GmailConnectButton />
+        </Panel>
+
 
         <Panel title={c.settings.team}>
           {team.length === 0 ? (
