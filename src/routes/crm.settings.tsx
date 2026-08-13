@@ -9,6 +9,8 @@ export const Route = createFileRoute("/crm/settings")({ component: SettingsPage 
 
 function SettingsPage() {
   const c = useCrmDict();
+  const m = useMailDict();
+
   const { locale } = useLanguage();
   const ws = useWorkspace();
 
