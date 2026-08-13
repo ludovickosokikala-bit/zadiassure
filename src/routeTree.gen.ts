@@ -47,6 +47,7 @@ import { Route as CrmCasesIndexRouteImport } from './routes/crm.cases.index'
 import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
+import { Route as OauthGoogleReturnRouteImport } from './routes/oauth.google.return'
 import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
@@ -241,6 +242,11 @@ const CrmClientsIdRoute = CrmClientsIdRouteImport.update({
   path: '/clients/$id',
   getParentRoute: () => CrmRoute,
 } as any)
+const OauthGoogleReturnRoute = OauthGoogleReturnRouteImport.update({
+  id: '/oauth/google/return',
+  path: '/oauth/google/return',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicAgendaTokenDoticsRoute =
   ApiPublicAgendaTokenDoticsRouteImport.update({
     id: '/api/public/agenda/$token.ics',
@@ -300,6 +306,7 @@ export interface FileRoutesByFullPath {
   '/wetgeving/': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
@@ -342,6 +349,7 @@ export interface FileRoutesByTo {
   '/wetgeving': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/cases': typeof CrmCasesIndexRoute
   '/crm/clients': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
@@ -387,6 +395,7 @@ export interface FileRoutesById {
   '/wetgeving/': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
@@ -432,6 +441,7 @@ export interface FileRouteTypes {
     | '/wetgeving/'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/oauth/google/return'
     | '/crm/cases/'
     | '/crm/clients/'
     | '/api/public/agenda/$token.ics'
@@ -474,6 +484,7 @@ export interface FileRouteTypes {
     | '/wetgeving'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/oauth/google/return'
     | '/crm/cases'
     | '/crm/clients'
     | '/api/public/agenda/$token.ics'
@@ -518,6 +529,7 @@ export interface FileRouteTypes {
     | '/wetgeving/'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/oauth/google/return'
     | '/crm/cases/'
     | '/crm/clients/'
     | '/api/public/agenda/$token.ics'
@@ -551,6 +563,7 @@ export interface RootRouteChildren {
   DocumentenIndexRoute: typeof DocumentenIndexRoute
   KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
   WetgevingIndexRoute: typeof WetgevingIndexRoute
+  OauthGoogleReturnRoute: typeof OauthGoogleReturnRoute
   ApiPublicAgendaTokenDoticsRoute: typeof ApiPublicAgendaTokenDoticsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -825,6 +838,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmClientsIdRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/oauth/google/return': {
+      id: '/oauth/google/return'
+      path: '/oauth/google/return'
+      fullPath: '/oauth/google/return'
+      preLoaderRoute: typeof OauthGoogleReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/agenda/$token.ics': {
       id: '/api/public/agenda/$token.ics'
       path: '/api/public/agenda/$token.ics'
@@ -926,6 +946,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentenIndexRoute: DocumentenIndexRoute,
   KenniscentrumIndexRoute: KenniscentrumIndexRoute,
   WetgevingIndexRoute: WetgevingIndexRoute,
+  OauthGoogleReturnRoute: OauthGoogleReturnRoute,
   ApiPublicAgendaTokenDoticsRoute: ApiPublicAgendaTokenDoticsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,

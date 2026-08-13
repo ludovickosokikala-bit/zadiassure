@@ -68,7 +68,7 @@ export function MailPanel({
   return (
     <Panel
       title={m.title}
-      className={className}
+      {...(className ? { className } : {})}
       action={
         mail.data?.connected && email ? (
           <button
