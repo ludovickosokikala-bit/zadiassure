@@ -109,13 +109,38 @@ function CasesPage() {
               </option>
             ))}
           </select>
+          <div className="ml-auto inline-flex rounded-xl border border-border bg-secondary/50 p-1">
+            {(["list", "board"] as const).map((mode) => (
+              <button
+                key={mode}
+                type="button"
+                onClick={() => setView(mode)}
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors",
+                  view === mode
+                    ? "bg-card text-foreground shadow-soft"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {mode === "list" ? <List className="h-3.5 w-3.5" /> : <Columns3 className="h-3.5 w-3.5" />}
+                {mode === "list" ? viewCopy.list : viewCopy.board}
+              </button>
+            ))}
+          </div>
         </div>
 
         {cases.isLoading ? (
           <Empty text={c.common.loading} />
         ) : !cases.data || cases.data.items.length === 0 ? (
           <Empty text={c.cases.noCases} />
+        ) : view === "board" ? (
+          <CaseBoard
+            cases={cases.data.items as never}
+            statuses={statuses.filter((s) => s.is_open) as never}
+            onChanged={() => void cases.refetch()}
+          />
         ) : (
+
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
