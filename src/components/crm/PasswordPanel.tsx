@@ -20,12 +20,22 @@ export function PasswordPanel() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (pw.length < 8) return toast.error(a.passwordTooShort);
-    if (pw !== pw2) return toast.error(a.passwordMismatch);
+    if (pw.length < 8) {
+      toast.error(a.passwordTooShort);
+      return;
+    }
+    if (pw !== pw2) {
+      toast.error(a.passwordMismatch);
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password: pw });
     setBusy(false);
-    if (error) return toast.error(a.failed);
+    if (error) {
+      toast.error(a.failed);
+      return;
+    }
+
     setPw("");
     setPw2("");
     toast.success(a.passwordChanged);
