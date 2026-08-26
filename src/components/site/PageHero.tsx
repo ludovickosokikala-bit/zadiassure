@@ -1,4 +1,3 @@
-import { LogoMark } from "@/components/brand/Logo";
 import { Section, SectionHeader } from "@/components/site/Section";
 
 /**
@@ -35,9 +34,6 @@ export function PageHero({
             height={900}
             className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-soft"
           />
-          <span className="absolute -bottom-5 left-5 grid size-16 place-items-center rounded-2xl border border-border bg-card shadow-soft">
-            <LogoMark className="size-11" />
-          </span>
         </div>
       </div>
     </Section>
