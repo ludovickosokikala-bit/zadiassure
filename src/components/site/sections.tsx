@@ -7,7 +7,6 @@ import { routes } from "@/config/site";
 import { useLanguage, useT } from "@/i18n";
 import { approachDictionaries, approachSlugs } from "@/i18n/approach";
 import founderPhoto from "@/assets/founder.png.asset.json";
-import { LogoMark } from "@/components/brand/Logo";
 import heroPeople from "@/assets/people-hero.jpg";
 import worryPeople from "@/assets/people-worry.jpg";
 import person1 from "@/assets/person-1.jpg";
@@ -443,9 +442,6 @@ export function FounderBlock() {
             loading="lazy"
             className="aspect-square w-full rounded-3xl border border-border object-cover shadow-lift"
           />
-          <span className="absolute -bottom-5 -right-4 grid size-16 place-items-center rounded-2xl border border-border bg-card shadow-soft">
-            <LogoMark className="size-11" />
-          </span>
         </div>
         <div>
           <p className="eyebrow">{t.about.eyebrow}</p>

@@ -1,4 +1,3 @@
-import { LogoMark } from "@/components/brand/Logo";
 import { Section, SectionHeader } from "@/components/site/Section";
 
 /**
