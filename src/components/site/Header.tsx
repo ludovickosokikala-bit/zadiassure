@@ -55,7 +55,10 @@ export function Header() {
             <LogoFull className="shrink-0 h-12 w-auto sm:h-14" />
           </div>
 
-          <nav className="hidden min-w-0 items-center gap-0.5 justify-self-center 2xl:flex" aria-label={t.nav.menu}>
+          <nav
+            className="hidden min-w-0 items-center justify-center gap-0 justify-self-stretch overflow-hidden 2xl:flex"
+            aria-label={t.nav.menu}
+          >
             {links.map((link) => (
               <Link
                 key={link.to}
@@ -63,7 +66,7 @@ export function Header() {
                 activeOptions={{ exact: link.to === routes.home }}
                 activeProps={{ className: "text-primary bg-secondary" }}
                 inactiveProps={{ className: "text-muted-foreground" }}
-                className="whitespace-nowrap rounded-full px-1.5 py-1.5 text-[11px] font-medium transition-colors hover:text-primary 2xl:px-2 2xl:py-2 2xl:text-xs"
+                className="shrink-0 whitespace-nowrap rounded-full px-1 py-1.5 text-[11px] font-medium transition-colors hover:text-primary"
               >
                 {link.label}
               </Link>
