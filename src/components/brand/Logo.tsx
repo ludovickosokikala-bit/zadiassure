@@ -15,8 +15,8 @@ export function LogoFull({ className }: { className?: string }) {
       : "ZADIASSURE — Kantoor voor administratieve begeleiding & minnelijke geschillenbeslechting";
 
   return (
-    <Link to="/" className={cn("inline-flex items-center", className)} aria-label="ZADIASSURE">
-      <img src={src} alt={alt} className="h-16 w-auto sm:h-20" width={1920} height={720} />
+    <Link to="/" className="inline-flex items-center" aria-label="ZADIASSURE">
+      <img src={src} alt={alt} className={cn("h-16 w-auto sm:h-20", className)} width={1920} height={720} />
     </Link>
   );
 }
