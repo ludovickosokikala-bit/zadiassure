@@ -55,7 +55,7 @@ export function Header() {
             <LogoFull className="shrink-0 h-12 w-auto sm:h-14" />
           </div>
 
-          <nav className="hidden items-center gap-0.5 2xl:flex" aria-label={t.nav.menu}>
+          <nav className="hidden items-center gap-0.5 justify-self-center 2xl:flex" aria-label={t.nav.menu}>
             {links.map((link) => (
               <Link
                 key={link.to}
