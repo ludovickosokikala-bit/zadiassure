@@ -50,9 +50,9 @@ export function Header() {
       )}
     >
       <div className="container-page">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 2xl:flex 2xl:justify-between 2xl:gap-4">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 2xl:grid-cols-[auto_minmax(0,1fr)_auto] 2xl:gap-4">
           <div className="flex min-w-0 items-center">
-            <LogoFull className="shrink-0" />
+            <LogoFull className="shrink-0 h-12 w-auto sm:h-14" />
           </div>
 
           <nav className="hidden items-center gap-0.5 2xl:flex" aria-label={t.nav.menu}>
