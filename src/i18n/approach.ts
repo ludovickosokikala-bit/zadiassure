@@ -247,7 +247,7 @@ const en: ApproachDict = {
         { title: "A clear plan", text: "Step by step, with priorities and realistic timing." },
         { title: "Correct documents", text: "Forms and applications complete and properly submitted." },
         { title: "We make the calls", text: "Authorities, creditors or services: we speak their language." },
-        { title: "Amicable solution", text: "Where possible we choose dialogue over conflict." },
+        { title: "Structured follow-up", text: "A clear follow-up framework, never managing your money for you." },
       ],
       listTitle: "What you can expect from us",
       list: [
