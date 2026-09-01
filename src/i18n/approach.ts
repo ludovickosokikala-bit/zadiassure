@@ -74,7 +74,7 @@ const nl: ApproachDict = {
       blocks: [
         { title: "Duidelijk plan", text: "Stap per stap, met prioriteiten en realistische timing." },
         { title: "Correcte documenten", text: "Formulieren en aanvragen volledig en correct ingediend." },
-        { title: "Wij nemen contact op", text: "Instanties, schuldeisers of diensten: wij spreken de juiste taal." },
+        { title: "Wij bereiden uw communicatie voor", text: "Instanties, schuldeisers of diensten: wij helpen u uw brieven en aanvragen voorbereiden en volgen de antwoorden op." },
         { title: "Minnelijke oplossing", text: "Waar mogelijk kiezen we voor overleg in plaats van conflict." },
       ],
       listTitle: "Wat u van ons mag verwachten",
@@ -160,7 +160,7 @@ const fr: ApproachDict = {
       blocks: [
         { title: "Un plan clair", text: "Étape par étape, avec des priorités et un calendrier réaliste." },
         { title: "Documents corrects", text: "Formulaires et demandes complets et introduits correctement." },
-        { title: "Nous prenons contact", text: "Administrations, créanciers ou services : nous parlons leur langue." },
+        { title: "Nous préparons vos communications", text: "Administrations, créanciers ou services : nous vous assistons dans la préparation de vos courriers et démarches, et suivons les réponses." },
         { title: "Suivi structuré", text: "Un cadre clair de suivi, sans jamais gérer votre argent à votre place." },
       ],
       listTitle: "Ce que vous pouvez attendre de nous",
@@ -246,7 +246,7 @@ const en: ApproachDict = {
       blocks: [
         { title: "A clear plan", text: "Step by step, with priorities and realistic timing." },
         { title: "Correct documents", text: "Forms and applications complete and properly submitted." },
-        { title: "We make the calls", text: "Authorities, creditors or services: we speak their language." },
+        { title: "We prepare your communications", text: "Authorities, creditors or services: we help you prepare your letters and requests, and follow up on the answers." },
         { title: "Structured follow-up", text: "A clear follow-up framework, never managing your money for you." },
       ],
       listTitle: "What you can expect from us",

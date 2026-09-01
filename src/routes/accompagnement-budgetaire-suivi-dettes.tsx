@@ -69,8 +69,9 @@ function PriceTable({
   rows: { label: string; excl: string; incl: string }[];
 }) {
   return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
-      <table className="w-full text-left text-sm">
+    <div className="overflow-x-auto rounded-3xl border border-border bg-card shadow-soft">
+      <table className="w-full min-w-[20rem] text-left text-sm">
+
         <thead className="bg-secondary">
           <tr>
             <th className="px-5 py-3 font-display font-semibold text-primary">{headers.item}</th>

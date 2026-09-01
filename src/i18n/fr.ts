@@ -300,7 +300,7 @@ export const fr: Dict = {
     title: "Ce que disent nos clients",
     text: "La confiance se construit avec de vraies histoires. Nous ne publions que des témoignages donnés par nos clients eux-mêmes.",
     placeholder:
-      "[PLACEHOLDER] Les témoignages clients, avis Google et récits de clients apparaîtront ici dès qu'ils seront disponibles.",
+      "Les témoignages sont publiés uniquement avec l'accord explicite du client. Demandez-nous des références lors de votre premier entretien.",
   },
   partnersSection: {
     eyebrow: "Partenaires",
@@ -324,7 +324,7 @@ export const fr: Dict = {
       { title: "Respect des engagements", text: "Ce que nous convenons, nous le suivons — dans les délais annoncés." },
       { title: "Croissance durable", text: "Des collaborations où chaque partenaire grandit avec ZADIASSURE." },
     ],
-    logosPlaceholder: "[PLACEHOLDER] Les logos partenaires seront ajoutés ici dès qu'ils seront disponibles.",
+    logosPlaceholder: "Nous collaborons avec des CPAS, services sociaux, avocats et comptables. Les noms de partenaires sont communiqués sur demande, dans le respect de leurs règles de communication.",
   },
   insightsSection: {
     eyebrow: "Centre de connaissances",
@@ -397,6 +397,26 @@ export const fr: Dict = {
     text: "Vous ne trouvez pas votre question ? Posez-la via le formulaire de contact.",
     items: [
       {
+        title: "Est-ce que ZADIASSURE paie mes créanciers à ma place ?",
+        text: "Non. Vous conservez votre argent sur votre compte et vous effectuez directement chaque paiement. Nous vous aidons à organiser, vérifier et suivre votre calendrier.",
+      },
+      {
+        title: "Est-ce une médiation de dettes ?",
+        text: "Non. ZADIASSURE propose un accompagnement budgétaire et un suivi administratif. Nous n'exerçons pas la médiation de dettes réglementée ni le règlement collectif de dettes.",
+      },
+      {
+        title: "Pouvez-vous garantir qu'un créancier acceptera une proposition ?",
+        text: "Non. Toute décision appartient au créancier. Nous pouvons vous aider à préparer une demande, à transmettre les informations utiles et à suivre la réponse.",
+      },
+      {
+        title: "À quelle fréquence faisons-nous le point ?",
+        text: "Le premier suivi est généralement prévu après trois mois. Si la situation est stabilisée, les rendez-vous peuvent ensuite avoir lieu tous les six mois.",
+      },
+      {
+        title: "Que se passe-t-il si ma situation est trop complexe ?",
+        text: "Nous vous expliquons les limites de notre intervention et pouvons vous orienter vers un CPAS, un service de médiation de dettes habilité, un avocat ou un autre professionnel compétent.",
+      },
+      {
         title: "À qui s'adresse ZADIASSURE ?",
         text: "Aux particuliers, familles, indépendants et entreprises qui cherchent un accompagnement dans des situations administratives, budgétaires ou liées à l'immigration en Belgique.",
       },
@@ -422,7 +442,7 @@ export const fr: Dict = {
       },
       {
         title: "Comment se passe le paiement ?",
-        text: "Nous travaillons avec des accords clairs, fixés à l'avance selon la formule choisie. [PLACEHOLDER : tarifs et conditions de paiement définitifs à compléter.]",
+        text: "Nous travaillons avec des accords clairs, fixés à l'avance. Les tarifs de l'accompagnement budgétaire et du suivi administratif des dettes figurent intégralement sur la page Accompagnement budgétaire, en HTVA et en TVAC. Chaque intervention supplémentaire est expliquée et tarifée avant son exécution.",
       },
       {
         title: "Collaborez-vous avec des avocats ou d'autres professionnels ?",
@@ -490,7 +510,7 @@ export const fr: Dict = {
     hoursLabel: "Disponibilité",
     hoursValue: "Lun – ven, 09:00 – 17:00",
     locationLabel: "Localisation",
-    locationValue: "[PLACEHOLDER] L'adresse du bureau sera ajoutée dès qu'elle sera définitive. Les rendez-vous se font actuellement sur rendez-vous ou en ligne.",
+    locationValue: "Les entretiens ont lieu sur rendez-vous, en ligne ou en déplacement en Belgique. Fixez un rendez-vous par téléphone, par e-mail ou via le formulaire de contact.",
     socialLabel: "Réseaux sociaux",
     form: {
       title: "Votre demande",
@@ -530,11 +550,11 @@ export const fr: Dict = {
     termsTitle: "Conditions générales",
     cookiesTitle: "Politique en matière de cookies",
     placeholder:
-      "[PLACEHOLDER] Ce texte est une version de travail et doit encore être validé juridiquement et complété avec les données officielles de la société.",
+      "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données et les conditions applicables à nos services.",
     sections: [
       {
         title: "Qui traite vos données ?",
-        text: "ZADIASSURE est responsable du traitement des données personnelles que vous transmettez via ce site. [PLACEHOLDER : données officielles, numéro d'entreprise et siège.]",
+        text: "ZADIASSURE est responsable du traitement des données personnelles que vous transmettez via ce site. Vous pouvez nous joindre à info@zadiassure.be ou au +32 471 98 67 64 pour toute question relative à vos données.",
       },
       {
         title: "Quelles données collectons-nous ?",
@@ -554,7 +574,7 @@ export const fr: Dict = {
       },
       {
         title: "Cookies",
-        text: "Ce site n'utilise que des préférences fonctionnelles (comme votre choix de langue) stockées localement dans votre navigateur. [PLACEHOLDER : à compléter si des cookies analytiques ou marketing sont utilisés.]",
+        text: "Ce site n'utilise que des préférences fonctionnelles (comme votre choix de langue) stockées localement dans votre navigateur. Aucun cookie analytique ou marketing n'est déposé.",
       },
     ],
   },
@@ -568,6 +588,6 @@ export const fr: Dict = {
     terms: "Conditions générales",
     cookies: "Politique cookies",
     rights: "Tous droits réservés.",
-    placeholderNote: "[PLACEHOLDER] Adresse du bureau et données d'entreprise à venir.",
+    placeholderNote: "Entretiens sur rendez-vous, en ligne ou en déplacement en Belgique.",
   },
 };
