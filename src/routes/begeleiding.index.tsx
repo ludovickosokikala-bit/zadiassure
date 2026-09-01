@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import pageImage from "@/assets/page-services.jpg";
 import { PageHero } from "@/components/site/PageHero";
-import { Section, SectionHeader } from "@/components/site/Section";
+import { Section } from "@/components/site/Section";
 import { ServiceCards, ProcessSteps, CtaBand, WhyGrid } from "@/components/site/sections";
-import { dictionaries, useT } from "@/i18n";
+import { Cta } from "@/components/ui/cta";
+import { dictionaries, useLanguage, useT } from "@/i18n";
+import { budgetCoachingDictionaries } from "@/i18n/budgetCoaching";
 
 const meta = dictionaries.nl.meta.services;
+
 
 export const Route = createFileRoute("/begeleiding/")({
   head: () => ({
