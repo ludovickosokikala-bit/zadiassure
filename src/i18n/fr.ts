@@ -397,6 +397,26 @@ export const fr: Dict = {
     text: "Vous ne trouvez pas votre question ? Posez-la via le formulaire de contact.",
     items: [
       {
+        title: "Est-ce que ZADIASSURE paie mes créanciers à ma place ?",
+        text: "Non. Vous conservez votre argent sur votre compte et vous effectuez directement chaque paiement. Nous vous aidons à organiser, vérifier et suivre votre calendrier.",
+      },
+      {
+        title: "Est-ce une médiation de dettes ?",
+        text: "Non. ZADIASSURE propose un accompagnement budgétaire et un suivi administratif. Nous n'exerçons pas la médiation de dettes réglementée ni le règlement collectif de dettes.",
+      },
+      {
+        title: "Pouvez-vous garantir qu'un créancier acceptera une proposition ?",
+        text: "Non. Toute décision appartient au créancier. Nous pouvons vous aider à préparer une demande, à transmettre les informations utiles et à suivre la réponse.",
+      },
+      {
+        title: "À quelle fréquence faisons-nous le point ?",
+        text: "Le premier suivi est généralement prévu après trois mois. Si la situation est stabilisée, les rendez-vous peuvent ensuite avoir lieu tous les six mois.",
+      },
+      {
+        title: "Que se passe-t-il si ma situation est trop complexe ?",
+        text: "Nous vous expliquons les limites de notre intervention et pouvons vous orienter vers un CPAS, un service de médiation de dettes habilité, un avocat ou un autre professionnel compétent.",
+      },
+      {
         title: "À qui s'adresse ZADIASSURE ?",
         text: "Aux particuliers, familles, indépendants et entreprises qui cherchent un accompagnement dans des situations administratives, budgétaires ou liées à l'immigration en Belgique.",
       },

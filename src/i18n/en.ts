@@ -396,6 +396,26 @@ export const en: Dict = {
     text: "Can't find your question? Feel free to ask it through the contact form.",
     items: [
       {
+        title: "Does ZADIASSURE pay my creditors for me?",
+        text: "No. Your money stays in your account and you make every payment yourself. We help you organise, check and follow up your payment schedule.",
+      },
+      {
+        title: "Is this regulated debt mediation?",
+        text: "No. ZADIASSURE offers budget coaching and administrative follow-up. We do not carry out regulated debt mediation and we do not offer collective debt settlement.",
+      },
+      {
+        title: "Can you guarantee that a creditor will accept a proposal?",
+        text: "No. Every decision belongs to the creditor. We can help you prepare a request, share the relevant information and follow up on the answer.",
+      },
+      {
+        title: "How often do we review the situation?",
+        text: "The first follow-up is usually planned after three months. Once the situation is stable, meetings can take place every six months.",
+      },
+      {
+        title: "What if my situation is too complex?",
+        text: "We explain the limits of our work and can refer you to a public welfare centre, an authorised debt mediation service, a lawyer or another qualified professional.",
+      },
+      {
         title: "Who is ZADIASSURE for?",
         text: "For individuals, families, self-employed professionals and companies looking for guidance in administrative, budget or immigration-related situations in Belgium.",
       },

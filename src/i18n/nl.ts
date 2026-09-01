@@ -429,6 +429,26 @@ export const nl: Dict = {
     text: "Vindt u uw vraag niet terug? Stel ze gerust via het contactformulier.",
     items: [
       {
+        title: "Betaalt ZADIASSURE mijn schuldeisers in mijn plaats?",
+        text: "Nee. Uw geld blijft op uw rekening en u voert elke betaling zelf uit. Wij helpen u uw kalender te organiseren, te controleren en op te volgen.",
+      },
+      {
+        title: "Is dit schuldbemiddeling?",
+        text: "Nee. ZADIASSURE biedt budgetbegeleiding en administratieve opvolging. Wij oefenen geen gereglementeerde schuldbemiddeling uit en bieden geen collectieve schuldenregeling aan.",
+      },
+      {
+        title: "Kunt u garanderen dat een schuldeiser een voorstel aanvaardt?",
+        text: "Nee. Elke beslissing behoort tot de schuldeiser. Wij kunnen u helpen een aanvraag voor te bereiden, nuttige informatie te bezorgen en het antwoord op te volgen.",
+      },
+      {
+        title: "Hoe vaak overlopen we de situatie?",
+        text: "De eerste opvolging is doorgaans na drie maanden voorzien. Is de situatie gestabiliseerd, dan kunnen de gesprekken daarna elke zes maanden plaatsvinden.",
+      },
+      {
+        title: "Wat als mijn situatie te complex is?",
+        text: "Dan leggen we de grenzen van onze tussenkomst uit en verwijzen we u door naar een OCMW, een erkende dienst voor schuldbemiddeling, een advocaat of een andere bevoegde professional.",
+      },
+      {
         title: "Voor wie is ZADIASSURE?",
         text: "Voor particulieren, gezinnen, zelfstandigen en ondernemingen die begeleiding zoeken bij administratieve, budgettaire of immigratiegerelateerde situaties in België.",
       },
