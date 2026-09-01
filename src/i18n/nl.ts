@@ -14,9 +14,9 @@ export const nl: Dict = {
         "Begeleiding op maat voor particulieren, gezinnen, zelfstandigen en ondernemingen die vooruit willen in België.",
     },
     services: {
-      title: "Onze begeleiding — immigratie, administratie, budget & minnelijke oplossing",
+      title: "Onze begeleiding — immigratie, administratie, budget & schuldopvolging",
       description:
-        "Vier pijlers van begeleiding: immigratie, administratieve ondersteuning, budgettaire begeleiding en minnelijke oplossing. Menselijk, professioneel en meertalig.",
+        "Vier pijlers van begeleiding: immigratie, administratieve ondersteuning, budgettaire begeleiding en administratieve opvolging van schulden. Menselijk, professioneel en meertalig.",
     },
     about: {
       title: "Over ZADIASSURE — cabinet d'accompagnement in België",
@@ -80,7 +80,7 @@ export const nl: Dict = {
     segBusiness: "Ik ben ondernemer",
     stats: [
       { title: "3 talen", text: "Nederlands, Frans en Engels" },
-      { title: "4 pijlers", text: "Immigratie, administratie, budget, minnelijke oplossing" },
+      { title: "4 pijlers", text: "Immigratie, administratie, budget, schuldopvolging" },
       { title: "1 aanspreekpunt", text: "Persoonlijke opvolging tot de afronding" },
     ],
   },
@@ -247,23 +247,23 @@ export const nl: Dict = {
           "Budgettaire begeleiding voor gezinnen en zelfstandigen in België: overzicht, prioriteiten, realistische plannen en opvolging van afspraken.",
       },
       {
-        slug: "minnelijke-oplossing",
-        name: "Minnelijke oplossing",
+        slug: "administratieve-opvolging-schulden",
+        name: "Administratieve opvolging van schulden",
         short:
-          "Begeleiding bij het zoeken naar constructieve oplossingen vóór situaties escaleren.",
+          "Overzicht van uw schulden, een realistische betalingskalender en opvolging van de gemaakte afspraken.",
         intro:
-          "Veel conflicten en achterstanden kunnen nog in overleg worden opgelost. Wij helpen het gesprek voorbereiden, de feiten helder zetten en zoeken naar een werkbare regeling voor alle partijen.",
+          "Wij brengen uw schuldeisers, facturen en vervaldagen in kaart, bepalen samen prioriteiten en zetten een betalingskalender op die u zelf uitvoert. U houdt uw geld op uw eigen rekening: ZADIASSURE ontvangt geen bedragen voor schuldeisers en oefent geen gereglementeerde schuldbemiddeling uit.",
         bullets: [
-          "Situatie objectief in kaart brengen",
-          "Voorbereiding van het gesprek",
-          "Zoeken naar een haalbare regeling",
-          "Communicatie helder en respectvol houden",
-          "Opvolging van de gemaakte afspraken",
-          "Doorverwijzing naar gespecialiseerde partners waar nodig",
+          "Inventaris van schuldeisers, facturen en referenties",
+          "Analyse van inkomsten, lasten en maandelijkse capaciteit",
+          "Prioritaire vervaldagen en dringende zaken bepalen",
+          "Budget en betalingskalender opstellen",
+          "Voorbereiding van administratieve stappen met uw akkoord",
+          "Doorverwijzing naar OCMW, erkende dienst of advocaat waar nodig",
         ],
-        seoTitle: "Minnelijke oplossing & bemiddelde regelingen | ZADIASSURE",
+        seoTitle: "Administratieve opvolging van schulden | ZADIASSURE",
         seoDescription:
-          "Begeleiding naar constructieve, minnelijke oplossingen bij administratieve en financiële geschillen, voordat situaties escaleren.",
+          "Breng uw schulden in kaart, stel een realistische betalingskalender op en volg uw betalingen op. U betaalt uw schuldeisers zelf, direct.",
       },
     ],
   },

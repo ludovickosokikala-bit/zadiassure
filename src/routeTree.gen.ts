@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AccompagnementBudgetaireSuiviDettesRouteImport } from './routes/accompagnement-budgetaire-suivi-dettes'
 import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -63,6 +64,12 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccompagnementBudgetaireSuiviDettesRoute =
+  AccompagnementBudgetaireSuiviDettesRouteImport.update({
+    id: '/accompagnement-budgetaire-suivi-dettes',
+    path: '/accompagnement-budgetaire-suivi-dettes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
   id: '/algemene-voorwaarden',
   path: '/algemene-voorwaarden',
@@ -278,6 +285,7 @@ const LovableEmailTransactionalPreviewRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accompagnement-budgetaire-suivi-dettes': typeof AccompagnementBudgetaireSuiviDettesRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
@@ -323,6 +331,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accompagnement-budgetaire-suivi-dettes': typeof AccompagnementBudgetaireSuiviDettesRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
@@ -369,6 +378,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/accompagnement-budgetaire-suivi-dettes': typeof AccompagnementBudgetaireSuiviDettesRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
@@ -416,6 +426,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/accompagnement-budgetaire-suivi-dettes'
     | '/algemene-voorwaarden'
     | '/auth'
     | '/contact'
@@ -461,6 +472,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/accompagnement-budgetaire-suivi-dettes'
     | '/algemene-voorwaarden'
     | '/auth'
     | '/contact'
@@ -506,6 +518,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/accompagnement-budgetaire-suivi-dettes'
     | '/algemene-voorwaarden'
     | '/auth'
     | '/contact'
@@ -553,6 +566,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AccompagnementBudgetaireSuiviDettesRoute: typeof AccompagnementBudgetaireSuiviDettesRoute
   AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
@@ -596,6 +610,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accompagnement-budgetaire-suivi-dettes': {
+      id: '/accompagnement-budgetaire-suivi-dettes'
+      path: '/accompagnement-budgetaire-suivi-dettes'
+      fullPath: '/accompagnement-budgetaire-suivi-dettes'
+      preLoaderRoute: typeof AccompagnementBudgetaireSuiviDettesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/algemene-voorwaarden': {
@@ -945,6 +966,8 @@ const CrmRouteWithChildren = CrmRoute._addFileChildren(CrmRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AccompagnementBudgetaireSuiviDettesRoute:
+    AccompagnementBudgetaireSuiviDettesRoute,
   AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,

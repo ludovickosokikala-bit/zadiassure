@@ -27,6 +27,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly" as const,
             priority: "0.8",
           })),
+          { path: "/accompagnement-budgetaire-suivi-dettes", changefreq: "monthly", priority: "0.9" },
           { path: "/over-zadiassure", changefreq: "monthly", priority: "0.7" },
           { path: "/partners", changefreq: "monthly", priority: "0.7" },
           { path: "/kenniscentrum", changefreq: "weekly", priority: "0.8" },

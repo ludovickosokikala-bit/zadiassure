@@ -11,8 +11,8 @@ export function LogoFull({ className }: { className?: string }) {
   const src = locale === "fr" ? logoFr.url : logoNl.url;
   const alt =
     locale === "fr"
-      ? "ZADIASSURE — Cabinet d'accompagnement administratif & de résolution amiable"
-      : "ZADIASSURE — Kantoor voor administratieve begeleiding & minnelijke geschillenbeslechting";
+      ? "ZADIASSURE — Cabinet d'accompagnement administratif & budgétaire"
+      : "ZADIASSURE — Kantoor voor administratieve en budgettaire begeleiding";
 
   return (
     <Link to="/" className="inline-flex items-center" aria-label="ZADIASSURE">

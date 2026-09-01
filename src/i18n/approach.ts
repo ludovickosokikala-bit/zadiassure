@@ -69,7 +69,7 @@ const nl: ApproachDict = {
         "Van overzicht naar actie. U krijgt een plan met duidelijke stappen, wie wat doet en wanneer. Wij nemen de briefwisseling en contacten op ons waar dat nodig is.",
       metaTitle: "Uw oplossing en actieplan | ZADIASSURE",
       metaDescription:
-        "Van analyse naar actie: een concreet plan, correcte documenten, contact met instanties en minnelijke oplossingen bij ZADIASSURE.",
+        "Van analyse naar actie: een concreet plan, correcte documenten, contact met instanties en administratieve opvolging bij ZADIASSURE.",
       imageAlt: "Adviseur legt documenten uit aan een klant",
       blocks: [
         { title: "Duidelijk plan", text: "Stap per stap, met prioriteiten en realistische timing." },
@@ -155,13 +155,13 @@ const fr: ApproachDict = {
         "De la vue d'ensemble à l'action. Vous recevez un plan avec des étapes claires, qui fait quoi et quand. Nous prenons en charge la correspondance et les contacts lorsque c'est nécessaire.",
       metaTitle: "Votre solution et plan d'action | ZADIASSURE",
       metaDescription:
-        "De l'analyse à l'action : un plan concret, des documents corrects, le contact avec les administrations et des solutions amiables chez ZADIASSURE.",
+        "De l'analyse à l'action : un plan concret, des documents corrects, le contact avec les administrations et le suivi administratif chez ZADIASSURE.",
       imageAlt: "Conseiller expliquant des documents à un client",
       blocks: [
         { title: "Un plan clair", text: "Étape par étape, avec des priorités et un calendrier réaliste." },
         { title: "Documents corrects", text: "Formulaires et demandes complets et introduits correctement." },
         { title: "Nous prenons contact", text: "Administrations, créanciers ou services : nous parlons leur langue." },
-        { title: "Solution amiable", text: "Quand c'est possible, nous privilégions le dialogue au conflit." },
+        { title: "Suivi structuré", text: "Un cadre clair de suivi, sans jamais gérer votre argent à votre place." },
       ],
       listTitle: "Ce que vous pouvez attendre de nous",
       list: [
@@ -247,7 +247,7 @@ const en: ApproachDict = {
         { title: "A clear plan", text: "Step by step, with priorities and realistic timing." },
         { title: "Correct documents", text: "Forms and applications complete and properly submitted." },
         { title: "We make the calls", text: "Authorities, creditors or services: we speak their language." },
-        { title: "Amicable solution", text: "Where possible we choose dialogue over conflict." },
+        { title: "Structured follow-up", text: "A clear follow-up framework, never managing your money for you." },
       ],
       listTitle: "What you can expect from us",
       list: [

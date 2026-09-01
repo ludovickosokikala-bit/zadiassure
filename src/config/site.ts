@@ -28,6 +28,7 @@ export const routes = {
   insights: "/kenniscentrum",
   legislation: "/wetgeving",
   documents: "/documenten",
+  budgetCoaching: "/accompagnement-budgetaire-suivi-dettes",
   contact: "/contact",
 
   faq: "/faq",

@@ -11,12 +11,19 @@ export function Footer() {
     locale === "fr" ? "Espace collaborateurs" : locale === "en" ? "Staff area" : "Medewerkers";
   const mandateLabel =
     locale === "fr" ? "Donner mandat" : locale === "en" ? "Give a mandate" : "Volmacht geven";
+  const budgetLabel =
+    locale === "fr"
+      ? "Accompagnement budgétaire"
+      : locale === "en"
+        ? "Budget coaching"
+        : "Budgetbegeleiding";
   const year = new Date().getFullYear();
 
   const nav = [
     { to: routes.home, label: t.nav.home },
     { to: routes.audiences, label: t.nav.audiences },
     { to: routes.services, label: t.nav.services },
+    { to: routes.budgetCoaching, label: budgetLabel },
     { to: routes.partners, label: t.nav.partners },
     { to: routes.insights, label: t.nav.insights },
     { to: routes.faq, label: t.nav.faq },

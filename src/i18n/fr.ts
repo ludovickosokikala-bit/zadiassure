@@ -14,9 +14,9 @@ export const fr: Dict = {
         "Un accompagnement sur mesure pour les particuliers, les familles, les indépendants et les entreprises qui veulent avancer en Belgique.",
     },
     services: {
-      title: "Notre accompagnement — immigration, administratif, budgétaire & résolution amiable",
+      title: "Notre accompagnement — immigration, administratif, budgétaire & suivi des dettes",
       description:
-        "Quatre piliers d'accompagnement : immigration, accompagnement administratif, accompagnement budgétaire et résolution amiable. Humain, professionnel et multilingue.",
+        "Quatre piliers d'accompagnement : immigration, accompagnement administratif, accompagnement budgétaire et suivi administratif des dettes. Humain, professionnel et multilingue.",
     },
     about: {
       title: "À propos de ZADIASSURE — cabinet d'accompagnement en Belgique",
@@ -80,7 +80,7 @@ export const fr: Dict = {
     segBusiness: "Je suis entrepreneur",
     stats: [
       { title: "3 langues", text: "Néerlandais, français et anglais" },
-      { title: "4 piliers", text: "Immigration, administratif, budgétaire, résolution amiable" },
+      { title: "4 piliers", text: "Immigration, administratif, budgétaire, suivi des dettes" },
       { title: "1 interlocuteur", text: "Un suivi personnel jusqu'à la résolution" },
     ],
   },
@@ -245,22 +245,23 @@ export const fr: Dict = {
           "Accompagnement budgétaire pour familles et indépendants en Belgique : vue d'ensemble, priorités, plans réalistes et suivi des engagements.",
       },
       {
-        slug: "minnelijke-oplossing",
-        name: "Résolution amiable",
-        short: "Accompagnement vers des solutions constructives avant que les situations ne s'aggravent.",
+        slug: "administratieve-opvolging-schulden",
+        name: "Suivi administratif des dettes",
+        short:
+          "Une vue d'ensemble de vos dettes, un calendrier de paiement réaliste et le suivi des engagements pris.",
         intro:
-          "De nombreux conflits et retards peuvent encore se régler par le dialogue. Nous aidons à préparer l'échange, à clarifier les faits et à chercher un arrangement viable pour toutes les parties.",
+          "Nous inventorions vos créanciers, factures et échéances, définissons les priorités avec vous et mettons en place un calendrier de paiement que vous exécutez vous-même. Votre argent reste sur votre compte : ZADIASSURE ne reçoit pas les sommes destinées aux créanciers et n'exerce pas la médiation de dettes réglementée.",
         bullets: [
-          "Cartographie objective de la situation",
-          "Préparation de l'échange",
-          "Recherche d'un arrangement réaliste",
-          "Communication claire et respectueuse",
-          "Suivi des engagements pris",
-          "Orientation vers des partenaires spécialisés si nécessaire",
+          "Inventaire des créanciers, factures et références",
+          "Analyse des revenus, charges et capacité mensuelle",
+          "Identification des urgences et échéances prioritaires",
+          "Création d'un budget et d'un calendrier de paiement",
+          "Préparation de démarches administratives avec votre accord",
+          "Orientation vers le CPAS, un service habilité ou un avocat si nécessaire",
         ],
-        seoTitle: "Résolution amiable et arrangements négociés | ZADIASSURE",
+        seoTitle: "Suivi administratif des dettes | ZADIASSURE",
         seoDescription:
-          "Accompagnement vers des solutions amiables et constructives en cas de litiges administratifs et financiers, avant toute escalade.",
+          "Organisez vos dettes, établissez un calendrier de paiement réaliste et suivez vos paiements. Vous payez vous-même vos créanciers, directement.",
       },
     ],
   },
