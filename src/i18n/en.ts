@@ -299,7 +299,7 @@ export const en: Dict = {
     title: "What our clients say",
     text: "Trust is built with real stories. That is why we only publish testimonials given by our clients themselves.",
     placeholder:
-      "[PLACEHOLDER] Real client testimonials, Google reviews and client stories will appear here once available.",
+      "Testimonials are published only with the client's explicit consent. Ask us for references during your first conversation.",
   },
   partnersSection: {
     eyebrow: "Partners",
@@ -323,7 +323,7 @@ export const en: Dict = {
       { title: "Keeping commitments", text: "What we agree, we follow up — within the agreed timeframe." },
       { title: "Sustainable growth", text: "Collaborations in which every partner grows with ZADIASSURE." },
     ],
-    logosPlaceholder: "[PLACEHOLDER] Partner logos will be added here once available.",
+    logosPlaceholder: "We work with public welfare centres, social services, lawyers and accountants. Partner names are shared on request, respecting their communication rules.",
   },
   insightsSection: {
     eyebrow: "Knowledge centre",
@@ -421,7 +421,7 @@ export const en: Dict = {
       },
       {
         title: "How does payment work?",
-        text: "We work with clear agreements set out in advance, depending on the chosen formula. [PLACEHOLDER: final fees and payment terms to be added here.]",
+        text: "We work with clear agreements set out in advance. The full fees for budget coaching and administrative debt follow-up are listed on the Budget coaching page, excluding and including VAT. Every additional step is explained and priced before it is carried out.",
       },
       {
         title: "Do you work with lawyers or other professionals?",
@@ -489,7 +489,7 @@ export const en: Dict = {
     hoursLabel: "Availability",
     hoursValue: "Mon – Fri, 09:00 – 17:00",
     locationLabel: "Location",
-    locationValue: "[PLACEHOLDER] The office address will be added once final. Meetings currently take place by appointment or online.",
+    locationValue: "Meetings take place by appointment, online or on location in Belgium. Book a meeting by phone, email or through the contact form.",
     socialLabel: "Social media",
     form: {
       title: "Your request",
@@ -529,11 +529,11 @@ export const en: Dict = {
     termsTitle: "Terms and conditions",
     cookiesTitle: "Cookie policy",
     placeholder:
-      "[PLACEHOLDER] This text is a working version and still needs legal review and the final company details.",
+      "Below you will find how ZADIASSURE handles your data and the terms that apply to our services.",
     sections: [
       {
         title: "Who processes your data?",
-        text: "ZADIASSURE is responsible for processing the personal data you provide through this website. [PLACEHOLDER: official company details, company number and registered office.]",
+        text: "ZADIASSURE is responsible for processing the personal data you provide through this website. You can reach us at info@zadiassure.be or +32 471 98 67 64 with any question about your data.",
       },
       {
         title: "Which data do we collect?",
@@ -553,7 +553,7 @@ export const en: Dict = {
       },
       {
         title: "Cookies",
-        text: "This website only uses functional preferences (such as your language choice) stored locally in your browser. [PLACEHOLDER: to be completed if analytics or marketing cookies are used.]",
+        text: "This website only uses functional preferences (such as your language choice) stored locally in your browser. No analytics or marketing cookies are placed.",
       },
     ],
   },
@@ -567,6 +567,6 @@ export const en: Dict = {
     terms: "Terms and conditions",
     cookies: "Cookie policy",
     rights: "All rights reserved.",
-    placeholderNote: "[PLACEHOLDER] Office address and company details to follow.",
+    placeholderNote: "Meetings by appointment, online or on location in Belgium.",
   },
 };

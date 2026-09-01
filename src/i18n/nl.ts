@@ -320,7 +320,7 @@ export const nl: Dict = {
     title: "Wat onze klanten zeggen",
     text: "Vertrouwen bouwt u op met echte verhalen. Daarom publiceren wij enkel getuigenissen die door onze klanten zelf zijn gegeven.",
     placeholder:
-      "[PLACEHOLDER] Hier komen echte klantgetuigenissen, Google-reviews en klantverhalen zodra ze aangeleverd worden.",
+      "Getuigenissen worden enkel gepubliceerd met de uitdrukkelijke toestemming van de klant. Vraag ons gerust naar referenties tijdens uw eerste gesprek.",
   },
   partnersSection: {
     eyebrow: "Partners",
@@ -353,7 +353,7 @@ export const nl: Dict = {
         text: "Samenwerkingen waarin elke partner mee groeit met ZADIASSURE.",
       },
     ],
-    logosPlaceholder: "[PLACEHOLDER] Partnerlogo's worden hier toegevoegd zodra ze beschikbaar zijn.",
+    logosPlaceholder: "Wij werken samen met OCMW's, sociale diensten, advocaten en boekhouders. Namen van partners delen we op vraag, met respect voor hun communicatieregels.",
   },
   insightsSection: {
     eyebrow: "Kenniscentrum",
@@ -454,7 +454,7 @@ export const nl: Dict = {
       },
       {
         title: "Hoe verloopt de betaling?",
-        text: "We werken met duidelijke afspraken die vooraf worden vastgelegd, afhankelijk van de gekozen formule. [PLACEHOLDER: definitieve tarieven en betalingsvoorwaarden worden hier toegevoegd.]",
+        text: "We werken met duidelijke afspraken die vooraf worden vastgelegd. De tarieven voor budgetbegeleiding en administratieve opvolging van schulden staan volledig op de pagina Budgetbegeleiding, zowel exclusief als inclusief btw. Elke bijkomende stap wordt vooraf toegelicht en geprijsd.",
       },
       {
         title: "Werkt ZADIASSURE samen met advocaten of andere professionals?",
@@ -523,7 +523,7 @@ export const nl: Dict = {
     hoursLabel: "Bereikbaarheid",
     hoursValue: "Ma – vr, 09:00 – 17:00",
     locationLabel: "Locatie",
-    locationValue: "[PLACEHOLDER] Kantooradres wordt toegevoegd zodra het definitief is. Afspraken gebeuren momenteel op afspraak of digitaal.",
+    locationValue: "Gesprekken gebeuren op afspraak, digitaal of op verplaatsing in België. U spreekt met ons af via telefoon, e-mail of het contactformulier.",
     socialLabel: "Sociale media",
     form: {
       title: "Uw aanvraag",
@@ -564,11 +564,11 @@ export const nl: Dict = {
     termsTitle: "Algemene voorwaarden",
     cookiesTitle: "Cookiebeleid",
     placeholder:
-      "[PLACEHOLDER] Deze tekst is een werkversie en moet nog juridisch worden nagekeken en aangevuld met de definitieve bedrijfsgegevens.",
+      "Hieronder leest u hoe ZADIASSURE met uw gegevens omgaat en welke afspraken gelden voor onze dienstverlening.",
     sections: [
       {
         title: "Wie verwerkt uw gegevens?",
-        text: "ZADIASSURE is verantwoordelijk voor de verwerking van de persoonsgegevens die u via deze website bezorgt. [PLACEHOLDER: officiële bedrijfsgegevens, ondernemingsnummer en zetel.]",
+        text: "ZADIASSURE is verantwoordelijk voor de verwerking van de persoonsgegevens die u via deze website bezorgt. U bereikt ons via info@zadiassure.be of +32 471 98 67 64 voor elke vraag over uw gegevens.",
       },
       {
         title: "Welke gegevens verzamelen wij?",
@@ -588,7 +588,7 @@ export const nl: Dict = {
       },
       {
         title: "Cookies",
-        text: "Deze website gebruikt enkel functionele voorkeuren (zoals uw taalkeuze) die lokaal in uw browser bewaard worden. [PLACEHOLDER: aanvullen zodra analytische of marketingcookies worden gebruikt.]",
+        text: "Deze website gebruikt enkel functionele voorkeuren (zoals uw taalkeuze) die lokaal in uw browser bewaard worden. Er worden geen analytische of marketingcookies geplaatst.",
       },
     ],
   },
@@ -602,6 +602,6 @@ export const nl: Dict = {
     terms: "Algemene voorwaarden",
     cookies: "Cookiebeleid",
     rights: "Alle rechten voorbehouden.",
-    placeholderNote: "[PLACEHOLDER] Kantooradres en ondernemingsgegevens volgen.",
+    placeholderNote: "Gesprekken op afspraak, digitaal of op verplaatsing in België.",
   },
 };
