@@ -75,7 +75,7 @@ Antwoord uitsluitend in ${LANGUAGE_LABEL[data.language]} en in deze structuur, z
 
 **Samenvatting** — 1 tot 2 zinnen.
 **Doelgroep** — particulier | gezin | zelfstandige | onderneming | onduidelijk.
-**Onderwerp** — bv. schuldbemiddeling, sociale rechten, fiscaliteit, verzekeringen, administratie.
+**Onderwerp** — bv. budgetbegeleiding, sociale rechten, fiscaliteit, verzekeringen, administratie.
 **Urgentie** — laag | gemiddeld | hoog, met korte reden (deadline, betalingsachterstand, dreigende maatregel).
 **Volgende stap** — één concreet voorstel voor de medewerker.
 **Ontbrekende info** — wat je nog moet opvragen bij de klant.

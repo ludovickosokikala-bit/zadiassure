@@ -1,4 +1,4 @@
-import { Building2, HeartHandshake, Home, Briefcase, FileCheck2, Globe2, Wallet, Handshake } from "lucide-react";
+import { Building2, HeartHandshake, Home, Briefcase, FileCheck2, Globe2, Wallet, ListChecks } from "lucide-react";
 import type { ComponentType } from "react";
 
 export const audienceIcons: Record<string, ComponentType<{ className?: string }>> = {
@@ -12,5 +12,5 @@ export const serviceIcons: Record<string, ComponentType<{ className?: string }>>
   immigration: Globe2,
   "administratieve-begeleiding": FileCheck2,
   "budgettaire-begeleiding": Wallet,
-  "minnelijke-oplossing": Handshake,
+  "administratieve-opvolging-schulden": ListChecks,
 };
