@@ -66,7 +66,7 @@ const nl: ApproachDict = {
       eyebrow: "Stap 2",
       title: "Oplossing: een concreet plan en opvolging",
       intro:
-        "Van overzicht naar actie. U krijgt een plan met duidelijke stappen, wie wat doet en wanneer. Wij nemen de briefwisseling en contacten op ons waar dat nodig is.",
+        "Van overzicht naar actie. U krijgt een plan met duidelijke stappen, wie wat doet en wanneer. Wij helpen u uw communicatie met instanties, schuldeisers of diensten voor te bereiden en volgen de ontvangen antwoorden op. U blijft verantwoordelijk voor uw beslissingen en uw betalingen.",
       metaTitle: "Uw oplossing en actieplan | ZADIASSURE",
       metaDescription:
         "Van analyse naar actie: een concreet plan, correcte documenten, contact met instanties en administratieve opvolging bij ZADIASSURE.",
