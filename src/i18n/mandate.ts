@@ -129,7 +129,7 @@ const nl: MandateDict = {
     mail: "Post en briefwisseling openen",
     authorities: "Contact met overheden en instellingen",
     budget: "Budgetbegeleiding",
-    banking: "Bankzaken opvolgen (zonder betalingen)",
+    banking: "Bankbrieven en afrekeningen opvolgen (geen toegang tot uw geld, geen betalingen)",
     insurance: "Verzekeringen en mutualiteit",
     housing: "Huisvesting en energie",
     other: "Andere",
@@ -254,7 +254,7 @@ ZADIASSURE`,
     error: "Er ging iets mis. Probeer opnieuw of neem contact op.",
     required: "Vul de verplichte velden in en onderteken.",
     legal:
-      "Deze volmacht is een begeleidingsvolmacht: ZADIASSURE voert geen betalingen uit en vervangt geen advocaat of notaris. Je kan de volmacht op elk moment intrekken.",
+      "Deze volmacht is een begeleidingsvolmacht: ZADIASSURE voert geen betalingen uit, beheert geen geld en vervangt geen advocaat of notaris. De cliënt behoudt zelf de controle over zijn bankrekening en blijft verantwoordelijk voor zijn financiële beslissingen en betalingen. Je kan de volmacht op elk moment intrekken.",
   },
 };
 
@@ -264,7 +264,7 @@ const fr: MandateDict = {
     mail: "Ouvrir le courrier",
     authorities: "Contacts avec les administrations et institutions",
     budget: "Accompagnement budgétaire",
-    banking: "Suivi bancaire (sans paiements)",
+    banking: "Suivi des courriers et décomptes bancaires (sans accès à votre argent, sans paiements)",
     insurance: "Assurances et mutualité",
     housing: "Logement et énergie",
     other: "Autre",
@@ -389,7 +389,7 @@ ZADIASSURE`,
     error: "Une erreur est survenue. Réessayez ou contactez-nous.",
     required: "Complétez les champs obligatoires et signez.",
     legal:
-      "Ce mandat est un mandat d'accompagnement : ZADIASSURE n'effectue pas de paiements et ne remplace ni avocat ni notaire. Vous pouvez le révoquer à tout moment.",
+      "Ce mandat est un mandat d'accompagnement : ZADIASSURE n'effectue pas de paiements, ne gère pas votre argent et ne remplace ni avocat ni notaire. Le client conserve le contrôle de son compte bancaire et reste responsable de ses décisions financières et de ses paiements. Vous pouvez le révoquer à tout moment.",
   },
 };
 
@@ -399,7 +399,7 @@ const en: MandateDict = {
     mail: "Opening mail and correspondence",
     authorities: "Contact with authorities and institutions",
     budget: "Budget guidance",
-    banking: "Banking follow-up (no payments)",
+    banking: "Follow-up of bank letters and statements (no access to your money, no payments)",
     insurance: "Insurance and health fund",
     housing: "Housing and energy",
     other: "Other",
@@ -524,7 +524,7 @@ ZADIASSURE`,
     error: "Something went wrong. Please try again or contact us.",
     required: "Please complete the required fields and sign.",
     legal:
-      "This is a guidance mandate: ZADIASSURE does not make payments and does not replace a lawyer or notary. You can revoke the mandate at any time.",
+      "This is a guidance mandate: ZADIASSURE does not make payments, does not manage your money and does not replace a lawyer or notary. The client keeps control of their bank account and remains responsible for their financial decisions and payments. You can revoke the mandate at any time.",
   },
 };
 

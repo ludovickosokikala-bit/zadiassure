@@ -22,19 +22,6 @@ export interface BudgetCoachingDict {
   includes: { title: string; items: string[] };
   limits: { label: string; title: string; paragraphs: string[] };
   journey: { eyebrow: string; title: string; steps: { title: string; text: string }[] };
-  pricing: {
-    eyebrow: string;
-    title: string;
-    initialTitle: string;
-    initialNote: string;
-    followUpTitle: string;
-    headers: { item: string; excl: string; incl: string };
-    initial: { label: string; excl: string; incl: string }[];
-    followUp: { label: string; excl: string; incl: string }[];
-    countingRuleTitle: string;
-    countingRule: string;
-    note: string;
-  };
   faq: { eyebrow: string; title: string; items: { title: string; text: string }[] };
   legalLinksTitle: string;
 }
@@ -101,29 +88,6 @@ const nl: BudgetCoachingDict = {
         text: "Mogelijke overgang naar een halfjaarlijkse opvolging of doorverwijzing naar een erkende dienst.",
       },
     ],
-  },
-  pricing: {
-    eyebrow: "Tarieven",
-    title: "Transparante prijzen, vooraf afgesproken",
-    initialTitle: "Eerste balans — volgens het aantal schuldeisers",
-    initialNote: "Meer dan 15 schuldeisers: op maat, na prijsopgave.",
-    followUpTitle: "Opvolging",
-    headers: { item: "Formule", excl: "Prijs excl. btw", incl: "Prijs incl. btw" },
-    initial: [
-      { label: "Tot 5 schuldeisers", excl: "150,00 €", incl: "181,50 €" },
-      { label: "6 tot 10 schuldeisers", excl: "200,00 €", incl: "242,00 €" },
-      { label: "11 tot 15 schuldeisers", excl: "250,00 €", incl: "302,50 €" },
-      { label: "Meer dan 15 schuldeisers", excl: "Op prijsopgave", incl: "Op prijsopgave" },
-    ],
-    followUp: [
-      { label: "Periodieke opvolging", excl: "75,00 €", incl: "90,75 €" },
-      { label: "Opvolging + assistentie", excl: "125,00 €", incl: "151,25 €" },
-      { label: "Vanaf de 3e stap", excl: "75,00 €/uur", incl: "90,75 €/uur" },
-    ],
-    countingRuleTitle: "Regel voor het tellen van schuldeisers",
-    countingRule:
-      "Eenzelfde organisatie of persoon geldt als één schuldeiser, ook wanneer er meerdere facturen, contracten of referenties openstaan bij die schuldeiser. Voorbeeld: meerdere facturen van Proximus = één schuldeiser.",
-    note: "De prijs wordt aangekondigd en aanvaard vóór elke tussenkomst. De terugbetalingen aan schuldeisers staan volledig los van de honoraria van ZADIASSURE en worden direct door de klant betaald.",
   },
   faq: {
     eyebrow: "Veelgestelde vragen",
@@ -217,29 +181,6 @@ const fr: BudgetCoachingDict = {
       },
     ],
   },
-  pricing: {
-    eyebrow: "Tarifs",
-    title: "Des prix transparents, acceptés à l'avance",
-    initialTitle: "Bilan initial — selon le nombre de créanciers",
-    initialNote: "Plus de 15 créanciers : sur devis.",
-    followUpTitle: "Suivis",
-    headers: { item: "Formule", excl: "Prix HTVA", incl: "Prix TVAC" },
-    initial: [
-      { label: "Jusqu'à 5 créanciers", excl: "150,00 €", incl: "181,50 €" },
-      { label: "De 6 à 10 créanciers", excl: "200,00 €", incl: "242,00 €" },
-      { label: "De 11 à 15 créanciers", excl: "250,00 €", incl: "302,50 €" },
-      { label: "Plus de 15 créanciers", excl: "Sur devis", incl: "Sur devis" },
-    ],
-    followUp: [
-      { label: "Suivi périodique", excl: "75,00 €", incl: "90,75 €" },
-      { label: "Suivi + assistance", excl: "125,00 €", incl: "151,25 €" },
-      { label: "Au-delà de 2 démarches", excl: "75,00 €/heure", incl: "90,75 €/heure" },
-    ],
-    countingRuleTitle: "Règle de comptage des créanciers",
-    countingRule:
-      "Un même organisme ou une même personne compte comme un seul créancier, même si plusieurs factures, contrats ou références sont ouverts auprès de ce créancier. Exemple : plusieurs factures Proximus = un seul créancier.",
-    note: "Le prix est annoncé et accepté avant toute intervention. Les remboursements dus aux créanciers sont distincts des honoraires ZADIASSURE et sont payés directement par le client.",
-  },
   faq: {
     eyebrow: "Questions fréquentes",
     title: "Vos questions sur l'accompagnement budgétaire",
@@ -331,29 +272,6 @@ const en: BudgetCoachingDict = {
         text: "Possible move to six-monthly follow-up or referral to an authorised service.",
       },
     ],
-  },
-  pricing: {
-    eyebrow: "Pricing",
-    title: "Transparent prices, agreed in advance",
-    initialTitle: "Initial review — based on the number of creditors",
-    initialNote: "More than 15 creditors: on quotation.",
-    followUpTitle: "Follow-up",
-    headers: { item: "Package", excl: "Price excl. VAT", incl: "Price incl. VAT" },
-    initial: [
-      { label: "Up to 5 creditors", excl: "€150.00", incl: "€181.50" },
-      { label: "6 to 10 creditors", excl: "€200.00", incl: "€242.00" },
-      { label: "11 to 15 creditors", excl: "€250.00", incl: "€302.50" },
-      { label: "More than 15 creditors", excl: "On quotation", incl: "On quotation" },
-    ],
-    followUp: [
-      { label: "Periodic follow-up", excl: "€75.00", incl: "€90.75" },
-      { label: "Follow-up + assistance", excl: "€125.00", incl: "€151.25" },
-      { label: "Beyond 2 steps", excl: "€75.00/hour", incl: "€90.75/hour" },
-    ],
-    countingRuleTitle: "How creditors are counted",
-    countingRule:
-      "The same organisation or person counts as one creditor, even if several invoices, contracts or references are open with that creditor. Example: several Proximus invoices = one creditor.",
-    note: "The price is announced and accepted before any intervention. Repayments owed to creditors are separate from ZADIASSURE fees and are paid directly by the client.",
   },
   faq: {
     eyebrow: "Frequently asked questions",
