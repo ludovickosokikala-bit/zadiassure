@@ -549,31 +549,104 @@ export const en: Dict = {
     termsTitle: "Terms and conditions",
     cookiesTitle: "Cookie policy",
     placeholder:
-      "Below you will find how ZADIASSURE handles your data and the terms that apply to our services.",
+      "Below you can read how ZADIASSURE handles your personal data and which rights you have.",
+    companyDataNote:
+      "TO BE COMPLETED BY ZADIASSURE: official company name, company number (BE 0xxx.xxx.xxx), VAT number and registered office. These details will be added once confirmed internally.",
     sections: [
       {
         title: "Who processes your data?",
-        text: "ZADIASSURE is responsible for processing the personal data you provide through this website. You can reach us at info@zadiassure.be or +32 471 98 67 64 with any question about your data.",
+        text: "ZADIASSURE is responsible for processing the personal data you provide through this website. You can reach us at info@zadiassure.be or +32 471 98 67 64 with any question.",
       },
       {
         title: "Which data do we collect?",
-        text: "Only what you enter in the contact form: last name, first name, e-mail, phone number, municipality, your profile, preferred language and your message.",
+        text: "Only the data you enter yourself in the contact or request form: name, first name, e-mail, phone number, municipality, your profile, your language, your message and any documents you add voluntarily.",
       },
       {
         title: "What do we use it for?",
-        text: "Exclusively to handle your request and to contact you. We do not sell your data and do not use it for unsolicited commercial communication.",
+        text: "Only to handle your request and contact you. We do not sell your data and do not use it for unsolicited commercial communication.",
       },
       {
         title: "How long do we keep it?",
-        text: "No longer than necessary to handle your request and to comply with applicable statutory retention periods.",
+        text: "No longer than needed to handle your request and than the applicable statutory retention periods.",
+      },
+      {
+        title: "Who do we share it with?",
+        text: "Only with the staff handling your file and the technical providers hosting this website and our e-mail. Any referral to a partner, public welfare centre, authorised service or lawyer happens with your consent.",
       },
       {
         title: "Your rights",
-        text: "You have the right to access, correct, delete and restrict your data, and to object to processing. Contact us by e-mail.",
+        text: "You have the right to access, correct, erase and restrict your data, and to object to processing. Contact us at info@zadiassure.be. You may also lodge a complaint with the Belgian Data Protection Authority.",
+      },
+    ],
+    termsIntro:
+      "These terms and conditions apply to every service and support provided by ZADIASSURE, unless agreed otherwise in writing.",
+    termsSections: [
+      {
+        title: "Our services",
+        text: "ZADIASSURE provides administrative and budget support: organising documents, creating an overview and priorities, budget planning, setting up a payment schedule, preparing administrative steps and following up the answers received.",
       },
       {
-        title: "Cookies",
-        text: "This website only uses functional preferences (such as your language choice) stored locally in your browser. No analytics or marketing cookies are placed.",
+        title: "What we do not do",
+        text: "ZADIASSURE does not carry out regulated debt mediation and does not offer collective debt settlement. We do not perform debt collection and do not replace a lawyer, notary, accountant or court.",
+      },
+      {
+        title: "Your money and your payments",
+        text: "ZADIASSURE does not receive amounts intended for creditors and does not pay creditors on your behalf. You keep control of your bank account and make every payment yourself.",
+      },
+      {
+        title: "Client responsibility",
+        text: "You remain responsible for your own decisions and payments and for the accuracy and completeness of the information and documents you provide.",
+      },
+      {
+        title: "No guarantee of result",
+        text: "Our engagement is a best-efforts obligation. We do not guarantee any result or acceptance by a creditor, authority or institution: every decision belongs to that third party.",
+      },
+      {
+        title: "Referral",
+        text: "When a situation requires regulated, judicial or legal intervention, we explain the limits of our work and refer you to a competent organisation or professional (public welfare centre, authorised debt mediation service, lawyer or other professional).",
+      },
+      {
+        title: "Price and payment",
+        text: "The price of every intervention is announced and accepted in advance. Additional steps are only carried out with your agreement. Amounts owed to your creditors are entirely separate from our fees.",
+      },
+      {
+        title: "Confidentiality",
+        text: "All information and documents are treated confidentially, in line with our privacy policy.",
+      },
+      {
+        title: "Duration and termination",
+        text: "Support runs for the agreed period or assignment. Either party may end the collaboration in writing; work already performed remains payable.",
+      },
+      {
+        title: "Complaints and applicable law",
+        text: "Send complaints by e-mail to info@zadiassure.be; we first look for a solution together. Belgian law applies and the Belgian courts have jurisdiction.",
+      },
+      {
+        title: "Company and identification details",
+        text: "TO BE COMPLETED BY ZADIASSURE: official company name, legal form, company number, VAT number, registered office and any professional or insurance details.",
+      },
+    ],
+    cookiesIntro: "Below you can read which cookies and local preferences this website uses.",
+    cookiesSections: [
+      {
+        title: "What is a cookie?",
+        text: "A cookie or similar local storage is a small file a website keeps in your browser, for example to remember your language choice.",
+      },
+      {
+        title: "Which cookies do we use?",
+        text: "Only strictly necessary and functional storage: your language choice and, when you sign in to the secure staff area, your session data. They are required for the website to work.",
+      },
+      {
+        title: "Analytics and marketing cookies",
+        text: "This website sets no analytics, advertising or tracking cookies and shares no data with advertisers.",
+      },
+      {
+        title: "Managing your choice",
+        text: "You can delete or block cookies and local storage at any time in your browser settings. If you block the necessary storage, the language choice and secure sign-in may not work correctly.",
+      },
+      {
+        title: "Changes",
+        text: "If we later add services that set additional cookies, we will update this policy and ask for your prior consent where legally required.",
       },
     ],
   },

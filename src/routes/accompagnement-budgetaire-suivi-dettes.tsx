@@ -61,38 +61,6 @@ export const Route = createFileRoute("/accompagnement-budgetaire-suivi-dettes")(
   component: BudgetCoachingPage,
 });
 
-function PriceTable({
-  headers,
-  rows,
-}: {
-  headers: { item: string; excl: string; incl: string };
-  rows: { label: string; excl: string; incl: string }[];
-}) {
-  return (
-    <div className="overflow-x-auto rounded-3xl border border-border bg-card shadow-soft">
-      <table className="w-full min-w-[20rem] text-left text-sm">
-
-        <thead className="bg-secondary">
-          <tr>
-            <th className="px-5 py-3 font-display font-semibold text-primary">{headers.item}</th>
-            <th className="px-5 py-3 font-display font-semibold text-primary">{headers.excl}</th>
-            <th className="px-5 py-3 font-display font-semibold text-primary">{headers.incl}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.label} className="border-t border-border">
-              <td className="px-5 py-3 text-foreground">{r.label}</td>
-              <td className="px-5 py-3 text-muted-foreground">{r.excl}</td>
-              <td className="px-5 py-3 font-semibold text-primary">{r.incl}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
 function BudgetCoachingPage() {
   const { locale } = useLanguage();
   const c = budgetCoachingDictionaries[locale];
@@ -172,30 +140,6 @@ function BudgetCoachingPage() {
             </li>
           ))}
         </ol>
-      </Section>
-
-      <Section>
-        <SectionHeader eyebrow={c.pricing.eyebrow} title={c.pricing.title} />
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <div>
-            <h3 className="font-display text-lg font-bold text-primary">{c.pricing.initialTitle}</h3>
-            <div className="mt-4">
-              <PriceTable headers={c.pricing.headers} rows={c.pricing.initial} />
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">{c.pricing.initialNote}</p>
-          </div>
-          <div>
-            <h3 className="font-display text-lg font-bold text-primary">{c.pricing.followUpTitle}</h3>
-            <div className="mt-4">
-              <PriceTable headers={c.pricing.headers} rows={c.pricing.followUp} />
-            </div>
-          </div>
-        </div>
-        <div className="mt-8 rounded-3xl border border-border bg-secondary/60 p-6">
-          <h3 className="font-display font-semibold text-primary">{c.pricing.countingRuleTitle}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.pricing.countingRule}</p>
-        </div>
-        <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{c.pricing.note}</p>
       </Section>
 
       <Section tone="muted">

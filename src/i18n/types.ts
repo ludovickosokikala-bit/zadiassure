@@ -223,7 +223,12 @@ export interface Dict {
     termsTitle: string;
     cookiesTitle: string;
     placeholder: string;
+    companyDataNote: string;
     sections: Item[];
+    termsIntro: string;
+    termsSections: Item[];
+    cookiesIntro: string;
+    cookiesSections: Item[];
   };
   footer: {
     about: string;

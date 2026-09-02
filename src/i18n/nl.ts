@@ -584,7 +584,9 @@ export const nl: Dict = {
     termsTitle: "Algemene voorwaarden",
     cookiesTitle: "Cookiebeleid",
     placeholder:
-      "Hieronder leest u hoe ZADIASSURE met uw gegevens omgaat en welke afspraken gelden voor onze dienstverlening.",
+      "Hieronder leest u hoe ZADIASSURE met uw persoonsgegevens omgaat en welke rechten u heeft.",
+    companyDataNote:
+      "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, ondernemingsnummer (BE 0xxx.xxx.xxx), btw-nummer en maatschappelijke zetel. Deze gegevens worden hier toegevoegd zodra ze intern bevestigd zijn.",
     sections: [
       {
         title: "Wie verwerkt uw gegevens?",
@@ -592,7 +594,7 @@ export const nl: Dict = {
       },
       {
         title: "Welke gegevens verzamelen wij?",
-        text: "Enkel de gegevens die u zelf invult in het contactformulier: naam, voornaam, e-mailadres, telefoonnummer, gemeente, uw profiel, uw voorkeurstaal en uw bericht.",
+        text: "Enkel de gegevens die u zelf invult in het contact- of aanvraagformulier: naam, voornaam, e-mailadres, telefoonnummer, gemeente, uw profiel, uw voorkeurstaal, uw bericht en de documenten die u vrijwillig toevoegt.",
       },
       {
         title: "Waarvoor gebruiken wij ze?",
@@ -603,12 +605,84 @@ export const nl: Dict = {
         text: "Niet langer dan nodig voor de behandeling van uw aanvraag en de wettelijke bewaartermijnen die van toepassing zijn.",
       },
       {
-        title: "Uw rechten",
-        text: "U hebt recht op inzage, verbetering, verwijdering en beperking van uw gegevens, en u kunt bezwaar maken tegen de verwerking. Contacteer ons daarvoor via e-mail.",
+        title: "Met wie delen wij ze?",
+        text: "Enkel met de medewerkers die uw dossier behandelen en met technische dienstverleners die de website en onze e-mail hosten. Doorverwijzing naar een partner, OCMW, erkende dienst of advocaat gebeurt alleen met uw akkoord.",
       },
       {
-        title: "Cookies",
-        text: "Deze website gebruikt enkel functionele voorkeuren (zoals uw taalkeuze) die lokaal in uw browser bewaard worden. Er worden geen analytische of marketingcookies geplaatst.",
+        title: "Uw rechten",
+        text: "U hebt recht op inzage, verbetering, verwijdering en beperking van uw gegevens, en u kunt bezwaar maken tegen de verwerking. Contacteer ons daarvoor via info@zadiassure.be. U kunt ook klacht neerleggen bij de Gegevensbeschermingsautoriteit (gegevensbeschermingsautoriteit.be).",
+      },
+    ],
+    termsIntro:
+      "Deze algemene voorwaarden gelden voor elke begeleiding en dienstverlening van ZADIASSURE, tenzij schriftelijk anders overeengekomen.",
+    termsSections: [
+      {
+        title: "Onze diensten",
+        text: "ZADIASSURE biedt administratieve en budgettaire begeleiding: documenten ordenen, overzicht en prioriteiten bepalen, budgetplanning, een betalingskalender opstellen, administratieve stappen voorbereiden en ontvangen antwoorden opvolgen.",
+      },
+      {
+        title: "Wat wij niet doen",
+        text: "ZADIASSURE oefent geen gereglementeerde schuldbemiddeling uit en biedt geen collectieve schuldenregeling aan. Wij doen geen invordering en vervangen geen advocaat, notaris, boekhouder of gerechtelijke instantie.",
+      },
+      {
+        title: "Uw geld en uw betalingen",
+        text: "ZADIASSURE ontvangt geen bedragen bestemd voor schuldeisers en betaalt schuldeisers niet in uw plaats. U behoudt de controle over uw bankrekening en voert elke betaling zelf uit.",
+      },
+      {
+        title: "Verantwoordelijkheid van de klant",
+        text: "U blijft verantwoordelijk voor uw eigen beslissingen en betalingen en voor de juistheid en volledigheid van de informatie en documenten die u ons bezorgt.",
+      },
+      {
+        title: "Geen resultaatsgarantie",
+        text: "Onze opdracht is een middelenverbintenis. Wij garanderen geen resultaat en geen aanvaarding door een schuldeiser, overheid of instelling: elke beslissing behoort toe aan die derde partij.",
+      },
+      {
+        title: "Doorverwijzing",
+        text: "Wanneer de situatie een gereglementeerde, gerechtelijke of juridische tussenkomst vraagt, leggen wij de grenzen van onze tussenkomst uit en verwijzen wij u door naar een bevoegde instantie of professional (OCMW, erkende dienst voor schuldbemiddeling, advocaat of andere professional).",
+      },
+      {
+        title: "Prijs en betaling",
+        text: "De prijs van elke tussenkomst wordt vooraf meegedeeld en aanvaard. Bijkomende stappen worden pas uitgevoerd na uw akkoord. De bedragen die u aan uw schuldeisers verschuldigd bent, staan volledig los van onze honoraria.",
+      },
+      {
+        title: "Vertrouwelijkheid",
+        text: "Alle informatie en documenten worden vertrouwelijk behandeld, conform ons privacybeleid.",
+      },
+      {
+        title: "Duur en beëindiging",
+        text: "De begeleiding loopt voor de afgesproken periode of opdracht. Beide partijen kunnen de samenwerking schriftelijk beëindigen; reeds geleverde prestaties blijven verschuldigd.",
+      },
+      {
+        title: "Klachten en toepasselijk recht",
+        text: "Klachten bezorgt u ons per e-mail via info@zadiassure.be; wij zoeken eerst een oplossing in overleg. Het Belgisch recht is van toepassing en de Belgische rechtbanken zijn bevoegd.",
+      },
+      {
+        title: "Bedrijfs- en identificatiegegevens",
+        text: "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, rechtsvorm, ondernemingsnummer, btw-nummer, maatschappelijke zetel en eventuele beroeps- of verzekeringsvermeldingen.",
+      },
+    ],
+    cookiesIntro:
+      "Hieronder leest u welke cookies en lokale voorkeuren deze website gebruikt.",
+    cookiesSections: [
+      {
+        title: "Wat is een cookie?",
+        text: "Een cookie of vergelijkbare lokale opslag is een klein bestand dat een website in uw browser bewaart, bijvoorbeeld om uw taalkeuze te onthouden.",
+      },
+      {
+        title: "Welke cookies gebruiken wij?",
+        text: "Enkel strikt noodzakelijke en functionele opslag: uw taalkeuze en, wanneer u zich aanmeldt in de beveiligde medewerkersomgeving, uw sessiegegevens. Deze zijn nodig om de website te laten werken.",
+      },
+      {
+        title: "Analyse- en marketingcookies",
+        text: "Deze website plaatst geen analytische, advertentie- of trackingcookies en deelt geen gegevens met adverteerders.",
+      },
+      {
+        title: "Uw keuze beheren",
+        text: "U kunt cookies en lokale opslag op elk moment verwijderen of blokkeren via de instellingen van uw browser. Blokkeert u de noodzakelijke opslag, dan kunnen uw taalkeuze en de beveiligde aanmelding niet correct werken.",
+      },
+      {
+        title: "Wijzigingen",
+        text: "Voegen wij later diensten toe die extra cookies plaatsen, dan passen wij dit beleid aan en vragen wij vooraf uw toestemming waar dat wettelijk vereist is.",
       },
     ],
   },

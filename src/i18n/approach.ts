@@ -66,7 +66,7 @@ const nl: ApproachDict = {
       eyebrow: "Stap 2",
       title: "Oplossing: een concreet plan en opvolging",
       intro:
-        "Van overzicht naar actie. U krijgt een plan met duidelijke stappen, wie wat doet en wanneer. Wij nemen de briefwisseling en contacten op ons waar dat nodig is.",
+        "Van overzicht naar actie. U krijgt een plan met duidelijke stappen, wie wat doet en wanneer. Wij helpen u uw communicatie met instanties, schuldeisers of diensten voor te bereiden en volgen de ontvangen antwoorden op. U blijft verantwoordelijk voor uw beslissingen en uw betalingen.",
       metaTitle: "Uw oplossing en actieplan | ZADIASSURE",
       metaDescription:
         "Van analyse naar actie: een concreet plan, correcte documenten, contact met instanties en administratieve opvolging bij ZADIASSURE.",
@@ -75,7 +75,7 @@ const nl: ApproachDict = {
         { title: "Duidelijk plan", text: "Stap per stap, met prioriteiten en realistische timing." },
         { title: "Correcte documenten", text: "Formulieren en aanvragen volledig en correct ingediend." },
         { title: "Wij bereiden uw communicatie voor", text: "Instanties, schuldeisers of diensten: wij helpen u uw brieven en aanvragen voorbereiden en volgen de antwoorden op." },
-        { title: "Minnelijke oplossing", text: "Waar mogelijk kiezen we voor overleg in plaats van conflict." },
+        { title: "Gestructureerde opvolging", text: "Een duidelijk opvolgingskader, zonder ooit uw geld in uw plaats te beheren." },
       ],
       listTitle: "Wat u van ons mag verwachten",
       list: [
@@ -152,7 +152,7 @@ const fr: ApproachDict = {
       eyebrow: "Étape 2",
       title: "Solution : un plan concret et un suivi",
       intro:
-        "De la vue d'ensemble à l'action. Vous recevez un plan avec des étapes claires, qui fait quoi et quand. Nous prenons en charge la correspondance et les contacts lorsque c'est nécessaire.",
+        "De la vue d'ensemble à l'action. Vous recevez un plan avec des étapes claires, qui fait quoi et quand. Nous vous assistons dans la préparation de vos communications avec les organismes, créanciers ou services concernés et nous pouvons suivre les réponses reçues. Vous restez responsable de vos décisions et de vos paiements.",
       metaTitle: "Votre solution et plan d'action | ZADIASSURE",
       metaDescription:
         "De l'analyse à l'action : un plan concret, des documents corrects, le contact avec les administrations et le suivi administratif chez ZADIASSURE.",
@@ -238,10 +238,10 @@ const en: ApproachDict = {
       eyebrow: "Step 2",
       title: "Solution: a concrete plan with follow-up",
       intro:
-        "From overview to action. You get a plan with clear steps, who does what and when. We take over correspondence and contacts wherever needed.",
+        "From overview to action. You get a plan with clear steps, who does what and when. We help you prepare your communications with the authorities, creditors or services involved and we can follow up the answers received. You remain responsible for your decisions and your payments.",
       metaTitle: "Your solution and action plan | ZADIASSURE",
       metaDescription:
-        "From analysis to action: a concrete plan, correct documents, contact with authorities and amicable solutions at ZADIASSURE.",
+        "From analysis to action: a concrete plan, correct documents, prepared communications with authorities and administrative follow-up at ZADIASSURE.",
       imageAlt: "Adviser explaining documents to a client",
       blocks: [
         { title: "A clear plan", text: "Step by step, with priorities and realistic timing." },
