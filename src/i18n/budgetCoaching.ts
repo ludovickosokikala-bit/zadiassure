@@ -60,7 +60,7 @@ const nl: BudgetCoachingDict = {
     ],
   },
   limits: {
-    label: "Verplichte vermelding",
+    label: "IMPORTANT",
     title: "Duidelijke grenzen van onze tussenkomst",
     paragraphs: [
       "ZADIASSURE ontvangt geen bedragen bestemd voor schuldeisers en betaalt de schuldeisers niet in de plaats van de klant. De klant blijft verantwoordelijk voor zijn beslissingen en voert zijn betalingen zelf direct uit.",
@@ -152,7 +152,7 @@ const fr: BudgetCoachingDict = {
     ],
   },
   limits: {
-    label: "Mention obligatoire",
+    label: "IMPORTANT",
     title: "Limites claires de notre intervention",
     paragraphs: [
       "ZADIASSURE ne reçoit pas les sommes destinées aux créanciers et ne paie pas les créanciers à la place du client. Le client reste responsable de ses décisions et effectue directement ses paiements.",
@@ -244,7 +244,7 @@ const en: BudgetCoachingDict = {
     ],
   },
   limits: {
-    label: "Mandatory notice",
+    label: "IMPORTANT",
     title: "Clear limits of our intervention",
     paragraphs: [
       "ZADIASSURE does not receive amounts intended for creditors and does not pay creditors on behalf of the client. The client remains responsible for their decisions and makes their payments directly.",
