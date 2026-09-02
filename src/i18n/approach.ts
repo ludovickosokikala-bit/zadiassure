@@ -238,10 +238,10 @@ const en: ApproachDict = {
       eyebrow: "Step 2",
       title: "Solution: a concrete plan with follow-up",
       intro:
-        "From overview to action. You get a plan with clear steps, who does what and when. We take over correspondence and contacts wherever needed.",
+        "From overview to action. You get a plan with clear steps, who does what and when. We help you prepare your communications with the authorities, creditors or services involved and we can follow up the answers received. You remain responsible for your decisions and your payments.",
       metaTitle: "Your solution and action plan | ZADIASSURE",
       metaDescription:
-        "From analysis to action: a concrete plan, correct documents, contact with authorities and amicable solutions at ZADIASSURE.",
+        "From analysis to action: a concrete plan, correct documents, prepared communications with authorities and administrative follow-up at ZADIASSURE.",
       imageAlt: "Adviser explaining documents to a client",
       blocks: [
         { title: "A clear plan", text: "Step by step, with priorities and realistic timing." },
