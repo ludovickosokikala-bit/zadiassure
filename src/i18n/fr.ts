@@ -550,31 +550,105 @@ export const fr: Dict = {
     termsTitle: "Conditions générales",
     cookiesTitle: "Politique en matière de cookies",
     placeholder:
-      "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données et les conditions applicables à nos services.",
+      "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données personnelles et les droits dont vous disposez.",
+    companyDataNote:
+      "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, numéro d'entreprise (BE 0xxx.xxx.xxx), numéro de TVA et siège social. Ces données seront ajoutées dès leur confirmation interne.",
     sections: [
       {
         title: "Qui traite vos données ?",
-        text: "ZADIASSURE est responsable du traitement des données personnelles que vous transmettez via ce site. Vous pouvez nous joindre à info@zadiassure.be ou au +32 471 98 67 64 pour toute question relative à vos données.",
+        text: "ZADIASSURE est responsable du traitement des données personnelles que vous transmettez via ce site. Vous pouvez nous joindre à info@zadiassure.be ou au +32 471 98 67 64 pour toute question.",
       },
       {
         title: "Quelles données collectons-nous ?",
-        text: "Uniquement celles que vous complétez dans le formulaire : nom, prénom, e-mail, téléphone, commune, profil, langue préférée et message.",
+        text: "Uniquement les données que vous complétez vous-même dans le formulaire de contact ou de demande : nom, prénom, e-mail, téléphone, commune, votre profil, votre langue, votre message et les documents que vous ajoutez volontairement.",
       },
       {
-        title: "À quelles fins ?",
-        text: "Exclusivement pour traiter votre demande et vous contacter. Nous ne vendons pas vos données et ne les utilisons pas pour de la communication commerciale non sollicitée.",
+        title: "Pourquoi les utilisons-nous ?",
+        text: "Exclusivement pour traiter votre demande et vous contacter. Nous ne vendons pas vos données et ne les utilisons pas pour des communications commerciales non sollicitées.",
       },
       {
-        title: "Durée de conservation",
-        text: "Pas plus longtemps que nécessaire au traitement de votre demande et aux délais légaux applicables.",
+        title: "Combien de temps les conservons-nous ?",
+        text: "Pas plus longtemps que nécessaire pour le traitement de votre demande et les délais légaux de conservation applicables.",
+      },
+      {
+        title: "Avec qui les partageons-nous ?",
+        text: "Uniquement avec les collaborateurs qui traitent votre dossier et les prestataires techniques qui hébergent le site et notre messagerie. Toute orientation vers un partenaire, un CPAS, un service habilité ou un avocat se fait avec votre accord.",
       },
       {
         title: "Vos droits",
-        text: "Vous disposez d'un droit d'accès, de rectification, d'effacement et de limitation, ainsi que d'un droit d'opposition. Contactez-nous par e-mail.",
+        text: "Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition. Contactez-nous à info@zadiassure.be. Vous pouvez également introduire une réclamation auprès de l'Autorité de protection des données (autoriteprotectiondonnees.be).",
+      },
+    ],
+    termsIntro:
+      "Ces conditions générales s'appliquent à tout accompagnement et à toute prestation de ZADIASSURE, sauf accord écrit contraire.",
+    termsSections: [
+      {
+        title: "Nos services",
+        text: "ZADIASSURE propose un accompagnement administratif et budgétaire : classement des documents, vue d'ensemble et priorités, planification budgétaire, mise en place d'un calendrier de paiement, préparation de démarches administratives et suivi des réponses reçues.",
       },
       {
-        title: "Cookies",
-        text: "Ce site n'utilise que des préférences fonctionnelles (comme votre choix de langue) stockées localement dans votre navigateur. Aucun cookie analytique ou marketing n'est déposé.",
+        title: "Ce que nous ne faisons pas",
+        text: "ZADIASSURE n'exerce pas la médiation de dettes réglementée et ne propose pas de règlement collectif de dettes. Nous n'effectuons aucun recouvrement et ne remplaçons ni avocat, ni notaire, ni comptable, ni instance judiciaire.",
+      },
+      {
+        title: "Votre argent et vos paiements",
+        text: "ZADIASSURE ne reçoit pas les sommes destinées aux créanciers et ne paie pas les créanciers à votre place. Vous conservez le contrôle de votre compte bancaire et effectuez vous-même chaque paiement.",
+      },
+      {
+        title: "Responsabilité du client",
+        text: "Vous restez responsable de vos décisions et de vos paiements, ainsi que de l'exactitude et de l'exhaustivité des informations et documents que vous nous transmettez.",
+      },
+      {
+        title: "Aucune garantie de résultat",
+        text: "Notre mission est une obligation de moyens. Nous ne garantissons aucun résultat ni l'acceptation par un créancier, une administration ou une institution : toute décision appartient à ce tiers.",
+      },
+      {
+        title: "Orientation",
+        text: "Lorsque la situation nécessite une intervention réglementée, judiciaire ou juridique, nous expliquons les limites de notre intervention et vous orientons vers un organisme ou un professionnel compétent (CPAS, service de médiation de dettes habilité, avocat ou autre professionnel).",
+      },
+      {
+        title: "Prix et paiement",
+        text: "Le prix de chaque intervention est annoncé et accepté au préalable. Toute démarche supplémentaire n'est exécutée qu'avec votre accord. Les sommes dues à vos créanciers sont totalement distinctes de nos honoraires.",
+      },
+      {
+        title: "Confidentialité",
+        text: "Toutes les informations et documents sont traités de manière confidentielle, conformément à notre politique de confidentialité.",
+      },
+      {
+        title: "Durée et fin de la collaboration",
+        text: "L'accompagnement court pour la période ou la mission convenue. Chaque partie peut y mettre fin par écrit ; les prestations déjà réalisées restent dues.",
+      },
+      {
+        title: "Réclamations et droit applicable",
+        text: "Adressez vos réclamations par e-mail à info@zadiassure.be ; nous cherchons d'abord une solution concertée. Le droit belge est applicable et les tribunaux belges sont compétents.",
+      },
+      {
+        title: "Données d'entreprise et d'identification",
+        text: "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, forme juridique, numéro d'entreprise, numéro de TVA, siège social et éventuelles mentions professionnelles ou d'assurance.",
+      },
+    ],
+    cookiesIntro:
+      "Vous trouverez ci-dessous les cookies et préférences locales utilisés par ce site.",
+    cookiesSections: [
+      {
+        title: "Qu'est-ce qu'un cookie ?",
+        text: "Un cookie ou stockage local similaire est un petit fichier qu'un site conserve dans votre navigateur, par exemple pour retenir votre choix de langue.",
+      },
+      {
+        title: "Quels cookies utilisons-nous ?",
+        text: "Uniquement un stockage strictement nécessaire et fonctionnel : votre choix de langue et, si vous vous connectez à l'espace collaborateurs sécurisé, vos données de session. Ils sont indispensables au fonctionnement du site.",
+      },
+      {
+        title: "Cookies d'analyse et de marketing",
+        text: "Ce site ne place aucun cookie d'analyse, publicitaire ou de pistage et ne partage aucune donnée avec des annonceurs.",
+      },
+      {
+        title: "Gérer vos choix",
+        text: "Vous pouvez supprimer ou bloquer les cookies et le stockage local à tout moment dans les paramètres de votre navigateur. Si vous bloquez le stockage nécessaire, le choix de langue et la connexion sécurisée peuvent ne plus fonctionner correctement.",
+      },
+      {
+        title: "Modifications",
+        text: "Si nous ajoutons ultérieurement des services plaçant des cookies supplémentaires, nous adapterons cette politique et demanderons votre consentement préalable lorsque la loi l'exige.",
       },
     ],
   },
