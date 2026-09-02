@@ -152,7 +152,7 @@ const fr: ApproachDict = {
       eyebrow: "Étape 2",
       title: "Solution : un plan concret et un suivi",
       intro:
-        "De la vue d'ensemble à l'action. Vous recevez un plan avec des étapes claires, qui fait quoi et quand. Nous prenons en charge la correspondance et les contacts lorsque c'est nécessaire.",
+        "De la vue d'ensemble à l'action. Vous recevez un plan avec des étapes claires, qui fait quoi et quand. Nous vous assistons dans la préparation de vos communications avec les organismes, créanciers ou services concernés et nous pouvons suivre les réponses reçues. Vous restez responsable de vos décisions et de vos paiements.",
       metaTitle: "Votre solution et plan d'action | ZADIASSURE",
       metaDescription:
         "De l'analyse à l'action : un plan concret, des documents corrects, le contact avec les administrations et le suivi administratif chez ZADIASSURE.",
