@@ -75,7 +75,7 @@ const nl: ApproachDict = {
         { title: "Duidelijk plan", text: "Stap per stap, met prioriteiten en realistische timing." },
         { title: "Correcte documenten", text: "Formulieren en aanvragen volledig en correct ingediend." },
         { title: "Wij bereiden uw communicatie voor", text: "Instanties, schuldeisers of diensten: wij helpen u uw brieven en aanvragen voorbereiden en volgen de antwoorden op." },
-        { title: "Minnelijke oplossing", text: "Waar mogelijk kiezen we voor overleg in plaats van conflict." },
+        { title: "Gestructureerde opvolging", text: "Een duidelijk opvolgingskader, zonder ooit uw geld in uw plaats te beheren." },
       ],
       listTitle: "Wat u van ons mag verwachten",
       list: [
