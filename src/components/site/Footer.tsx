@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { routes, site } from "@/config/site";
 import { useLanguage, useT } from "@/i18n";
@@ -99,7 +99,6 @@ export function Footer() {
               {[
                 { href: site.social.facebook, Icon: Facebook, label: "Facebook" },
                 { href: site.social.instagram, Icon: Instagram, label: "Instagram" },
-                { href: site.social.linkedin, Icon: Linkedin, label: "LinkedIn" },
               ].map(({ href, Icon, label }) => (
                 <a
                   key={label}
