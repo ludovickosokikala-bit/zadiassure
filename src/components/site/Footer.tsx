@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
 import { LogoMark } from "@/components/brand/Logo";
 import { routes, site } from "@/config/site";
 import { useLanguage, useT } from "@/i18n";
