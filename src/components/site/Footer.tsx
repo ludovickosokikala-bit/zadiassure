@@ -99,7 +99,6 @@ export function Footer() {
               {[
                 { href: site.social.facebook, Icon: Facebook, label: "Facebook" },
                 { href: site.social.instagram, Icon: Instagram, label: "Instagram" },
-                { href: site.social.linkedin, Icon: Linkedin, label: "LinkedIn" },
               ].map(({ href, Icon, label }) => (
                 <a
                   key={label}
