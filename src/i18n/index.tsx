@@ -53,10 +53,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
+const fallbackValue: LanguageContextValue = {
+  locale: "nl",
+  setLocale: () => {},
+  t: dictionaries.nl,
+};
+
 export function useLanguage(): LanguageContextValue {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used inside <LanguageProvider>");
-  return ctx;
+  return ctx ?? fallbackValue;
 }
 
 /** Convenience hook for components that only need the dictionary. */
