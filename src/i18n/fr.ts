@@ -442,7 +442,7 @@ export const fr: Dict = {
       },
       {
         title: "Comment se passe le paiement ?",
-        text: "Nous travaillons avec des accords clairs, fixés à l'avance. Les tarifs de l'accompagnement budgétaire et du suivi administratif des dettes figurent intégralement sur la page Accompagnement budgétaire, en HTVA et en TVAC. Chaque intervention supplémentaire est expliquée et tarifée avant son exécution.",
+        text: "Nous travaillons avec des accords clairs, fixés à l'avance. Chaque intervention est expliquée et tarifée avant son exécution, et vous l'acceptez avant que nous commencions. Les sommes dues à vos créanciers sont totalement distinctes de nos honoraires.",
       },
       {
         title: "Collaborez-vous avec des avocats ou d'autres professionnels ?",

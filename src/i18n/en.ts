@@ -441,7 +441,7 @@ export const en: Dict = {
       },
       {
         title: "How does payment work?",
-        text: "We work with clear agreements set out in advance. The full fees for budget coaching and administrative debt follow-up are listed on the Budget coaching page, excluding and including VAT. Every additional step is explained and priced before it is carried out.",
+        text: "We work with clear agreements set out in advance. Every intervention is explained and priced before it is carried out, and you accept it before we start. Amounts owed to your creditors are entirely separate from our fees.",
       },
       {
         title: "Do you work with lawyers or other professionals?",
