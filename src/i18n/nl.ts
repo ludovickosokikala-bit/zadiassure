@@ -474,7 +474,7 @@ export const nl: Dict = {
       },
       {
         title: "Hoe verloopt de betaling?",
-        text: "We werken met duidelijke afspraken die vooraf worden vastgelegd. De tarieven voor budgetbegeleiding en administratieve opvolging van schulden staan volledig op de pagina Budgetbegeleiding, zowel exclusief als inclusief btw. Elke bijkomende stap wordt vooraf toegelicht en geprijsd.",
+        text: "We werken met duidelijke afspraken die vooraf worden vastgelegd. Elke tussenkomst wordt vooraf toegelicht en geprijsd, en u aanvaardt ze voor we eraan beginnen. Bedragen die u aan schuldeisers verschuldigd bent, staan volledig los van onze vergoeding.",
       },
       {
         title: "Werkt ZADIASSURE samen met advocaten of andere professionals?",
