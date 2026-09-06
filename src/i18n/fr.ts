@@ -622,10 +622,6 @@ export const fr: Dict = {
         title: "Réclamations et droit applicable",
         text: "Adressez vos réclamations par e-mail à info@zadiassure.be ; nous cherchons d'abord une solution concertée. Le droit belge est applicable et les tribunaux belges sont compétents.",
       },
-      {
-        title: "Données d'entreprise et d'identification",
-        text: "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, forme juridique, numéro d'entreprise, numéro de TVA, siège social et éventuelles mentions professionnelles ou d'assurance.",
-      },
     ],
     cookiesIntro:
       "Vous trouverez ci-dessous les cookies et préférences locales utilisés par ce site.",

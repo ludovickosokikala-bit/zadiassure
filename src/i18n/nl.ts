@@ -656,10 +656,6 @@ export const nl: Dict = {
         title: "Klachten en toepasselijk recht",
         text: "Klachten bezorgt u ons per e-mail via info@zadiassure.be; wij zoeken eerst een oplossing in overleg. Het Belgisch recht is van toepassing en de Belgische rechtbanken zijn bevoegd.",
       },
-      {
-        title: "Bedrijfs- en identificatiegegevens",
-        text: "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, rechtsvorm, ondernemingsnummer, btw-nummer, maatschappelijke zetel en eventuele beroeps- of verzekeringsvermeldingen.",
-      },
     ],
     cookiesIntro:
       "Hieronder leest u welke cookies en lokale voorkeuren deze website gebruikt.",

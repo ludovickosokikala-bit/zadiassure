@@ -621,10 +621,6 @@ export const en: Dict = {
         title: "Complaints and applicable law",
         text: "Send complaints by e-mail to info@zadiassure.be; we first look for a solution together. Belgian law applies and the Belgian courts have jurisdiction.",
       },
-      {
-        title: "Company and identification details",
-        text: "TO BE COMPLETED BY ZADIASSURE: official company name, legal form, company number, VAT number, registered office and any professional or insurance details.",
-      },
     ],
     cookiesIntro: "Below you can read which cookies and local preferences this website uses.",
     cookiesSections: [
