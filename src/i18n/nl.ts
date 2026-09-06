@@ -41,7 +41,7 @@ export const nl: Dict = {
     faq: {
       title: "Veelgestelde vragen — ZADIASSURE",
       description:
-        "Antwoorden op de meest gestelde vragen over onze begeleiding, het eerste gesprek, talen, opvolging en tarieven.",
+        "Antwoorden op de meest gestelde vragen over onze begeleiding, het eerste gesprek, talen en opvolging.",
     },
   },
   brand: {
