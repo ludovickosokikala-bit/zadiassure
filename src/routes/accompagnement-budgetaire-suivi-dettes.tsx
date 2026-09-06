@@ -144,19 +144,22 @@ function BudgetCoachingPage() {
 
       <Section tone="muted">
         <SectionHeader eyebrow={c.faq.eyebrow} title={c.faq.title} align="center" />
-        <div className="mx-auto mt-12 max-w-3xl space-y-4">
-          {c.faq.items.map((item) => (
-            <details
+        <Accordion type="single" collapsible className="mx-auto mt-12 w-full max-w-3xl space-y-4">
+          {c.faq.items.map((item, i) => (
+            <AccordionItem
               key={item.title}
-              className="group rounded-2xl border border-border bg-card p-5 shadow-soft"
+              value={`faq-${i}`}
+              className="rounded-2xl border border-border bg-card px-5 shadow-soft"
             >
-              <summary className="cursor-pointer font-display font-semibold text-primary">
+              <AccordionTrigger className="text-left font-display font-semibold text-primary">
                 {item.title}
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-            </details>
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                {item.text}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
         <p className="mt-10 text-center text-sm text-muted-foreground">
           {c.legalLinksTitle}:{" "}
           <Link to={routes.terms} className="font-semibold text-primary underline hover:text-accent">
