@@ -551,7 +551,7 @@ export const en: Dict = {
     placeholder:
       "Below you can read how ZADIASSURE handles your personal data and which rights you have.",
     companyDataNote:
-      "TO BE COMPLETED BY ZADIASSURE: official company name, company number (BE 0xxx.xxx.xxx), VAT number and registered office. These details will be added once confirmed internally.",
+      "",
     sections: [
       {
         title: "Who processes your data?",

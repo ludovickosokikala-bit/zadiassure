@@ -586,7 +586,7 @@ export const nl: Dict = {
     placeholder:
       "Hieronder leest u hoe ZADIASSURE met uw persoonsgegevens omgaat en welke rechten u heeft.",
     companyDataNote:
-      "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, ondernemingsnummer (BE 0xxx.xxx.xxx), btw-nummer en maatschappelijke zetel. Deze gegevens worden hier toegevoegd zodra ze intern bevestigd zijn.",
+      "",
     sections: [
       {
         title: "Wie verwerkt uw gegevens?",

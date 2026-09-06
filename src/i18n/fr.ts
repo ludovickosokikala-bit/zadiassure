@@ -552,7 +552,7 @@ export const fr: Dict = {
     placeholder:
       "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données personnelles et les droits dont vous disposez.",
     companyDataNote:
-      "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, numéro d'entreprise (BE 0xxx.xxx.xxx), numéro de TVA et siège social. Ces données seront ajoutées dès leur confirmation interne.",
+      "",
     sections: [
       {
         title: "Qui traite vos données ?",
