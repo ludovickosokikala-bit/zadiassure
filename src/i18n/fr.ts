@@ -552,7 +552,7 @@ export const fr: Dict = {
     placeholder:
       "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données personnelles et les droits dont vous disposez.",
     companyDataNote:
-      "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, numéro d'entreprise (BE 0xxx.xxx.xxx), numéro de TVA et siège social. Ces données seront ajoutées dès leur confirmation interne.",
+      "",
     sections: [
       {
         title: "Qui traite vos données ?",
@@ -621,10 +621,6 @@ export const fr: Dict = {
       {
         title: "Réclamations et droit applicable",
         text: "Adressez vos réclamations par e-mail à info@zadiassure.be ; nous cherchons d'abord une solution concertée. Le droit belge est applicable et les tribunaux belges sont compétents.",
-      },
-      {
-        title: "Données d'entreprise et d'identification",
-        text: "À COMPLÉTER PAR ZADIASSURE : dénomination officielle, forme juridique, numéro d'entreprise, numéro de TVA, siège social et éventuelles mentions professionnelles ou d'assurance.",
       },
     ],
     cookiesIntro:

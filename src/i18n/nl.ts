@@ -41,7 +41,7 @@ export const nl: Dict = {
     faq: {
       title: "Veelgestelde vragen — ZADIASSURE",
       description:
-        "Antwoorden op de meest gestelde vragen over onze begeleiding, het eerste gesprek, talen, opvolging en tarieven.",
+        "Antwoorden op de meest gestelde vragen over onze begeleiding, het eerste gesprek, talen en opvolging.",
     },
   },
   brand: {
@@ -586,7 +586,7 @@ export const nl: Dict = {
     placeholder:
       "Hieronder leest u hoe ZADIASSURE met uw persoonsgegevens omgaat en welke rechten u heeft.",
     companyDataNote:
-      "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, ondernemingsnummer (BE 0xxx.xxx.xxx), btw-nummer en maatschappelijke zetel. Deze gegevens worden hier toegevoegd zodra ze intern bevestigd zijn.",
+      "",
     sections: [
       {
         title: "Wie verwerkt uw gegevens?",
@@ -655,10 +655,6 @@ export const nl: Dict = {
       {
         title: "Klachten en toepasselijk recht",
         text: "Klachten bezorgt u ons per e-mail via info@zadiassure.be; wij zoeken eerst een oplossing in overleg. Het Belgisch recht is van toepassing en de Belgische rechtbanken zijn bevoegd.",
-      },
-      {
-        title: "Bedrijfs- en identificatiegegevens",
-        text: "NOG IN TE VULLEN DOOR ZADIASSURE: officiële bedrijfsnaam, rechtsvorm, ondernemingsnummer, btw-nummer, maatschappelijke zetel en eventuele beroeps- of verzekeringsvermeldingen.",
       },
     ],
     cookiesIntro:

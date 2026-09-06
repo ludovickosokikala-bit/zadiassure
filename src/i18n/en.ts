@@ -551,7 +551,7 @@ export const en: Dict = {
     placeholder:
       "Below you can read how ZADIASSURE handles your personal data and which rights you have.",
     companyDataNote:
-      "TO BE COMPLETED BY ZADIASSURE: official company name, company number (BE 0xxx.xxx.xxx), VAT number and registered office. These details will be added once confirmed internally.",
+      "",
     sections: [
       {
         title: "Who processes your data?",
@@ -620,10 +620,6 @@ export const en: Dict = {
       {
         title: "Complaints and applicable law",
         text: "Send complaints by e-mail to info@zadiassure.be; we first look for a solution together. Belgian law applies and the Belgian courts have jurisdiction.",
-      },
-      {
-        title: "Company and identification details",
-        text: "TO BE COMPLETED BY ZADIASSURE: official company name, legal form, company number, VAT number, registered office and any professional or insurance details.",
       },
     ],
     cookiesIntro: "Below you can read which cookies and local preferences this website uses.",
