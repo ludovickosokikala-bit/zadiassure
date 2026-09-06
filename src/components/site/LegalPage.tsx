@@ -28,11 +28,6 @@ export function LegalPage({ title }: { title: "privacy" | "terms" | "cookies" })
             <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
           </div>
         ))}
-        {title === "privacy" && (
-          <p className="rounded-2xl border border-dashed border-border bg-secondary/50 p-5 text-xs leading-relaxed text-muted-foreground">
-            {t.legal.companyDataNote}
-          </p>
-        )}
       </div>
     </Section>
   );
