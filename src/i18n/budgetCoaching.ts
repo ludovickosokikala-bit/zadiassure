@@ -43,7 +43,7 @@ const nl: BudgetCoachingDict = {
     title: "Wat de begeleiding inhoudt",
     paragraphs: [
       "Wanneer facturen, herinneringen en vervaldagen zich opstapelen, is het moeilijk te weten waar te beginnen. Onze begeleiding geeft u een totaaloverzicht en een kader voor opvolging. Samen analyseren we inkomsten, lasten, schulden en dringende zaken om een organisatie op te bouwen die bij uw situatie past.",
-      "We kunnen u ook helpen bij het voorbereiden van geïndividualiseerde administratieve aanvragen, het opvragen van geactualiseerde afrekeningen en het opvolgen van de ontvangen antwoorden. Elke bijkomende tussenkomst wordt uitgelegd en getarifeerd vóór ze wordt uitgevoerd.",
+      "We kunnen u ook helpen bij het voorbereiden van geïndividualiseerde administratieve aanvragen, het opvragen van geactualiseerde afrekeningen en het opvolgen van de ontvangen antwoorden. Elke bijkomende tussenkomst wordt vooraf met u besproken en pas uitgevoerd na uw uitdrukkelijke akkoord.",
     ],
   },
   includes: {
@@ -135,7 +135,7 @@ const fr: BudgetCoachingDict = {
     title: "Présentation du service",
     paragraphs: [
       "Lorsque les factures, rappels et échéances s'accumulent, il peut devenir difficile de savoir par où commencer. Notre accompagnement vous apporte une vue d'ensemble et un cadre de suivi. Nous analysons avec vous les revenus, les charges, les dettes et les urgences afin de construire une organisation adaptée à votre situation.",
-      "Nous pouvons également vous aider à préparer des demandes administratives individualisées, à demander des décomptes actualisés et à suivre les réponses reçues. Chaque intervention supplémentaire est expliquée et tarifée avant son exécution.",
+      "Nous pouvons également vous aider à préparer des demandes administratives individualisées, à demander des décomptes actualisés et à suivre les réponses reçues. Chaque intervention supplémentaire est discutée avec vous au préalable et n'est réalisée qu'après votre accord exprès.",
     ],
   },
   includes: {
@@ -227,7 +227,7 @@ const en: BudgetCoachingDict = {
     title: "About this service",
     paragraphs: [
       "When invoices, reminders and deadlines pile up, it can be hard to know where to start. Our support gives you an overview and a follow-up framework. Together we analyse income, expenses, debts and urgent matters in order to build an organisation that fits your situation.",
-      "We can also help you prepare individual administrative requests, ask for updated statements of account and follow up on the answers received. Every additional intervention is explained and priced before it is carried out.",
+      "We can also help you prepare individual administrative requests, ask for updated statements of account and follow up on the answers received. Every additional intervention is discussed with you in advance and is only carried out after your explicit agreement.",
     ],
   },
   includes: {
