@@ -43,7 +43,7 @@ const nl: BudgetCoachingDict = {
     title: "Wat de begeleiding inhoudt",
     paragraphs: [
       "Wanneer facturen, herinneringen en vervaldagen zich opstapelen, is het moeilijk te weten waar te beginnen. Onze begeleiding geeft u een totaaloverzicht en een kader voor opvolging. Samen analyseren we inkomsten, lasten, schulden en dringende zaken om een organisatie op te bouwen die bij uw situatie past.",
-      "We kunnen u ook helpen bij het voorbereiden van geïndividualiseerde administratieve aanvragen, het opvragen van geactualiseerde afrekeningen en het opvolgen van de ontvangen antwoorden. Elke bijkomende tussenkomst wordt vooraf met u besproken en pas uitgevoerd na uw uitdrukkelijke akkoord.",
+      "We kunnen u ook helpen bij het voorbereiden van geïndividualiseerde administratieve aanvragen, het opvragen van geactualiseerde afrekeningen en het opvolgen van de ontvangen antwoorden. Elke bijkomende tussenkomst wordt vooraf duidelijk met u besproken.",
     ],
   },
   includes: {

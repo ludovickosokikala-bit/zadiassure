@@ -248,7 +248,7 @@ export const nl: Dict = {
       },
       {
         slug: "administratieve-opvolging-schulden",
-        name: "Administratieve opvolging van schulden",
+        name: "Budgetbegeleiding & administratieve opvolging van schulden",
         short:
           "Overzicht van uw schulden, een realistische betalingskalender en opvolging van de gemaakte afspraken.",
         intro:
@@ -261,7 +261,7 @@ export const nl: Dict = {
           "Voorbereiding van administratieve stappen met uw akkoord",
           "Doorverwijzing naar OCMW, erkende dienst of advocaat waar nodig",
         ],
-        seoTitle: "Administratieve opvolging van schulden | ZADIASSURE",
+        seoTitle: "Budgetbegeleiding & administratieve opvolging van schulden | ZADIASSURE",
         seoDescription:
           "Breng uw schulden in kaart, stel een realistische betalingskalender op en volg uw betalingen op. U betaalt uw schuldeisers zelf, direct.",
       },
