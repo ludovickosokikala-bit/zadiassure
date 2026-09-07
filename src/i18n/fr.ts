@@ -246,7 +246,7 @@ export const fr: Dict = {
       },
       {
         slug: "administratieve-opvolging-schulden",
-        name: "Suivi administratif des dettes",
+        name: "Accompagnement budgétaire & suivi administratif des dettes",
         short:
           "Une vue d'ensemble de vos dettes, un calendrier de paiement réaliste et le suivi des engagements pris.",
         intro:
@@ -259,7 +259,7 @@ export const fr: Dict = {
           "Préparation de démarches administratives avec votre accord",
           "Orientation vers le CPAS, un service habilité ou un avocat si nécessaire",
         ],
-        seoTitle: "Suivi administratif des dettes | ZADIASSURE",
+        seoTitle: "Accompagnement budgétaire & suivi administratif des dettes | ZADIASSURE",
         seoDescription:
           "Organisez vos dettes, établissez un calendrier de paiement réaliste et suivez vos paiements. Vous payez vous-même vos créanciers, directement.",
       },

@@ -245,7 +245,7 @@ export const en: Dict = {
       },
       {
         slug: "administratieve-opvolging-schulden",
-        name: "Administrative debt follow-up",
+        name: "Budget coaching & administrative debt follow-up",
         short:
           "An overview of your debts, a realistic payment schedule and follow-up on the agreements made.",
         intro:
@@ -258,7 +258,7 @@ export const en: Dict = {
           "Preparing administrative steps with your agreement",
           "Referral to social services, an authorised service or a lawyer where needed",
         ],
-        seoTitle: "Administrative debt follow-up | ZADIASSURE",
+        seoTitle: "Budget coaching & administrative debt follow-up | ZADIASSURE",
         seoDescription:
           "Organise your debts, set a realistic payment schedule and follow up your payments. You pay your creditors yourself, directly.",
       },
