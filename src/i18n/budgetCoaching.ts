@@ -135,7 +135,7 @@ const fr: BudgetCoachingDict = {
     title: "Présentation du service",
     paragraphs: [
       "Lorsque les factures, rappels et échéances s'accumulent, il peut devenir difficile de savoir par où commencer. Notre accompagnement vous apporte une vue d'ensemble et un cadre de suivi. Nous analysons avec vous les revenus, les charges, les dettes et les urgences afin de construire une organisation adaptée à votre situation.",
-      "Nous pouvons également vous aider à préparer des demandes administratives individualisées, à demander des décomptes actualisés et à suivre les réponses reçues. Chaque intervention supplémentaire est discutée avec vous au préalable et n'est réalisée qu'après votre accord exprès.",
+      "Nous pouvons également vous aider à préparer des demandes administratives individualisées, à demander des décomptes actualisés et à suivre les réponses reçues. Chaque intervention supplémentaire est discutée clairement avec vous au préalable.",
     ],
   },
   includes: {
@@ -227,7 +227,7 @@ const en: BudgetCoachingDict = {
     title: "About this service",
     paragraphs: [
       "When invoices, reminders and deadlines pile up, it can be hard to know where to start. Our support gives you an overview and a follow-up framework. Together we analyse income, expenses, debts and urgent matters in order to build an organisation that fits your situation.",
-      "We can also help you prepare individual administrative requests, ask for updated statements of account and follow up on the answers received. Every additional intervention is discussed with you in advance and is only carried out after your explicit agreement.",
+      "We can also help you prepare individual administrative requests, ask for updated statements of account and follow up on the answers received. Every additional intervention is discussed clearly with you in advance.",
     ],
   },
   includes: {
