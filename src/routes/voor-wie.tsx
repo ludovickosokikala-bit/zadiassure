@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 import pageImage from "@/assets/page-audiences.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { Check } from "lucide-react";
@@ -28,6 +29,18 @@ export const Route = createFileRoute("/voor-wie")({
 
 function AudiencesPage() {
   const t = useT();
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [hash]);
+
   return (
     <>
       <PageHero
