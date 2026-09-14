@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 import pageImage from "@/assets/page-audiences.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { Check } from "lucide-react";
