@@ -46,10 +46,10 @@ export function Hero() {
               </Cta>
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
-              <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
+              <Cta to={routes.audiences} hash="particulieren" size="sm" variant="ghost" withArrow={false}>
                 {t.hero.segIndividual}
               </Cta>
-              <Cta to={routes.audiences} size="sm" variant="ghost" withArrow={false}>
+              <Cta to={routes.audiences} hash="ondernemingen" size="sm" variant="ghost" withArrow={false}>
                 {t.hero.segBusiness}
               </Cta>
             </div>
