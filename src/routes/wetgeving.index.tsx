@@ -11,6 +11,7 @@ import { useLanguage } from "@/i18n";
 import { pick, useLib } from "@/i18n/useLibrary";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/page-insights.jpg";
+import { WeeklyDigest } from "@/components/site/WeeklyDigest";
 
 const meta = libraryDictionaries.nl.legislation;
 
@@ -59,6 +60,7 @@ function LegislationPage() {
       />
 
       <Section>
+        <WeeklyDigest />
         <div className="flex flex-wrap gap-2.5">
           <FilterChip active={theme === "all"} onClick={() => setTheme("all")}>
             {lib.legislation.filterAll}
