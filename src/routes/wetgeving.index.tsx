@@ -14,6 +14,8 @@ import heroImage from "@/assets/page-insights.jpg";
 import { WeeklyDigest } from "@/components/site/WeeklyDigest";
 
 const meta = libraryDictionaries.nl.legislation;
+// Older legislation articles are hidden at the owner's request; set to true to show them again.
+const SHOW_ARCHIVE = false;
 
 export const Route = createFileRoute("/wetgeving/")({
   loader: () => listLegislation(),
@@ -61,6 +63,7 @@ function LegislationPage() {
 
       <Section>
         <WeeklyDigest />
+        {SHOW_ARCHIVE && (<>
         <div className="flex flex-wrap gap-2.5">
           <FilterChip active={theme === "all"} onClick={() => setTheme("all")}>
             {lib.legislation.filterAll}
@@ -113,6 +116,7 @@ function LegislationPage() {
         <p className="mt-10 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {lib.legislation.disclaimer}
         </p>
+        </>)}
 
         <Link
           to="/documenten"
