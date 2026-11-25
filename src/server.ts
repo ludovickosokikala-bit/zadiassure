@@ -2,7 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
-import { hostRedirect, robotsTxtFor } from "./lib/host-routing";
+import { hostKind, hostRedirectWithStatus, robotsTxtFor } from "./lib/host-routing";
 import { BASE_URL } from "./config/site";
 
 type ServerEntry = {
@@ -48,16 +48,26 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const host = request.headers.get("x-forwarded-host") ?? new URL(request.url).host;
+    const response = await handle(request, env, ctx, host);
+    if (hostKind(host) !== "crm") return response;
+    // Everything on the CRM domain must stay out of search results.
+    const headers = new Headers(response.headers);
+    headers.set("X-Robots-Tag", "noindex, nofollow");
+    return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  },
+};
+
+async function handle(request: Request, env: unknown, ctx: unknown, host: string): Promise<Response> {
     const url = new URL(request.url);
-    const host = request.headers.get("x-forwarded-host") ?? url.host;
     if (url.pathname === "/robots.txt") {
       return new Response(robotsTxtFor(host, `${BASE_URL}/sitemap.xml`), {
         headers: { "content-type": "text/plain; charset=utf-8" },
       });
     }
     if (request.method === "GET" || request.method === "HEAD") {
-      const target = hostRedirect(host, url.pathname, url.search);
-      if (target) return Response.redirect(target, 302);
+      const target = hostRedirectWithStatus(host, url.pathname, url.search);
+      if (target) return new Response(null, { status: target.status, headers: { location: target.url } });
     }
     try {
       const handler = await getServerEntry();
@@ -70,5 +80,4 @@ export default {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
     }
-  },
-};
+}

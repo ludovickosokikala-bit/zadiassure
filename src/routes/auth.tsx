@@ -33,7 +33,6 @@ function AuthPage() {
   const lib = useLib();
   const a = lib.auth;
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, setState] = useState<"idle" | "busy">("idle");
@@ -63,18 +62,8 @@ function AuthPage() {
     setError(null);
     setMessage(null);
     try {
-      if (mode === "signup") {
-        const { error: signUpError } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${crmOriginFor(window.location.origin)}/crm` },
-        });
-        if (signUpError) throw signUpError;
-        setMessage(a.checkEmail);
-      } else {
-        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-        if (signInError) throw signInError;
-      }
+      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+      if (signInError) throw signInError;
     } catch {
       setError(a.error);
     } finally {
@@ -116,7 +105,7 @@ function AuthPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                autoComplete={mode === "signup" ? "new-password" : "current-password"}
+                autoComplete="current-password"
                 required
                 minLength={8}
                 maxLength={72}
@@ -130,7 +119,7 @@ function AuthPage() {
               className={cn(ctaVariants({ size: "lg" }), "w-full")}
             >
               {state === "busy" && <Loader2 className="size-4 animate-spin" />}
-              {state === "busy" ? a.working : mode === "signup" ? a.signUp : a.signIn}
+              {state === "busy" ? a.working : a.signIn}
             </button>
           </form>
 
@@ -142,13 +131,6 @@ function AuthPage() {
             {a.google}
           </button>
 
-          <button
-            type="button"
-            onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-            className="mt-5 w-full text-sm font-semibold text-primary underline-offset-4 hover:underline"
-          >
-            {mode === "signin" ? a.toggleToSignUp : a.toggleToSignIn}
-          </button>
         </div>
       </div>
     </section>

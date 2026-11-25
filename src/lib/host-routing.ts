@@ -44,14 +44,23 @@ export function isCrmPath(pathname: string) {
 
 /** Returns the absolute URL to redirect to, or null to serve the request as-is. */
 export function hostRedirect(host: string, pathname: string, search: string): string | null {
+  return hostRedirectWithStatus(host, pathname, search)?.url ?? null;
+}
+
+/** Same as hostRedirect, plus the HTTP status: 301 for CRM-domain → public site, 302 otherwise. */
+export function hostRedirectWithStatus(
+  host: string,
+  pathname: string,
+  search: string,
+): { url: string; status: 301 | 302 } | null {
   const kind = hostKind(host);
   if (kind === "other" || isNeutralPath(pathname)) return null;
   if (kind === "crm") {
-    if (pathname === "/" || pathname === "") return `${CRM_ORIGIN}/crm${search}`;
+    if (pathname === "/" || pathname === "") return { url: `${CRM_ORIGIN}/crm${search}`, status: 302 };
     if (isCrmPath(pathname)) return null;
-    return `${PUBLIC_ORIGIN}${pathname}${search}`;
+    return { url: `${PUBLIC_ORIGIN}${pathname}${search}`, status: 301 };
   }
-  if (isCrmPath(pathname)) return `${CRM_ORIGIN}${pathname}${search}`;
+  if (isCrmPath(pathname)) return { url: `${CRM_ORIGIN}${pathname}${search}`, status: 302 };
   return null;
 }
 
@@ -65,7 +74,7 @@ export function crmOriginFor(currentOrigin: string): string {
 }
 
 export function robotsTxtFor(host: string, sitemapUrl: string): string {
-  if (hostKind(host) === "crm") return "User-agent: *\nDisallow: /\n";
+  if (hostKind(host) === "crm") return "User-agent: *\nAllow: /\n";
   return [
     "User-agent: Googlebot", "Allow: /", "",
     "User-agent: Bingbot", "Allow: /", "",
