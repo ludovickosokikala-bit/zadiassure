@@ -29,6 +29,20 @@
       "when": 1795623900881,
       "tag": "0003_crm_phase2_appointments",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795624924980,
+      "tag": "0004_crm_phase3_budget_debts",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795624942487,
+      "tag": "0005_payment_proofs_storage_policies",
+      "breakpoints": true
     }
   ]
 }

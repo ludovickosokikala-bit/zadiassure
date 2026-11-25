@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { addFoundationEntry } from "@/lib/foundation.functions";
 import { useFoundation, dateLabel } from "./context";
+import { formatEUR } from "@/lib/debtCore";
 import { EmptyState, Field } from "./ui";
 export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?: string }) {
   const { data, c, language, refresh } = useFoundation();
@@ -75,7 +76,15 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
                         ? c.agendaUi.appointmentCreated
                         : v.kind === "appointment_cancelled"
                           ? c.agendaUi.appointmentCancelled
-                          : c.manualNote;
+                          : v.kind === "debt_added"
+                            ? c.debtUi.debtAdded
+                            : v.kind === "debt_status"
+                              ? c.debtUi.debtStatus
+                              : v.kind === "debt_referred"
+                                ? c.debtUi.debtReferred
+                                : v.kind === "instalment_paid"
+                                  ? c.debtUi.instalmentPaid
+                                  : c.manualNote;
             let extra = "";
             if (v.kind === "status_changed")
               extra = `${c.statuses[get("from") as keyof typeof c.statuses] ?? get("from")} → ${c.statuses[get("to") as keyof typeof c.statuses] ?? get("to")}`;
@@ -88,6 +97,14 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
                     : c.sendWhatsapp;
             if (v.kind === "appointment_created" || v.kind === "appointment_cancelled")
               extra = `${get("title")} · ${dateLabel(get("start_at"), language, true)}`;
+            const d = c.debtUi;
+            if (v.kind === "debt_added") extra = `${get("creditor")} · ${formatEUR(get("amount"))}`;
+            if (v.kind === "debt_status")
+              extra = `${get("creditor")}: ${d.statuses[get("from") as keyof typeof d.statuses] ?? get("from")} → ${d.statuses[get("to") as keyof typeof d.statuses] ?? get("to")}`;
+            if (v.kind === "debt_referred")
+              extra = `${get("creditor")} → ${d.referrals[get("referral") as keyof typeof d.referrals] ?? get("referral")}`;
+            if (v.kind === "instalment_paid")
+              extra = `${get("creditor")} · ${formatEUR(get("amount"))} · ${dateLabel(get("paid_at"), language)}`;
             return (
               <li key={v.id}>
                 <p className="font-medium">

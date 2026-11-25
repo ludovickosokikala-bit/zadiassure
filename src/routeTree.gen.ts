@@ -44,6 +44,7 @@ import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
 import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
+import { Route as CrmPrintIdRouteImport } from './routes/crm.print.$id'
 import { Route as OauthGoogleReturnRouteImport } from './routes/oauth.google.return'
 import { Route as ApiOauthGoogleCalendarReturnRouteImport } from './routes/api/oauth/google-calendar/return'
 import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
@@ -226,6 +227,11 @@ const CrmClientsIdRoute = CrmClientsIdRouteImport.update({
   path: '/clients/$id',
   getParentRoute: () => CrmRoute,
 } as any)
+const CrmPrintIdRoute = CrmPrintIdRouteImport.update({
+  id: '/print/$id',
+  path: '/print/$id',
+  getParentRoute: () => CrmRoute,
+} as any)
 const OauthGoogleReturnRoute = OauthGoogleReturnRouteImport.update({
   id: '/oauth/google/return',
   path: '/oauth/google/return',
@@ -294,6 +300,7 @@ export interface FileRoutesByFullPath {
   '/wetgeving/': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/crm/print/$id': typeof CrmPrintIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
@@ -335,6 +342,7 @@ export interface FileRoutesByTo {
   '/wetgeving': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/crm/print/$id': typeof CrmPrintIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
@@ -379,6 +387,7 @@ export interface FileRoutesById {
   '/wetgeving/': typeof WetgevingIndexRoute
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
+  '/crm/print/$id': typeof CrmPrintIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
@@ -423,6 +432,7 @@ export interface FileRouteTypes {
     | '/wetgeving/'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/crm/print/$id'
     | '/oauth/google/return'
     | '/crm/clients/'
     | '/api/oauth/google-calendar/return'
@@ -464,6 +474,7 @@ export interface FileRouteTypes {
     | '/wetgeving'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/crm/print/$id'
     | '/oauth/google/return'
     | '/crm/clients'
     | '/api/oauth/google-calendar/return'
@@ -507,6 +518,7 @@ export interface FileRouteTypes {
     | '/wetgeving/'
     | '/crm/cases/$id'
     | '/crm/clients/$id'
+    | '/crm/print/$id'
     | '/oauth/google/return'
     | '/crm/clients/'
     | '/api/oauth/google-calendar/return'
@@ -797,6 +809,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmClientsIdRouteImport
       parentRoute: typeof CrmRoute
     }
+    '/crm/print/$id': {
+      id: '/crm/print/$id'
+      path: '/print/$id'
+      fullPath: '/crm/print/$id'
+      preLoaderRoute: typeof CrmPrintIdRouteImport
+      parentRoute: typeof CrmRoute
+    }
     '/oauth/google/return': {
       id: '/oauth/google/return'
       path: '/oauth/google/return'
@@ -862,6 +881,7 @@ interface CrmRouteChildren {
   CrmIndexRoute: typeof CrmIndexRoute
   CrmCasesIdRoute: typeof CrmCasesIdRoute
   CrmClientsIdRoute: typeof CrmClientsIdRoute
+  CrmPrintIdRoute: typeof CrmPrintIdRoute
   CrmClientsIndexRoute: typeof CrmClientsIndexRoute
 }
 
@@ -874,6 +894,7 @@ const CrmRouteChildren: CrmRouteChildren = {
   CrmIndexRoute: CrmIndexRoute,
   CrmCasesIdRoute: CrmCasesIdRoute,
   CrmClientsIdRoute: CrmClientsIdRoute,
+  CrmPrintIdRoute: CrmPrintIdRoute,
   CrmClientsIndexRoute: CrmClientsIndexRoute,
 }
 

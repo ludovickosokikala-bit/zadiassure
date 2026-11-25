@@ -860,6 +860,96 @@ export type Database = {
           },
         ]
       }
+      crm_budget_lines: {
+        Row: {
+          amount: number
+          budget_id: string
+          category: string
+          id: string
+          kind: string
+          label: string
+          organization_id: string
+          sort_order: number
+        }
+        Insert: {
+          amount?: number
+          budget_id: string
+          category: string
+          id?: string
+          kind: string
+          label?: string
+          organization_id: string
+          sort_order?: number
+        }
+        Update: {
+          amount?: number
+          budget_id?: string
+          category?: string
+          id?: string
+          kind?: string
+          label?: string
+          organization_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_budget_lines_budget_id_organization_id_fkey"
+            columns: ["budget_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_budgets"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_budget_lines_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_budgets: {
+        Row: {
+          budget_date: string
+          client_id: string
+          created_at: string
+          id: string
+          label: string
+          organization_id: string
+        }
+        Insert: {
+          budget_date?: string
+          client_id: string
+          created_at?: string
+          id?: string
+          label: string
+          organization_id: string
+        }
+        Update: {
+          budget_date?: string
+          client_id?: string
+          created_at?: string
+          id?: string
+          label?: string
+          organization_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_budgets_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_budgets_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crm_client_links: {
         Row: {
           client_id: string
@@ -993,6 +1083,91 @@ export type Database = {
           },
         ]
       }
+      crm_debts: {
+        Row: {
+          agency_name: string
+          agency_ref: string
+          client_id: string
+          contact: string
+          created_at: string
+          creditor: string
+          creditor_ref: string
+          creditor_type: string
+          dossier_id: string | null
+          id: string
+          notes: string
+          organization_id: string
+          original_amount: number
+          outstanding_amount: number
+          referral_note: string
+          referral_type: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          agency_name?: string
+          agency_ref?: string
+          client_id: string
+          contact?: string
+          created_at?: string
+          creditor: string
+          creditor_ref?: string
+          creditor_type?: string
+          dossier_id?: string | null
+          id?: string
+          notes?: string
+          organization_id: string
+          original_amount?: number
+          outstanding_amount?: number
+          referral_note?: string
+          referral_type?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          agency_name?: string
+          agency_ref?: string
+          client_id?: string
+          contact?: string
+          created_at?: string
+          creditor?: string
+          creditor_ref?: string
+          creditor_type?: string
+          dossier_id?: string | null
+          id?: string
+          notes?: string
+          organization_id?: string
+          original_amount?: number
+          outstanding_amount?: number
+          referral_note?: string
+          referral_type?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_debts_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_debts_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_debts_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crm_dossiers: {
         Row: {
           client_id: string
@@ -1052,6 +1227,54 @@ export type Database = {
           },
           {
             foreignKeyName: "crm_dossiers_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_instalments: {
+        Row: {
+          amount: number
+          created_at: string
+          debt_id: string
+          due_date: string
+          id: string
+          organization_id: string
+          paid_at: string | null
+          proof_path: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          debt_id: string
+          due_date: string
+          id?: string
+          organization_id: string
+          paid_at?: string | null
+          proof_path?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          debt_id?: string
+          due_date?: string
+          id?: string
+          organization_id?: string
+          paid_at?: string | null
+          proof_path?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_instalments_debt_id_organization_id_fkey"
+            columns: ["debt_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_debts"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_instalments_organization_id_fkey"
             columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organizations"

@@ -776,3 +776,128 @@ body:has(.crm-layout) > div > .fixed {
   padding: 36px 32px;
   box-shadow: 0 8px 30px oklch(0 0 0 / 0.05);
 }
+
+/* ---------- Phase 3: budget & debts ---------- */
+.crm-legal-note,
+.crm-warning-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  background: var(--crm-info-bg);
+  color: var(--crm-info);
+}
+.crm-warning-note {
+  background: oklch(0.95 0.04 25);
+  color: oklch(0.5 0.18 25);
+  font-weight: 500;
+}
+.crm-app[data-theme="dark"] .crm-warning-note {
+  background: oklch(0.3 0.06 25);
+  color: oklch(0.85 0.1 25);
+}
+.crm-budget-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr) 7rem auto;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .crm-budget-line {
+    grid-template-columns: minmax(0, 1fr) 6rem auto;
+  }
+  .crm-budget-line > input:first-of-type {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+.crm-chart-line {
+  stroke: #f97316;
+  stroke-width: 2;
+}
+.crm-chart-area {
+  fill: oklch(0.7 0.17 50 / 0.12);
+}
+.crm-inst-paid,
+.crm-debt-paid_off,
+.crm-debt-agreed {
+  background: var(--crm-success-bg);
+  color: var(--crm-success);
+}
+.crm-inst-late,
+.crm-debt-refused {
+  background: oklch(0.95 0.04 25);
+  color: oklch(0.5 0.18 25);
+}
+.crm-inst-due,
+.crm-debt-contacted,
+.crm-debt-plan_requested {
+  background: var(--crm-info-bg);
+  color: var(--crm-info);
+}
+.crm-debt-referred {
+  background: var(--crm-warning-bg);
+  color: var(--crm-warning);
+}
+.crm-print {
+  background: #fff;
+  color: #111;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e5e5ea;
+  font-size: 13px;
+}
+.crm-print h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+.crm-print table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+.crm-print th,
+.crm-print td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e5ea;
+  vertical-align: top;
+}
+.crm-print .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.crm-print tr.total td {
+  font-weight: 600;
+}
+@media print {
+  .crm-sidebar,
+  .crm-topbar,
+  .crm-bottom-tabs,
+  .crm-no-print {
+    display: none !important;
+  }
+  .crm-content,
+  .crm-main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .crm-layout,
+  .crm-app {
+    background: #fff !important;
+  }
+  .crm-print {
+    border: 0;
+    padding: 0;
+    max-width: none;
+  }
+}
+.crm-metrics:has(> :nth-child(4)) {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}

@@ -34,6 +34,7 @@ import { useFoundation, dateLabel } from "./context";
 import { PageTitle, EmptyState, Status, FoundationNotFound } from "./ui";
 import { ClientForm, DossierForm, LinkPersonForm } from "./forms";
 import { Timeline } from "./Timeline";
+import { BudgetPanel, DebtsPanel, WeekPayments } from "./Debts";
 import { AppointmentsSection, FollowUpBanner, TodayAppointments } from "./Agenda";
 import type { Dossier } from "./data";
 export function TodayPage() {
@@ -61,6 +62,7 @@ export function TodayPage() {
         }
       />
       <TodayAppointments />
+      <WeekPayments />
       <div className="crm-metrics">
         {[
           { label: c.totalClients, value: data.clients.length, icon: Users },
@@ -318,7 +320,7 @@ export function DossierList({ dossiers }: { dossiers: Dossier[] }) {
 export function ClientDetailPage({ id }: { id: string }) {
   const { data, c, language, refresh } = useFoundation();
   const row = data.clients.find((v) => v.id === id);
-  const [tab, setTab] = useState<"overview" | "dossiers" | "timeline">("overview");
+  const [tab, setTab] = useState<"overview" | "dossiers" | "timeline" | "budget" | "debts">("overview");
   const [edit, setEdit] = useState(false);
   const [dossier, setDossier] = useState(false);
   const [link, setLink] = useState(false);
@@ -443,7 +445,10 @@ export function ClientDetailPage({ id }: { id: string }) {
         </p>
       )}
       <div className="crm-tabs" role="tablist">
-        {(["overview", "dossiers", "timeline"] as const).map((t) => (
+        {(row.type === "company"
+          ? (["overview", "dossiers", "timeline"] as const)
+          : (["overview", "dossiers", "budget", "debts", "timeline"] as const)
+        ).map((t) => (
           <Button
             key={t}
             role="tab"
@@ -451,7 +456,7 @@ export function ClientDetailPage({ id }: { id: string }) {
             onClick={() => setTab(t)}
             variant="ghost"
           >
-            {c[t]}
+            {t === "budget" ? c.debtUi.budget : t === "debts" ? c.debtUi.debts : c[t]}
           </Button>
         ))}
       </div>
@@ -563,6 +568,10 @@ export function ClientDetailPage({ id }: { id: string }) {
           </div>
           <DossierList dossiers={dossiers} />
         </section>
+      ) : tab === "budget" ? (
+        <BudgetPanel clientId={id} />
+      ) : tab === "debts" ? (
+        <DebtsPanel clientId={id} />
       ) : (
         <Timeline clientId={id} />
       )}
@@ -632,6 +641,7 @@ export function DossierDetailPage({ id }: { id: string }) {
           <Timeline clientId={row.client_id} dossierId={row.id} />
         </section>
       </div>
+      {row.service === "BUD" && <BudDossierSection clientId={row.client_id} dossierId={row.id} />}
       {edit && <DossierForm row={row} clientId={row.client_id} onClose={() => setEdit(false)} />}
     </>
   );
@@ -648,5 +658,22 @@ export function ComingPage({ kind }: { kind: "agenda" | "inbox" }) {
         <p className="text-center">{kind === "agenda" ? c.agendaSoon : c.inboxSoon}</p>
       </section>
     </>
+  );
+}
+
+function BudDossierSection({ clientId, dossierId }: { clientId: string; dossierId: string }) {
+  const { c } = useFoundation();
+  const [tab, setTab] = useState<"debts" | "budget">("debts");
+  return (
+    <section className="mt-10">
+      <div className="crm-tabs" role="tablist">
+        {(["debts", "budget"] as const).map((t) => (
+          <Button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} variant="ghost">
+            {c.debtUi[t]}
+          </Button>
+        ))}
+      </div>
+      {tab === "debts" ? <DebtsPanel clientId={clientId} dossierId={dossierId} /> : <BudgetPanel clientId={clientId} />}
+    </section>
   );
 }
