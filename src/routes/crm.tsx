@@ -1,6 +1,8 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import { CrmShell } from "@/components/crm/CrmShell";
+import { FoundationShell } from "@/components/crm-foundation/Shell";
+import { foundationQuery } from "@/components/crm-foundation/data";
+import { FoundationError, FoundationNotFound } from "@/components/crm-foundation/ui";
 
 export const Route = createFileRoute("/crm")({
   ssr: false,
@@ -9,6 +11,9 @@ export const Route = createFileRoute("/crm")({
     if (error || !data.user) throw redirect({ to: "/auth" });
     return { user: data.user };
   },
+  loader: ({ context }) => context.queryClient.ensureQueryData(foundationQuery()),
+  errorComponent: FoundationError,
+  notFoundComponent: FoundationNotFound,
   head: () => ({
     meta: [
       { title: "Dossierbeheer — ZADIASSURE" },
@@ -33,8 +38,8 @@ export const Route = createFileRoute("/crm")({
     links: [{ rel: "manifest", href: "/crm.webmanifest" }],
   }),
   component: () => (
-    <CrmShell>
+    <FoundationShell>
       <Outlet />
-    </CrmShell>
+    </FoundationShell>
   ),
 });

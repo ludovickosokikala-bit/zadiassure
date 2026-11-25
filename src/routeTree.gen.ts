@@ -31,13 +31,9 @@ import { Route as BegeleidingIndexRouteImport } from './routes/begeleiding.index
 import { Route as BegeleidingSlugRouteImport } from './routes/begeleiding.$slug'
 import { Route as CrmIndexRouteImport } from './routes/crm.index'
 import { Route as CrmAgendaRouteImport } from './routes/crm.agenda'
-import { Route as CrmAiRouteImport } from './routes/crm.ai'
-import { Route as CrmDocumentsRouteImport } from './routes/crm.documents'
 import { Route as CrmInboxRouteImport } from './routes/crm.inbox'
 import { Route as CrmMandatesRouteImport } from './routes/crm.mandates'
-import { Route as CrmReportsRouteImport } from './routes/crm.reports'
 import { Route as CrmSettingsRouteImport } from './routes/crm.settings'
-import { Route as CrmTasksRouteImport } from './routes/crm.tasks'
 import { Route as CrmTeamRouteImport } from './routes/crm.team'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
 import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
@@ -45,7 +41,6 @@ import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.i
 import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$slug'
 import { Route as WetgevingIndexRouteImport } from './routes/wetgeving.index'
 import { Route as WetgevingSlugRouteImport } from './routes/wetgeving.$slug'
-import { Route as CrmCasesIndexRouteImport } from './routes/crm.cases.index'
 import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
@@ -165,16 +160,6 @@ const CrmAgendaRoute = CrmAgendaRouteImport.update({
   path: '/agenda',
   getParentRoute: () => CrmRoute,
 } as any)
-const CrmAiRoute = CrmAiRouteImport.update({
-  id: '/ai',
-  path: '/ai',
-  getParentRoute: () => CrmRoute,
-} as any)
-const CrmDocumentsRoute = CrmDocumentsRouteImport.update({
-  id: '/documents',
-  path: '/documents',
-  getParentRoute: () => CrmRoute,
-} as any)
 const CrmInboxRoute = CrmInboxRouteImport.update({
   id: '/inbox',
   path: '/inbox',
@@ -185,19 +170,9 @@ const CrmMandatesRoute = CrmMandatesRouteImport.update({
   path: '/mandates',
   getParentRoute: () => CrmRoute,
 } as any)
-const CrmReportsRoute = CrmReportsRouteImport.update({
-  id: '/reports',
-  path: '/reports',
-  getParentRoute: () => CrmRoute,
-} as any)
 const CrmSettingsRoute = CrmSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
-  getParentRoute: () => CrmRoute,
-} as any)
-const CrmTasksRoute = CrmTasksRouteImport.update({
-  id: '/tasks',
-  path: '/tasks',
   getParentRoute: () => CrmRoute,
 } as any)
 const CrmTeamRoute = CrmTeamRouteImport.update({
@@ -234,11 +209,6 @@ const WetgevingSlugRoute = WetgevingSlugRouteImport.update({
   id: '/wetgeving/$slug',
   path: '/wetgeving/$slug',
   getParentRoute: () => rootRouteImport,
-} as any)
-const CrmCasesIndexRoute = CrmCasesIndexRouteImport.update({
-  id: '/cases/',
-  path: '/cases/',
-  getParentRoute: () => CrmRoute,
 } as any)
 const CrmCasesIdRoute = CrmCasesIdRouteImport.update({
   id: '/cases/$id',
@@ -303,13 +273,9 @@ export interface FileRoutesByFullPath {
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/crm/agenda': typeof CrmAgendaRoute
-  '/crm/ai': typeof CrmAiRoute
-  '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
   '/crm/mandates': typeof CrmMandatesRoute
-  '/crm/reports': typeof CrmReportsRoute
   '/crm/settings': typeof CrmSettingsRoute
-  '/crm/tasks': typeof CrmTasksRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -322,7 +288,6 @@ export interface FileRoutesByFullPath {
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
-  '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -348,13 +313,9 @@ export interface FileRoutesByTo {
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/crm/agenda': typeof CrmAgendaRoute
-  '/crm/ai': typeof CrmAiRoute
-  '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
   '/crm/mandates': typeof CrmMandatesRoute
-  '/crm/reports': typeof CrmReportsRoute
   '/crm/settings': typeof CrmSettingsRoute
-  '/crm/tasks': typeof CrmTasksRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -367,7 +328,6 @@ export interface FileRoutesByTo {
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
-  '/crm/cases': typeof CrmCasesIndexRoute
   '/crm/clients': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -396,13 +356,9 @@ export interface FileRoutesById {
   '/aanpak/$slug': typeof AanpakSlugRoute
   '/begeleiding/$slug': typeof BegeleidingSlugRoute
   '/crm/agenda': typeof CrmAgendaRoute
-  '/crm/ai': typeof CrmAiRoute
-  '/crm/documents': typeof CrmDocumentsRoute
   '/crm/inbox': typeof CrmInboxRoute
   '/crm/mandates': typeof CrmMandatesRoute
-  '/crm/reports': typeof CrmReportsRoute
   '/crm/settings': typeof CrmSettingsRoute
-  '/crm/tasks': typeof CrmTasksRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
@@ -415,7 +371,6 @@ export interface FileRoutesById {
   '/crm/cases/$id': typeof CrmCasesIdRoute
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
-  '/crm/cases/': typeof CrmCasesIndexRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -444,13 +399,9 @@ export interface FileRouteTypes {
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/crm/agenda'
-    | '/crm/ai'
-    | '/crm/documents'
     | '/crm/inbox'
     | '/crm/mandates'
-    | '/crm/reports'
     | '/crm/settings'
-    | '/crm/tasks'
     | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -463,7 +414,6 @@ export interface FileRouteTypes {
     | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/oauth/google/return'
-    | '/crm/cases/'
     | '/crm/clients/'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
@@ -489,13 +439,9 @@ export interface FileRouteTypes {
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/crm/agenda'
-    | '/crm/ai'
-    | '/crm/documents'
     | '/crm/inbox'
     | '/crm/mandates'
-    | '/crm/reports'
     | '/crm/settings'
-    | '/crm/tasks'
     | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -508,7 +454,6 @@ export interface FileRouteTypes {
     | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/oauth/google/return'
-    | '/crm/cases'
     | '/crm/clients'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
@@ -536,13 +481,9 @@ export interface FileRouteTypes {
     | '/aanpak/$slug'
     | '/begeleiding/$slug'
     | '/crm/agenda'
-    | '/crm/ai'
-    | '/crm/documents'
     | '/crm/inbox'
     | '/crm/mandates'
-    | '/crm/reports'
     | '/crm/settings'
-    | '/crm/tasks'
     | '/crm/team'
     | '/documenten/$slug'
     | '/kenniscentrum/$slug'
@@ -555,7 +496,6 @@ export interface FileRouteTypes {
     | '/crm/cases/$id'
     | '/crm/clients/$id'
     | '/oauth/google/return'
-    | '/crm/cases/'
     | '/crm/clients/'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
@@ -752,20 +692,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmAgendaRouteImport
       parentRoute: typeof CrmRoute
     }
-    '/crm/ai': {
-      id: '/crm/ai'
-      path: '/ai'
-      fullPath: '/crm/ai'
-      preLoaderRoute: typeof CrmAiRouteImport
-      parentRoute: typeof CrmRoute
-    }
-    '/crm/documents': {
-      id: '/crm/documents'
-      path: '/documents'
-      fullPath: '/crm/documents'
-      preLoaderRoute: typeof CrmDocumentsRouteImport
-      parentRoute: typeof CrmRoute
-    }
     '/crm/inbox': {
       id: '/crm/inbox'
       path: '/inbox'
@@ -780,25 +706,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmMandatesRouteImport
       parentRoute: typeof CrmRoute
     }
-    '/crm/reports': {
-      id: '/crm/reports'
-      path: '/reports'
-      fullPath: '/crm/reports'
-      preLoaderRoute: typeof CrmReportsRouteImport
-      parentRoute: typeof CrmRoute
-    }
     '/crm/settings': {
       id: '/crm/settings'
       path: '/settings'
       fullPath: '/crm/settings'
       preLoaderRoute: typeof CrmSettingsRouteImport
-      parentRoute: typeof CrmRoute
-    }
-    '/crm/tasks': {
-      id: '/crm/tasks'
-      path: '/tasks'
-      fullPath: '/crm/tasks'
-      preLoaderRoute: typeof CrmTasksRouteImport
       parentRoute: typeof CrmRoute
     }
     '/crm/team': {
@@ -849,13 +761,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/wetgeving/$slug'
       preLoaderRoute: typeof WetgevingSlugRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/crm/cases/': {
-      id: '/crm/cases/'
-      path: '/cases'
-      fullPath: '/crm/cases/'
-      preLoaderRoute: typeof CrmCasesIndexRouteImport
-      parentRoute: typeof CrmRoute
     }
     '/crm/cases/$id': {
       id: '/crm/cases/$id'
@@ -929,35 +834,25 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface CrmRouteChildren {
   CrmAgendaRoute: typeof CrmAgendaRoute
-  CrmAiRoute: typeof CrmAiRoute
-  CrmDocumentsRoute: typeof CrmDocumentsRoute
   CrmInboxRoute: typeof CrmInboxRoute
   CrmMandatesRoute: typeof CrmMandatesRoute
-  CrmReportsRoute: typeof CrmReportsRoute
   CrmSettingsRoute: typeof CrmSettingsRoute
-  CrmTasksRoute: typeof CrmTasksRoute
   CrmTeamRoute: typeof CrmTeamRoute
   CrmIndexRoute: typeof CrmIndexRoute
   CrmCasesIdRoute: typeof CrmCasesIdRoute
   CrmClientsIdRoute: typeof CrmClientsIdRoute
-  CrmCasesIndexRoute: typeof CrmCasesIndexRoute
   CrmClientsIndexRoute: typeof CrmClientsIndexRoute
 }
 
 const CrmRouteChildren: CrmRouteChildren = {
   CrmAgendaRoute: CrmAgendaRoute,
-  CrmAiRoute: CrmAiRoute,
-  CrmDocumentsRoute: CrmDocumentsRoute,
   CrmInboxRoute: CrmInboxRoute,
   CrmMandatesRoute: CrmMandatesRoute,
-  CrmReportsRoute: CrmReportsRoute,
   CrmSettingsRoute: CrmSettingsRoute,
-  CrmTasksRoute: CrmTasksRoute,
   CrmTeamRoute: CrmTeamRoute,
   CrmIndexRoute: CrmIndexRoute,
   CrmCasesIdRoute: CrmCasesIdRoute,
   CrmClientsIdRoute: CrmClientsIdRoute,
-  CrmCasesIndexRoute: CrmCasesIndexRoute,
   CrmClientsIndexRoute: CrmClientsIndexRoute,
 }
 
