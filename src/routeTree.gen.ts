@@ -45,6 +45,7 @@ import { Route as CrmCasesIdRouteImport } from './routes/crm.cases.$id'
 import { Route as CrmClientsIndexRouteImport } from './routes/crm.clients.index'
 import { Route as CrmClientsIdRouteImport } from './routes/crm.clients.$id'
 import { Route as OauthGoogleReturnRouteImport } from './routes/oauth.google.return'
+import { Route as ApiOauthGoogleCalendarReturnRouteImport } from './routes/api/oauth/google-calendar/return'
 import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
@@ -230,6 +231,12 @@ const OauthGoogleReturnRoute = OauthGoogleReturnRouteImport.update({
   path: '/oauth/google/return',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOauthGoogleCalendarReturnRoute =
+  ApiOauthGoogleCalendarReturnRouteImport.update({
+    id: '/api/oauth/google-calendar/return',
+    path: '/api/oauth/google-calendar/return',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicAgendaTokenDoticsRoute =
   ApiPublicAgendaTokenDoticsRouteImport.update({
     id: '/api/public/agenda/$token.ics',
@@ -289,6 +296,7 @@ export interface FileRoutesByFullPath {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -329,6 +337,7 @@ export interface FileRoutesByTo {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients': typeof CrmClientsIndexRoute
+  '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -372,6 +381,7 @@ export interface FileRoutesById {
   '/crm/clients/$id': typeof CrmClientsIdRoute
   '/oauth/google/return': typeof OauthGoogleReturnRoute
   '/crm/clients/': typeof CrmClientsIndexRoute
+  '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -415,6 +425,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/oauth/google/return'
     | '/crm/clients/'
+    | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -455,6 +466,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/oauth/google/return'
     | '/crm/clients'
+    | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -497,6 +509,7 @@ export interface FileRouteTypes {
     | '/crm/clients/$id'
     | '/oauth/google/return'
     | '/crm/clients/'
+    | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -530,6 +543,7 @@ export interface RootRouteChildren {
   KenniscentrumIndexRoute: typeof KenniscentrumIndexRoute
   WetgevingIndexRoute: typeof WetgevingIndexRoute
   OauthGoogleReturnRoute: typeof OauthGoogleReturnRoute
+  ApiOauthGoogleCalendarReturnRoute: typeof ApiOauthGoogleCalendarReturnRoute
   ApiPublicAgendaTokenDoticsRoute: typeof ApiPublicAgendaTokenDoticsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -790,6 +804,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OauthGoogleReturnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/oauth/google-calendar/return': {
+      id: '/api/oauth/google-calendar/return'
+      path: '/api/oauth/google-calendar/return'
+      fullPath: '/api/oauth/google-calendar/return'
+      preLoaderRoute: typeof ApiOauthGoogleCalendarReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/agenda/$token.ics': {
       id: '/api/public/agenda/$token.ics'
       path: '/api/public/agenda/$token.ics'
@@ -886,6 +907,7 @@ const rootRouteChildren: RootRouteChildren = {
   KenniscentrumIndexRoute: KenniscentrumIndexRoute,
   WetgevingIndexRoute: WetgevingIndexRoute,
   OauthGoogleReturnRoute: OauthGoogleReturnRoute,
+  ApiOauthGoogleCalendarReturnRoute: ApiOauthGoogleCalendarReturnRoute,
   ApiPublicAgendaTokenDoticsRoute: ApiPublicAgendaTokenDoticsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,

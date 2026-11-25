@@ -6,10 +6,8 @@ import { z } from "zod";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LogoMark } from "@/components/brand/Logo";
+import { StaffAuthFrame, staffAuthText, useStaffLang } from "@/components/crm-foundation/StaffAuth";
 import { acceptInvite, getInvite } from "@/lib/team.functions";
-import { useMandateDict } from "@/components/crm/useMandate";
-import { useCrmDict } from "@/components/crm/useCrm";
 
 export const Route = createFileRoute("/uitnodiging")({
   ssr: false,
@@ -40,8 +38,8 @@ export const Route = createFileRoute("/uitnodiging")({
 
 function InvitePage() {
   const { token } = Route.useSearch();
-  const m = useMandateDict();
-  const c = useCrmDict();
+  const [lang, setLang] = useStaffLang();
+  const t = staffAuthText[lang];
   const navigate = useNavigate();
   const [done, setDone] = useState(false);
 
@@ -67,41 +65,33 @@ function InvitePage() {
   const state = token.length <= 8 ? "invalid" : (invite.data?.state ?? "loading");
 
   return (
-    <main className="grid min-h-screen place-items-center bg-background px-6 py-16">
-      <div className="w-full max-w-md rounded-3xl border border-border bg-card p-8 text-center shadow-soft">
-        <LogoMark className="mx-auto h-12 w-auto" />
-
+    <StaffAuthFrame lang={lang} onLang={setLang}>
+      <div className="text-center">
         {invite.isLoading && state === "loading" ? (
-          <p className="mt-6 text-sm text-muted-foreground">{c.common.loading}</p>
+          <p className="mt-6 text-sm text-muted-foreground">{t.loading}</p>
         ) : done ? (
           <>
-            <CheckCircle2 className="mx-auto mt-6 h-9 w-9 text-accent" />
-            <p className="mt-3 text-sm text-foreground">{m.team.accepted}</p>
+            <CheckCircle2 className="mx-auto mt-6 h-9 w-9 text-[color:var(--crm-success)]" />
+            <p className="mt-3 text-sm">{t.inviteAccepted}</p>
           </>
         ) : state === "ready" ? (
           <>
-            <ShieldCheck className="mx-auto mt-6 h-9 w-9 text-accent" />
-            <h1 className="mt-4 font-heading text-xl font-bold text-foreground">
-              {m.team.acceptTitle}
-            </h1>
-            <p className="mt-2 text-sm text-muted-foreground">{m.team.acceptText}</p>
-            <p className="mt-3 text-sm font-medium text-foreground">
+            <ShieldCheck className="mx-auto mt-6 h-9 w-9 text-[#f97316]" />
+            <h1 className="mt-4 text-xl font-semibold tracking-tight">{t.inviteTitle}</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{t.inviteText}</p>
+            <p className="mt-3 text-sm font-medium">
               {invite.data?.organization} · {invite.data?.invite?.role}
             </p>
-            <Button
-              className="mt-6 w-full"
-              onClick={() => mutation.mutate()}
-              disabled={mutation.isPending}
-            >
-              {m.team.acceptButton}
+            <Button className="mt-6 w-full" size="lg" onClick={() => mutation.mutate()} disabled={mutation.isPending}>
+              {t.inviteAccept}
             </Button>
           </>
         ) : state === "wrong_email" ? (
-          <p className="mt-6 text-sm text-muted-foreground">{m.team.wrongEmail}</p>
+          <p className="mt-6 text-sm text-muted-foreground">{t.inviteWrongEmail}</p>
         ) : (
-          <p className="mt-6 text-sm text-muted-foreground">{m.team.acceptFailed}</p>
+          <p className="mt-6 text-sm text-muted-foreground">{t.inviteFailed}</p>
         )}
       </div>
-    </main>
+    </StaffAuthFrame>
   );
 }

@@ -769,6 +769,97 @@ export type Database = {
           },
         ]
       }
+      crm_appointments: {
+        Row: {
+          client_id: string | null
+          created_at: string
+          created_by: string | null
+          dossier_id: string | null
+          end_at: string
+          google_event_id: string | null
+          google_owner_id: string | null
+          google_sync_error: string
+          id: string
+          kind: string
+          location_note: string
+          location_type: string
+          meet_link: string
+          member_ids: string[]
+          organization_id: string
+          owner_id: string
+          start_at: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          dossier_id?: string | null
+          end_at: string
+          google_event_id?: string | null
+          google_owner_id?: string | null
+          google_sync_error?: string
+          id?: string
+          kind?: string
+          location_note?: string
+          location_type?: string
+          meet_link?: string
+          member_ids?: string[]
+          organization_id: string
+          owner_id: string
+          start_at: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          dossier_id?: string | null
+          end_at?: string
+          google_event_id?: string | null
+          google_owner_id?: string | null
+          google_sync_error?: string
+          id?: string
+          kind?: string
+          location_note?: string
+          location_type?: string
+          meet_link?: string
+          member_ids?: string[]
+          organization_id?: string
+          owner_id?: string
+          start_at?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_appointments_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_appointments_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_appointments_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crm_client_links: {
         Row: {
           client_id: string

@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LogoMark } from "@/components/brand/Logo";
-import { ctaVariants } from "@/components/ui/cta";
+import { Button } from "@/components/ui/button";
+import { StaffAuthFrame, staffAuthText, useStaffLang } from "@/components/crm-foundation/StaffAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { libraryDictionaries } from "@/i18n/library";
-import { useLib } from "@/i18n/useLibrary";
-import { cn } from "@/lib/utils";
 
 const meta = libraryDictionaries.nl.auth;
 
@@ -30,8 +28,8 @@ export const Route = createFileRoute("/auth")({
 });
 
 function AuthPage() {
-  const lib = useLib();
-  const a = lib.auth;
+  const [lang, setLang] = useStaffLang();
+  const a = staffAuthText[lang];
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,59 +78,50 @@ function AuthPage() {
   };
 
   return (
-    <section className="bg-sand py-20">
-      <div className="container-page">
-        <div className="mx-auto max-w-md rounded-3xl border border-border bg-card p-8 shadow-soft">
-          <LogoMark className="size-12" />
-          <h1 className="mt-6 text-2xl font-bold text-primary">{a.title}</h1>
-          <p className="mt-2 text-sm text-muted-foreground">{a.intro}</p>
-
-          <form onSubmit={onSubmit} className="mt-7 grid gap-4" noValidate>
-            <div>
-              <Label className="mb-1.5 block text-sm font-semibold text-primary">{a.email}</Label>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-                required
-                maxLength={255}
-              />
-            </div>
-            <div>
-              <Label className="mb-1.5 block text-sm font-semibold text-primary">{a.password}</Label>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-                required
-                minLength={8}
-                maxLength={72}
-              />
-            </div>
-            {error && <p className="text-sm text-destructive">{error}</p>}
-            {message && <p className="text-sm text-primary">{message}</p>}
-            <button
-              type="submit"
-              disabled={state === "busy"}
-              className={cn(ctaVariants({ size: "lg" }), "w-full")}
-            >
-              {state === "busy" && <Loader2 className="size-4 animate-spin" />}
-              {state === "busy" ? a.working : a.signIn}
-            </button>
-          </form>
-
-          <button
-            type="button"
-            onClick={onGoogle}
-            className={cn(ctaVariants({ variant: "outline", size: "lg" }), "mt-3 w-full")}
-          >
-            {a.google}
-          </button>
-
+    <StaffAuthFrame lang={lang} onLang={setLang}>
+      <h1 className="mt-6 text-2xl font-semibold tracking-tight">{a.title}</h1>
+      <p className="mt-2 text-sm text-muted-foreground">{a.intro}</p>
+      <form onSubmit={onSubmit} className="mt-7 grid gap-4" noValidate>
+        <div>
+          <Label htmlFor="staff-email" className="mb-1.5 block text-sm font-medium">{a.email}</Label>
+          <Input
+            id="staff-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            required
+            maxLength={255}
+          />
         </div>
+        <div>
+          <Label htmlFor="staff-password" className="mb-1.5 block text-sm font-medium">{a.password}</Label>
+          <Input
+            id="staff-password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            required
+            minLength={8}
+            maxLength={72}
+          />
+        </div>
+        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+        {message && <p className="text-sm">{message}</p>}
+        <Button type="submit" size="lg" disabled={state === "busy"} className="w-full">
+          {state === "busy" && <Loader2 className="size-4 animate-spin" />}
+          {state === "busy" ? a.working : a.signIn}
+        </Button>
+      </form>
+      <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+        <span className="h-px flex-1 bg-border" />
+        {a.or}
+        <span className="h-px flex-1 bg-border" />
       </div>
-    </section>
+      <Button type="button" variant="outline" size="lg" onClick={onGoogle} className="w-full">
+        {a.google}
+      </Button>
+    </StaffAuthFrame>
   );
 }

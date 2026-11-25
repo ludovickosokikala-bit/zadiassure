@@ -22,6 +22,13 @@
       "when": 1795621399962,
       "tag": "0002_crm_access_log_timestamp",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795623900881,
+      "tag": "0003_crm_phase2_appointments",
+      "breakpoints": true
     }
   ]
 }

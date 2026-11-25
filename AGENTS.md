@@ -14,3 +14,6 @@
 - CRM preferences are stored per active organization member; theme tokens and system/Inter font are scoped to .crm-app so public website styling and language remain unchanged.
 - Database triggers own client/dossier numbers, immutable identities and automatic actor-stamped timelines; organization-composite foreign keys prevent cross-organization links.
 - Foundation roles are derived from administrator-managed legacy team roles for invitation compatibility; client-supplied profile/preferences never assign privileges.
+- CRM appointments live in crm_appointments; the CRM row is the source of truth and is pushed to the responsible member's own Google Calendar (connector google_calendar, per-user key in app_user_connections), linked by google_event_id + extendedProperties.zadiassureId. Why: Google failures must never block the CRM agenda, and the id link prevents duplicates.
+- BUD follow-up proposals are computed (agendaCore.followUpProposal), not stored. Why: stays correct when follow-ups are edited, cancelled or completed.
+- /crm, /auth, /uitnodiging and /oauth render without public site chrome (root layout check). Why: staff surfaces are a separate app on the CRM domain.

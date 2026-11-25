@@ -34,6 +34,7 @@ import { useFoundation, dateLabel } from "./context";
 import { PageTitle, EmptyState, Status, FoundationNotFound } from "./ui";
 import { ClientForm, DossierForm, LinkPersonForm } from "./forms";
 import { Timeline } from "./Timeline";
+import { AppointmentsSection, FollowUpBanner, TodayAppointments } from "./Agenda";
 import type { Dossier } from "./data";
 export function TodayPage() {
   const { data, c, language } = useFoundation();
@@ -59,6 +60,7 @@ export function TodayPage() {
           </Button>
         }
       />
+      <TodayAppointments />
       <div className="crm-metrics">
         {[
           { label: c.totalClients, value: data.clients.length, icon: Users },
@@ -548,6 +550,7 @@ export function ClientDetailPage({ id }: { id: string }) {
               </Button>
             </div>
             <DossierList dossiers={dossiers.filter((v) => isOpenDossier(v.status))} />
+            <AppointmentsSection clientId={id} />
           </section>
         </div>
       ) : tab === "dossiers" ? (
@@ -594,6 +597,7 @@ export function DossierDetailPage({ id }: { id: string }) {
           </Button>
         }
       />
+      <FollowUpBanner dossier={row} />
       <div className="mb-8 flex gap-3">
         <Status value={row.status} />
         <span className="crm-status">
@@ -621,6 +625,7 @@ export function DossierDetailPage({ id }: { id: string }) {
             {c.nextStep}
           </h2>
           <p className="whitespace-pre-wrap break-words">{row.next_step || "—"}</p>
+          <AppointmentsSection clientId={row.client_id} dossierId={row.id} />
         </section>
         <section>
           <h2 className="crm-section-title">{c.timeline}</h2>

@@ -62,7 +62,7 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
             const detail =
               v.detail && typeof v.detail === "object" && !Array.isArray(v.detail) ? v.detail : {};
             const get = (key: string) => String(detail[key] ?? "");
-            let title =
+            const title =
               v.kind === "client_created"
                 ? c.clientCreated
                 : v.kind === "dossier_created"
@@ -71,7 +71,11 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
                     ? c.statusChanged
                     : v.kind === "contact"
                       ? c.contactAction
-                      : c.manualNote;
+                      : v.kind === "appointment_created"
+                        ? c.agendaUi.appointmentCreated
+                        : v.kind === "appointment_cancelled"
+                          ? c.agendaUi.appointmentCancelled
+                          : c.manualNote;
             let extra = "";
             if (v.kind === "status_changed")
               extra = `${c.statuses[get("from") as keyof typeof c.statuses] ?? get("from")} → ${c.statuses[get("to") as keyof typeof c.statuses] ?? get("to")}`;
@@ -82,6 +86,8 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
                   : get("action") === "email"
                     ? c.sendEmail
                     : c.sendWhatsapp;
+            if (v.kind === "appointment_created" || v.kind === "appointment_cancelled")
+              extra = `${get("title")} · ${dateLabel(get("start_at"), language, true)}`;
             return (
               <li key={v.id}>
                 <p className="font-medium">

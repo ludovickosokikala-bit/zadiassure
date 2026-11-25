@@ -15,6 +15,7 @@ import {
   Sun,
   Moon,
   UserRound,
+  CalendarPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +29,9 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { LogoMark } from "@/components/brand/Logo";
+import logoLight from "@/assets/zadiassure-mark-transparent.png.asset.json";
+import logoDark from "@/assets/zadiassure-mark-dark.png.asset.json";
+import { GoogleCalendarDialog } from "./Agenda";
 import { supabase } from "@/integrations/supabase/client";
 import { saveFoundationPreferences } from "@/lib/foundation.functions";
 import { displayClient } from "@/lib/foundation.schemas";
@@ -93,7 +96,7 @@ export function FoundationShell({ children }: { children: ReactNode }) {
           <ShellInterior>{children}</ShellInterior>
         ) : (
           <div className="crm-empty min-h-screen">
-            <LogoMark className="h-12 w-12" />
+            <CrmLogo dark={resolvedTheme === "dark"} className="h-12 w-12" />
             <h1 className="text-xl font-semibold">{c.noAccess}</h1>
             <p>{c.noAccessText}</p>
             <Button
@@ -116,6 +119,7 @@ function ShellInterior({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [searchOpen, setSearchOpen] = useState(false);
   const [preferenceError, setPreferenceError] = useState(false);
+  const [googleOpen, setGoogleOpen] = useState(false);
   useEffect(() => {
     function key(e: KeyboardEvent) {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
@@ -181,6 +185,10 @@ function ShellInterior({ children }: { children: ReactNode }) {
             </Link>
           </DropdownMenuItem>
         )}
+        <DropdownMenuItem onSelect={() => setGoogleOpen(true)}>
+          <CalendarPlus />
+          {c.googleCal.menu}
+        </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link to="/crm/settings">
             <Settings />
@@ -236,7 +244,7 @@ function ShellInterior({ children }: { children: ReactNode }) {
     <>
       <aside className="crm-sidebar">
         <Link to="/crm" className="crm-brand">
-          <LogoMark className="h-8 w-8" />
+          <CrmLogo dark={resolvedTheme === "dark"} className="h-8 w-8" />
           <span>
             ZADIASSURE <span className="text-xs font-normal text-muted-foreground">CRM</span>
           </span>
@@ -276,6 +284,7 @@ function ShellInterior({ children }: { children: ReactNode }) {
       </div>
       <nav className="crm-bottom-tabs">{links}</nav>
       <SearchPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {googleOpen && <GoogleCalendarDialog onClose={() => setGoogleOpen(false)} />}
     </>
   );
 }
@@ -345,5 +354,17 @@ function SearchPalette({ open, onClose }: { open: boolean; onClose: () => void }
         ))}
       </div>
     </CrmModal>
+  );
+}
+
+export function CrmLogo({ dark, className }: { dark: boolean; className?: string }) {
+  return (
+    <img
+      src={dark ? logoDark.url : logoLight.url}
+      alt="ZADIASSURE"
+      width={40}
+      height={40}
+      className={`object-contain ${className ?? ""}`}
+    />
   );
 }

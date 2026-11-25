@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -141,6 +142,20 @@ function RootComponent() {
     const target = hostRedirect(host, pathname, search);
     if (target) window.location.replace(target + hash);
   }, []);
+
+  // Staff surfaces (CRM, sign-in, invitations, OAuth returns) render without the public site chrome.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const bare = /^\/(crm|auth|uitnodiging|oauth)(\/|$)/.test(pathname);
+
+  if (bare) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <Outlet />
+        </LanguageProvider>
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
