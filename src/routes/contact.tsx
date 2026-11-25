@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute } from "@tanstack/react-router";
 import pageImage from "@/assets/page-contact.jpg";
 import { PageHero } from "@/components/site/PageHero";
@@ -17,9 +18,9 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: `${BASE_URL}/contact` },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/contact` }],
     scripts: [
       {
         type: "application/ld+json",

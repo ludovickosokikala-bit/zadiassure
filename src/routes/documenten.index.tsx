@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Building2, ScrollText } from "lucide-react";
@@ -23,10 +24,10 @@ export const Route = createFileRoute("/documenten/")({
       { property: "og:title", content: meta.metaTitle },
       { property: "og:description", content: meta.metaDescription },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/documenten" },
+      { property: "og:url", content: `${BASE_URL}/documenten` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/documenten" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/documenten` }],
   }),
   errorComponent: () => (
     <Section>

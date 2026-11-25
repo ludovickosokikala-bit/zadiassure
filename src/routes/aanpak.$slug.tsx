@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import imgComplexity from "@/assets/people-worry.jpg";
@@ -36,9 +37,9 @@ export const Route = createFileRoute("/aanpak/$slug")({
         { property: "og:title", content: step.metaTitle },
         { property: "og:description", content: step.metaDescription },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: url },
+        { property: "og:url", content: `${BASE_URL}${url}` },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [{ rel: "canonical", href: `${BASE_URL}${url}` }],
     };
   },
   component: ApproachPage,

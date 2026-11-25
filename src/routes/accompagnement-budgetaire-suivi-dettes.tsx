@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AlertTriangle, Check } from "lucide-react";
 import pageImage from "@/assets/page-services.jpg";
@@ -31,12 +32,12 @@ export const Route = createFileRoute("/accompagnement-budgetaire-suivi-dettes")(
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: path },
+      { property: "og:url", content: `${BASE_URL}${path}` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: meta.title },
       { name: "twitter:description", content: meta.description },
     ],
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: `${BASE_URL}${path}` }],
     scripts: [
       {
         type: "application/ld+json",

@@ -19,7 +19,7 @@ export const nl: Dict = {
         "Vier pijlers van begeleiding: immigratie, administratieve ondersteuning, budgettaire begeleiding en administratieve opvolging van schulden. Menselijk, professioneel en meertalig.",
     },
     about: {
-      title: "Over ZADIASSURE — cabinet d'accompagnement in België",
+      title: "Over ZADIASSURE — begeleidingskantoor in België",
       description:
         "Onze missie, visie en het verhaal achter ZADIASSURE: mensen begeleiden naar stabiliteit, autonomie, vertrouwen en sereniteit.",
     },
@@ -45,9 +45,9 @@ export const nl: Dict = {
     },
   },
   brand: {
-    tagline: "Cabinet d'accompagnement administratif et budgétaire",
+    tagline: "Kantoor voor administratieve en budgettaire begeleiding",
     promise: "Vandaag vereenvoudigen. Morgen verzekeren.",
-    statement: "Nous ne gérons pas des dossiers. Nous accompagnons des vies.",
+    statement: "Wij beheren geen dossiers. Wij begeleiden mensen.",
   },
   nav: {
     home: "Home",
@@ -71,7 +71,7 @@ export const nl: Dict = {
     backTo: "Terug naar overzicht",
   },
   hero: {
-    badge: "Simplifier aujourd'hui. Sécuriser demain.",
+    badge: "Vandaag vereenvoudigen. Morgen verzekeren.",
     title: "Uw administratie. Onze begeleiding.",
     titleAccent: "Meer rust voor morgen.",
     subtitle:
@@ -192,7 +192,7 @@ export const nl: Dict = {
     items: [
       {
         slug: "immigration",
-        name: "Immigration",
+        name: "Immigratie",
         short: "Begeleiding bij administratieve trajecten rond immigratie en het leven in België.",
         intro:
           "Van een eerste verblijfsvraag tot een nationaliteitstraject: procedures zijn streng en documenten zijn talrijk. Wij helpen u het traject begrijpen, de juiste stukken verzamelen en de opvolging bewaken. Voor juridische vraagstukken werken wij samen met gespecialiseerde partners.",
@@ -311,7 +311,7 @@ export const nl: Dict = {
   },
   promiseSection: {
     eyebrow: "Onze klantbelofte",
-    quote: "Nous ne gérons pas des dossiers. Nous accompagnons des vies.",
+    quote: "Wij beheren geen dossiers. Wij begeleiden mensen.",
     words: ["Stabiliteit", "Vertrouwen", "Autonomie", "Sereniteit"],
     text: "Wij luisteren naar uw situatie, begrijpen uw behoeften, stellen concrete oplossingen voor, ondersteunen uw belangen en volgen op tot de oplossing er is.",
   },
@@ -364,7 +364,7 @@ export const nl: Dict = {
       "Administratie",
       "België",
       "Budget",
-      "Immigration",
+      "Immigratie",
       "Ondernemen",
       "Actualiteit",
       "Praktische gidsen",
@@ -502,7 +502,7 @@ export const nl: Dict = {
     story: [
       "Tijdens de Covid-periode werd pijnlijk zichtbaar hoe zwaar administratieve, financiële en taalgerelateerde problemen kunnen wegen. Gezinnen, zelfstandigen en alleenstaanden begrepen de brieven niet die ze ontvingen. Sommigen spraken de taal onvoldoende en stonden alleen tegenover instellingen.",
       "Daaruit ontstond de overtuiging die ZADIASSURE draagt: niemand zou geblokkeerd mogen worden in zijn leven door administratie die hij niet begrijpt.",
-      "Vandaag is ZADIASSURE gegroeid tot een cabinet d'accompagnement dat particulieren, gezinnen, zelfstandigen en ondernemingen begeleidt richting stabiliteit, autonomie, vertrouwen en sereniteit.",
+      "Vandaag is ZADIASSURE gegroeid tot een begeleidingskantoor dat particulieren, gezinnen, zelfstandigen en ondernemingen begeleidt richting stabiliteit, autonomie, vertrouwen en sereniteit.",
     ],
     founderQuote:
       "Niemand zou in zijn leven mogen worden afgeremd door administratieve, financiële of taalgerelateerde moeilijkheden.",
@@ -586,7 +586,7 @@ export const nl: Dict = {
     placeholder:
       "Hieronder leest u hoe ZADIASSURE met uw persoonsgegevens omgaat en welke rechten u heeft.",
     companyDataNote:
-      "",
+      "ZADIASSURE — Kortrijkstraat 145, 8560 Wevelgem, België — Ondernemingsnummer: BE 0783.444.650",
     sections: [
       {
         title: "Wie verwerkt uw gegevens?",

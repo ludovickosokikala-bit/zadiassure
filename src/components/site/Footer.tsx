@@ -117,7 +117,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} ZADIASSURE — {t.footer.rights}</p>
+          <div>
+            <p>© {year} ZADIASSURE — {t.footer.rights}</p>
+            <p className="mt-1">{t.legal.companyDataNote}</p>
+          </div>
           <p className="italic">{t.brand.statement}</p>
           <Link
             to="/volmacht"

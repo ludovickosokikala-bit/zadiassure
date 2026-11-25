@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { useEffect } from "react";
 import pageImage from "@/assets/page-audiences.jpg";
@@ -20,9 +21,9 @@ export const Route = createFileRoute("/voor-wie")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/voor-wie" },
+      { property: "og:url", content: `${BASE_URL}/voor-wie` },
     ],
-    links: [{ rel: "canonical", href: "/voor-wie" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/voor-wie` }],
   }),
   component: AudiencesPage,
 });

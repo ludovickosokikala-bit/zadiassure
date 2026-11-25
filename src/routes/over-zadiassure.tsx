@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute } from "@tanstack/react-router";
 import founderPhoto from "@/assets/founder.png.asset.json";
 import { Section, SectionHeader } from "@/components/site/Section";
@@ -14,9 +15,9 @@ export const Route = createFileRoute("/over-zadiassure")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/over-zadiassure" },
+      { property: "og:url", content: `${BASE_URL}/over-zadiassure` },
     ],
-    links: [{ rel: "canonical", href: "/over-zadiassure" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/over-zadiassure` }],
   }),
   component: AboutPage,
 });

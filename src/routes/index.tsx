@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Hero,
@@ -21,10 +22,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: `${BASE_URL}/` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/` }],
     scripts: [
       {
         type: "application/ld+json",

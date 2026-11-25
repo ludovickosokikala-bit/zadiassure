@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/site/Section";
@@ -14,9 +15,9 @@ export const Route = createFileRoute("/kenniscentrum/")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/kenniscentrum" },
+      { property: "og:url", content: `${BASE_URL}/kenniscentrum` },
     ],
-    links: [{ rel: "canonical", href: "/kenniscentrum" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/kenniscentrum` }],
   }),
   component: InsightsPage,
 });

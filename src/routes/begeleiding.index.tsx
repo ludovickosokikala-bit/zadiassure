@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute } from "@tanstack/react-router";
 import pageImage from "@/assets/page-services.jpg";
 import { PageHero } from "@/components/site/PageHero";
@@ -18,9 +19,9 @@ export const Route = createFileRoute("/begeleiding/")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/begeleiding" },
+      { property: "og:url", content: `${BASE_URL}/begeleiding` },
     ],
-    links: [{ rel: "canonical", href: "/begeleiding" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/begeleiding` }],
   }),
   component: ServicesPage,
 });

@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, CalendarDays, FileText } from "lucide-react";
@@ -26,10 +27,10 @@ export const Route = createFileRoute("/wetgeving/")({
       { property: "og:title", content: meta.metaTitle },
       { property: "og:description", content: meta.metaDescription },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/wetgeving" },
+      { property: "og:url", content: `${BASE_URL}/wetgeving` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/wetgeving" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/wetgeving` }],
   }),
   errorComponent: () => (
     <Section>

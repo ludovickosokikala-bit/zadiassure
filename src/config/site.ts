@@ -36,3 +36,6 @@ export const routes = {
   terms: "/algemene-voorwaarden",
   cookies: "/cookiebeleid",
 } as const;
+
+/** Public site origin used for sitemap, canonical and og:url (no trailing slash). */
+export const BASE_URL = "https://www.zadiassure.com";

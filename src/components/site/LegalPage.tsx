@@ -22,10 +22,13 @@ export function LegalPage({ title }: { title: "privacy" | "terms" | "cookies" })
     <Section>
       <SectionHeader title={heading} text={intro} as="h1" />
       <div className="mt-12 max-w-3xl space-y-8">
-        {sections.map((s) => (
+        {sections.map((s, i) => (
           <div key={s.title}>
             <h2 className="font-display text-xl font-bold text-primary">{s.title}</h2>
             <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+            {title === "privacy" && i === 0 && t.legal.companyDataNote && (
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{t.legal.companyDataNote}</p>
+            )}
           </div>
         ))}
       </div>

@@ -284,7 +284,7 @@ export function WeeklyDigest() {
     <div className="mb-14">
       <span className="w-fit rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary">{d.badge}</span>
       <h2 className="mt-4 text-2xl font-bold leading-snug text-primary">
-        {d.heading}: {d.period}
+        {d.heading}
       </h2>
       <p className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground">
         <CalendarDays className="size-4" aria-hidden />

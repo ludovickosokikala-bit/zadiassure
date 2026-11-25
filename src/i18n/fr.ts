@@ -552,7 +552,7 @@ export const fr: Dict = {
     placeholder:
       "Vous trouverez ci-dessous la manière dont ZADIASSURE traite vos données personnelles et les droits dont vous disposez.",
     companyDataNote:
-      "",
+      "ZADIASSURE — Kortrijkstraat 145, 8560 Wevelgem, Belgique — Numéro d'entreprise: BE 0783.444.650",
     sections: [
       {
         title: "Qui traite vos données ?",

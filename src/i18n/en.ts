@@ -551,7 +551,7 @@ export const en: Dict = {
     placeholder:
       "Below you can read how ZADIASSURE handles your personal data and which rights you have.",
     companyDataNote:
-      "",
+      "ZADIASSURE — Kortrijkstraat 145, 8560 Wevelgem, Belgium — Company number: BE 0783.444.650",
     sections: [
       {
         title: "Who processes your data?",

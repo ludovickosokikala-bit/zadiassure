@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Building2, CheckCircle2, ExternalLink, Printer } from "lucide-react";
 import { Section } from "@/components/site/Section";
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/documenten/$slug")({
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
-      links: [{ rel: "canonical", href: `/documenten/${loaderData.item.slug}` }],
+      links: [{ rel: "canonical", href: `${BASE_URL}/documenten/${loaderData.item.slug}` }],
     };
   },
   notFoundComponent: () => (

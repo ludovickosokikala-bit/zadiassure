@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/config/site";
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
@@ -35,7 +36,7 @@ export const Route = createFileRoute("/volmacht")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/volmacht" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/volmacht` }],
   }),
   component: MandatePage,
 });
