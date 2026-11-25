@@ -30,6 +30,11 @@ describe("public domain", () => {
 });
 
 describe("never redirected", () => {
+  test("Search Console verification file is never redirected", () => {
+    for (const h of ["www.zadiassure.com", "zadiassure.com", "zadiassure.app", "www.zadiassure.app"]) {
+      expect(hostRedirect(h, "/googleca455bfca26e01f7.html", "")).toBeNull();
+    }
+  });
   test("neutral paths", () => {
     for (const p of ["/api/x", "/lovable/email/auth/webhook", "/sitemap.xml", "/oauth/google/return"]) {
       expect(hostRedirect("zadiassure.app", p, "")).toBeNull();
