@@ -1,0 +1,2 @@
+CREATE FUNCTION private.foundation_access_stamp() RETURNS trigger LANGUAGE plpgsql SET search_path = '' AS $$ BEGIN NEW.user_id:=auth.uid(); NEW.opened_at:=now(); RETURN NEW; END $$;
+CREATE TRIGGER foundation_access_stamp BEFORE INSERT ON public.crm_access_log FOR EACH ROW EXECUTE FUNCTION private.foundation_access_stamp();
