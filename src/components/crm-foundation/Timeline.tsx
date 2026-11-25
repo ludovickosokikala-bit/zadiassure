@@ -84,7 +84,17 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
                                 ? c.debtUi.debtReferred
                                 : v.kind === "instalment_paid"
                                   ? c.debtUi.instalmentPaid
-                                  : c.manualNote;
+                                  : v.kind === "imm_procedure"
+                                    ? c.immUi.tl.procedure
+                                    : v.kind === "imm_step_done"
+                                      ? c.immUi.tl.step
+                                      : v.kind === "imm_document"
+                                        ? c.immUi.tl.document
+                                        : v.kind === "imm_decision"
+                                          ? c.immUi.tl.decision
+                                          : v.kind === "imm_referred"
+                                            ? c.immUi.tl.referred
+                                            : c.manualNote;
             let extra = "";
             if (v.kind === "status_changed")
               extra = `${c.statuses[get("from") as keyof typeof c.statuses] ?? get("from")} → ${c.statuses[get("to") as keyof typeof c.statuses] ?? get("to")}`;
@@ -105,6 +115,12 @@ export function Timeline({ clientId, dossierId }: { clientId: string; dossierId?
               extra = `${get("creditor")} → ${d.referrals[get("referral") as keyof typeof d.referrals] ?? get("referral")}`;
             if (v.kind === "instalment_paid")
               extra = `${get("creditor")} · ${formatEUR(get("amount"))} · ${dateLabel(get("paid_at"), language)}`;
+            const im = c.immUi;
+            if (v.kind === "imm_procedure") extra = im.types[get("procedure") as keyof typeof im.types] ?? get("procedure");
+            if (v.kind === "imm_step_done") extra = get("step");
+            if (v.kind === "imm_document") extra = `${get("document")} · ${im.docStatus[get("status") as keyof typeof im.docStatus] ?? get("status")}`;
+            if (v.kind === "imm_decision") extra = `${im.decisions[get("decision") as keyof typeof im.decisions] ?? get("decision")}${get("date") && get("date") !== "null" ? ` · ${dateLabel(get("date"), language)}` : ""}`;
+            if (v.kind === "imm_referred") extra = get("lawyer");
             return (
               <li key={v.id}>
                 <p className="font-medium">

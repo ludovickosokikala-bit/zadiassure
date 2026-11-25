@@ -1234,6 +1234,268 @@ export type Database = {
           },
         ]
       }
+      crm_imm_documents: {
+        Row: {
+          created_at: string
+          dossier_id: string
+          file_path: string | null
+          id: string
+          label: string
+          needs_translation: boolean
+          notes: string
+          organization_id: string
+          sort_order: number
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          dossier_id: string
+          file_path?: string | null
+          id?: string
+          label: string
+          needs_translation?: boolean
+          notes?: string
+          organization_id: string
+          sort_order?: number
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          dossier_id?: string
+          file_path?: string | null
+          id?: string
+          label?: string
+          needs_translation?: boolean
+          notes?: string
+          organization_id?: string
+          sort_order?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_imm_documents_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_imm_documents_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_imm_persons: {
+        Row: {
+          created_at: string
+          document_label: string
+          dossier_id: string
+          expires_on: string | null
+          id: string
+          organization_id: string
+          person_id: string
+        }
+        Insert: {
+          created_at?: string
+          document_label?: string
+          dossier_id: string
+          expires_on?: string | null
+          id?: string
+          organization_id: string
+          person_id: string
+        }
+        Update: {
+          created_at?: string
+          document_label?: string
+          dossier_id?: string
+          expires_on?: string | null
+          id?: string
+          organization_id?: string
+          person_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_imm_persons_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_imm_persons_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "crm_imm_persons_person_id_organization_id_fkey"
+            columns: ["person_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+        ]
+      }
+      crm_imm_procedures: {
+        Row: {
+          appeal_until: string | null
+          client_id: string
+          created_at: string
+          decision: string
+          decision_on: string | null
+          dossier_id: string
+          id: string
+          lawyer_name: string
+          organization_id: string
+          procedure_type: string
+          referral_note: string
+          referred_at: string | null
+          submitted_on: string | null
+          updated_at: string
+        }
+        Insert: {
+          appeal_until?: string | null
+          client_id: string
+          created_at?: string
+          decision?: string
+          decision_on?: string | null
+          dossier_id: string
+          id?: string
+          lawyer_name?: string
+          organization_id: string
+          procedure_type?: string
+          referral_note?: string
+          referred_at?: string | null
+          submitted_on?: string | null
+          updated_at?: string
+        }
+        Update: {
+          appeal_until?: string | null
+          client_id?: string
+          created_at?: string
+          decision?: string
+          decision_on?: string | null
+          dossier_id?: string
+          id?: string
+          lawyer_name?: string
+          organization_id?: string
+          procedure_type?: string
+          referral_note?: string
+          referred_at?: string | null
+          submitted_on?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_imm_procedures_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_imm_procedures_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_imm_procedures_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_imm_steps: {
+        Row: {
+          created_at: string
+          dossier_id: string
+          id: string
+          label: string
+          organization_id: string
+          sort_order: number
+          status: string
+          step_date: string | null
+        }
+        Insert: {
+          created_at?: string
+          dossier_id: string
+          id?: string
+          label: string
+          organization_id: string
+          sort_order?: number
+          status?: string
+          step_date?: string | null
+        }
+        Update: {
+          created_at?: string
+          dossier_id?: string
+          id?: string
+          label?: string
+          organization_id?: string
+          sort_order?: number
+          status?: string
+          step_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_imm_steps_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_imm_steps_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_imm_templates: {
+        Row: {
+          documents: Json
+          id: string
+          organization_id: string
+          procedure_type: string
+          steps: Json
+          updated_at: string
+        }
+        Insert: {
+          documents?: Json
+          id?: string
+          organization_id: string
+          procedure_type: string
+          steps?: Json
+          updated_at?: string
+        }
+        Update: {
+          documents?: Json
+          id?: string
+          organization_id?: string
+          procedure_type?: string
+          steps?: Json
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_imm_templates_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crm_instalments: {
         Row: {
           amount: number

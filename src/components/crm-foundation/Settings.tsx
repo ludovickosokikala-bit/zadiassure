@@ -1,3 +1,4 @@
+import { ImmTemplatesSettings } from "./Immigration";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
@@ -102,6 +103,7 @@ export function SettingsPage() {
           </form>
         </section>
       </div>
+      <ImmTemplatesSettings />
       {message && (
         <p role="status" className="mt-6 text-sm">
           {message}

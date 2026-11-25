@@ -43,6 +43,13 @@
       "when": 1795624942487,
       "tag": "0005_payment_proofs_storage_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795625768771,
+      "tag": "0006_crm_phase4_immigration",
+      "breakpoints": true
     }
   ]
 }

@@ -35,6 +35,7 @@ import { PageTitle, EmptyState, Status, FoundationNotFound } from "./ui";
 import { ClientForm, DossierForm, LinkPersonForm } from "./forms";
 import { Timeline } from "./Timeline";
 import { BudgetPanel, DebtsPanel, WeekPayments } from "./Debts";
+import { ImmAlertsBlock, ImmBadge, ImmClientTab, ImmDossierSection } from "./Immigration";
 import { AppointmentsSection, FollowUpBanner, TodayAppointments } from "./Agenda";
 import type { Dossier } from "./data";
 export function TodayPage() {
@@ -63,6 +64,7 @@ export function TodayPage() {
       />
       <TodayAppointments />
       <WeekPayments />
+      <ImmAlertsBlock />
       <div className="crm-metrics">
         {[
           { label: c.totalClients, value: data.clients.length, icon: Users },
@@ -320,7 +322,7 @@ export function DossierList({ dossiers }: { dossiers: Dossier[] }) {
 export function ClientDetailPage({ id }: { id: string }) {
   const { data, c, language, refresh } = useFoundation();
   const row = data.clients.find((v) => v.id === id);
-  const [tab, setTab] = useState<"overview" | "dossiers" | "timeline" | "budget" | "debts">("overview");
+  const [tab, setTab] = useState<"overview" | "dossiers" | "timeline" | "budget" | "debts" | "immigration">("overview");
   const [edit, setEdit] = useState(false);
   const [dossier, setDossier] = useState(false);
   const [link, setLink] = useState(false);
@@ -444,10 +446,11 @@ export function ClientDetailPage({ id }: { id: string }) {
           {c.failed}
         </p>
       )}
+      <div className="mt-3"><ImmBadge clientId={id} /></div>
       <div className="crm-tabs" role="tablist">
         {(row.type === "company"
-          ? (["overview", "dossiers", "timeline"] as const)
-          : (["overview", "dossiers", "budget", "debts", "timeline"] as const)
+          ? (["overview", "dossiers", "immigration", "timeline"] as const)
+          : (["overview", "dossiers", "budget", "debts", "immigration", "timeline"] as const)
         ).map((t) => (
           <Button
             key={t}
@@ -456,7 +459,7 @@ export function ClientDetailPage({ id }: { id: string }) {
             onClick={() => setTab(t)}
             variant="ghost"
           >
-            {t === "budget" ? c.debtUi.budget : t === "debts" ? c.debtUi.debts : c[t]}
+            {t === "budget" ? c.debtUi.budget : t === "debts" ? c.debtUi.debts : t === "immigration" ? c.immUi.tab : c[t]}
           </Button>
         ))}
       </div>
@@ -572,6 +575,8 @@ export function ClientDetailPage({ id }: { id: string }) {
         <BudgetPanel clientId={id} />
       ) : tab === "debts" ? (
         <DebtsPanel clientId={id} />
+      ) : tab === "immigration" ? (
+        <ImmClientTab clientId={id} />
       ) : (
         <Timeline clientId={id} />
       )}
@@ -612,6 +617,7 @@ export function DossierDetailPage({ id }: { id: string }) {
         <span className="crm-status">
           {c.priorities[row.priority as keyof typeof c.priorities]}
         </span>
+        <ImmBadge dossierId={row.id} />
       </div>
       <div className="crm-detail-grid">
         <section>
@@ -641,6 +647,7 @@ export function DossierDetailPage({ id }: { id: string }) {
           <Timeline clientId={row.client_id} dossierId={row.id} />
         </section>
       </div>
+      {row.service === "IMM" && <ImmDossierSection dossierId={row.id} />}
       {row.service === "BUD" && <BudDossierSection clientId={row.client_id} dossierId={row.id} />}
       {edit && <DossierForm row={row} clientId={row.client_id} onClose={() => setEdit(false)} />}
     </>

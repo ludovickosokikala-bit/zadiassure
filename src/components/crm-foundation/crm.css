@@ -901,3 +901,34 @@ body:has(.crm-layout) > div > .fixed {
 .crm-metrics:has(> :nth-child(4)) {
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 }
+.crm-imm-alert-high {
+  background: oklch(0.95 0.04 25);
+  color: oklch(0.5 0.18 25);
+}
+.crm-imm-alert-mid {
+  background: var(--crm-warning-bg);
+  color: var(--crm-warning);
+}
+.dark .crm-imm-alert-high {
+  background: oklch(0.32 0.08 25);
+  color: oklch(0.85 0.1 25);
+}
+.crm-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted);
+  overflow: hidden;
+}
+.crm-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+.crm-link {
+  color: var(--primary);
+  font-weight: 500;
+}
+.dark .crm-link {
+  color: oklch(0.8 0.1 250);
+}
