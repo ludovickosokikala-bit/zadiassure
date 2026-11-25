@@ -1,3 +1,4 @@
+import { crmOriginFor } from "./host-routing";
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 import { z } from "zod";
@@ -46,7 +47,7 @@ export const startGmailConnect = createServerFn({ method: "POST" })
       connectorId: GMAIL_CONNECTOR_ID,
       appUserId: context.userId,
       clientAPIKey: clientApiKey,
-      returnUrl: new URL("/oauth/google/return", request.url).toString(),
+      returnUrl: `${crmOriginFor(new URL(request.url).origin)}/oauth/google/return`,
       ...(existing ? { connectionAPIKey: existing } : {}),
       credentialsConfiguration: { scopes: GMAIL_SCOPES },
     });

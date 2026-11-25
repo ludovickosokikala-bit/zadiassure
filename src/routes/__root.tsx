@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { LanguageProvider } from "@/i18n";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { hostRedirect } from "@/lib/host-routing";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -133,6 +134,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Client-side fallback for the host-based public/CRM split (server.ts does it first).
+  useEffect(() => {
+    const { host, pathname, search, hash } = window.location;
+    const target = hostRedirect(host, pathname, search);
+    if (target) window.location.replace(target + hash);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

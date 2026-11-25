@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Public site vs staff CRM are split by host in src/lib/host-routing.ts (server.ts redirects + root client fallback; robots.txt served from server.ts). Why: one project serves both domains; non-production hosts are never redirected so previews keep working.

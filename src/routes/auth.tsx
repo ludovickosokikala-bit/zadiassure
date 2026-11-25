@@ -1,3 +1,4 @@
+import { crmOriginFor } from "@/lib/host-routing";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
@@ -66,7 +67,7 @@ function AuthPage() {
         const { error: signUpError } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: `${window.location.origin}/crm` },
+          options: { emailRedirectTo: `${crmOriginFor(window.location.origin)}/crm` },
         });
         if (signUpError) throw signUpError;
         setMessage(a.checkEmail);
@@ -84,7 +85,7 @@ function AuthPage() {
   const onGoogle = async () => {
     setError(null);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
+      redirect_uri: crmOriginFor(window.location.origin),
     });
     if (result.error) setError(a.error);
   };

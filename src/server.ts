@@ -2,6 +2,8 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { hostRedirect, robotsTxtFor } from "./lib/host-routing";
+import { BASE_URL } from "./config/site";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -46,6 +48,17 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+    const host = request.headers.get("x-forwarded-host") ?? url.host;
+    if (url.pathname === "/robots.txt") {
+      return new Response(robotsTxtFor(host, `${BASE_URL}/sitemap.xml`), {
+        headers: { "content-type": "text/plain; charset=utf-8" },
+      });
+    }
+    if (request.method === "GET" || request.method === "HEAD") {
+      const target = hostRedirect(host, url.pathname, url.search);
+      if (target) return Response.redirect(target, 302);
+    }
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
