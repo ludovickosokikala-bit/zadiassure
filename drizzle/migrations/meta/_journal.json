@@ -50,6 +50,13 @@
       "when": 1795625768771,
       "tag": "0006_crm_phase4_immigration",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1795626391891,
+      "tag": "0007_crm_phase5_letters_tasks_requests",
+      "breakpoints": true
     }
   ]
 }

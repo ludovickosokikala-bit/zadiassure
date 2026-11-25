@@ -37,6 +37,7 @@ import { Route as CrmSettingsRouteImport } from './routes/crm.settings'
 import { Route as CrmTeamRouteImport } from './routes/crm.team'
 import { Route as DocumentenIndexRouteImport } from './routes/documenten.index'
 import { Route as DocumentenSlugRouteImport } from './routes/documenten.$slug'
+import { Route as DocumentenTokenRouteImport } from './routes/documenten.$token'
 import { Route as KenniscentrumIndexRouteImport } from './routes/kenniscentrum.index'
 import { Route as KenniscentrumSlugRouteImport } from './routes/kenniscentrum.$slug'
 import { Route as WetgevingIndexRouteImport } from './routes/wetgeving.index'
@@ -48,6 +49,8 @@ import { Route as CrmPrintIdRouteImport } from './routes/crm.print.$id'
 import { Route as OauthGoogleReturnRouteImport } from './routes/oauth.google.return'
 import { Route as ApiOauthGoogleCalendarReturnRouteImport } from './routes/api/oauth/google-calendar/return'
 import { Route as ApiPublicAgendaTokenDoticsRouteImport } from './routes/api/public/agenda.$token[.]ics'
+import { Route as ApiPublicCronRemindersRouteImport } from './routes/api/public/cron/reminders'
+import { Route as ApiPublicUploadTokenRouteImport } from './routes/api/public/upload.$token'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -192,6 +195,11 @@ const DocumentenSlugRoute = DocumentenSlugRouteImport.update({
   path: '/documenten/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentenTokenRoute = DocumentenTokenRouteImport.update({
+  id: '/documenten/$token',
+  path: '/documenten/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KenniscentrumIndexRoute = KenniscentrumIndexRouteImport.update({
   id: '/kenniscentrum/',
   path: '/kenniscentrum/',
@@ -249,6 +257,16 @@ const ApiPublicAgendaTokenDoticsRoute =
     path: '/api/public/agenda/$token.ics',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicCronRemindersRoute = ApiPublicCronRemindersRouteImport.update({
+  id: '/api/public/cron/reminders',
+  path: '/api/public/cron/reminders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicUploadTokenRoute = ApiPublicUploadTokenRouteImport.update({
+  id: '/api/public/upload/$token',
+  path: '/api/public/upload/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   id: '/lovable/email/auth/preview',
   path: '/lovable/email/auth/preview',
@@ -291,6 +309,7 @@ export interface FileRoutesByFullPath {
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
+  '/documenten/$token': typeof DocumentenTokenRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
@@ -305,6 +324,8 @@ export interface FileRoutesByFullPath {
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
+  '/api/public/cron/reminders': typeof ApiPublicCronRemindersRoute
+  '/api/public/upload/$token': typeof ApiPublicUploadTokenRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -333,6 +354,7 @@ export interface FileRoutesByTo {
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
+  '/documenten/$token': typeof DocumentenTokenRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding': typeof BegeleidingIndexRoute
@@ -347,6 +369,8 @@ export interface FileRoutesByTo {
   '/crm/clients': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
+  '/api/public/cron/reminders': typeof ApiPublicCronRemindersRoute
+  '/api/public/upload/$token': typeof ApiPublicUploadTokenRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -378,6 +402,7 @@ export interface FileRoutesById {
   '/crm/settings': typeof CrmSettingsRoute
   '/crm/team': typeof CrmTeamRoute
   '/documenten/$slug': typeof DocumentenSlugRoute
+  '/documenten/$token': typeof DocumentenTokenRoute
   '/kenniscentrum/$slug': typeof KenniscentrumSlugRoute
   '/wetgeving/$slug': typeof WetgevingSlugRoute
   '/begeleiding/': typeof BegeleidingIndexRoute
@@ -392,6 +417,8 @@ export interface FileRoutesById {
   '/crm/clients/': typeof CrmClientsIndexRoute
   '/api/oauth/google-calendar/return': typeof ApiOauthGoogleCalendarReturnRoute
   '/api/public/agenda/$token.ics': typeof ApiPublicAgendaTokenDoticsRoute
+  '/api/public/cron/reminders': typeof ApiPublicCronRemindersRoute
+  '/api/public/upload/$token': typeof ApiPublicUploadTokenRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -423,6 +450,7 @@ export interface FileRouteTypes {
     | '/crm/settings'
     | '/crm/team'
     | '/documenten/$slug'
+    | '/documenten/$token'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding/'
@@ -437,6 +465,8 @@ export interface FileRouteTypes {
     | '/crm/clients/'
     | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
+    | '/api/public/cron/reminders'
+    | '/api/public/upload/$token'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -465,6 +495,7 @@ export interface FileRouteTypes {
     | '/crm/settings'
     | '/crm/team'
     | '/documenten/$slug'
+    | '/documenten/$token'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding'
@@ -479,6 +510,8 @@ export interface FileRouteTypes {
     | '/crm/clients'
     | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
+    | '/api/public/cron/reminders'
+    | '/api/public/upload/$token'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -509,6 +542,7 @@ export interface FileRouteTypes {
     | '/crm/settings'
     | '/crm/team'
     | '/documenten/$slug'
+    | '/documenten/$token'
     | '/kenniscentrum/$slug'
     | '/wetgeving/$slug'
     | '/begeleiding/'
@@ -523,6 +557,8 @@ export interface FileRouteTypes {
     | '/crm/clients/'
     | '/api/oauth/google-calendar/return'
     | '/api/public/agenda/$token.ics'
+    | '/api/public/cron/reminders'
+    | '/api/public/upload/$token'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -548,6 +584,7 @@ export interface RootRouteChildren {
   AanpakSlugRoute: typeof AanpakSlugRoute
   BegeleidingSlugRoute: typeof BegeleidingSlugRoute
   DocumentenSlugRoute: typeof DocumentenSlugRoute
+  DocumentenTokenRoute: typeof DocumentenTokenRoute
   KenniscentrumSlugRoute: typeof KenniscentrumSlugRoute
   WetgevingSlugRoute: typeof WetgevingSlugRoute
   BegeleidingIndexRoute: typeof BegeleidingIndexRoute
@@ -557,6 +594,8 @@ export interface RootRouteChildren {
   OauthGoogleReturnRoute: typeof OauthGoogleReturnRoute
   ApiOauthGoogleCalendarReturnRoute: typeof ApiOauthGoogleCalendarReturnRoute
   ApiPublicAgendaTokenDoticsRoute: typeof ApiPublicAgendaTokenDoticsRoute
+  ApiPublicCronRemindersRoute: typeof ApiPublicCronRemindersRoute
+  ApiPublicUploadTokenRoute: typeof ApiPublicUploadTokenRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -760,6 +799,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentenSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documenten/$token': {
+      id: '/documenten/$token'
+      path: '/documenten/$token'
+      fullPath: '/documenten/$token'
+      preLoaderRoute: typeof DocumentenTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kenniscentrum/': {
       id: '/kenniscentrum/'
       path: '/kenniscentrum'
@@ -835,6 +881,20 @@ declare module '@tanstack/react-router' {
       path: '/api/public/agenda/$token.ics'
       fullPath: '/api/public/agenda/$token.ics'
       preLoaderRoute: typeof ApiPublicAgendaTokenDoticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/reminders': {
+      id: '/api/public/cron/reminders'
+      path: '/api/public/cron/reminders'
+      fullPath: '/api/public/cron/reminders'
+      preLoaderRoute: typeof ApiPublicCronRemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/upload/$token': {
+      id: '/api/public/upload/$token'
+      path: '/api/public/upload/$token'
+      fullPath: '/api/public/upload/$token'
+      preLoaderRoute: typeof ApiPublicUploadTokenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -921,6 +981,7 @@ const rootRouteChildren: RootRouteChildren = {
   AanpakSlugRoute: AanpakSlugRoute,
   BegeleidingSlugRoute: BegeleidingSlugRoute,
   DocumentenSlugRoute: DocumentenSlugRoute,
+  DocumentenTokenRoute: DocumentenTokenRoute,
   KenniscentrumSlugRoute: KenniscentrumSlugRoute,
   WetgevingSlugRoute: WetgevingSlugRoute,
   BegeleidingIndexRoute: BegeleidingIndexRoute,
@@ -930,6 +991,8 @@ const rootRouteChildren: RootRouteChildren = {
   OauthGoogleReturnRoute: OauthGoogleReturnRoute,
   ApiOauthGoogleCalendarReturnRoute: ApiOauthGoogleCalendarReturnRoute,
   ApiPublicAgendaTokenDoticsRoute: ApiPublicAgendaTokenDoticsRoute,
+  ApiPublicCronRemindersRoute: ApiPublicCronRemindersRoute,
+  ApiPublicUploadTokenRoute: ApiPublicUploadTokenRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,

@@ -1007,6 +1007,7 @@ export type Database = {
           contact_person_id: string | null
           created_at: string
           email: string
+          email_reminders: boolean
           enterprise_number: string
           first_name: string
           household_name: string
@@ -1029,6 +1030,7 @@ export type Database = {
           contact_person_id?: string | null
           created_at?: string
           email?: string
+          email_reminders?: boolean
           enterprise_number?: string
           first_name?: string
           household_name?: string
@@ -1051,6 +1053,7 @@ export type Database = {
           contact_person_id?: string | null
           created_at?: string
           email?: string
+          email_reminders?: boolean
           enterprise_number?: string
           first_name?: string
           household_name?: string
@@ -1165,6 +1168,150 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "organizations"
             referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_doc_requests: {
+        Row: {
+          client_id: string
+          created_at: string
+          created_by: string | null
+          dossier_id: string | null
+          expires_at: string
+          id: string
+          items: Json
+          language: string
+          organization_id: string
+          reminder_sent_at: string | null
+          status: string
+          token_hash: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          dossier_id?: string | null
+          expires_at: string
+          id?: string
+          items?: Json
+          language?: string
+          organization_id: string
+          reminder_sent_at?: string | null
+          status?: string
+          token_hash: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          dossier_id?: string | null
+          expires_at?: string
+          id?: string
+          items?: Json
+          language?: string
+          organization_id?: string
+          reminder_sent_at?: string | null
+          status?: string
+          token_hash?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_doc_requests_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_doc_requests_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_doc_requests_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_documents: {
+        Row: {
+          category: string
+          client_id: string
+          created_at: string
+          dossier_id: string | null
+          id: string
+          mime_type: string
+          name: string
+          organization_id: string
+          request_id: string | null
+          size_bytes: number | null
+          storage_path: string
+          uploaded_by: string | null
+          uploaded_by_label: string
+        }
+        Insert: {
+          category?: string
+          client_id: string
+          created_at?: string
+          dossier_id?: string | null
+          id?: string
+          mime_type?: string
+          name?: string
+          organization_id: string
+          request_id?: string | null
+          size_bytes?: number | null
+          storage_path: string
+          uploaded_by?: string | null
+          uploaded_by_label?: string
+        }
+        Update: {
+          category?: string
+          client_id?: string
+          created_at?: string
+          dossier_id?: string | null
+          id?: string
+          mime_type?: string
+          name?: string
+          organization_id?: string
+          request_id?: string | null
+          size_bytes?: number | null
+          storage_path?: string
+          uploaded_by?: string | null
+          uploaded_by_label?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_documents_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_documents_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_documents_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "crm_documents_request_id_organization_id_fkey"
+            columns: ["request_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_doc_requests"
+            referencedColumns: ["id", "organization_id"]
           },
         ]
       }
@@ -1506,6 +1653,7 @@ export type Database = {
           organization_id: string
           paid_at: string | null
           proof_path: string | null
+          reminder_sent_at: string | null
         }
         Insert: {
           amount: number
@@ -1516,6 +1664,7 @@ export type Database = {
           organization_id: string
           paid_at?: string | null
           proof_path?: string | null
+          reminder_sent_at?: string | null
         }
         Update: {
           amount?: number
@@ -1526,6 +1675,7 @@ export type Database = {
           organization_id?: string
           paid_at?: string | null
           proof_path?: string | null
+          reminder_sent_at?: string | null
         }
         Relationships: [
           {
@@ -1537,6 +1687,79 @@ export type Database = {
           },
           {
             foreignKeyName: "crm_instalments_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_letters: {
+        Row: {
+          analysis: Json | null
+          analysis_error: string
+          client_id: string
+          created_at: string
+          created_by: string | null
+          deadline: string | null
+          dossier_id: string | null
+          file_paths: string[]
+          id: string
+          mime_types: string[]
+          organization_id: string
+          reply_draft: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          analysis?: Json | null
+          analysis_error?: string
+          client_id: string
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          dossier_id?: string | null
+          file_paths?: string[]
+          id?: string
+          mime_types?: string[]
+          organization_id: string
+          reply_draft?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          analysis?: Json | null
+          analysis_error?: string
+          client_id?: string
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          dossier_id?: string | null
+          file_paths?: string[]
+          id?: string
+          mime_types?: string[]
+          organization_id?: string
+          reply_draft?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_letters_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_letters_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_letters_organization_id_fkey"
             columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organizations"
@@ -1584,6 +1807,80 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "crm_preferences_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_tasks: {
+        Row: {
+          assignee_id: string | null
+          client_id: string | null
+          created_at: string
+          created_by: string | null
+          done_at: string | null
+          dossier_id: string | null
+          due_date: string | null
+          id: string
+          letter_id: string | null
+          organization_id: string
+          status: string
+          title: string
+        }
+        Insert: {
+          assignee_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          done_at?: string | null
+          dossier_id?: string | null
+          due_date?: string | null
+          id?: string
+          letter_id?: string | null
+          organization_id: string
+          status?: string
+          title: string
+        }
+        Update: {
+          assignee_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          done_at?: string | null
+          dossier_id?: string | null
+          due_date?: string | null
+          id?: string
+          letter_id?: string | null
+          organization_id?: string
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_tasks_client_id_organization_id_fkey"
+            columns: ["client_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_clients"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_tasks_dossier_id_organization_id_fkey"
+            columns: ["dossier_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_dossiers"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_tasks_letter_id_organization_id_fkey"
+            columns: ["letter_id", "organization_id"]
+            isOneToOne: false
+            referencedRelation: "crm_letters"
+            referencedColumns: ["id", "organization_id"]
+          },
+          {
+            foreignKeyName: "crm_tasks_organization_id_fkey"
             columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organizations"
@@ -1658,6 +1955,7 @@ export type Database = {
           attachments: Json
           audience: string
           created_at: string
+          crm_client_id: string | null
           email: string
           full_name: string
           id: string
@@ -1674,6 +1972,7 @@ export type Database = {
           attachments?: Json
           audience?: string
           created_at?: string
+          crm_client_id?: string | null
           email: string
           full_name: string
           id?: string
@@ -1690,6 +1989,7 @@ export type Database = {
           attachments?: Json
           audience?: string
           created_at?: string
+          crm_client_id?: string | null
           email?: string
           full_name?: string
           id?: string
