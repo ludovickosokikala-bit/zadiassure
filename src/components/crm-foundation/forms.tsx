@@ -22,15 +22,16 @@ import {
 import { useFoundation } from "./context";
 import { CrmModal, Field } from "./ui";
 import type { Client, Dossier } from "./data";
-export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void }) {
+export function ClientForm({ row, prefill, onCreated, onClose }: { row?: Client; prefill?: Partial<Client>; onCreated?: (id: string) => void; onClose: () => void }) {
+  const init: Partial<Client> | undefined = row ?? prefill;
   const { c, data, refresh } = useFoundation();
   const save = useServerFn(saveFoundationClient);
   const navigate = useNavigate();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [type, setType] = useState(row?.type ?? "person");
-  const [phone, setPhone] = useState(row?.phone ?? "");
-  const [whatsapp, setWhatsapp] = useState(row?.whatsapp ?? "");
+  const [phone, setPhone] = useState(init?.phone ?? "");
+  const [whatsapp, setWhatsapp] = useState(init?.whatsapp ?? "");
   const [whatsappCustom, setWhatsappCustom] = useState(
     Boolean(row?.whatsapp && row.whatsapp !== row.phone),
   );
@@ -67,6 +68,7 @@ export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void
       const result = await save({ data: parsed.data });
       await refresh();
       onClose();
+      onCreated?.(result.id);
       if (!row) await navigate({ to: "/crm/clients/$id", params: { id: result.id } });
     } catch {
       setError(c.failed);
@@ -95,35 +97,35 @@ export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void
           {type === "person" ? (
             <>
               <Field label={`${c.firstName} *`}>
-                <Input name="first_name" required defaultValue={row?.first_name} />
+                <Input name="first_name" required defaultValue={init?.first_name} />
               </Field>
               <Field label={`${c.lastName} *`}>
-                <Input name="last_name" required defaultValue={row?.last_name} />
+                <Input name="last_name" required defaultValue={init?.last_name} />
               </Field>
               <Field label={c.nationality}>
-                <Input name="nationality" defaultValue={row?.nationality} />
+                <Input name="nationality" defaultValue={init?.nationality} />
               </Field>
               <Field label={c.birthDate}>
-                <Input type="date" name="birth_date" defaultValue={row?.birth_date ?? ""} />
+                <Input type="date" name="birth_date" defaultValue={init?.birth_date ?? ""} />
               </Field>
             </>
           ) : type === "household" ? (
             <Field label={`${c.householdName} *`}>
-              <Input name="household_name" required defaultValue={row?.household_name} />
+              <Input name="household_name" required defaultValue={init?.household_name} />
             </Field>
           ) : (
             <>
               <Field label={`${c.companyName} *`}>
-                <Input name="company_name" required defaultValue={row?.company_name} />
+                <Input name="company_name" required defaultValue={init?.company_name} />
               </Field>
               <Field label={c.enterpriseNumber}>
-                <Input name="enterprise_number" defaultValue={row?.enterprise_number} />
+                <Input name="enterprise_number" defaultValue={init?.enterprise_number} />
               </Field>
               <Field label={c.contactPerson}>
                 <select
                   className="crm-select"
                   name="contact_person_id"
-                  defaultValue={row?.contact_person_id ?? ""}
+                  defaultValue={init?.contact_person_id ?? ""}
                 >
                   <option value="">{c.none}</option>
                   {data.clients
@@ -141,7 +143,7 @@ export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void
             <select
               className="crm-select"
               name="preferred_language"
-              defaultValue={row?.preferred_language ?? "nl"}
+              defaultValue={init?.preferred_language ?? "nl"}
             >
               {LANGUAGES.map((v) => (
                 <option key={v} value={v}>
@@ -162,7 +164,7 @@ export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void
             />
           </Field>
           <Field label={c.email}>
-            <Input type="email" name="email" defaultValue={row?.email} />
+            <Input type="email" name="email" defaultValue={init?.email} />
           </Field>
           <Field label={c.whatsapp}>
             <Input
@@ -176,10 +178,10 @@ export function ClientForm({ row, onClose }: { row?: Client; onClose: () => void
           </Field>
         </div>
         <Field label={c.address}>
-          <Input name="address" defaultValue={row?.address} />
+          <Input name="address" defaultValue={init?.address} />
         </Field>
         <Field label={c.notes}>
-          <Textarea name="notes" rows={3} defaultValue={row?.notes} />
+          <Textarea name="notes" rows={3} defaultValue={init?.notes} />
         </Field>
         {error && (
           <p role="alert" className="text-sm text-destructive">
